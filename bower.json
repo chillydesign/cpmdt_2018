@@ -1,0 +1,21 @@
+{
+  "name": "stop-suicide",
+  "authors": [
+    "Edon Rexhepi"
+  ],
+  "description": "",
+  "main": "index.php",
+  "keywords": [
+    "wordpress",
+    "theme",
+    "bootstrap",
+    "digitalturn",
+    "edonrexhepi"
+  ],
+  "license": "MIT",
+  "homepage": "/",
+  "dependencies": {
+    "bootstrap-sass": "^3.3.7",
+    "font-awesome": "^4.7.0"
+  }
+}
