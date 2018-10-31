@@ -567,8 +567,10 @@ function get_address($agenda_id){
 // Register datepicker ui for properties
 function admin_agenda_javascript(){
     global $post;
-    if($post->post_type == 'agenda' && is_admin()) {
-        wp_enqueue_script('jquery-ui-datepicker', WP_CONTENT_URL . '/themes/conservatoire-populaire/datepicker/jquery-ui.js');
+    if ($post) {
+        if($post->post_type == 'agenda' && is_admin()) {
+            wp_enqueue_script('jquery-ui-datepicker', WP_CONTENT_URL . '/themes/conservatoire-populaire/datepicker/jquery-ui.js');
+        }
     }
 }
 add_action('admin_print_scripts', 'admin_agenda_javascript');
