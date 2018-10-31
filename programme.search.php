@@ -3,7 +3,9 @@
         <form action="/search-results/" method="GET" >
             <div class="row text-uppercase font-bold">
                 <div class="col-sm-4 col-xs-12">
-                    <?php 
+                    <?php
+                        $age_1 = 0;
+                        $age_2 = 0;
                         if(isset($_GET['age'])){
                             $cat = $_GET['cat'];
                             $age_arr = explode('-', $_GET['age']);
@@ -39,10 +41,10 @@
                                     if($category->term_id == $_GET['cat']){
                                         $select.= "<option value='".$category->term_id."' selected='select'>de la ".$category->name."</option>";
                                     }else{
-                                        $select.= "<option value='".$category->term_id."'>de la ".$category->name."</option>";  
+                                        $select.= "<option value='".$category->term_id."'>de la ".$category->name."</option>";
                                     }
-                                    
-                                    
+
+
                                 }else{
                                     if($category->term_id == 20){
                                         $select.= "<option value='".$category->term_id."' selected='select'>de la ".$category->name."</option>";
@@ -50,7 +52,7 @@
                                         $select.= "<option value='".$category->term_id."'>de la ".$category->name."</option>";
                                     }
                                 }
-                            } 
+                            }
                             if($category->slug == "theatre"){
                                 if(isset($_GET['cat'])){
                                     if($category->term_id == $_GET['cat']){
@@ -60,9 +62,9 @@
                                     }
 
                                 }else{
-                                    $select.= "<option value='".$category->term_id."'>du ".$category->name."</option>"; 
+                                    $select.= "<option value='".$category->term_id."'>du ".$category->name."</option>";
                                 }
-                                
+
                             }
                         }
                         $select.= "</select>";
@@ -84,23 +86,23 @@
                             if ( $query->have_posts() ) {
                                 while ( $query->have_posts() ) {
                                     $query->the_post(); ?>
-                                    <?php 
+                                    <?php
                                         if(isset($_GET['location_id'])){
                                             if($_GET['location_id'] == -1){ ?>
-                                                 <option value="<?php the_ID();?>"><?php the_title(); ?></option> 
+                                                 <option value="<?php the_ID();?>"><?php the_title(); ?></option>
                                             <?php
-                                            }elseif ($_GET['location_id'] != -1) {                                               
+                                            }elseif ($_GET['location_id'] != -1) {
                                                 if(get_the_ID() == $_GET['location_id']){
                                                     ?>
-                                                     <option value="<?php the_ID();?>" selected='select' ><?php the_title(); ?></option> 
+                                                     <option value="<?php the_ID();?>" selected='select' ><?php the_title(); ?></option>
                                                     <?php
                                                 }else{ ?>
-                                                    <option value="<?php the_ID();?>" ><?php the_title(); ?></option> 
-                                                <?php 
+                                                    <option value="<?php the_ID();?>" ><?php the_title(); ?></option>
+                                                <?php
                                                 }
                                             }
                                         }else{ ?>
-                                             <option value="<?php the_ID();?>"  ><?php the_title(); ?></option> 
+                                             <option value="<?php the_ID();?>"  ><?php the_title(); ?></option>
                                         <?php }
 
                                     ?>
@@ -108,9 +110,9 @@
                                     <?php
                                 }
                             }
-                            
+
                         ?>
-                        
+
                     </select>
                 </div>
                 <div class="col-sm-1 col-xs-12">
