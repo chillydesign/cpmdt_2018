@@ -1,20 +1,20 @@
 <?php
 		global $wpdb;
-		
-/* 
+
+/*
  *! Creating the "Programs" custom post type*/
 
 		// register a custom post type called 'Programme'
 		function post_type_programme() {
 		    $labels = array(
-		        'name' => __( 'Programme' ),
-		        'singular_name' => __( 'Programme' ),
-		        'add_new' => __( 'Nouveau Programme' ),
-		        'add_new_item' => __( 'Nouveau Programme' ),
-		        'edit_item' => __( 'Modifier Programme' ),
-		        'new_item' => __( 'Nouveau Programme' ),
-		        'view_item' => __( 'Voir Programme' ),
-		        'search_items' => __( 'Rechercher Programme' ),
+		        'name' => __( 'Cours' ),
+		        'singular_name' => __( 'Cours' ),
+		        'add_new' => __( 'Nouveau Cours' ),
+		        'add_new_item' => __( 'Nouveau Cours' ),
+		        'edit_item' => __( 'Modifier Cours' ),
+		        'new_item' => __( 'Nouveau Cours' ),
+		        'view_item' => __( 'Voir Cours' ),
+		        'search_items' => __( 'Rechercher Cours' ),
 		        'not_found' =>  __( 'Aucun résultat' ),
 		        'not_found_in_trash' => __( 'Aucun résultat' ),);
 		    $args = array(
@@ -32,28 +32,28 @@
 		        'rewrite' => true,
 		        'capability_type' => 'post',
 		        'hierarchical' => true,
-						'map_meta_cap' => true, 
+						'map_meta_cap' => true,
 		        'menu_icon' => 'dashicons-media-spreadsheet',
 		        'supports' => array('title','editor','thumbnail', 'page-attributes'));
 
 		    register_post_type( 'programme', $args );
 		}
-		add_action( 'init', 'post_type_programme' ); 
+		add_action( 'init', 'post_type_programme' );
 
-		// Taxonomy 
-		register_taxonomy( "programmes", 
-			array( 	"programme" ), 
+		// Taxonomy
+		register_taxonomy( "programmes",
+			array( 	"programme" ),
 			array( 	"hierarchical" => true,
-					"labels" => array('name'=>"Categories",'add_new_item'=>"Add a new category"), 
-					"singular_label" => __( "Field" ), 
+					"labels" => array('name'=>"Categories",'add_new_item'=>"Add a new category"),
+					"singular_label" => __( "Field" ),
 					"rewrite" => array( 'slug' => 'programmes', 'with_front' => false)
-				) 
+				)
 		);
 
-		
+
 		// Adding the metabox
 		add_action("admin_init", "programs_admin_init");
- 
+
 		function programs_admin_init(){
 			add_meta_box("programme_meta", "Programme informations", "programs_details_meta", "programme", "normal", "default");
 			add_meta_box("programme_meta2", "Programme autres informations", "programs_age_meta", "programme", "normal", "default");
@@ -90,7 +90,7 @@
 			return '';
 		}
 
-		// Inside metabox 
+		// Inside metabox
 		// Custom fields
 		function teachers(){
 			global $wpdb;
@@ -132,7 +132,7 @@
 					}
 				 }
 				 $ret .='</select></div>';
-		    
+
 		    echo $ret;
 		}
 
@@ -140,13 +140,13 @@
 		add_action('save_post', 'save_programs_details');
 		function save_programs_details(){
 		   	global $post;
-		 
+
 		   	if( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE )
 		      	return;
 
 		   	if(get_post_type($post) != 'programme')
 		      	return;
-		 
+
 		   	save_custom_field("p_teacher");
 		   	save_custom_field("p_location");
 			save_custom_field("p_age");
