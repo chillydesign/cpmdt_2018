@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 //Date formatage
 add_filter('frm_csv_date_format', 'change_my_csv_format');
@@ -18,13 +18,13 @@ function remove_id_column( $headings, $form_id ) {
     unset( $headings['item_key'] );
     unset( $headings['user_id'] );
   }
-    
+
   // Nettoyage des colonnes pour Formulaire 5 (4-7ans)
   if ( $form_id == 5 ) {
   $position1 = array_search( 'Professeur', array_values( $headings ) ) + 1;
   $position2 = array_search( 'Autre lieu possible', array_values( $headings ) );
-  
-  $headings = ( 
+
+  $headings = (
   	array_slice( $headings, 0, $position1, true ) +
   	array( 'lieu' => 'Lieu' ) +
   	array_slice( $headings, $position2, NULL, true )
@@ -35,8 +35,8 @@ function remove_id_column( $headings, $form_id ) {
   if ( $form_id == 17 ) {
   $position11 = array_search( 'Professeur Instr. / chant', array_values( $headings ) ) + 1;
   $position22 = array_search( 'Autre lieu possible', array_values( $headings ) );
-  
-  $headings = ( 
+
+  $headings = (
   	array_slice( $headings, 0, $position11, true ) +
   	array( 'lieu' => 'Lieu' ) +
   	array_slice( $headings, $position22, NULL, true )
@@ -46,13 +46,13 @@ function remove_id_column( $headings, $form_id ) {
   //Déplacement téléphone (formulaire 17)
   //if ( $form_id == 17 ) {
   //$position1 = array_search( 'Ville', array_values( $headings ) ) + 1;
-  //$headings = ( 
+  //$headings = (
   //	array_slice( $headings, 0, $position1, true ) +
   //	array( '179' => 'Téléphone privé' ) +
   //	array_slice( $headings, $position1, NULL, true )
   //);
  // }
- 
+
   //Suppression du champ courril confirmation (formulaire 5)
   if ( $form_id == 5 ) {
 		$export_columns = array( 192 );
@@ -103,7 +103,7 @@ function remove_id_column( $headings, $form_id ) {
 		}
 	}
   return $headings;
-  
+
   }
 
 /**
@@ -113,23 +113,23 @@ function remove_id_column( $headings, $form_id ) {
 add_filter( 'frm_csv_row', 'conservatoire_frm_csv_row' );
 function conservatoire_frm_csv_row( $row, $params )
 {
-	$lieux = array( 
-		540, 541, 542, 543, 544, 545, 546, 547, 548, 549, 550, 551, 
-		559, 561, 562, 563, 564, 565, 566, 567, 568, 569, 570, 571, 572, 573, 574, 575, 576, 577, 578, 579, 580, 581, 582, 583, 584, 585, 586, 587, 588, 589, 590 
+	$lieux = array(
+		540, 541, 542, 543, 544, 545, 546, 547, 548, 549, 550, 551,
+		559, 561, 562, 563, 564, 565, 566, 567, 568, 569, 570, 571, 572, 573, 574, 575, 576, 577, 578, 579, 580, 581, 582, 583, 584, 585, 586, 587, 588, 589, 590
 	);
 	foreach ( $lieux as $col_id )
 		if ( isset( $row[$col_id] ) && $row[$col_id] )
 			$row['lieu'] = $row[$col_id];
-	
+
 	return $row;
 }
 
 
 function get_custom_field($custom_field) {
 	global $post;
-	
+
 	$custom = get_post_custom($post->ID);
-	
+
 	if (isset($custom[$custom_field])) {
 		return $custom[$custom_field][0];
 	}
@@ -139,7 +139,7 @@ function get_custom_field($custom_field) {
 
 function save_custom_field($custom_field) {
 	global $post;
-	
+
 	if(isset($_POST[$custom_field])) {
 		update_post_meta($post->ID, $custom_field, $_POST[$custom_field]);
 	}
@@ -153,6 +153,7 @@ require get_template_directory() . '/custom/program_data.php';
 require get_template_directory() . '/custom/_disable-abilities.php';
 require get_template_directory() . '/custom/_post-meta.php';
 require get_template_directory() . '/custom/address.php';
+require get_template_directory() . '/custom/zones.php';
 
 
 /* Theme Supports*/
@@ -198,7 +199,7 @@ function revcon_change_post_object() {
     $labels->menu_name = 'Articles';
     $labels->name_admin_bar = 'Articles';
 }
- 
+
 add_action( 'admin_menu', 'revcon_change_post_label' );
 add_action( 'init', 'revcon_change_post_object' );
 
@@ -264,8 +265,8 @@ add_filter('upload_mimes', 'cc_mime_types');
 /*Theme Widgets i.e Sidebars*/
 function create_widget( $name, $id, $description ) {
 	register_sidebar(array(
-		'name' => __( $name ),	 
-		'id' => $id, 
+		'name' => __( $name ),
+		'id' => $id,
 		'description' => __( $description ),
 		'before_widget' => '<div class="widget">',
 		'after_widget' => '</div>',
@@ -289,7 +290,7 @@ function display_metas_on_home( $bool ) {
 
 
 /*Theme Customizer*/
-function edonrexhepi_logo_customizer( $wp_customize ) {	
+function edonrexhepi_logo_customizer( $wp_customize ) {
 	/* Header Section*/
 	$wp_customize->add_section( 'logo-section' , array(
 		'title' => __( 'Header modify', 'edonrexhepi' ),
@@ -361,7 +362,6 @@ function change_excerpt_more(){
   add_filter('excerpt_more', 'new_excerpt_more');
 }
 add_action('after_setup_theme', 'change_excerpt_more');
- 
 
 
 
@@ -370,7 +370,8 @@ add_action('after_setup_theme', 'change_excerpt_more');
 
 
 
-add_action( 'pre_get_posts', 'change_sort_order' ); 
+
+add_action( 'pre_get_posts', 'change_sort_order' );
 function change_sort_order(&$query){
     if (isset($_POST['cs_action']) && $_POST['cs_action'] == 'custom_sort_order'){
         global $wp;
@@ -432,8 +433,8 @@ function posts_shortcode( $atts ) {
     );
     $andrew_query = new  WP_Query( $args );
     while ( $andrew_query->have_posts() ) : $andrew_query->the_post();
-		$image = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'full' ); 
-		
+		$image = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'full' );
+
 		$output .= '<div class="col-sm-6 col-xs-12"'.
 					'<h4></h4>'.
 					'<h4>'. get_the_title() .'</h4>'.
@@ -457,15 +458,15 @@ add_filter( 'the_content_more_link', 'modify_read_more_link' );
 
 function get_program_data($id){
 	global $wpdb;
-	$sql = "SELECT wp_program_data.*,  wp_posts.post_title FROM wp_program_data 
-				INNER JOIN wp_posts ON wp_program_data.location_id = wp_posts.id    
+	$sql = "SELECT wp_program_data.*,  wp_posts.post_title FROM wp_program_data
+				INNER JOIN wp_posts ON wp_program_data.location_id = wp_posts.id
 				WHERE wp_program_data.program_id = ".$id." ORDER BY post_title ASC";
 	$results = $wpdb->get_results($sql, OBJECT);
 
 	$items = array();
 	$sql = "SELECT * FROM wp_posts WHERE id = ".$id;
 	$p_name = $wpdb->get_results($sql, OBJECT);
-	
+
 	foreach($results as $result){
 		$t_ids = json_decode($result->teacher_id);
 		$teacher_ids = implode(",", $t_ids);
@@ -473,7 +474,7 @@ function get_program_data($id){
 		$item = array();
 		$item['program']  = $p_name[0]->post_title;
 		$item['location'] = $result->post_title;
-		
+
 		$teachers_name = '';
 		$sql = "SELECT * FROM wp_posts WHERE id IN ($teacher_ids) ORDER BY post_title ASC";
 		$teachers = $wpdb->get_results($sql, OBJECT);
@@ -493,7 +494,7 @@ function get_program_data($id){
 
 function get_agenda_count($field_id, $agenda_id, $count_field){
 	global $wpdb;
-	$sql = "SELECT item_id FROM wp_frm_item_metas   
+	$sql = "SELECT item_id FROM wp_frm_item_metas
 				WHERE field_id = ".$field_id
 				." AND meta_value = ".$agenda_id;
 	$items = $wpdb->get_results($sql, OBJECT);
@@ -501,7 +502,7 @@ function get_agenda_count($field_id, $agenda_id, $count_field){
 		$output = array_map(function ($object) { return $object->item_id; }, $items);
 		$item_ids = implode(', ', $output);
 
-		$sql = "SELECT SUM(meta_value) as 'sum' FROM wp_frm_item_metas   
+		$sql = "SELECT SUM(meta_value) as 'sum' FROM wp_frm_item_metas
 					WHERE field_id = 70
 					AND item_id IN ($item_ids) ";
 		$results = $wpdb->get_results($sql, OBJECT);
@@ -509,7 +510,7 @@ function get_agenda_count($field_id, $agenda_id, $count_field){
 		return $results[0]->sum;
 	}
 	return 0;
-	
+
 }
 
 
@@ -534,8 +535,8 @@ add_action( 'wp_before_admin_bar_render', 'mytheme_admin_bar_render' );
 
 function get_address($agenda_id){
 	global $wpdb;
-  $sql = "SELECT * FROM wp_postmeta 
-  					INNER JOIN wp_posts ON wp_posts.id = wp_postmeta.post_id 
+  $sql = "SELECT * FROM wp_postmeta
+  					INNER JOIN wp_posts ON wp_posts.id = wp_postmeta.post_id
   					WHERE wp_postmeta.meta_key = 'address_id'
   					AND  wp_posts.id = {$agenda_id} LIMIT 1";
   $result = $wpdb->get_results($sql, OBJECT);
@@ -567,7 +568,7 @@ function get_address($agenda_id){
 function admin_agenda_javascript(){
     global $post;
     if($post->post_type == 'agenda' && is_admin()) {
-        wp_enqueue_script('jquery-ui-datepicker', WP_CONTENT_URL . '/themes/conservatoire-populaire/datepicker/jquery-ui.js');  
+        wp_enqueue_script('jquery-ui-datepicker', WP_CONTENT_URL . '/themes/conservatoire-populaire/datepicker/jquery-ui.js');
     }
 }
 add_action('admin_print_scripts', 'admin_agenda_javascript');
@@ -575,9 +576,10 @@ add_action('admin_print_scripts', 'admin_agenda_javascript');
 // Register ui styles for properties
 function admin_agenda_styles(){
     global $post;
-    if($post->post_type == 'agenda' && is_admin()) {
-        wp_enqueue_style('jquery-ui', WP_CONTENT_URL . '/themes/conservatoire-populaire/datepicker/jquery-ui.css');  
+    if ($post) {
+        if($post->post_type == 'agenda' && is_admin()) {
+            wp_enqueue_style('jquery-ui', WP_CONTENT_URL . '/themes/conservatoire-populaire/datepicker/jquery-ui.css');
+        }
     }
 }
 add_action('admin_print_styles', 'admin_agenda_styles');
-
