@@ -10,21 +10,21 @@
 						<hr>
 						<?php echo do_shortcode('[mc4wp_form id="494"]'); ?>
 						<ul class="share-buttons">
-							<?php 
+							<?php
 								$facebook = get_theme_mod( 'er-facebook' );
 								if($facebook){
 									$result = '<li><a href="'.$facebook.'"><i class="fa fa-facebook"></i></a></li>';
 									echo $result;
 								}
 							?>
-							<?php 
+							<?php
 								$insta = get_theme_mod( 'er-insta' );
 								if($insta){
 									$result = '<li><a href="'.$insta.'"><i class="fa fa-instagram"></i></a></li>';
 									echo $result;
 								}
 							?>
-							<?php 
+							<?php
 								$youtube = get_theme_mod( 'er-youtube' );
 								if($youtube){
 									$result = '<li><a href="'.$youtube.'"><i class="fa fa-youtube"></i></a></li>';
@@ -33,8 +33,8 @@
 							?>
 						</ul>
 						<p>Le Conservatoire populaire de musique, danse et théâtre, école accréditée par le département de l'instruction publique, de la formation et de la jeunesse, bénéficie du soutien de la République et canton de Genève.</p>
-						
-						
+
+
 					</div>
 					<div class="col-sm-3 col-xs-12">
 						<img src="<?php echo get_template_directory_uri(); ?>/assets/footer-image_03.png" alt="">
@@ -56,15 +56,16 @@
 							</select>
 						</div>
 						<!-- The element that will contain our Google Map. This is used in both the Javascript and CSS above. -->
-						<div id="footer-pins" class="footer-map"></div>
+						<!-- <div id="footer-pins" class="footer-map"></div> -->
 					</div>
 				</div>
 			</div>
 		</footer>
-		
+
 		<!-- Scripts -->
 		<?php wp_footer(); ?>
-		<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBZqgRQ08i04MKCWwTbFD9MpUVUzlTNOF0"></script>
+        <!-- TODO PUT MAP BACK LATER -->
+		<!-- <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBZqgRQ08i04MKCWwTbFD9MpUVUzlTNOF0"></script> -->
 		<script>
 
 			/*! Places array */
@@ -86,22 +87,22 @@
 				});
 
 			});
-			
+
 			function addLocationPlacesInDropdown(){
 				var siteUrl = "<?php echo site_url() ?>";
-				
+
 				for (var i=0; i<places.length; i++){
-					jQuery('#locations_dropdownFooter').append('<option value="'+i+'">'+places[i].post_title+'</option>'); 
+					jQuery('#locations_dropdownFooter').append('<option value="'+i+'">'+places[i].post_title+'</option>');
 				}
 				jQuery('#locations_dropdownFooter').change(function(){
 					var value = jQuery(this).val();
-					
+
 					window.location.href = siteUrl + "/centres-denseignement/" + "#" + value;
-					
+
 					var placesInformation = jQuery('.locations-container .information').html('<div class="title">'+places[value].post_title+'</div><div class="col-sm-6 col-xs-12 information-row"><b>Adresse:</b><span>'+places[value].addresse+'</span></div><div class="col-sm-6 col-xs-12 information-row"><b>Google Map:</b><a href="https://maps.google.com/?q='+places[value].addresse+'" style="color: inherit;"><span>Afficher le plan</span></a></div><div class="col-sm-12 col-xs-12 information-row"><b>Infos TPG:</b><span>'+places[value].infos+'</span></div><div class="col-sm-12 col-xs-12 information-row"><b>Description:</b><span>'+places[value].description+'</span></div><div class="col-sm-12 col-xs-12 information-row"><b>Responsable TPG:</b><span>'+places[value].responsible+'</span></div>');
 
 					var placesHeader = jQuery('.locations-connections .container').html('<div class="col-sm-12 col-xs-12"><h4>Disciplines enseignées:</h4></div>');
-					
+
 					var programs = places[value].program_data;
 					var p_data = "";
 					for(var j=0;j<programs.length;j++){
@@ -154,14 +155,14 @@
 			/*! Initialize map */
 			function initMap(lat, lng) {
 				var given_location = {lat: lat, lng: lng};
-				var mapOptions = {	
+				var mapOptions = {
 					center: given_location,
 					zoom: 11,
 					styles: [{"featureType":"administrative","elementType":"all","stylers":[{"saturation":"-100"}]},{"featureType":"administrative.province","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"landscape","elementType":"all","stylers":[{"saturation":100},{"lightness":90},{"visibility":"on"}]},{"featureType":"poi","elementType":"all","stylers":[{"saturation":-100},{"lightness":"50"},{"visibility":"simplified"}]},{"featureType":"road","elementType":"all","stylers":[{"saturation":"-100"}]},{"featureType":"road.highway","elementType":"all","stylers":[{"visibility":"simplified"}]},{"featureType":"road.arterial","elementType":"all","stylers":[{"lightness":"30"}]},{"featureType":"road.local","elementType":"all","stylers":[{"lightness":"40"}]},{"featureType":"transit","elementType":"all","stylers":[{"saturation":-100},{"visibility":"simplified"}]},{"featureType":"water","elementType":"geometry","stylers":[{"hue":"#ffff00"},{"lightness":-25},{"saturation":-97}]},{"featureType":"water","elementType":"labels","stylers":[{"lightness":-25},{"saturation":-100}]}]
 				};
 				map = new google.maps.Map(document.getElementById('footer-pins'), mapOptions);
 			}
-				
+
 			jQuery(document).ready(function(){
 				initMap(46.8041122,7.4338763);
 			});
@@ -174,7 +175,7 @@
 			var link = jQuery(this); //preselect the link
 			if (link.hasClass('hover')) {
 				return true;
-			} 
+			}
 			else {
 				link.addClass('hover');
 				jQuery('.program').not(this).removeClass('hover');
