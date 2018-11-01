@@ -229,6 +229,8 @@ function theme_js() {
 	/*Main JS*/
 	wp_enqueue_script( 'bootstrap-js', get_template_directory_uri() . '/bower_components/bootstrap-sass/assets/javascripts/bootstrap.min.js', array('jquery'), '', true );
 	/*Main JS*/
+	wp_enqueue_script( 'matchheight', get_template_directory_uri() . '/js/matchHeight.min.js', array('jquery'), '', true );
+	wp_enqueue_script( 'underscore', get_template_directory_uri() . '/js/underscore.min.js', array('jquery'), '', true );
 	wp_enqueue_script( 'app', get_template_directory_uri() . '/js/app.js', array('jquery'), '', true );
 }
 add_action( 'wp_enqueue_scripts', 'theme_js' );
@@ -604,6 +606,138 @@ function disable_wp_emojicons() {
   // add_filter( 'tiny_mce_plugins', 'disable_emojicons_tinymce' );
 }
 add_action( 'init', 'disable_wp_emojicons' );
+
+
+//
+//
+//
+//
+//
+// if(!function_exists('api_get_course_locations')) {
+// function api_get_course_locations($course_ids){
+// 	global $wpdb;
+// 	if (sizeof($course_ids) > 0):
+// 				// GET CATEGORIES
+// 		$location_sql = ' post_id = ';
+// 		$location_sql .= implode(' OR post_id =   ', $course_ids);
+// 		$course_locations = $wpdb->get_results("SELECT wp_postmeta.post_id as wppid  , post_title, wp_posts.ID as wid
+// 							FROM  `wp_postmeta`
+// 							LEFT JOIN wp_posts ON wp_postmeta.meta_value = wp_posts.ID
+// 							WHERE ( $location_sql ) AND  `meta_key` LIKE '%location%' AND  post_title != '' ");
+//
+// 		return $course_locations;
+// 	endif;
+//
+//
+// }
+// }
+//
+//
+//
+//
+// if(!function_exists('api_get_course_zones')) {
+// function api_get_course_zones($location_ids){
+// 	global $wpdb;
+//
+//
+// 	$location_ids =   array_unique(array_filter($location_ids));
+//
+//
+// 	if (sizeof($location_ids) > 0):
+//
+// 				// GET CATEGORIES
+// 		$zone_sql = ' post_id = ';
+// 		$zone_sql .= implode(' OR post_id =   ', $location_ids);
+// 		$location_zones =  $wpdb->get_results("SELECT meta_value, post_id
+// 									FROM  `wp_postmeta`
+// 									WHERE ( $zone_sql ) AND meta_key = 'zones' ");
+// 		return $location_zones;
+// 	endif;
+//
+//
+// }
+// }
+//
+//
+// if(!function_exists('api_get_p_age')) {
+// function api_get_p_age($course_ids){
+//
+// 	if (sizeof($course_ids) > 0):
+// 		// GET CATEGORIES
+//         global $wpdb;
+// 		$extra_sql = ' post_id = ';
+// 		$extra_sql .= implode(' OR post_id =   ', $course_ids);
+// 		$course_p_ages = $wpdb->get_results("SELECT meta_value, post_id
+// 									FROM  `wp_postmeta`
+// 									WHERE ( $extra_sql ) AND meta_key = 'p_age' ");
+//
+//
+// 		return $course_p_ages;
+// 	endif;
+// }
+// }
+// if(!function_exists('api_get_p_age2')) {
+// function api_get_p_age2($course_ids){
+// 	if (sizeof($course_ids) > 0):
+// 		// GET CATEGORIES
+//         global $wpdb;
+// 		$extra_sql = ' post_id = ';
+// 		$extra_sql .= implode(' OR post_id =   ', $course_ids);
+// 		$course_p_age2s = $wpdb->get_results("SELECT meta_value, post_id
+// 									FROM  `wp_postmeta`
+// 									WHERE ( $extra_sql ) AND meta_key = 'p_age2' ");
+//
+//
+//
+// 		return $course_p_age2s;
+// 	endif;
+// }
+// }
+//
+//
+// function get_meta_value_of_post($id, $meta_values) {
+//     // get the meta value from an array of meta values
+//     $extra = array_filter(
+//         $meta_values,
+//         function ($e) use ($id)   {
+//             return intval($e->post_id) == $id;
+//         }
+//     );
+//
+//
+//     $ext = array_values($extra);
+//     $ext = reset($ext);
+//     if ($ext) {
+//         return  $ext->meta_value;
+//     }
+//
+//
+// }
+//
+//
+//
+// function program_age_bounds($id, $lower_ages, $upper_ages) {
+//     $lower_age = get_meta_value_of_post($id, $lower_ages );
+//     $upper_age = get_meta_value_of_post($id, $upper_ages );
+//     return array($lower_age, $upper_age);
+// }
+//
+//
+// function course_has_correct_ages($course_ages, $requested_ages) {
+//
+//     $course_age_lower = intval($course_ages[0]);
+//     $course_age_upper = intval($course_ages[1]);
+//     $requested_age_lower = intval($requested_ages[0]);
+//     $requested_age_upper = intval($requested_ages[1]);
+//
+//     if (  ($course_age_lower > $requested_age_lower && $course_age_lower <=  $requested_age_upper )  || ($course_age_upper > $requested_age_lower && $course_age_upper <=  $requested_age_upper )   ) {
+//         return true;
+//     } else {
+//         return false;
+//     }
+//
+// }
+
 
 
 ?>
