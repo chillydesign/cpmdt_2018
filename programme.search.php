@@ -1,6 +1,6 @@
 <div class="search-container">
     <div class="container">
-        <form action="/search-results/" method="GET" >
+        <form action="<?php echo get_site_url(); ?>/search-results/" method="GET" >
             <div class="row text-uppercase font-bold">
                 <div class="col-sm-4 col-xs-12">
                     <?php
@@ -73,26 +73,26 @@
                 </div>
                 <div class="col-sm-3 col-xs-12">
                     <label for="#">j’habite vers </label>
-                    <select name="location_id" id="s_">
+                    <select name="zone_id" id="s_">
                         <option value='-1'>indifférent</option>
                         <?php
                             $args = array(
-                                'post_type' => 'location',
+                                'post_type' => 'zone',
                                 'posts_per_page' => -1,
                                 'orderby' => 'title',
                                 'order' => 'ASC'
                             );
-                            $query = new WP_Query( $args );
-                            if ( $query->have_posts() ) {
-                                while ( $query->have_posts() ) {
-                                    $query->the_post(); ?>
+                            $zones = new WP_Query( $args );
+                            if ( $zones->have_posts() ) {
+                                while ( $zones->have_posts() ) {
+                                    $zones->the_post(); ?>
                                     <?php
-                                        if(isset($_GET['location_id'])){
-                                            if($_GET['location_id'] == -1){ ?>
+                                        if(isset($_GET['zone_id'])){
+                                            if($_GET['zone_id'] == -1){ ?>
                                                  <option value="<?php the_ID();?>"><?php the_title(); ?></option>
                                             <?php
-                                            }elseif ($_GET['location_id'] != -1) {
-                                                if(get_the_ID() == $_GET['location_id']){
+                                            }elseif ($_GET['zone_id'] != -1) {
+                                                if(get_the_ID() == $_GET['zone_id']){
                                                     ?>
                                                      <option value="<?php the_ID();?>" selected='select' ><?php the_title(); ?></option>
                                                     <?php
@@ -108,8 +108,9 @@
                                     ?>
                                     <!-- <option value="<?php //the_ID();?>"><?php //the_title(); ?></option> -->
                                     <?php
-                                }
-                            }
+                                } // end while have zones
+                            }; // end if have zones
+                            wp_reset_query();
 
                         ?>
 
