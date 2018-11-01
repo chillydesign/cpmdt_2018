@@ -1,23 +1,23 @@
-<div class=" row">
+<div class="container page-programs">
 
-    <% // repeat courses  %>
-    <%  _.each(courses,function(cours,key,list){  %>
+    <div class=" row">
 
-        <div class="col-sm-4 col-xs-12 program  " >
-            <div class="program-inner">
-                <a  data-url="<%= cours.api_url  %>" class="course_link"  data-featherlight="#cours_container"   href="#">
-                    <h5><%= cours.post_title %> | <%= cours.lower_age  %> <%=  cours.upper_age %> </h5>
-                    <p><%= cours.description %></p>
-                    <% if ( cours.categories.length > 0 ) {%>
-                        <p style="font-weight: bold"> <%= cours.categories[0].name %></p>
-                        <% } %>
-                    </a>
+        <% // repeat courses  %>
+        <%  _.each(courses,function(cours,key,list){  %>
+
+            <div class="col-sm-4 col-xs-12 program  " >
+                <div class="program-inner">
+
+                    <a href="<%= cours.api_url  %>"></a>
+                    <h4><%= cours.post_title %></h4>
+
                 </div>
             </div>
             <%= cours.new_row %>
 
 
-            <!--<%= cours.guid  %> -->
+
             <% }) %>
         </div>
-        <a href="#" id="back_to_top">&#8593;</a>
+        <!-- <a href="#" id="back_to_top">&#8593;</a> -->
+    </div>

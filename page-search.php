@@ -2,13 +2,10 @@
 
 <!-- Search bar -->
 <?php get_template_part('programme.search'); ?>
-
-
-
 <p class="container" id="course_size"></p>
-<div class="container page-programs">
+
 <div id="courses_container"></div>
-</div>
+
 
 <script type="text/javascript">
 	var search_url = '<?php echo home_url(); ?>/api/v1/';

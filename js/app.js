@@ -36,6 +36,34 @@ $('.toggle-categories').click(function(event){
 
 if (typeof search_url != 'undefined' ) {
 
+
+    // if press escape key, hide menu
+    $(document).on('keydown', function(e){
+        if(e.keyCode == 27 ){
+            $('.search_box').removeClass('visible');
+        }
+    })
+
+    $('.search_box').on('click', function(e){
+       e.stopPropagation();
+    });
+
+    $('.search_button').on('click', function(e){
+       e.preventDefault();
+       e.stopPropagation();
+       var $this = $(this);
+       var $box = $($this.data('box'));
+
+           if ($box.hasClass('visible')) {
+               $('.search_box').removeClass('visible');
+           } else {
+               $('.search_box').removeClass('visible');
+               $box.addClass('visible');
+
+           }
+
+    })
+
     var $search_checks = $('.search_check');
     var $cours_search = $('#cours_search');
     var $courses_container = $('#courses_container');
