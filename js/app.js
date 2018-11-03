@@ -290,8 +290,6 @@ function processCourses(courses, search, category, location, ages){
         // ADD NEW UL.ROW EVERY 3 POSTS FOR LAYOUT
         course['new_row'] = ( i % 3 == 2 )  ?  '</div><div class=" row">' : '';
 
-        course['api_url'] = search_url   + '?course_id=' + course.ID;
-
 
 
 
