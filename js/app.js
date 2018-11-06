@@ -75,7 +75,7 @@ $('.toggle-categories').click(function(event){
 // COURSE SEARCH
 
 
-if (typeof search_url != 'undefined' ) {
+
 
 
     // if press escape key, hide menu
@@ -114,6 +114,10 @@ if (typeof search_url != 'undefined' ) {
     var $cours_template = $('#cours_template').html();
     var $reset_course_form = $('#reset_course_form');
 
+    var $age_summary = $('#age_summary');
+    var $cat_summary = $('#cat_summary');
+    var $location_summary = $('#location_summary');
+
     var $lower_age = 0;
     var $upper_age = 100;
 
@@ -126,6 +130,43 @@ if (typeof search_url != 'undefined' ) {
             var ssub = s.replace(/\+/g, ' ');
             ssub = decodeURIComponent(ssub);
             $cours_search.val(ssub).click();
+        }
+
+        if ( wls.indexOf('category=') !== -1) {
+            var c = wls.split('category=')[1];
+            var c =  c.split('&')[0];
+            var csub = c.replace(/\+/g, ' ');
+            csub = decodeURIComponent(csub);
+            $search_checks.each( function() {
+                var $this = $(this);
+                if ( $this.data('field') == 'category'  &&  $this.val() == csub ) {
+                    this.click();
+                }
+            } )
+        }
+        if ( wls.indexOf('age=') !== -1) {
+            var a = wls.split('age=')[1];
+            var a =  a.split('&')[0];
+            var asub = a.replace(/\+/g, ' ');
+            asub = decodeURIComponent(asub);
+            $search_checks.each( function() {
+                var $this = $(this);
+                if ( $this.data('field') == 'age'  &&  $this.val() == asub ) {
+                    this.click();
+                }
+            } )
+        }
+        if ( wls.indexOf('loc=') !== -1) {
+            var l = wls.split('loc=')[1];
+            var l =  l.split('&')[0];
+            var lsub = l.replace(/\+/g, ' ');
+            lsub = decodeURIComponent(lsub);
+            $search_checks.each( function() {
+                var $this = $(this);
+                if ( $this.data('field') == 'location'  &&  $this.val() == lsub ) {
+                    this.click();
+                }
+            } )
         }
 
         // if ( wls.indexOf('age=') !== -1) {
@@ -143,7 +184,7 @@ if (typeof search_url != 'undefined' ) {
 
 
 
-
+if (typeof search_url != 'undefined' ) {
 
 
     $.ajax({
@@ -185,34 +226,53 @@ if (typeof search_url != 'undefined' ) {
 
 }
 
+
 function displayCourses(courses, courses_container, compiled){
 
+    $('.search_box').removeClass('visible');
 
     var $search_val = $cours_search.val().toLowerCase();
-
-
-
-
-
     var $location = new Array();
     var $cat = new Array();
-
     var $ages = new Array();
+
+    var $locations_summary = new Array();
+    var $cats_summary = new Array();
+    var $ages_summary = new Array();
 
     $search_checks.each(function(){
         var $this = $(this);
         var $check_type = $this.data('field');
         if( $this.is(":checked")) {
 
-            if( $check_type =='location' ){
-                $location.push(   parseInt($this.val())  )
+            if( $check_type == 'location' ){
+                $location.push( parseInt($this.val())  );
+                $locations_summary.push(  $this.data('label') )
             } else if( $check_type == 'age' ){
-                $ages.push(  parseInt($this.val())  )
+                $ages.push( parseInt($this.val())  );
+                $ages_summary.push(  $this.data('label') )
             } else if( $check_type =='category' ){
-                $cat.push(   parseInt($this.val())  )
+                $cat.push( parseInt($this.val())  );
+                $cats_summary.push(  $this.data('label') )
             }
-
         };
+
+        if ($ages_summary.length > 0) {
+            $age_summary.html(  $ages_summary.join(' ')  );
+        } else {
+            $age_summary.html($age_summary.data('default')  );
+        }
+        if ($cats_summary.length > 0) {
+            $cat_summary.html(  $cats_summary.join(' ')  );
+        } else {
+            $cat_summary.html($cat_summary.data('default')  );
+        }
+        if ($locations_summary.length > 0) {
+            $location_summary.html(  $locations_summary.join(' ')  );
+        } else {
+            $location_summary.html($location_summary.data('default')  );
+        }
+
 
     });
 

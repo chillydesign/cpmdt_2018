@@ -3492,35 +3492,57 @@ footer {
 
 
  form#search_courses_form {
-	background-color: #d0d0d0;
+
 	position: relative;
-	z-index: 3;
-	display: inline-block;
-	height: 50px;
+	z-index: 30;
 	width:100%;
-	margin: 30px 0 30px;
+
 }
 
 
 #cours_search {
 	left: 0;
 	min-width: initial;
-    height: 50px;
+
 	background: none;
-	padding:0 0;
     margin: 0;
-	border:0;
+    border:0;
+    background: #ddd;
+    padding: 12px;
+    border-radius: 5px;
+    width: 100%;
 }
 
 .search_button {
 	display: block;
-	line-height: 50px;
-	font-size: 1.45em;
+    color: inherit;
+	/* line-height: 50px;
+	font-size: 1.45em; */
     position: relative;
 
 }
 
 
+.search_heading {
+    display: inline-block;
+max-width: 100%;
+margin-bottom: 5px;
+font-weight: bold;
+}
+
+.search_summary {
+    padding-right: 40px;
+    display: block;
+    font-weight: 400;
+    text-transform: uppercase;
+    outline: 0;
+    font-weight: 300;
+    border-radius: 0;
+    overflow: visible;
+    border: 0;
+    background: url("assets/icon-search_arrow_black.svg") no-repeat right center;
+    background-size: 15px;
+}
 
 #reset_course_form {
 	text-align: center;
@@ -3583,4 +3605,8 @@ footer {
 	line-height: 150%;
     display: block;
     font-size: 12px;
+}
+
+#course_size {
+    margin-top: 40px;
 }
