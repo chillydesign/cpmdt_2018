@@ -74,7 +74,7 @@
 			/*! Getting data from the request */
 			jQuery(document).ready(function(){
 				jQuery.ajax({
-					url: '/program-data/?request=locations_json',
+					url: '<?php echo site_url(); ?>/program-data/?request=locations_json',
 					type: 'GET',
 					success: function(locations){
 						places = locations;

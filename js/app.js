@@ -30,6 +30,47 @@ $('.toggle-categories').click(function(event){
 
 
 
+
+    function filterTeachers(){
+        $('.teachers-filter a').click(function(event){
+            event.preventDefault();
+            event.stopPropagation();
+            // Store value
+            var $value = jQuery(this).html().trim();
+            // Hide other rows
+            $('.visible').removeClass('visible');
+            $('.char-'+$value).addClass('visible');
+        })
+    }
+
+    filterTeachers();
+
+        // First item on the teachers filter click
+        $('.teachers-filter ul li:first-of-type a').click();
+
+        var $class = $('.frm_message');
+        if(typeof submittedEmail !== 'undefined'){
+            // Palidhje
+            var $submittedRow = $('.teachers-row:contains('+submittedEmail.trim()+')');
+            $('#frm_form_8_container').appendTo($submittedRow.find('.form-container'));
+            var teacherChar = $submittedRow.attr('class').split('char-')[1].charAt(0);
+
+            $('.visible').removeClass('visible');
+            $('.char-'+teacherChar).addClass('visible ');
+            $submittedRow.addClass('toggled submitted-row');
+            $submittedRow.find('.contact-teacher').slideDown();
+        }
+
+
+
+
+
+
+
+
+
+
+
 // COURSE SEARCH
 // COURSE SEARCH
 
