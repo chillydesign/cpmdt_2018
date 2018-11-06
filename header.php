@@ -33,7 +33,7 @@
                     ?>
             </div>
         </div>
-        <a id="prenav-toggle" href="#">MENU<i class="fa fa-angle-down"></i></a>
+        <a id="prenav-toggle" href="#">MENU </a>
         <nav class="navbar navbar-default">
             <div class="container flex-container">
                     <!-- Brand and toggle get grouped for better mobile display -->
@@ -70,7 +70,6 @@
                     <!-- Search in the nav links, right side of the header -->
                     <div class="search-nav search-menu">
                         <form role="search" action="<?php echo site_url('/'); ?>" method="get">
-                            <i class="fa fa-search"></i>
                             <input type="search" name="s" placeholder=""/>
                             <input type="submit" alt="Search" value="OK" />
                         </form>
