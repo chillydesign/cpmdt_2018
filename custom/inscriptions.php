@@ -281,12 +281,26 @@ function inscription_form_shortcode($atts , $content = null) {
 
     $rq_frm .= '<hr/>';
 
-    $rq_frm .=' <div class="inscription_field">
-    <label for="authorisation_photo">Authorisation photo </label>
+    // $rq_frm .=' <div class="inscription_field">
+    // <label for="hypothetical_file">Hypothetical file upload </label>
+    // <div class="field_content">
+    // <input type="file" name="hypothetical_file" id="hypothetical_file"  />
+    // </div>
+    // </div>';
+
+
+    $rq_frm .=
+    '<div class="inscription_field">
+    <label for="authorisation_photo">Authorisation photo *</label>
     <div class="field_content">
-    <input type="file" name="authorisation_photo" id="authorisation_photo"  />
+    <div class="field_content">
+    <label><input type="radio"  class="radio_input" name="authorisation_photo" value="Oui" />Oui</label>
+    <label><input type="radio"  class="radio_input" name="authorisation_photo" value="Non" />Non</label>
+    </div>
+    <p class="meta">L\'institution peut utiliser des images (photo, vidéos) où apparaît mon enfant pour les diffuser sur son site Internet, dans des brochures, des articles ou autres publications institutionnelles.</p>
     </div>
     </div>';
+
 
 
     $rq_frm .= '<div class="inscription_field">
@@ -386,7 +400,7 @@ function inscription_form_shortcode($atts , $content = null) {
             'date_inscription' => 'Date de l’inscription ',
             'how_know_school' => 'Comment avez-vous eu connaissance de notre école? ',
             'message' => 'Remarques si nécessaire ',
-            'authorisation_photo' => 'Authorisation Photo',
+            'hypothetical_file' => 'Authorisation Photo',
 
 
 
@@ -466,11 +480,11 @@ function inscription_form_shortcode($atts , $content = null) {
                 }
 
 
-                if (isset($_FILES['authorisation_photo'])) {
-                $authorisation_photo_file = $_FILES['authorisation_photo'];
-                if ($authorisation_photo_file['size'] > 0 ) {
-                    $photo_id = inscription_add_file_upload( $authorisation_photo_file, $new_inscription );
-                    update_field( 'authorisation_photo', $photo_id,  $new_inscription  );
+                if (isset($_FILES['hypothetical_file'])) {
+                $hypothetical_file_file = $_FILES['hypothetical_file'];
+                if ($hypothetical_file_file['size'] > 0 ) {
+                    $photo_id = inscription_add_file_upload( $hypothetical_file_file, $new_inscription );
+                    update_field( 'hypothetical_file', $photo_id,  $new_inscription  );
                 };
                 }
 
