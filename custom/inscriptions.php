@@ -79,7 +79,7 @@ function inscription_form_shortcode($atts , $content = null) {
     $get_course_id = isset($_GET['course_id'])  ? $_GET['course_id'] : false;
 
 
-    $rq_frm .= ' <form class="inscription_form" action="' .  esc_url( admin_url('admin-post.php') ) . '" method="post">';
+    $rq_frm .= ' <form class="inscription_form" action="' .  esc_url( admin_url('admin-post.php') ) . '" method="post"  enctype="multipart/form-data" >';
 
 
 
@@ -281,6 +281,14 @@ function inscription_form_shortcode($atts , $content = null) {
 
     $rq_frm .= '<hr/>';
 
+    $rq_frm .=' <div class="inscription_field">
+    <label for="authorisation_photo">Authorisation photo </label>
+    <div class="field_content">
+    <input type="file" name="authorisation_photo" id="authorisation_photo"  />
+    </div>
+    </div>';
+
+
     $rq_frm .= '<div class="inscription_field">
         <label for="">Conditions générales *</label>
         <div class="field_content">
@@ -378,6 +386,7 @@ function inscription_form_shortcode($atts , $content = null) {
             'date_inscription' => 'Date de l’inscription ',
             'how_know_school' => 'Comment avez-vous eu connaissance de notre école? ',
             'message' => 'Remarques si nécessaire ',
+            'authorisation_photo' => 'Authorisation Photo',
 
 
 
@@ -457,9 +466,18 @@ function inscription_form_shortcode($atts , $content = null) {
                 }
 
 
+                if (isset($_FILES['authorisation_photo'])) {
+                $authorisation_photo_file = $_FILES['authorisation_photo'];
+                if ($authorisation_photo_file['size'] > 0 ) {
+                    $photo_id = inscription_add_file_upload( $authorisation_photo_file, $new_inscription );
+                    update_field( 'authorisation_photo', $photo_id,  $new_inscription  );
+                };
+                }
 
 
-                wp_redirect( $referer . '?success' );
+
+
+               wp_redirect( $referer . '?success' );
                 // $redirect = get_home_url() . '/inscription-reussie/';
                 // wp_redirect( $redirect );
             }
@@ -476,6 +494,26 @@ function inscription_form_shortcode($atts , $content = null) {
 
     } // save_inscription_form
 
+    function inscription_add_file_upload($file, $parent){
+        $upload = wp_upload_bits($file['name'], null, file_get_contents( $file['tmp_name'] ) );
+        $wp_filetype = wp_check_filetype( basename( $upload['file'] ), null );
+        $wp_upload_dir = wp_upload_dir();
+
+
+        $attachment = array(
+            'guid' => $wp_upload_dir['baseurl'] . _wp_relative_upload_path( $upload['file'] ),
+            'post_mime_type' => $wp_filetype['type'],
+            'post_title' => preg_replace('/\.[^.]+$/', '', basename( $upload['file'] )),
+            'post_content' => '',
+            'post_status' => 'inherit'
+        );
+
+        $attach_id = wp_insert_attachment( $attachment, $upload['file'], $parent );
+
+
+        return $attach_id;
+
+    }
 
 
     ?>
