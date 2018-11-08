@@ -1360,3 +1360,58 @@ font-weight: bold;
 #course_size {
     margin-top: 40px;
 }
+
+
+
+
+/* INSCRIPTION FORM */
+/* INSCRIPTION FORM */
+
+
+form.inscription_form {
+
+}
+
+.inscription_form  input,
+.inscription_form  textarea,
+.inscription_form  select {
+width:100%;
+border: 1px solid #999;
+padding: 5px;
+}
+.inscription_field {
+    margin: 0 0 30px;
+}
+.inscription_field:before,
+.inscription_field:after {
+    content: "";
+    display: table;
+    border-collapse: collapse;
+}
+
+.meta {
+    font-size:12px;
+    font-style:italic;
+    color:#999;
+}
+
+input.radio_input, input.checkbox_input {
+    width: auto;
+    margin: 0 10px 0 5px ;
+}
+
+.inscription_field > label {
+    display: inline-block;
+    width:30%;
+    padding: 2px 5px 0 0 ;
+    vertical-align: top;
+    text-align:right;
+
+}
+.field_content {
+    display: inline-block;
+    width:60%;
+}
+
+/* INSCRIPTION FORM */
+/* INSCRIPTION FORM */

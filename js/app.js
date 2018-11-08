@@ -407,6 +407,39 @@ function processCourses(courses, search, category, location, ages){
 
 
 
+// INSCRIPTION FORM
+// INSCRIPTION FORM
+
+if (typeof search_url != 'undefined') {
+    var $course_id = $('#course_id');
+    $course_id.on('change', function(){
+
+        var $this = $(this);
+
+        $.ajax({
+            url : search_url + '?course_id=' + $this.val(),
+            type : 'get',
+            beforeSend: function(){
+                // $teacher_id_cont.html('');
+            },
+            success: function( data ) {
+
+                console.log(data);
+
+
+            }
+        })
+
+
+    });
+}
+
+// INSCRIPTION FORM
+// INSCRIPTION FORM
+
+
+
+
 
 
 	});
