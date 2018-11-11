@@ -92,17 +92,17 @@ function inscription_form_shortcode($atts , $content = null) {
 
 
     if ($course_type == 'adults'):
-    $rq_frm .=
-    '<div class="inscription_field">
-    <label for="title">Titre</label>
-    <div class="field_content">
-    <select id="title" name="title">
-    <option value="Madame">Madame</option>
-    <option value="Mademoiselle">Mademoiselle</option>
-    <option value="Monsieur">Monsieur</option>
-    </select>
-    </div>
-    </div>';
+        $rq_frm .=
+        '<div class="inscription_field">
+        <label for="title">Titre</label>
+        <div class="field_content">
+        <select id="title" name="title">
+        <option value="Madame">Madame</option>
+        <option value="Mademoiselle">Mademoiselle</option>
+        <option value="Monsieur">Monsieur</option>
+        </select>
+        </div>
+        </div>';
     endif;
 
 
@@ -128,13 +128,13 @@ function inscription_form_shortcode($atts , $content = null) {
 
 
     if (  in_array($course_type,  array('danse', 'theatre') ) ):
-    $rq_frm .=' <div class="inscription_field">
-    <label for="gender">Sexe </label>
-    <div class="field_content">
-    <label><input type="radio" class="radio_input" name="gender" value="Fille" />Fille</label>
-    <label><input type="radio" class="radio_input" name="gender" value="Garçon" />Garçon</label>
-    </div>
-    </div>';
+        $rq_frm .=' <div class="inscription_field">
+        <label for="gender">Sexe </label>
+        <div class="field_content">
+        <label><input type="radio" class="radio_input" name="gender" value="Fille" />Fille</label>
+        <label><input type="radio" class="radio_input" name="gender" value="Garçon" />Garçon</label>
+        </div>
+        </div>';
     endif;
 
     $rq_frm .=  '<div class="inscription_field">
@@ -270,7 +270,17 @@ function inscription_form_shortcode($atts , $content = null) {
     </div>
     </div>';
 
-    $rq_frm .= '<div class="inscription_field" id="teacher_id_cont"></div>';
+    $rq_frm .= '<div class="inscription_field">
+    <label for="location_id">Lieu </label>
+    <div class="field_content">
+    <select name="location_id" id="locations_container"></select>
+    <script id="locations_template" type="x-underscore">
+        <%  _.each(locations,function(location,key,list){  %>
+        <option value="<%= location.wid %>"><%= location.post_title %></option>
+        <% }) %>
+    </script>
+    </div>
+    </div>';
 
 
     if ($course_type == 'adults'):

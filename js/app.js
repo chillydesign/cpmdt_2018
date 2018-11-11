@@ -108,10 +108,8 @@ $('.toggle-categories').click(function(event){
     var $search_checks = $('.search_check');
     var $cours_search = $('#cours_search');
     var $courses_container = $('#courses_container');
-    var $single_cours_inner = $('.single_cours_inner');
     var $course_size = $('#course_size');
     var $courses_template = $('#courses_template').html();
-    var $cours_template = $('#cours_template').html();
     var $reset_course_form = $('#reset_course_form');
 
     var $age_summary = $('#age_summary');
@@ -298,7 +296,7 @@ function displayCourses(courses, courses_container, compiled){
 
 
     courses_container.html(  compiled({ courses:   s_courses  })  );
-    $('.single_cours_inner').matchHeight();
+    $('.program').matchHeight();
 
     $('#back_to_top').on('click', function(e){
         e.preventDefault();
@@ -412,6 +410,8 @@ function processCourses(courses, search, category, location, ages){
 
 if (typeof search_url != 'undefined') {
     var $course_id = $('#course_id');
+    var $locations_container = $('#locations_container');
+    var $locations_template = $('#locations_template').html();
     $course_id.on('change', function(){
 
         var $this = $(this);
@@ -424,7 +424,15 @@ if (typeof search_url != 'undefined') {
             },
             success: function( data ) {
 
-                console.log(data);
+
+                if (data.locations.length > 0) {
+                    var compiled =  _.template($locations_template);
+                    $locations_container.html(  compiled({ locations:   data.locations  })  );
+
+                } else {
+                    $locations_container.html('');
+                }
+
 
 
             }
