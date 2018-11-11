@@ -58,13 +58,15 @@ function inscription_form_shortcode($atts , $content = null) {
 
 
     $atts = shortcode_atts( array(
-		'coursetype' => 'adults'
+		'type' => 'adults'
 	), $atts, 'inscription_form' );
 
-	$course_type = $atts['coursetype'];
+	$course_type = $atts['type'];
 
     if ($course_type == 'adults') {
         $courses = get_all_adult_courses();
+    } else if ($course_type == 'danse') {
+        $courses = get_all_danse_courses();
     } else {
         $courses = get_all_current_courses();
     }
@@ -91,7 +93,7 @@ function inscription_form_shortcode($atts , $content = null) {
 
 
 
-
+    if ($course_type == 'adults'):
     $rq_frm .=
     '<div class="inscription_field">
     <label for="title">Titre</label>
@@ -103,7 +105,7 @@ function inscription_form_shortcode($atts , $content = null) {
     </select>
     </div>
     </div>';
-
+    endif;
 
 
     $rq_frm .=
@@ -127,6 +129,15 @@ function inscription_form_shortcode($atts , $content = null) {
     </div>';
 
 
+    if ($course_type == 'danse'):
+    $rq_frm .=' <div class="inscription_field">
+    <label for="gender">Sexe </label>
+    <div class="field_content">
+    <label><input type="radio" class="radio_input" name="gender" value="Fille" />Fille</label>
+    <label><input type="radio" class="radio_input" name="gender" value="Garçon" />Garçon</label>
+    </div>
+    </div>';
+    endif;
 
     $rq_frm .=  '<div class="inscription_field">
     <label for="address">Adresse</label>
@@ -146,6 +157,55 @@ function inscription_form_shortcode($atts , $content = null) {
     <input type="text" name="town" id="town" />
     </div>
     </div>';
+
+
+    if ($course_type == 'danse'):
+        $rq_frm .=  '<hr />';
+        $rq_frm .=  '<h3> REPRÉSENTANT LÉGAL / RÉPONDANT </h3>';
+        $rq_frm .=
+        '<div class="inscription_field">
+        <label for="title_guardian">Titre</label>
+        <div class="field_content">
+        <select id="title_guardian" name="title_guardian">
+        <option value="Madame">Madame</option>
+        <option value="Mademoiselle">Mademoiselle</option>
+        <option value="Monsieur">Monsieur</option>
+        </select>
+        </div>
+        </div>';
+        $rq_frm .=
+        '<div class="inscription_field">
+        <label for="last_name_guardian">Nom de le guardian * </label>
+        <div class="field_content">
+        <input type="text" name="last_name_guardian" id="last_name_guardian" />
+        </div>
+        </div>';
+        $rq_frm .=' <div class="inscription_field">
+        <label for="first_name_guardian">Prénom de le guardian * </label>
+        <div class="field_content">
+        <input type="text" name="first_name_guardian" id="first_name_guardian" />
+        </div>
+        </div>';
+
+
+        $rq_frm .=  '<div class="inscription_field">
+        <label for="address_guardian">Adresse si différente de l\'élève</label>
+        <div class="field_content">
+        <input type="text" name="address_guardian" id="address_guardian" />
+        </div>
+        </div>';
+
+        $rq_frm .=' <div class="inscription_field">
+        <label for="town_guardian">Ville</label>
+        <div class="field_content">
+        <input type="text" name="town_guardian" id="town_guardian" />
+        </div>
+        </div>';
+
+    endif;  // end of if danse course type
+
+
+
 
 
     $rq_frm .=' <div class="inscription_field">
@@ -215,7 +275,7 @@ function inscription_form_shortcode($atts , $content = null) {
     $rq_frm .= '<div class="inscription_field" id="teacher_id_cont"></div>';
 
 
-
+    if ($course_type == 'adults'):
     $rq_frm .=
     '<div class="inscription_field">
     <label for="inscription_year">Inscription pour l\'année </label>
@@ -277,6 +337,8 @@ function inscription_form_shortcode($atts , $content = null) {
     <input type="text" name="choix_tarif_collectif" id="choix_tarif_collectif" value="Prix selon brochure" readonly="readonly" disabled />
     </div>
     </div>';
+
+    endif; // end if course type adults
 
 
     $rq_frm .= '<hr/>';
@@ -381,12 +443,20 @@ function inscription_form_shortcode($atts , $content = null) {
             'last_name' =>  'Nom de l\'élève',
             'first_name' => 'Prénom de l\'élève',
             'date_of_birth' =>  'Date de naissance de l\'élève',
+            'gender' =>  'Sexe',
             'address' =>  'Adresse de l\'élève',
             'postcode' => 'N° postal ',
             'town' => 'Ville',
             'telephone_private' => 'Téléphone privé',
             'telephone_professional' => 'Téléphone professionnel ',
             'telephone_portable' => 'Téléphone portable ',
+
+            'title_guardian' => 'Titre de guardian',
+            'last_name_guardian' =>  'Nom de le guardian',
+            'first_name_guardian' => 'Prénom de le guardian',
+            'address_guardian' => 'address_guardian',
+            'town_guardian' => 'town_guardian',
+
             'email' =>  'Email de l\'élève',
             'geneva_taxpayer' => 'Contribuable à Genève',
             'payment_frequency' => 'Je paierai ma facture en',
@@ -421,6 +491,29 @@ function inscription_form_shortcode($atts , $content = null) {
         );
         return $posts_array;
     }
+
+
+    function get_all_danse_courses() {
+        $posts_array = get_posts(
+            array(
+                'post_type'  => 'programme',
+                'order'=> 'ASC',
+                'orderby' => 'title',
+                'posts_per_page' => -1,
+                'post_status' => 'published',
+                'tax_query' => array(
+                    array(
+                        'taxonomy' => 'programmes',
+                        'field' => 'slug',
+                        'terms' => 'dance'
+                    ),
+                )
+
+            )
+        );
+        return $posts_array;
+    }
+
 
 
     function get_all_current_courses() {
