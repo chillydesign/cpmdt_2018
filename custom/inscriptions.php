@@ -66,7 +66,9 @@ function inscription_form_shortcode($atts , $content = null) {
     if ($course_type == 'adults') {
         $courses = get_all_adult_courses();
     } else if ($course_type == 'danse') {
-        $courses = get_all_danse_courses();
+        $courses = get_all_courses_with_cat('danse');
+    } else if ($course_type == 'theatre') {
+        $courses = get_all_courses_with_cat('theatre');
     } else {
         $courses = get_all_current_courses();
     }
@@ -74,13 +76,9 @@ function inscription_form_shortcode($atts , $content = null) {
 
 
 
-    $rq_frm = '';
-
-
-
     $get_course_id = isset($_GET['course_id'])  ? $_GET['course_id'] : false;
 
-
+    $rq_frm = '';
     $rq_frm .= ' <form class="inscription_form" action="' .  esc_url( admin_url('admin-post.php') ) . '" method="post"  enctype="multipart/form-data" >';
 
 
@@ -129,7 +127,7 @@ function inscription_form_shortcode($atts , $content = null) {
     </div>';
 
 
-    if ($course_type == 'danse'):
+    if (  in_array($course_type,  array('danse', 'theatre') ) ):
     $rq_frm .=' <div class="inscription_field">
     <label for="gender">Sexe </label>
     <div class="field_content">
@@ -159,7 +157,7 @@ function inscription_form_shortcode($atts , $content = null) {
     </div>';
 
 
-    if ($course_type == 'danse'):
+    if ( in_array($course_type,  array('danse', 'theatre') ) ):
         $rq_frm .=  '<hr />';
         $rq_frm .=  '<h3> REPRÉSENTANT LÉGAL / RÉPONDANT </h3>';
         $rq_frm .=
@@ -493,7 +491,7 @@ function inscription_form_shortcode($atts , $content = null) {
     }
 
 
-    function get_all_danse_courses() {
+    function get_all_courses_with_cat($category) {
         $posts_array = get_posts(
             array(
                 'post_type'  => 'programme',
@@ -505,7 +503,7 @@ function inscription_form_shortcode($atts , $content = null) {
                     array(
                         'taxonomy' => 'programmes',
                         'field' => 'slug',
-                        'terms' => 'dance'
+                        'terms' => $category
                     ),
                 )
 
