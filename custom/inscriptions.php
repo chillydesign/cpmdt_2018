@@ -69,6 +69,10 @@ function inscription_form_shortcode($atts , $content = null) {
         $courses = get_all_courses_with_cat('danse');
     } else if ($course_type == 'theatre') {
         $courses = get_all_courses_with_cat('theatre');
+    } else if ($course_type == '47musicale') {
+        $courses = get_all_47_musicale_courses();
+    } else if ($course_type == 'instrumentchant') {
+        $courses = get_all_instrumentchant_courses();
     } else {
         $courses = get_all_current_courses();
     }
@@ -91,7 +95,7 @@ function inscription_form_shortcode($atts , $content = null) {
 
 
 
-    if ($course_type == 'adults'):
+    if ( in_array($course_type,  array('adults') ) ):
         $rq_frm .=
         '<div class="inscription_field">
         <label for="title">Titre</label>
@@ -127,7 +131,7 @@ function inscription_form_shortcode($atts , $content = null) {
     </div>';
 
 
-    if (  in_array($course_type,  array('danse', 'theatre') ) ):
+    if (  in_array($course_type,  array('danse', 'theatre', '47musicale', 'instrumentchant') ) ):
         $rq_frm .=' <div class="inscription_field">
         <label for="gender">Sexe </label>
         <div class="field_content">
@@ -157,7 +161,7 @@ function inscription_form_shortcode($atts , $content = null) {
     </div>';
 
 
-    if ( in_array($course_type,  array('danse', 'theatre') ) ):
+    if ( in_array($course_type,  array('danse', 'theatre', '47musicale', 'instrumentchant') ) ):
         $rq_frm .=  '<hr />';
         $rq_frm .=  '<h3> REPRÉSENTANT LÉGAL / RÉPONDANT </h3>';
         $rq_frm .=
@@ -256,11 +260,16 @@ function inscription_form_shortcode($atts , $content = null) {
 
 
 
+    if ( in_array($course_type,  array('instrumentchant') ) ):
+        $rq_frm .=  '<h3> COURS D’INSTRUMENT / CHANT (choisir un cours) </h3>';
+    endif; // end if in array instrumentchant
+
+
     $rq_frm .= '
-    <div class="inscription_field" id="course_id_select_box">
+    <div class="inscription_field">
     <label for="course_id">Choix du cours * </label>
     <div class="field_content">
-    <select id="course_id" name="course_id">';
+    <select class="course_picker" id="course_id" name="course_id" data-field="location" >';
     $rq_frm .= '<option value="0">Choisir un cours</option>';
     foreach ($courses as $course) :
         $selected =  '' ; // ($course->ID == $get_course_id  ) ? 'selected' : '';
@@ -270,20 +279,71 @@ function inscription_form_shortcode($atts , $content = null) {
     </div>
     </div>';
 
-    $rq_frm .= '<div class="inscription_field">
-    <label for="location_id">Lieu </label>
-    <div class="field_content">
-    <select name="location_id" id="locations_container"></select>
-    <script id="locations_template" type="x-underscore">
-        <%  _.each(locations,function(location,key,list){  %>
-        <option value="<%= location.wid %>"><%= location.post_title %></option>
-        <% }) %>
-    </script>
-    </div>
-    </div>';
+    if ( in_array($course_type,  array('instrumentchant') ) ):
+        $rq_frm .=' <div class="inscription_field">
+        <label for="instrument_chant_remarks">Remarque</label>
+        <div class="field_content">
+        <textarea  name="instrument_chant_remarks" id="instrument_chant_remarks"></textarea>
+        <p class="meta">Pour la danse, spécifier le choix du jour.</p>
+        </div>
+        </div>';
+        $rq_frm .=' <div class="inscription_field">
+        <label for="prof_inst_chant">Professeur Instr. / chant  </label>
+        <div class="field_content">
+        <input type="text" name="prof_inst_chant" id="prof_inst_chant" />
+        </div>
+        </div>';
+
+    endif; // end if in array instrumentchant
 
 
-    if ($course_type == 'adults'):
+
+        $rq_frm .= '<div class="inscription_field">
+        <label for="location_id">Lieu </label>
+        <div class="field_content">
+        <select name="location_id" id="locations_container"></select>
+        <script id="locations_template" type="x-underscore">
+            <%  _.each(locations,function(location,key,list){  %>
+            <option value="<%= location.wid %>"><%= location.post_title %></option>
+            <% }) %>
+        </script>
+        </div>
+        </div>';
+
+
+    if ( in_array($course_type,  array('47musicale', 'instrumentchant') ) ):
+        $rq_frm .=' <div class="inscription_field">
+        <label for="other_place_possible"> Autre lieu possible *</label>
+        <div class="field_content">
+        <label><input type="radio" class="radio_input" name="other_place_possible" value="Oui" />Oui</label>
+        <label><input type="radio" class="radio_input" name="other_place_possible" value="Non" />Non</label>
+        <p class="meta">Etes-vous d\'accord de vous déplacer dans un centre plus éloigné?</p>
+        </div>
+        </div>';
+    endif;
+
+
+    if ( in_array($course_type,  array( 'instrumentchant') ) ):
+        $rq_frm .= '
+        <div class="inscription_field" >
+        <label for="course_id_second_choice">Second choix  </label>
+        <div class="field_content">
+        <select  id="course_id_second_choice" name="course_id_second_choice">';
+        $rq_frm .= '<option value="0">Choisir un cours</option>';
+        foreach ($courses as $course) :
+            $selected =  '' ; // ($course->ID == $get_course_id  ) ? 'selected' : '';
+            $rq_frm .= '<option '. $selected .' value="'.  $course->ID  .'">'.  ($course->post_title)   .'</option>';
+        endforeach;
+        $rq_frm .= '</select>
+        <p class="meta">Si pas de place disponible dans le choix principal.</p>
+        </div>
+        </div>';
+    endif;  // end if have second choice course id
+
+
+
+
+    if ( in_array($course_type,  array('adults') ) ):
     $rq_frm .=
     '<div class="inscription_field">
     <label for="inscription_year">Inscription pour l\'année </label>
@@ -347,6 +407,63 @@ function inscription_form_shortcode($atts , $content = null) {
     </div>';
 
     endif; // end if course type adults
+
+
+    if ( in_array($course_type,  array('instrumentchant') ) ):
+        $rq_frm .=  '<hr />';
+        $rq_frm .=  '<h3> COURS DE FORMATION MUSICALE </h3>';
+
+        $rq_frm .= '
+        <div class="inscription_field">
+        <label for="musical_course_id">Formation musicale * </label>
+        <div class="field_content">
+        <select class="course_picker" id="musical_course_id" name="musical_course_id" data-field="musical_location">';
+        $rq_frm .= '<option value="0">Choisir un cours</option>';
+        foreach ($courses as $course) :
+            $selected =  '' ; // ($course->ID == $get_course_id  ) ? 'selected' : '';
+            $rq_frm .= '<option '. $selected .' value="'.  $course->ID  .'">'.  ($course->post_title)   .'</option>';
+        endforeach;
+        $rq_frm .= '</select>
+        </div>
+        </div>';
+        $rq_frm .=' <div class="inscription_field">
+        <label for="musical_remarks">Remarque</label>
+        <div class="field_content">
+        <textarea  name="musical_remarks" id="musical_remarks"></textarea>
+        </div>
+        </div>';
+        $rq_frm .=' <div class="inscription_field">
+        <label for="prof_musical">Professeur FM</label>
+        <div class="field_content">
+        <input type="text" name="prof_musical" id="prof_musical" />
+        </div>
+        </div>';
+
+        $rq_frm .= '<div class="inscription_field">
+        <label for="musical_location_id">Lieu </label>
+        <div class="field_content">
+        <select name="musical_location_id" id="musical_locations_container"></select>
+        <script id="musical_locations_template" type="x-underscore">
+            <%  _.each(locations,function(location,key,list){  %>
+            <option value="<%= location.wid %>"><%= location.post_title %></option>
+            <% }) %>
+        </script>
+        <p class="meta">Si le cours n’est pas disponible dans le lieu choisi, le centre le plus proche vous sera affecté.</p>
+        </div>
+        </div>';
+
+        $rq_frm .=' <div class="inscription_field">
+        <label for="musical_other_place_possible"> Autre lieu possible *</label>
+        <div class="field_content">
+        <label><input type="radio" class="radio_input" name="musical_other_place_possible" value="Oui" />Oui</label>
+        <label><input type="radio" class="radio_input" name="musical_other_place_possible" value="Non" />Non</label>
+        <p class="meta">Etes-vous d\'accord de vous déplacer dans un centre plus éloigné?</p>
+        </div>
+        </div>';
+
+    endif; // end if in array instrumentchant
+
+
 
 
     $rq_frm .= '<hr/>';
@@ -458,17 +575,25 @@ function inscription_form_shortcode($atts , $content = null) {
             'telephone_private' => 'Téléphone privé',
             'telephone_professional' => 'Téléphone professionnel ',
             'telephone_portable' => 'Téléphone portable ',
-
             'title_guardian' => 'Titre de guardian',
             'last_name_guardian' =>  'Nom de le guardian',
             'first_name_guardian' => 'Prénom de le guardian',
             'address_guardian' => 'address_guardian',
             'town_guardian' => 'town_guardian',
-
             'email' =>  'Email de l\'élève',
             'geneva_taxpayer' => 'Contribuable à Genève',
             'payment_frequency' => 'Je paierai ma facture en',
             'course_id' => 'Cours',
+            'course_id_second_choice' => 'Second choice Cours',
+            'location_id' => 'Location',
+            'instrument_chant_remarks' => 'instrument_chant_remarks',
+            'prof_inst_chant' => 'prof_inst_chant',
+            'other_place_possible' => 'Autre lieu possible',
+            'musical_course_id' =>'musical_course_id',
+            'musical_remarks' =>'musical_remarks',
+            'prof_musical' =>'prof_musical',
+            'musical_location_id' =>'musical_location_id',
+            'musical_other_place_possible' =>'musical_other_place_possible',
             'inscription_year' => 'Inscription pour l\'année ',
             'formation_musicale' => 'Formation musicale',
             'musical_level' => 'Niveau musical ',
@@ -478,9 +603,7 @@ function inscription_form_shortcode($atts , $content = null) {
             'date_inscription' => 'Date de l’inscription ',
             'how_know_school' => 'Comment avez-vous eu connaissance de notre école? ',
             'message' => 'Remarques si nécessaire ',
-            'hypothetical_file' => 'Authorisation Photo',
-
-
+            'authorisation_photo' => 'Authorisation Photo',
 
         );
     }
@@ -522,6 +645,74 @@ function inscription_form_shortcode($atts , $content = null) {
         return $posts_array;
     }
 
+
+    function get_all_instrumentchant_courses() {
+        $posts_array = get_posts(
+            array(
+                'post_type'  => 'programme',
+                'order'=> 'ASC',
+                'orderby' => 'title',
+                'posts_per_page' => -1,
+                'post_status' => 'published'
+
+            )
+        );
+        return $posts_array;
+    }
+
+
+    function get_all_47_musicale_courses() {
+        $posts_array = get_posts(
+            array(
+                'post_type'  => 'programme',
+                'order'=> 'ASC',
+                'orderby' => 'title',
+                'posts_per_page' => -1,
+                'post_status' => 'published',
+                'tax_query' => array(
+                    array(
+                        'taxonomy' => 'programmes',
+                        'field' => 'slug',
+                        'terms' =>'music',
+                    ),
+                ),
+                'meta_query' => array(
+                    'relation' => 'OR',
+                    array(
+                        'relation' => 'AND',
+                        array(
+                            'key' => 'p_age',
+                            'value' => 4,
+                            'compare' => '>=',
+                            'type' => 'NUMERIC'
+                        ),
+                        array(
+                            'key' => 'p_age',
+                            'value' => 8,
+                            'compare' => '<',
+                            'type' => 'NUMERIC'
+                        )
+                    ),
+                    array(
+                        'relation' => 'AND',
+                        array(
+                            'key' => 'p_age2',
+                            'value' => 4,
+                            'compare' => '>=',
+                            'type' => 'NUMERIC'
+                        ),
+                        array(
+                            'key' => 'p_age2',
+                            'value' => 8,
+                            'compare' => '<',
+                            'type' => 'NUMERIC'
+                        )
+                    )
+                )
+            )
+        );
+        return $posts_array;
+    }
 
 
     function get_all_current_courses() {
