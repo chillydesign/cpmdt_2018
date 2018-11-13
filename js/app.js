@@ -409,12 +409,14 @@ function processCourses(courses, search, category, location, ages){
 // INSCRIPTION FORM
 
 if (typeof search_url != 'undefined') {
-    var $course_id = $('#course_id');
-    var $locations_container = $('#locations_container');
-    var $locations_template = $('#locations_template').html();
-    $course_id.on('change', function(){
+    var $course_pickers = $('.course_picker');
+    $course_pickers.on('change', function(){
 
         var $this = $(this);
+
+        var $field = $this.data('field');
+        var $container = $('#' + $field  + 's_container');
+        var $template = $('#' + $field  + 's_template').html();
 
         $.ajax({
             url : search_url + '?course_id=' + $this.val(),
@@ -423,18 +425,13 @@ if (typeof search_url != 'undefined') {
                 // $teacher_id_cont.html('');
             },
             success: function( data ) {
-
-
                 if (data.locations.length > 0) {
-                    var compiled =  _.template($locations_template);
-                    $locations_container.html(  compiled({ locations:   data.locations  })  );
+                    var compiled =  _.template($template);
+                    $container.html(  compiled({ locations:   data.locations  })  );
 
                 } else {
-                    $locations_container.html('');
+                    $container.html('');
                 }
-
-
-
             }
         })
 
