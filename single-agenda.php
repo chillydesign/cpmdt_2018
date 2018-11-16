@@ -8,8 +8,8 @@
 			<h1>AGENDA / <span><?php the_title() ?></span></h1>
 		</div>
 	</div>
-	
-	<div class="single-agenda">  
+
+	<div class="single-agenda">
         <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 
             <?php // Get terms for "Program" Taxonomy
@@ -23,7 +23,7 @@
 
                 // Get rid of the other data stored in the object, since it's not needed
                 unset($program);
-            } } ?>		
+            } } ?>
 
             <?php // Get terms for "Type" Taxonomy
             $types = get_the_terms( $post->ID , 'agenda-type' );
@@ -46,7 +46,7 @@
                                 <?php echo utf8_encode(strftime("%A %d %B %Y", strtotime( $dd ) )); ?>
                             </li>
                             <li>
-                                <?php echo get_custom_field('a_time');; ?> 
+                                <?php echo get_custom_field('a_time');; ?>
                             </li>
                         </ul>
                     </div>
@@ -73,29 +73,31 @@
                         </div>
                         <div class="row forms-container">
                             <div class="col-sm-12 col-xs-12">
-                                <?php $agenda_id = get_the_ID(); 
-                                    $count_persons = get_agenda_count('107', $agenda_id, '70');
-                                    $items_left = get_custom_field("a_amount") - $count_persons;
+                                <?php $agenda_id = get_the_ID();
+                                    // $count_persons = get_agenda_count('107', $agenda_id, '70');
+                                    $count_persons = count_people_at_event(  $agenda_id  );
+                                    $places_left = get_custom_field("a_amount") - $count_persons;
                                     ?>
                                 <?php if (get_custom_field('is_required') == "YES"){?>
                                     <div class="row text-uppercase">
                                         <div class="col-sm-6 col-xs-12"><h3>je m’inscris à cet événement</h3></div>
                                         <div class="col-sm-6 col-xs-12"><b class="pull-right">
-                                        <?php 
-                                        if($items_left > 0){ 
-                                            echo 'PLACES DISPONIBLES: ' . $items_left . ' personnes';
+                                        <?php
+                                        if($places_left > 0){
+                                            echo 'PLACES DISPONIBLES: ' . $places_left . ' personnes';
                                         }
                                         else{
                                             echo 'Aucune place disponible';
-                                        } 
+                                        }
                                         ?> </b></div>
                                     </div>
                                     <br>
-                                        <?php 
-                                        if($items_left > 0){ 
-                                            echo do_shortcode('[formidable id=10]');
+                                        <?php
+                                        if($places_left > 0){
+                                            get_template_part('booking-form');
+                                        //    echo do_shortcode('[formidable id=10]');
                                         }
-                                        ?> </b></div>
+                                        ?> </div>
                                 <?php } ?>
 
                             </div>
@@ -122,14 +124,14 @@
         for(var i=2;i<=value;i++){
             jQuery('.agenda-item-'+i).show();
         }
-        
+
         //set empty value to not shown inputs
         for(var j=5;j>value;j--){
-            jQuery('.agenda-item-'+j+' input').val('');            
+            jQuery('.agenda-item-'+j+' input').val('');
         }
     });
 
-    // Post ID 
+    // Post ID
     var ID = '<?php echo the_ID(); ?>';
     var post_title = '<?php echo the_title(); ?>';
     // Change value of the hidden input
@@ -137,6 +139,6 @@
         jQuery('#field_postid').val(ID);
         jQuery('#field_title').val(post_title);
     });
-    
+
 </script>
 <?php get_footer(); ?>

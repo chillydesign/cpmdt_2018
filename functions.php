@@ -155,6 +155,7 @@ require get_template_directory() . '/custom/_post-meta.php';
 require get_template_directory() . '/custom/address.php';
 require get_template_directory() . '/custom/zones.php';
 require get_template_directory() . '/custom/inscriptions.php';
+require get_template_directory() . '/custom/bookings.php';
 
 /* Theme Supports*/
 add_theme_support( 'post-thumbnails' );
