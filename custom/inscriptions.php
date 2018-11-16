@@ -30,6 +30,7 @@ function post_type_inscription() {
             'not_found_in_trash' => __('Aucune inscription trouvée dans la crobeille', 'html5blank')
         ),
         'public' => true,
+        'exclude_from_search' => true,
         'menu_icon' => 'dashicons-list-view',
         'hierarchical' => true, // Allows your posts to behave like Hierarchy Pages
         'has_archive' => true,

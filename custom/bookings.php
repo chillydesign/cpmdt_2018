@@ -31,6 +31,7 @@ function post_type_booking() {
             'not_found_in_trash' => __('Aucune booking trouvée dans la crobeille', 'html5blank')
         ),
         'public' => true,
+        'exclude_from_search' => true,
         'menu_icon' => 'dashicons-tickets-alt',
         'hierarchical' => true, // Allows your posts to behave like Hierarchy Pages
         'has_archive' => true,
