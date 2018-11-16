@@ -1356,14 +1356,13 @@ background: white;
 padding: 8px;
 border: 1px solid #777;
 border-radius: 5px;
-    display: block;
-    cursor: pointer;
-    margin: 0 3px 3px 0;
-        font-size: 12px;
+display: block;
+cursor: pointer;
+margin: 0 0 5px;
+font-size: 12px;
 }
 .search_box input + span:hover {
-background:#cbf6ff;
-
+    background:#cbf6ff;
 }
 .search_box input:checked + span {
     background:#009fe3;
