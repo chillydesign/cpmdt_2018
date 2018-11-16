@@ -12,9 +12,9 @@
                         <span id="age_summary" class="search_summary" data-default="all ages">all ages</span>
 
                         <div id="age_box" class="search_box">
-                            <label><input name="age" type="checkbox" class="search_check" value="4" data-field="age" data-label="ENTRE 4 ET 7 ANS" />ENTRE 4 ET 7 ANS</label>
-                            <label><input name="age" type="checkbox" class="search_check" value="7" data-field="age" data-label="ENTRE 7 ET 25 ANS" />ENTRE 7 ET 25 ANS</label>
-                            <label><input name="age" type="checkbox" class="search_check" value="25" data-field="age" data-label="+DE 25 ANS" />+DE 25 ANS</label>
+                            <label><input name="age" type="checkbox" class="search_check" value="4" data-field="age" data-label="ENTRE 4 ET 7 ANS" /><span>ENTRE 4 ET 7 ANS</span></label>
+                            <label><input name="age" type="checkbox" class="search_check" value="7" data-field="age" data-label="ENTRE 7 ET 25 ANS" /><span>ENTRE 7 ET 25 ANS</span></label>
+                            <label><input name="age" type="checkbox" class="search_check" value="25" data-field="age" data-label="+DE 25 ANS" /><span>+DE 25 ANS</span></label>
                         </div>
                     </a>
 
@@ -28,7 +28,7 @@
                         <div id="category_box" class="search_box">
                             <?php $terms = get_terms( 'programmes'); ?>
                             <?php foreach ($terms as $term)  : ?>
-                                <label><input name="category" type="checkbox" class="search_check" value="<?php echo $term->term_id; ?>" data-label="<?php echo $term->name; ?>" data-field="category" /> <?php echo $term->name; ?>   </label>
+                                <label><input name="category" type="checkbox" class="search_check" value="<?php echo $term->term_id; ?>" data-label="<?php echo $term->name; ?>" data-field="category" /> <span><?php echo $term->name; ?> </span>  </label>
                             <?php endforeach; ?>
 
                         </div>
@@ -45,7 +45,7 @@
 
                             <?php $zones = get_posts(array('post_type'  => 'zone',  'orderby'=> 'post_title' , 'order' =>'ASC' , 'posts_per_page' => -1  ) );  ?>
                             <?php foreach ($zones as $zone)  : ?>
-                                <label><input name="loc" type="checkbox" class="search_check" value="<?php echo $zone->ID; ?>" data-label="<?php echo $zone->post_title; ?>"  data-field="location" /> <?php echo $zone->post_title; ?>   </label>
+                                <label><input name="loc" type="checkbox" class="search_check" value="<?php echo $zone->ID; ?>" data-label="<?php echo $zone->post_title; ?>"  data-field="location" /> <span><?php echo $zone->post_title; ?></span>   </label>
                             <?php endforeach; ?>
 
                         </div>
