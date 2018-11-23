@@ -41,4 +41,46 @@ function post_type_zone() {
 
 }
 
+
+
+
+
+
+
+function import_old_program_data() {
+    global $wpdb;
+    $times_field = 'field_5bd9eb6eb77d4'; // acf id for times field
+    $sql = "SELECT * FROM wp_program_data ";
+    $rows = $wpdb->get_results($sql, OBJECT);
+
+    foreach ($rows as $row) :
+
+        $post_id = intval($row->program_id);
+        $location_id = $row->location_id;
+        $teacher_ids = json_decode($row->teacher_id);
+
+        $time = array(
+            'teachers' =>  serialize($teacher_ids)  ,
+            'location' => intval($location_id)
+        );
+
+        // add rows to repeater if it exists
+        if (have_rows( $times_field , $post_id)) :
+            $i = add_row('times',  $time, $post_id  );
+            var_dump('add additional row');
+        else:  # if not have any rows yet, need to create the field
+            $i = update_field( $times_field,  array($time), $post_id  );
+            var_dump('add first row');
+        endif;
+
+    endforeach;
+
+
+}
+
+
+
+
+
+
 ?>
