@@ -1,7 +1,7 @@
 <?php
     /*! Custom post type */
     add_action('init', 'agenda_posttype');
-    function agenda_posttype() 
+    function agenda_posttype()
     {
         $labels = array(
             'name' => _x('Événements', 'agenda'),
@@ -13,53 +13,53 @@
             'view_item' => __('Voir évenement'),
             'search_items' => __('Rechercher évenement'),
             'not_found' =>  __('Aucun résultat'),
-            'not_found_in_trash' => __('Aucun résultat'), 
+            'not_found_in_trash' => __('Aucun résultat'),
             'parent_item_colon' => ''
         );
         $args = array(
             'labels' => $labels,
             'public' => true,
             'publicly_queryable' => true,
-            'show_ui' => true, 
+            'show_ui' => true,
             'query_var' => true,
             'rewrite' => true,
             'capability_type' => 'post',
             'hierarchical' => false,
-            'map_meta_cap' => true, 
-            
+            'map_meta_cap' => true,
+
             'menu_position' => null,
             'menu_icon' => 'dashicons-calendar',
             'supports' => array('title', 'editor')
-        ); 
+        );
         register_post_type('agenda',$args);
 
     } // Finished custom-post-type AGENDA ///////////
 
     // Agenda CATEGORIES
-    register_taxonomy( "agenda-category", 
-        array( 	"agenda" ), 
+    register_taxonomy( "agenda-category",
+        array( 	"agenda" ),
         array( 	"hierarchical" => true,
-                "labels" => array('name'=>"Catégories",'add_new_item'=>"Nouveau"), 
-                "singular_label" => __( "Field" ), 
+                "labels" => array('name'=>"Catégories",'add_new_item'=>"Nouveau"),
+                "singular_label" => __( "Field" ),
                 'query_var' => true,
                 "rewrite" => array( 'slug' => 'a-categories', 'with_front' => false)
-            ) 
-    ); 
+            )
+    );
 
     // Agenda PROGRAMME
-    register_taxonomy( "agenda-program", 
-        array( 	"agenda" ), 
+    register_taxonomy( "agenda-program",
+        array( 	"agenda" ),
         array( 	"hierarchical" => true,
-                "labels" => array('name'=>"Programme",'add_new_item'=>"Nouveau"), 
-                "singular_label" => __( "Field" ), 
+                "labels" => array('name'=>"Programme",'add_new_item'=>"Nouveau"),
+                "singular_label" => __( "Field" ),
                 "rewrite" => array( 'slug' => 'agenda-programme', 'with_front' => false)
-            ) 
+            )
     ); // Agenda TYPE
-    register_taxonomy( "agenda-type", 
-        array( 	"agenda" ), 
+    register_taxonomy( "agenda-type",
+        array( 	"agenda" ),
         array( 	"hierarchical" => true,
-                "labels" => array('name'=>"Type",'add_new_item'=>"Nouveau"), 
-                "singular_label" => __( "Field" ), 
+                "labels" => array('name'=>"Type",'add_new_item'=>"Nouveau"),
+                "singular_label" => __( "Field" ),
                 "rewrite" => array( 'slug' => 'agenda-type', 'with_front' => false)
             )
     );
@@ -82,10 +82,10 @@
     function agenda_details_meta() {
         $ret = '<p><label><strong>Inscription à l\'événement?</strong> </label>';
         if (get_custom_field('is_required') == "YES"){
-            $ret .= '</br><label for="yes"><input type="radio" value="YES" id="yes" name="is_required" checked>Yes</label> 
+            $ret .= '</br><label for="yes"><input type="radio" value="YES" id="yes" name="is_required" checked>Yes</label>
                     <label for="no"><input name="is_required" id="no" type="radio" value="NO">No</label><p>';
         }else{
-            $ret .= '</br><label for="yes"><input type="radio" value="YES" id="yes" name="is_required">Yes</label></p> 
+            $ret .= '</br><label for="yes"><input type="radio" value="YES" id="yes" name="is_required">Yes</label></p>
                     <p><label for="no"><input name="is_required" id="no" type="radio" value="NO" checked>No</label></p>';
         }
         // Amount of registrations allowed
@@ -109,11 +109,11 @@
             $ret .=  '<input type="text" name="a_date_show" value="'.  date('d-m-Y').'">';
             $ret .= '<input type="hidden" id="a_date" name="a_date" value="'.date('Ymd').'">';
         }
-        
-        
+
+
         $ret .= '</p>';
-        $ret .= '<script>jQuery(document).ready(function(){jQuery( "input[name=\'a_date_show\']" ).datepicker({ dateFormat: \'dd-mm-yy\', numberOfMonths: 1,onSelect: function () { 
-                var str=this.value; 
+        $ret .= '<script>jQuery(document).ready(function(){jQuery( "input[name=\'a_date_show\']" ).datepicker({ dateFormat: \'dd-mm-yy\', numberOfMonths: 1,onSelect: function () {
+                var str=this.value;
                 var res = str.split("-");
                 var str = res[2]+res[1]+res[0];
                 jQuery("#a_date").val(str);
@@ -130,7 +130,7 @@
         $addresses = get_addresses();
         $ret .= '<p style="margin-bottom:0;">';
         $ret .= '<label for="address"><strong> Lieu de l\'événement:</strong> </label><br />';
-        $ret .= '<select name="address_id" id="address" >';        
+        $ret .= '<select name="address_id" id="address" >';
         foreach($addresses as $address){
             if(get_custom_field("address_id") == $address->ID){
                 $ret .= '<option value="'.$address->ID.'" selected>'.$address->post_title.'</option>';
@@ -139,8 +139,8 @@
             }
         }
         $ret .= '</select>';
-        $ret .= '</p>'; 
-        //Archive date       
+        $ret .= '</p>';
+        //Archive date
         $ret .= '<p>';
         $ret .= '<label for="address"><strong> Date de fin:</strong></label><br />';
         if(get_custom_field("archive_date") != null){
@@ -150,11 +150,11 @@
             $ret .=  '<input type="text" name="archive_date_show" value="'. date("d-m-Y").'">';
             $ret .= '<input type="hidden" name="archive_date" id="archive_date" value="'.date("Ymd").'">  ';
         }
-        
+
         //$ret .= '<input type="hidden" name="archive_date" id="archive_date" value="'.get_custom_field("archive_date").'">  ';
         $ret .= '</p>';
-        $ret .= '<script>jQuery(document).ready(function(){jQuery( "input[name=\'archive_date_show\']" ).datepicker({ dateFormat: \'dd-mm-yy\', numberOfMonths: 1, onSelect: function () { 
-            var str=this.value; 
+        $ret .= '<script>jQuery(document).ready(function(){jQuery( "input[name=\'archive_date_show\']" ).datepicker({ dateFormat: \'dd-mm-yy\', numberOfMonths: 1, onSelect: function () {
+            var str=this.value;
             var res = str.split("-");
             var str = res[2]+res[1]+res[0];
             jQuery("#archive_date").val(str);
@@ -166,13 +166,13 @@
     add_action('save_post', 'save_agenda_details');
     function save_agenda_details(){
         global $post;
-        
+
         if( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE )
             return;
 
         if(get_post_type($post) != 'agenda')
             return;
-        
+
         save_custom_field("a_amount");
         save_custom_field("is_required");
         save_custom_field("a_date");
@@ -209,9 +209,9 @@
      * Add columns to agenda post list
      */
      function add_acf_columns ( $columns ) {
-       // return array_merge ( $columns, array ( 
+       // return array_merge ( $columns, array (
        //   'a_date' => __ ( 'Starts' ),
-       //   'archive_date'   => __ ( 'Ends' ) 
+       //   'archive_date'   => __ ( 'Ends' )
        // ) );
         return array(
             'cb' => '<input type="checkbox" />',
@@ -271,10 +271,10 @@
         }
 
 
-        //Filter on dashboard for agenda 
+        //Filter on dashboard for agenda
 
         add_action( 'restrict_manage_posts', 'filter_events_by_taxonomies' , 10, 2);
-        
+
         function filter_events_by_taxonomies( $post_type, $which ) {
         // Apply this only on a specific post type
         if ( 'agenda' !== $post_type )
@@ -284,7 +284,7 @@
         $taxonomies = array('type', 'a_date', 'archive_date' );
 
         foreach ( $taxonomies as $taxonomy_slug ) {
-            if($taxonomy_slug == 'a_date'){ 
+            if($taxonomy_slug == 'a_date'){
                 ?>
                 <select name="type_search">
                     <option value="1">Date de l'événement</option>
@@ -292,14 +292,18 @@
                 </select>
         <?php
             }
-            if($taxonomy_slug == 'a_date'){ 
+            if($taxonomy_slug == 'a_date'){
                 //echo "Date de l'événement ";
-                echo "<input type='text' name='{$taxonomy_slug}' id='{$taxonomy_slug}' class='postform'value=".$_GET['a_date']."> ";
+
+                $a_date = ( isset($_GET['a_date']) ) ? $_GET['a_date'] : '';
+                $archive_date = ( isset($_GET['archive_date']) ) ? $_GET['archive_date'] : '';
+
+                echo "<input type='text' name='{$taxonomy_slug}' id='{$taxonomy_slug}' class='postform'value=". $a_date ."> ";
                 echo '<script>jQuery(document).ready(function(){jQuery( "input[name=\'a_date\']" ).datepicker({ dateFormat: \'dd-mm-yy\', numberOfMonths: 1 }); jQuery( "#ui-datepicker-div" ).hide();});</script>';
             }
-            if($taxonomy_slug == 'archive_date'){ 
+            if($taxonomy_slug == 'archive_date'){
                 echo " - ";
-                echo "<input type='text' name='{$taxonomy_slug}' id='{$taxonomy_slug}' class='postform' value=".$_GET['archive_date']."> ";
+                echo "<input type='text' name='{$taxonomy_slug}' id='{$taxonomy_slug}' class='postform' value=". $archive_date ."> ";
                 echo '<script>jQuery(document).ready(function(){jQuery( "input[name=\'archive_date\']" ).datepicker({ dateFormat: \'dd-mm-yy\', numberOfMonths: 1 }); jQuery( "#ui-datepicker-div" ).hide();});</script>';
             }
             echo "<style> #filter-by-date{ display:none;}</style>";
@@ -355,7 +359,7 @@
 
     //Remove limit to taxonomy of agenda
     add_action('pre_get_posts', 'change_tax_num_of_posts' );
-    function change_tax_num_of_posts( $query ) { 
+    function change_tax_num_of_posts( $query ) {
         if ( ! $query->is_main_query() ){
             return $query;
         }
@@ -367,7 +371,7 @@
         }
     }
 
-    
-    
+
+
 
 ?>

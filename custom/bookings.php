@@ -222,4 +222,72 @@ function count_people_at_event($post_id) {
 
 }
 
+
+
+function import_old_bookings_data() {
+    global $wpdb;
+
+    $sql = "SELECT * FROM wp_frm_items WHERE form_id = 10 ";
+    $rows = $wpdb->get_results($sql, OBJECT);
+
+    foreach ($rows as $row) :
+
+        $old_booking_id = intval($row->id);
+        $metas_sql = "SELECT wp_frm_item_metas.id, meta_value, name
+                    FROM `wp_frm_item_metas`
+                    LEFT JOIN wp_frm_fields ON wp_frm_fields.id = wp_frm_item_metas.field_id
+                    WHERE `item_id` =  " . $old_booking_id;
+        $metas = $wpdb->get_results($metas_sql, OBJECT);
+
+        foreach ($metas as $old_meta) :
+            if ( $old_meta->name == 'NOM' ) {
+                $last_name = $old_meta->meta_value;
+            } elseif ($old_meta->name == 'PRÉNOM') {
+                $first_name = $old_meta->meta_value;
+            } elseif ($old_meta->name == 'Événement ID') {
+                $agenda_id = $old_meta->meta_value;
+            } elseif ($old_meta->name == 'NOMBRE DE PERSONNE') {
+                $no_people = $old_meta->meta_value;
+            } elseif ($old_meta->name == 'ADRESSE ÉLECTRONIQUE') {
+                $email = $old_meta->meta_value;
+            } elseif ($old_meta->name == 'TÉL') {
+                $telephone = $old_meta->meta_value;
+            };
+
+
+        endforeach;
+
+
+        $post = array(
+            'post_title'   => $first_name . ' ' . $last_name,
+            'post_status'  => 'publish',
+            'post_type'    => 'booking',
+            'post_content' => '',
+            'post_parent' =>  $agenda_id
+        );
+        $new_booking = wp_insert_post( $post );
+        if ($new_booking) {
+            add_post_meta($new_booking, 'first_name', $first_name , true);
+            add_post_meta($new_booking, 'last_name', $last_name , true);
+            add_post_meta($new_booking, 'telephone', $telephone , true);
+            add_post_meta($new_booking, 'email', $email , true);
+            add_post_meta($new_booking, 'no_people', $no_people , true);
+            var_dump('added booking');
+        };
+
+
+
+
+
+
+    endforeach;
+
+
+}
+
+
+
+
+
+
 ?>
