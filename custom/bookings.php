@@ -186,19 +186,24 @@ function all_booking_fields(){
     }
 
 
+add_action( 'manage_posts_extra_tablenav', 'add_download_link'  );
+function add_download_link($which){
+    if ( is_post_type_archive('booking') ) {
 
+            $download_link = get_home_url() . '/api/v1/?bookings'  ;
+            echo '<div class="alignleft actions"><a class="action button-primary button" href="'. $download_link .'">Télécharger CSV</a></div>';
 
-function booking_meta_box_markup(){
-
-    $download_link = get_home_url() . '/api/v1/?bookings&id=' . $_GET['post'] ;
-    echo '<div class=" "><a style="display:block;text-align:center" class="action button-primary button" href="'. $download_link .'">Télécharger les bookings (csv)</a></div>';
+    }
 
 }
 
+function booking_meta_box_markup(){
+    $download_link = get_home_url() . '/api/v1/?bookings&id=' . $_GET['post'] ;
+    echo '<div class=" "><a style="display:block;text-align:center" class="action button-primary button" href="'. $download_link .'">Télécharger les bookings (csv)</a></div>';
+}
 function add_booking_meta_box() {
     add_meta_box("booking-meta-box", " Bookings", "booking_meta_box_markup", "agenda", "side", "high", null);
 }
-
 add_action("add_meta_boxes", "add_booking_meta_box");
 
 
