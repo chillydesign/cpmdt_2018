@@ -6,6 +6,8 @@ $places_allowed = 5;
 if ($places_left <= 5 ) {
     $places_allowed =  $places_left;
 }
+
+$places_allowed = 10;
 ?>
 
 

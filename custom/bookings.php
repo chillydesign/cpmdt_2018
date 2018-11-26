@@ -85,7 +85,7 @@ function all_booking_fields(){
             $first_name = $_POST['first_name'];
             $last_name = $_POST['last_name'];
             $email = $_POST['email'];
-            $no_people = $_POST['no_people'];
+            $no_people = intval($_POST['no_people']);
 
 
 
@@ -93,6 +93,14 @@ function all_booking_fields(){
             // if we  have the right data and user logged in
             //  && $current_user_id > 0
             if ( !empty($email)  && !empty($first_name) &&  !empty($last_name)  ) {
+
+
+                $count_persons = count_people_at_event(  $agenda_id  );
+                $places_allowed = intval( get_field("a_amount" ,  $agenda_id ));
+                $places_left = $places_allowed - $count_persons;
+                // only allow booking if  have spaces for people
+               if ($places_left >= $no_people  ) {
+
                 $post = array(
                     'post_title'   => $first_name . ' ' . $last_name,
                     'post_status'  => 'publish',
@@ -130,6 +138,10 @@ function all_booking_fields(){
                 } else {
                     wp_redirect($referer . '?problem', $status = 302);
                 }
+
+            } else { //not enough places left
+                wp_redirect($referer . '?problem=notenoughplaces', $status = 302);
+            }
 
                 // if we dont have all the data or user not logged in
             } else {

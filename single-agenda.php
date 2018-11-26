@@ -76,7 +76,8 @@
                                 <?php $agenda_id = get_the_ID();
                                     // $count_persons = get_agenda_count('107', $agenda_id, '70');
                                     $count_persons = count_people_at_event(  $agenda_id  );
-                                    $places_left = get_custom_field("a_amount") - $count_persons;
+                                    $places_allowed = intval(get_field("a_amount"));
+                                    $places_left = $places_allowed - $count_persons;
                                     ?>
                                 <?php if (get_custom_field('is_required') == "YES"){?>
                                     <div class="row text-uppercase">
