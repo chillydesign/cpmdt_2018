@@ -4,4 +4,4 @@
 <?php import_old_bookings_data(); ?>
 <?php import_old_program_data(); ?>
 
-<?php  get_footer(); ?
+<?php  get_footer(); ?>
