@@ -16,9 +16,7 @@
     <!-- /*Theme was developed & Designed by Edon Rexhepi, www.edonrexhepi.com*/ -->
     <!-- Stylesheets -->
     <?php wp_head(); ?>
-    <?php
-        setlocale(LC_TIME, "fr_FR");
-    ?>
+    <?php setlocale(LC_TIME, "fr_FR"); ?>
 </head>
 <body <?php body_class(); ?>>
 

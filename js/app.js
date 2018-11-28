@@ -67,7 +67,22 @@ $('.toggle-categories').click(function(event){
 
 
 
+// INSCRIPTION FOR EVENTS BOOKING
+// INSCRIPTION FOR EVENTS BOOKING
+var $no_people = $('#no_people');
+var $extra_people_fields = $('.extra_people_field');
+$extra_people_fields.hide();
+var $people_val = $no_people.val();
+$('.booking_people_' + $people_val ).show();
 
+$no_people.on('change', function(e) {
+    var $this = $(this);
+    var $people_val = $this.val();
+    $extra_people_fields.hide();
+    $('.booking_people_' + $people_val ).show();
+});
+// INSCRIPTION FOR EVENTS BOOKING
+// INSCRIPTION FOR EVENTS BOOKING
 
 
 

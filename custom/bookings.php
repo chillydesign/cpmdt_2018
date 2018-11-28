@@ -60,9 +60,16 @@ function all_booking_fields(){
         'no_people' => 'Nombre de personne',
         'last_name' =>  'Nom',
         'first_name' => 'Prénom',
-        'telephone' => 'Téléphone  ',
+        'telephone' => 'Téléphone',
         'email' =>  'Email',
-
+        'last_name_2' => 'Nom de la deuxième personne',
+        'first_name_2' => 'Prénom de la deuxième personne',
+        'last_name_3' => 'Nom de la troisième personne',
+        'first_name_3' => 'Prénom de la troisième personne',
+        'last_name_4' => 'Nom de la quatrième personne',
+        'first_name_4' => 'Prénom de la quatrième personne',
+        'last_name_5' => 'Nom de la cinquième personne',
+        'first_name_5' => 'Prénom de la cinquième personne',
     );
 }
 
@@ -76,7 +83,7 @@ function all_booking_fields(){
         $referer =  explode('?',   $referer)[0];
 
         // IF DATA HAS BEEN POSTED
-        if ( isset($_POST['action'])  && $_POST['action'] == 'booking_form'   ) {
+        if ( isset($_POST['action'])  && $_POST['action'] == 'booking_form'  && $_POST['agenda_id']  ) {
 
 
             $agenda_id = $_POST['agenda_id'];
@@ -160,7 +167,16 @@ function all_booking_fields(){
 
     function send_booking_emails($data){
 
-        $agenda_title = $data['agenda_title'];
+        $agenda_id = $data['agenda_id'];
+        $agenda = get_post( $agenda_id );
+        $agenda_title = $agenda->post_title;
+        $agenda_date_str = get_field('a_date', $agenda_id );
+        $agenda_date = date( ' d M Y'  ,strtotime($agenda_date_str));
+        $agenda_time = get_field('a_time', $agenda_id );
+        $address_id =  get_field('address_id', $agenda_id );
+        $address = get_post( $address_id  );
+        $agenda_location = $address->post_title;
+
 
         $headers = 'From: Someone <no-reply@example.org>' . "\r\n";
         $headers .= 'Reply-To: Someone <no-reply@example.org>' . "\r\n";
@@ -179,15 +195,24 @@ function all_booking_fields(){
 
         $email_subject_for_admin = 'Nouvelle booking pour l’évènement ' . $agenda_title;
         $email_content_for_admin = $emailheader  . $paragraph_for_admin  . $emailfooter;
-        wp_mail( 'harvey.charles@gmail.com' , $email_subject_for_admin, $email_content_for_admin, $headers );
+       wp_mail( 'harvey.charles@gmail.com' , $email_subject_for_admin, $email_content_for_admin, $headers );
 
 
 
-        $paragraph_for_user = '<p>Bonjour,</p><p>Votre booking for ' . $data['no_people'] . ' people a bien été enregistrée pour l’évènement '.  $agenda_title . '</p><p>Bien cordialement, <br/> L’équipe PFTU</p>';
+        $paragraph_for_user = '<p>Madame, Monsieur,</p>
+        <p>Nous avons bien pris note de votre réservation pour ' . $data['no_people'] . '  personne(s) pour le spectacle '.  $agenda_title . ' le '. $agenda_date . ' à '. $agenda_time . ' à '. $agenda_location . '.</p>
+        <p>Les contremarques seront à votre disposition à l’entrée 1 heure avant le spectacle.</p>
+        <p> Si vous désirez annuler ou modifier votre réservation, veuillez, s’il vous plaît, écrire à: <a href="mailto:info@conservatoirepopualire.ch">info@conservatoirepopualire.ch</a></p>
+        <p>Avec nos remerciements. <br />
+        <br/> Conservatoire Populaire de musique danse et théâtre <br />
+        <a href="https://cpmdt.ch/">www.cpmdt.ch</a>
+        </p>';
+
         $email_subject_for_user = 'Booking pour l’évènement  ' . $agenda_title;
         $email_content_for_user = $emailheader . $paragraph_for_user .  $emailfooter;
 
-        wp_mail( $_POST['email'], $email_subject_for_user, $email_content_for_user, $headers );
+
+       wp_mail( $_POST['email'], $email_subject_for_user, $email_content_for_user, $headers );
 
 
 
@@ -250,16 +275,32 @@ function import_old_bookings_data() {
     foreach ($rows as $row) :
 
         $old_booking_id = intval($row->id);
-        $metas_sql = "SELECT wp_frm_item_metas.id, meta_value, name
+        $metas_sql = "SELECT wp_frm_item_metas.id, meta_value, name, field_key
                     FROM `wp_frm_item_metas`
                     LEFT JOIN wp_frm_fields ON wp_frm_fields.id = wp_frm_item_metas.field_id
                     WHERE `item_id` =  " . $old_booking_id;
         $metas = $wpdb->get_results($metas_sql, OBJECT);
 
+
+        $first_name  = '';
+        $last_name  = '';
+        $telephone  = '';
+        $email  = '';
+        $no_people  = '';
+        $last_name_2 = '';
+        $first_name_2 = '';
+        $last_name_3 = '';
+        $first_name_3 = '';
+        $last_name_4 = '';
+        $first_name_4 = '';
+        $last_name_5 = '';
+        $first_name_5 = '';
+
+
         foreach ($metas as $old_meta) :
-            if ( $old_meta->name == 'NOM' ) {
+            if ( $old_meta->field_key == 'qh4icy4' ) {
                 $last_name = $old_meta->meta_value;
-            } elseif ($old_meta->name == 'PRÉNOM') {
+            } elseif ($old_meta->field_key == 'yhp42') {
                 $first_name = $old_meta->meta_value;
             } elseif ($old_meta->name == 'Événement ID') {
                 $agenda_id = $old_meta->meta_value;
@@ -269,7 +310,24 @@ function import_old_bookings_data() {
                 $email = $old_meta->meta_value;
             } elseif ($old_meta->name == 'TÉL') {
                 $telephone = $old_meta->meta_value;
-            };
+            } elseif ($old_meta->field_key == '7texl') {
+                $last_name_2 = $old_meta->meta_value;
+            } elseif ($old_meta->field_key == 'ocfup14') {
+                $first_name_2 = $old_meta->meta_value;
+            } elseif ($old_meta->field_key == '9cggx') {
+                $last_name_3 = $old_meta->meta_value;
+            } elseif ($old_meta->field_key == 'chtgh') {
+                $first_name_3 = $old_meta->meta_value;
+            } elseif ($old_meta->field_key == 'xbfqx') {
+                $last_name_4 = $old_meta->meta_value;
+            } elseif ($old_meta->field_key == '28vai') {
+                $first_name_4 = $old_meta->meta_value;
+            } elseif ($old_meta->field_key == 's6t5o') {
+                $last_name_5 = $old_meta->meta_value;
+            } elseif ($old_meta->field_key == 'urgnt') {
+                $first_name_5 = $old_meta->meta_value;
+            }
+
 
 
         endforeach;
@@ -289,6 +347,18 @@ function import_old_bookings_data() {
             add_post_meta($new_booking, 'telephone', $telephone , true);
             add_post_meta($new_booking, 'email', $email , true);
             add_post_meta($new_booking, 'no_people', $no_people , true);
+
+            add_post_meta($new_booking, 'last_name_2', $last_name_2, true);
+            add_post_meta($new_booking, 'first_name_2', $first_name_2, true);
+            add_post_meta($new_booking, 'last_name_3', $last_name_3, true);
+            add_post_meta($new_booking, 'first_name_3', $first_name_3, true);
+            add_post_meta($new_booking, 'last_name_4', $last_name_4, true);
+            add_post_meta($new_booking, 'first_name_4', $first_name_4, true);
+            add_post_meta($new_booking, 'last_name_5', $last_name_5, true);
+            add_post_meta($new_booking, 'first_name_5', $first_name_5, true);
+
+
+
             var_dump('added booking');
         };
 
