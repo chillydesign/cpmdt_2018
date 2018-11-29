@@ -17,12 +17,12 @@ function post_type_booking() {
     register_post_type('booking', // Register Custom Post Type
     array(
         'labels' => array(
-            'name' => __('Bookings', 'html5blank'), // Rename these to suit
-            'singular_name' => __('Booking', 'html5blank'),
+            'name' => __('Réservations', 'html5blank'), // Rename these to suit
+            'singular_name' => __('Réservation', 'html5blank'),
             'add_new' => __('Ajouter', 'html5blank'),
             'add_new_item' => __('Ajouter booking', 'html5blank'),
             'edit' => __('Modifier', 'html5blank'),
-            'edit_item' => __('Modifier Booking', 'html5blank'),
+            'edit_item' => __('Modifier Réservation', 'html5blank'),
             'new_item' => __('Nouvelle booking', 'html5blank'),
             'view' => __('Afficher insc', 'html5blank'),
             'view_item' => __('Afficher booking', 'html5blank'),
@@ -186,16 +186,16 @@ function all_booking_fields(){
 
 
 
-        $paragraph_for_admin = '<p>Nouvelle booking pour l’évènement '.  $agenda_title .'</p><br /><br />';
+        $paragraph_for_admin = '<p>Nouvelle réservation pour l’évènement '.  $agenda_title .'</p><br /><br />';
         $paragraph_for_admin .= '<p><b>Prénom</b> : ' . $data['first_name']. '</p>';
         $paragraph_for_admin .= '<p><b>Nom</b> : ' .$data['last_name'] . '</p>';
         $paragraph_for_admin .= '<p><b>Adresse électronique</b> ' . $data['email'] . '</p>';
-        $paragraph_for_admin .= '<p><b>Telephone</b> : ' . $data['telephone'] . '</p>';
+        $paragraph_for_admin .= '<p><b>Télephone</b> : ' . $data['telephone'] . '</p>';
         $paragraph_for_admin .= '<p><b>No Personnes</b> : ' . $data['no_people'] . '</p>';
 
-        $email_subject_for_admin = 'Nouvelle booking pour l’évènement ' . $agenda_title;
+        $email_subject_for_admin = 'Nouvelle réservation pour l’évènement ' . $agenda_title;
         $email_content_for_admin = $emailheader  . $paragraph_for_admin  . $emailfooter;
-       wp_mail( 'harvey.charles@gmail.com' , $email_subject_for_admin, $email_content_for_admin, $headers );
+        wp_mail( 'info@conservatoirepopualire.ch' , $email_subject_for_admin, $email_content_for_admin, $headers );
 
 
 
@@ -208,7 +208,7 @@ function all_booking_fields(){
         <a href="https://cpmdt.ch/">www.cpmdt.ch</a>
         </p>';
 
-        $email_subject_for_user = 'Booking pour l’évènement  ' . $agenda_title;
+        $email_subject_for_user = 'Réservation pour l’évènement  ' . $agenda_title;
         $email_content_for_user = $emailheader . $paragraph_for_user .  $emailfooter;
 
 
@@ -236,10 +236,10 @@ function add_download_link($which){
 
 function booking_meta_box_markup(){
     $download_link = get_home_url() . '/api/v1/?bookings&id=' . $_GET['post'] ;
-    echo '<div class=" "><a style="display:block;text-align:center" class="action button-primary button" href="'. $download_link .'">Télécharger les bookings (csv)</a></div>';
+    echo '<div class=" "><a style="display:block;text-align:center" class="action button-primary button" href="'. $download_link .'">Télécharger les réservations (csv)</a></div>';
 }
 function add_booking_meta_box() {
-    add_meta_box("booking-meta-box", " Bookings", "booking_meta_box_markup", "agenda", "side", "high", null);
+    add_meta_box("booking-meta-box", " Réservations", "booking_meta_box_markup", "agenda", "side", "high", null);
 }
 add_action("add_meta_boxes", "add_booking_meta_box");
 
