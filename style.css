@@ -1311,7 +1311,7 @@ font-weight: bold;
 .search_box {
     display: none;
     position: absolute;
-    top: 40px;
+    top: 60px;
     left: 00px;
     background: white;
     width: 370px;

@@ -9,7 +9,7 @@
                 <div class="col-sm-3">
                     <a href="#" data-box="#age_box"  class="search_button" id="age_button">
                         <div class="search_heading">Age</div>
-                        <span id="age_summary" class="search_summary" data-default="all ages">all ages</span>
+                        <span id="age_summary" class="search_summary" data-default="Tous les âges">Tous les âges</span>
 
                         <div id="age_box" class="search_box">
                             <label><input name="age" type="checkbox" class="search_check" value="4" data-field="age" data-label="ENTRE 4 ET 7 ANS" /><span>ENTRE 4 ET 7 ANS</span></label>
@@ -23,7 +23,7 @@
                     <a href="#" data-box="#category_box"  class="search_button" id="category_button">
 
                         <div class="search_heading">Catégorie</div>
-                        <span id="cat_summary"  class="search_summary" data-default="all categories"> all categories</span>
+                        <span id="cat_summary"  class="search_summary" data-default="Toutes les catégories"> Toutes les catégories</span>
 
                         <div id="category_box" class="search_box">
                             <?php $terms = get_terms( 'programmes'); ?>
@@ -39,7 +39,7 @@
 
                     <a href="#" data-box="#location_box" class="search_button"  id="location_button">
                         <div class="search_heading">Lieu</div>
-                        <span id="location_summary" class="search_summary" data-default="all locations"> all locations </span>
+                        <span id="location_summary" class="search_summary" data-default="Tous les lieux"> Tous les lieux </span>
                         <div id="location_box" class="search_box">
 
 
