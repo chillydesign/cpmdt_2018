@@ -425,6 +425,20 @@ function processCourses(courses, search, category, location, ages){
 
 if (typeof search_url != 'undefined') {
     var $course_pickers = $('.course_picker');
+
+    ///  auto fill course field if courseid get param is set
+    var wls = window.location.search;
+    if (wls) {
+        if ( wls.indexOf('course_id=') !== -1) {
+            var courseid = wls.split('course_id=')[1];
+            var courseid =  courseid.split('&')[0];
+            var courseidsub = courseid.replace(/\+/g, ' ');
+            $course_pickers.val(courseidsub).change();
+        }
+    }
+
+
+
     $course_pickers.on('change', function(){
 
         var $this = $(this);
