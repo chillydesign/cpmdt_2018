@@ -67,7 +67,7 @@ function inscription_form_shortcode($atts , $content = null) {
     if ($course_type == 'adults') {
         $courses = get_all_adult_courses();
     } else if ($course_type == 'danse') {
-        $courses = get_all_courses_with_cat('danse');
+        $courses = get_all_courses_with_cat('dance');
     } else if ($course_type == 'theatre') {
         $courses = get_all_courses_with_cat('theatre');
     } else if ($course_type == '47musicale') {
