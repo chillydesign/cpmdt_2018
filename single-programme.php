@@ -1,8 +1,8 @@
 <?php
     get_header(); ?>
 
-    
-    <?php 
+
+    <?php
         // Get terms for "Program" Taxonomy
         $programs = get_the_terms( $post->ID , 'programmes' );
         // Loop over each item since it's an array
@@ -11,17 +11,17 @@
                 $programName = $program->name;
                 $programSlug = $program->slug;
                 unset($program);
-            } 
-        } 
-    ?>		
-    
+            }
+        }
+    ?>
+
 	<!-- Search bar -->
-    <?php 
-        get_template_part('programme.search'); 
+    <?php
+        get_template_part('programme.search');
         // Reset query beacause in the programme.search part is a query for the locations
         wp_reset_query();
-        
-    ?> 
+
+    ?>
 
 	<!-- Page title -->
     <div class="page-title background-<? echo $programSlug ?>">
@@ -73,12 +73,12 @@
                 </div>
                 <div class="col-sm-3 col-xs-12 right-sidebar">
 
-                    
+
                     <!-- *! Get age of the program -->
                     <?php
                         $age = get_custom_field("p_age");
                         if(!empty($age)){
-                            $result = 
+                            $result =
                                 '<div class="sidebar-box sidebar-age">
                                     dès '.$age.' Ans
                                 </div>';
@@ -87,11 +87,11 @@
                     ?>
 
                     <!-- First *Media Upload Box -->
-                    <?php 
+                    <?php
                         $strFile = get_post_meta($post -> ID, $key = 'podcast_file', true);
                         if(!empty($strFile)){
-                            $result =  
-                                '<div class="sidebar-box sidebar-download text-uppercase font-bold">    
+                            $result =
+                                '<div class="sidebar-box sidebar-download text-uppercase font-bold">
                                         <a href="'. $strFile .'">télécharger le Plan d\'études</a>
                                 </div>';
                             echo $result;
@@ -99,11 +99,11 @@
                     ?>
 
                     <!-- Second *Media Upload Box -->
-                    <?php 
+                    <?php
                         $strFile2 = get_post_meta($post -> ID, $key = 'podcast_file2', true);
                         if(!empty($strFile2)){
-                            $result =  
-                                '<div class="sidebar-box sidebar-download text-uppercase">    
+                            $result =
+                                '<div class="sidebar-box sidebar-download text-uppercase">
                                         <a href="'. $strFile2 .'">télécharger le pdf de la fiche</a>
                                 </div>';
                             echo $result;
@@ -113,34 +113,34 @@
                     <!-- *Star Link -->
                     <?php
                         $star_link = get_custom_field("p_starlink");
-                        if(!empty($star_link)){ 
-                            $result = 
+                        if(!empty($star_link)){
+                            $result =
                                 '<div class="sidebar-box sidebar-star text-uppercase">
                                     <a href="'.$star_link.'">cours complémentaire</a>
                                 </div>';
                             echo $result;
                         }
                     ?>
-                    
+
                     <!-- *! Notifications for each cat
                          *! Check in which template we are, and change the background-color of the box -->
                     <?php
                         $notifications = get_custom_field('p_notifications');
                         if(!empty($notifications)){
                             if ($programSlug == 'dance'){
-                                $result = 
+                                $result =
                                     "<div class='sidebar-box sidebar-notifications background-dance'>
                                         ".get_custom_field('p_notifications')."
                                     </div>";
                                 echo $result;
                             } elseif ($programSlug == 'music'){
-                                $result = 
+                                $result =
                                     "<div class='sidebar-box sidebar-notifications background-music'>
                                         ".get_custom_field('p_notifications')."
                                     </div>";
                                 echo $result;
                             } elseif ($programSlug == 'theatre'){
-                                $result = 
+                                $result =
                                     "<div class='sidebar-box sidebar-notifications background-theatre'>
                                         ".get_custom_field('p_notifications')."
                                     </div>";
@@ -158,8 +158,10 @@
                     <!-- *! Whoever knows what this is -->
                     <?php
                         $p_inscription = get_custom_field("p_inscription");
-                        if(!empty($p_inscription)){ 
-                            $result = 
+                        if(!empty($p_inscription)){
+
+                            $p_inscription .=  '?course_id=' . $post->ID;
+                            $result =
                                 '<div class="register-button text-uppercase text-center">
                                     <a href="'.$p_inscription.'"><h3>INSCRIPTION / TARIFS</h3></a>
                                 </div>';
