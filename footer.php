@@ -56,7 +56,7 @@
 							</select>
 						</div>
 						<!-- The element that will contain our Google Map. This is used in both the Javascript and CSS above. -->
-						<!-- <div id="footer-pins" class="footer-map"></div> -->
+						<div id="footer-pins" class="footer-map"></div>
 					</div>
 				</div>
 			</div>
@@ -64,8 +64,8 @@
 
 		<!-- Scripts -->
 		<?php wp_footer(); ?>
-        <!-- TODO PUT MAP BACK LATER -->
-		<!-- <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBZqgRQ08i04MKCWwTbFD9MpUVUzlTNOF0"></script> -->
+
+		<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBZqgRQ08i04MKCWwTbFD9MpUVUzlTNOF0"></script>
 		<script>
 
 			/*! Places array */
