@@ -160,7 +160,7 @@
                         $p_inscription = get_custom_field("p_inscription");
                         if(!empty($p_inscription)){
 
-                            $p_inscription .=  '?course_id=' . $post->ID;
+                            $p_inscription = $p_inscription . '?course_id=' . $post->ID;
                             $result =
                                 '<div class="register-button text-uppercase text-center">
                                     <a href="'.$p_inscription.'"><h3>INSCRIPTION / TARIFS</h3></a>
