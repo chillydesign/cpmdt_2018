@@ -100,6 +100,36 @@
     }
 
 
+    function locations_for_map() {
+        $locations =  get_posts(array('post_type'  => 'location',   'posts_per_page' => -1  ) );
+
+        $ret = array();
+        foreach ($locations as $location) {
+
+            $z = new stdClass();
+
+
+
+            $z->title = $location->post_title;
+            $z->lat = get_field('lat', $location->ID);
+            $z->lng = get_field('long', $location->ID);
+            $z->id =  $location->ID;
+
+            if ( $z->lat != '' )  {
+                array_push($ret, $z);
+            }
+
+
+        }
+
+
+        echo json_encode( $ret,  JSON_UNESCAPED_SLASHES|JSON_NUMERIC_CHECK );
+
+
+
+
+    }
+
 
 
 ?>

@@ -13,16 +13,32 @@
     <!--Post Content-->
 
     <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
+        <?php $location_id = get_the_ID(); ?>
+
+        <?php $centers = get_posts(array('post_type' => 'location' , 'posts_per_page' => -1)); ?>
+
 
         <!-- Locations information -->
         <div class="container ">
+
+
+            <div style="text-align:right;">
+                <h4>Sélectionner un centre:</h4>
+                <select name="locations" class="locations_dropdown">
+                    <?php foreach ($centers as $center) : ?>
+                        <?php $selected = ($center->ID == $location_id ) ? 'selected' : ''; ?>
+                        <option <?php echo $selected; ?> value="<?php echo $center->guid; ?>"><?php echo $center->post_title; ?></option>
+                    <?php endforeach; ?>
+                </select>
+
+            </div>
 
             <div class="locations-container">
                 <div class="information">
                     <div class="row">
                         <div class="col-sm-6">
 
-                            <?php $location_id = get_the_ID(); ?>
+
                             <?php $addresse = get_field('addresse'); ?>
                             <?php $description = get_field('description'); ?>
                             <?php $infos = get_field('infos'); ?>
@@ -84,6 +100,7 @@
                                 <div class="col-sm-6">
                                     <ul>
                                         <?php $times = get_field('times',  $course->ID ); ?>
+                                        <?php if ($times): ?>
                                         <?php foreach ($times as $time): ?>
                                             <?php if ($time['location']): ?>
                                                 <?php  ///  ONLY SHOW TEACHERS OF COURSE WHO WORK AT THIS PARTICULAR LOCATION ?>
@@ -96,6 +113,7 @@
                                                 <?php endif; ?>
                                             <?php endif; ?>
                                         <?php endforeach; ?>
+                                            <?php endif; ?>
 
                                     </ul>
                                 </div>
