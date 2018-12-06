@@ -1,5 +1,5 @@
 <?php
-    /* Template Name: Locations Page */ 
+    /* Template Name: Locations Page */
     get_header(); ?>
     <div class="page-title" style="margin-bottom: 50px;">
         <div class="container">
@@ -7,7 +7,7 @@
         </div>
     </div>
 
-    
+
     <!-- Map -->
     <div class="container locations-select">
         <h4>Sélectionner un centre:</h4>
@@ -67,7 +67,7 @@
             var placesInformation = jQuery('.locations-container .information').html('<div class="title">'+locationPlaces[value].post_title+'</div><div class="col-sm-6 col-xs-12 information-row"><b>Adresse:</b><span>'+locationPlaces[value].addresse+'</span></div><div class="col-sm-6 col-xs-12 information-row"><b>Google Map:</b><a target="_blank" href="https://www.google.com/maps/?q='+locationPlaces[value].latitude+','+locationPlaces[value].longitude+'" style="color: inherit;"><span>Afficher le plan</span></a></div><div class="col-sm-12 col-xs-12 information-row"><b>Infos TPG:</b><span>'+locationPlaces[value].infos+'</span></div><div class="col-sm-12 col-xs-12 information-row"><b>Description:</b><span>'+locationPlaces[value].description+'</span></div><div class="col-sm-12 col-xs-12 information-row"><b>Responsable:</b><span>'+locationPlaces[value].responsible+'</span></div>');
 
             var placesHeader = jQuery('.locations-connections .container').html('<div class="col-sm-12 col-xs-12"><h4>Disciplines enseignées:</h4></div>');
-            
+
             var programs = locationPlaces[value].program_data;
             console.log(locationPlaces[value].program_data.length);
             var p_data;
@@ -80,7 +80,7 @@
 
         function addLocationPlacesInDropdown(){
             for (var i=0; i<locationPlaces.length; i++){
-                jQuery('#locations_dropdown').append('<option value="'+i+'">'+places[i].post_title+'</option>'); 
+                jQuery('#locations_dropdown').append('<option value="'+i+'">'+locationPlaces[i].post_title+'</option>');
             }
             jQuery('#locations_dropdown').change(function(){
                 var value = jQuery(this).val();
@@ -122,7 +122,7 @@
                     return function () {
                         appendData(i);
                     }
-                })(locationsMarker, i)); 
+                })(locationsMarker, i));
 
                 /*! Extend bounds with new/each marker */
                 locationBounds.extend(locations_given_coordinates);
@@ -144,7 +144,7 @@
             locationsMap = new google.maps.Map(document.getElementById('locations-pins'), locationOptions);
         }
         initLocationsMap(46.8041122,7.4338763);
-			
+
         jQuery(document).ready(function(){
             initMap(46.8041122,7.4338763);
         });

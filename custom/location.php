@@ -29,7 +29,7 @@
 		        'capability_type' => 'post',
 		        'hierarchical' => false,
 		        'menu_position' => null,
-						'map_meta_cap' => true, 
+						'map_meta_cap' => true,
 		        'menu_icon' => 'dashicons-location',
 		        'supports' => array('title', 'page-attributes'));
 
@@ -61,18 +61,45 @@
 		add_action('save_post', 'save_location_details');
 		function save_location_details(){
 		   	global $post;
-		 
+
 		   	if( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE )
 		      	return;
 
 		   	if(get_post_type($post) != 'location')
 		      	return;
-		 
+
 		   	save_custom_field("lat");
 		   	save_custom_field("long");
 		   	save_custom_field("addresse");
 		   	save_custom_field("infos");
 		   	save_custom_field("description");
 		   	save_custom_field("responsible");
-		}
+		};
+
+
+
+
+
+
+
+    function courses_from_location_id($location_id) {
+        global $wpdb;
+        $sql = "SELECT post_id FROM wp_postmeta WHERE meta_value =  $location_id";
+        $course_id_obj = $wpdb->get_results($sql, OBJECT);
+        $course_ids = array();
+        foreach ($course_id_obj as $value) {
+            array_push($course_ids, intval($value->post_id));
+        }
+        $courses = get_posts( array(
+            'include' => $course_ids,
+            'post_type' => 'programme'
+        ) );
+
+        return $courses;
+
+    }
+
+
+
+
 ?>
