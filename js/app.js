@@ -172,7 +172,7 @@ function addPointToMap(map,  location, bounds, infowindow, markers ) {
 		position: latlng,
 		title: location.title,
 		id: location.id,
-	///	icon: customMarker
+		icon: customMarker
 	});
 
 	marker.addListener('click', function() {
