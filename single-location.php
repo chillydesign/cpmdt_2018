@@ -76,12 +76,19 @@
 
                         </div>
                         <div class="col-sm-6">
+                            <?php if ($lat) : ?>
                             <p>
                                 <b>Google Map:</b>
+                                <div style="height: 200px" id="single_location_map"></div>
+                                <script>
+                                    single_location_for_map = {"title": "<?php echo get_the_title(); ?> ","lat":<?php echo $lat; ?>,"lng":<?php echo $long; ?>,"id":<?php echo $location_id; ?>};
+                                        	var theme_directory = '<?php echo get_template_directory_uri(); ?>';
+                                </script>
                                 <a target="_blank" href="https://www.google.com/maps/?q=<?php echo $lat; ?>,<?php echo $long; ?>" style="color: inherit;">
                                     <span>Afficher le plan</span>
                                 </a>
                             </p>
+                        <?php endif; ?>
                         </div>
                     </div>
                 </div>
