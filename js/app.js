@@ -157,10 +157,10 @@ function addPointToMap(map,  location, bounds, infowindow, markers ) {
 	var longitude = location.lng;
 
 	var customMarker = {
-		url: theme_directory + '/assets/icon-map_pin.svg',
+		url: theme_directory + '/assets/marker.svg',
 		size: new google.maps.Size(30, 45),
 		origin: new google.maps.Point(0, 0),
-		anchor: new google.maps.Point(15, 22)
+		anchor: new google.maps.Point(5, 22)
 	};
 
 
@@ -172,11 +172,11 @@ function addPointToMap(map,  location, bounds, infowindow, markers ) {
 		position: latlng,
 		title: location.title,
 		id: location.id,
-	///	icon: customMarker
+	    icon: customMarker
 	});
 
 	marker.addListener('click', function() {
-		infowindow.setContent('<span style="color:black">' + this.title +  '<br><a style="color:red" href="?p='+ this.id + '">Voir le location</a></span>'     );
+		infowindow.setContent('<span style="color:black">' + this.title +  '<br><a style="color:red" href="?p='+ this.id + '">Afficher</a></span>'     );
 		infowindow.open(map, this);
 
 	});

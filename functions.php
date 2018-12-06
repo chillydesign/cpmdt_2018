@@ -149,7 +149,7 @@ require get_template_directory() . '/custom/location.php';
 require get_template_directory() . '/custom/programme.php';
 require get_template_directory() . '/custom/teachers.php';
 require get_template_directory() . '/custom/agenda.php';
-require get_template_directory() . '/custom/program_data.php';
+// require get_template_directory() . '/custom/program_data.php';
 require get_template_directory() . '/custom/_disable-abilities.php';
 require get_template_directory() . '/custom/_post-meta.php';
 require get_template_directory() . '/custom/address.php';
