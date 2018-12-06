@@ -163,7 +163,7 @@ function addPointToMap(map,  location, bounds, infowindow, markers ) {
 	});
 
 	marker.addListener('click', function() {
-		infowindow.setContent('<span style="color:black">' + this.title +  '<br><a style="color:red" href="#l='+ this.id + '">Voir le location</a></span>'     );
+		infowindow.setContent('<span style="color:black">' + this.title +  '<br><a style="color:red" href="?p='+ this.id + '">Voir le location</a></span>'     );
 		infowindow.open(map, this);
 
 	});
