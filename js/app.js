@@ -16,11 +16,12 @@ $('.teacher-toggle').click(function(event){
     $teacherRow.toggleClass('toggled').find('.contact-teacher').slideToggle();
 });
 
-$('#prenav-toggle').click(function(event){
-    event.preventDefault();
-    $(this).toggleClass('toggled');
-    $('.navbar-pre').slideToggle();
-});
+// $('#prenav-toggle').click(function(event){
+//     console.log('asdf');
+//     event.preventDefault();
+//     $(this).toggleClass('toggled');
+//     $('.navbar-pre').slideToggle();
+// });
 
 $('.toggle-categories').click(function(event){
     event.preventDefault();

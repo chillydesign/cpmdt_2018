@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
    <!--  <meta charset="UTF-8"> -->
 
@@ -23,12 +23,21 @@
     <header>
         <div class="navbar-pre">
             <div class="container">
+                <div class="show_on_mobile">
+                <?php  wp_nav_menu(
+                    array(
+                        'theme_location' => 'header-menu',
+                        'menu_class'  => 'links-list'
+                    ));
+                ?>
+                </div>
                     <?php  wp_nav_menu(
                         array(
                             'theme_location' => 'prenav-menu',
                             'menu_class' => 'links-list'
                         ));
                     ?>
+
             </div>
         </div>
         <a id="prenav-toggle" href="#">MENU </a>
@@ -36,12 +45,6 @@
             <div class="container flex-container">
                     <!-- Brand and toggle get grouped for better mobile display -->
                     <div class="navbar-header">
-                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#menu-collapse" aria-expanded="false">
-                            <span class="sr-only">Toggle navigation</span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                        </button>
 
                         <!-- Brand -->
                         <a class="navbar-brand" href="<?php echo site_url(); ?>">
@@ -56,7 +59,7 @@
                     </div>
 
                     <!-- Collect the nav links, forms, and other content for toggling -->
-                    <div class="collapse navbar-collapse flex-align-bottom" id="menu-collapse">
+                    <div class="collapse navbar-collapse flex-align-bottom hide_on_mobile" id="menu-collapse">
                         <?php  wp_nav_menu(
                             array(
                                 'theme_location' => 'header-menu',

@@ -152,10 +152,13 @@
                     ?>
 
                     <!-- *! Related posts -->
+                    <?php $p_related =  get_field('p_related'); ?>
+                    <?php if ($p_related): ?>
                     <div class="sidebar-box sidebar-search search text-uppercase font-bold">
                         <h5 class="text-uppercase">a découvrir aussi</h5>
-                        <p><?php echo get_custom_field('p_related'); ?></p>
+                        <p><?php echo $p_related; ?></p>
                     </div>
+                <?php endif; ?>
 
                     <!-- *! Whoever knows what this is -->
                     <?php
