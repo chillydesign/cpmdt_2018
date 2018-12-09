@@ -636,4 +636,18 @@ function html5wp_pagination()
     ));
 }
 
+
+
+function remove_events_from_search( $wp_query ) {
+	if ( is_search() ){
+		global $wp_query;
+        $wp_query->set( 'post_type', array('page',  'programme') );
+        $wp_query->set( 'order', 'DESC' );
+        $wp_query->set( 'orderby',  'type' );
+	}
+}
+add_filter('pre_get_posts', 'remove_events_from_search' );
+
+
+
 ?>
