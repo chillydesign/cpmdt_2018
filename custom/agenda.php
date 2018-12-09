@@ -29,7 +29,7 @@
 
             'menu_position' => null,
             'menu_icon' => 'dashicons-calendar',
-            'supports' => array('title', 'editor')
+            'supports' => array('title', 'editor', 'thumbnail')
         );
         register_post_type('agenda',$args);
 

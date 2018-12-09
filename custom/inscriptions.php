@@ -782,6 +782,8 @@ function inscription_form_shortcode($atts , $content = null) {
                 }
 
 
+                // TODO SEND EMAILS FOR INSCRIPTION HERE
+
 
 
                wp_redirect( $referer . '?success' );

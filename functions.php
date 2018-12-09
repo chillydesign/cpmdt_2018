@@ -222,7 +222,11 @@ add_action( 'wp_enqueue_scripts', 'theme_styles' );
 
 /* Theme Supports*/
 add_theme_support( 'post-thumbnails' );
-
+add_image_size('large', 1600, '', true); // Large Thumbnail
+add_image_size('medium', 800, '', true); // Medium Thumbnail
+add_image_size('small', 400, '', true); // Small Thumbnail
+add_image_size('tiny', 30, 30, true); // Tiny Thumbnail // used for checking brightness
+add_image_size('square', 200, 200, true); // Custom Thumbnail Size call using
 
 
 /*Theme Javascript*/

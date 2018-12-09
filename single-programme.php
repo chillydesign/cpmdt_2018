@@ -50,9 +50,11 @@
                                 <h5>professeurs</h5>
                             </div>
                         </div>
-                        <?php
+
+
+                        <!-- <?php
                         $program_items = get_program_data($post->ID);
-                        foreach($program_items as $item){?>
+                        foreach($program_items as $item){ ?>
                             <div class="row no-margin body body-item">
                                 <div class="col-sm-6 col-xs-12 font-bold">
                                     <span><?php echo $item['location']; ?></span>
@@ -63,7 +65,7 @@
                             </div>
                         <?php
                         }
-                        ?>
+                        ?> -->
                     </div>
                 </div>
 
