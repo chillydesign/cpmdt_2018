@@ -1507,21 +1507,39 @@ input.radio_input, input.checkbox_input {
 
 
 .pagination {
-    height: 30px;
-    overflow: hidden;
-    width: 100%;
+    margin:30px 0;
+    padding: 0;
+    text-align: center;
+    text-transform: uppercase;
+
 }
-.newer_posts {
-    float:right;
-    width:50%;
+.pagination .page-numbers {
     display: inline-block;
-    text-align: right;
+    padding: 5px 11px;
+    margin: 0 3px;
+    border: 1px solid #f1f1f1;
 }
-.older_posts {
-    float:left;
-    width:50%;
+
+.pagination .page-numbers.current {
+
+    background: #e5007c;
+    color:white;
+}
+.pagination a {
     display: inline-block;
+    color: #222;
+    transition: all 0.3s;
 }
+.pagination a:hover {
+    background: #ddd;
+}
+
+
+
+
+
+
+
 
 .hide_on_mobile {
     display: none !important;

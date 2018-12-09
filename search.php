@@ -43,11 +43,11 @@
                 <?php endwhile; ?>
                     </div> <!-- END ROW -->
 
+                    <!-- pagination -->
                     <div class="pagination">
-                        <span class="older_posts"><?php previous_posts_link( 'Older posts' ); ?></span>
-                        <span class="newer_posts"><?php next_posts_link( 'Newer posts' ); ?></span>
+                    	<?php html5wp_pagination(); ?>
                     </div>
-
+                    <!-- /pagination -->
 
 
 
