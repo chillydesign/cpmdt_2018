@@ -52,6 +52,7 @@
 
 
 		// Adding the metabox
+        // TODO remove this at some point, been replaced by ACF
 		add_action("admin_init", "programs_admin_init");
 
 		function programs_admin_init(){
@@ -114,7 +115,7 @@
 			$p_teachers = maybe_unserialize(get_custom_field('p_teacher'));
 			$p_locations = maybe_unserialize(get_custom_field('p_location'));
 			 $ret = '<div style="overflow: hidden; width: 100%;">
-				 <select style="width:49%; float: left; min-height: 300px;" multiple name="p_teacher[]" id="">';
+				 <select disabled style="width:49%; float: left; min-height: 300px;" multiple name="p_teacher[]" id="">';
 				foreach($teachers as $teacher){
 					if(count($p_teachers) > 0 && in_array($teacher->ID, $p_teachers)){
 						$ret .= '<option value="'.$teacher->ID.'" selected>'.$teacher->post_title.'</option>';
@@ -123,7 +124,7 @@
 					}
 				}
 				$ret .= '</select>';
-			 $ret .= '<select style="width:49%; float: left; min-height: 300px;" multiple name="p_location[]" id="">';
+			 $ret .= '<select disabled style="width:49%; float: left; min-height: 300px;" multiple name="p_location[]" id="">';
 				 foreach($locations as $location){
 					if(count($p_locations) > 0 && in_array($location->ID, $p_locations)){
 						$ret .= '<option value="'.$location->ID.'" selected>'.$location->post_title.'</option>';

@@ -32,6 +32,16 @@
                         <?php $image =  ( has_post_thumbnail()) ?  thumbnail_of_post_url( $post_id, 'small' ) : ''; ?>
                         <a  href="<?php the_permalink(); ?>" class="search-item" style="background-image:url(<?php echo $image; ?>)" >
                             <h4><?php the_title(); ?></h4>
+
+                            <?php if ($post->post_type === 'agenda'): ?>
+                                <?php $a_date = get_field('a_date');  ?>
+                                <?php if ($a_date): ?>
+                                    <?php $nice_date = date( 'd \<\s\p\a\n\> M \<\/\s\p\a\n\>'  ,strtotime($a_date)); ?>
+                                    <span class="date_container">
+                                        <?php echo $nice_date; ?>
+                                    </span>
+                                <?php endif; ?>
+                            <?php endif;  // end if is event ?>
                         </a>
                     </div>
 
