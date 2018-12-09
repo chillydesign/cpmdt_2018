@@ -851,24 +851,29 @@ function inscription_form_shortcode($atts , $content = null) {
             <p>Ce rendez-vous nous permettra de faire connaissance avec l’enfant et lui donnera l’occasion de faire un essai.</p>
             <p>Vous recevrez, à ce moment-là, toutes les informations utiles ainsi que la confirmation finale de votre inscription.</p>
             <p>Avec nos remerciements pour la confiance que vous accordez au CPMDT, nous vous prions de recevoir nos meilleures salutations.</p>
-            <p>L\'administration du CPMDT </p> <hr />';
+            <p>L\'administration du CPMDT </p> ';
 
 
-            $paragraph_for_user .= '<table style="font-size:14px;line-height:135%;border-bottom:1px solid #000" cellspacing="0"><tbody>';
+            $paragraph_for_user .= '<table style="font-size:14px;line-height:135%;border-bottom:1px solid #000;margin: 30px 0 20px;" cellspacing="0"><tbody>';
 
 
             $fields = all_inscription_fields();
             $cssstyle = ' style="text-align:left;color:#555555;padding:7px 9px;vertical-align:top;border-top:1px solid #000"';
 
             foreach ($fields as $field => $translation) :
-
-                if (isset($data[$field])) :
-                    $value = $data[$field];
-                    if ($value != '') :
-                        $paragraph_for_user .= '<tr>
-                        <td '. $cssstyle .'>' .  $translation .'</td>
-                        <td '. $cssstyle .'>' . $value .' </td>
-                        </tr>';
+                if (  $field != 'musical_course_id' &&
+                $field != 'course_id' &&
+                $field != 'location_id' &&
+                $field != 'course_id_second_choice' &&
+                $field != 'musical_location_id' ):
+                    if (isset($data[$field])) :
+                        $value = $data[$field];
+                        if ($value != '') :
+                            $paragraph_for_user .= '<tr>
+                            <td '. $cssstyle .'>' .  $translation .'</td>
+                            <td '. $cssstyle .'>' . $value .' </td>
+                            </tr>';
+                        endif;
                     endif;
                 endif;
             endforeach;
