@@ -36,7 +36,13 @@
 			<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 
                 <div class="col-sm-4 col-xs-12">
-                    <img class="<?php echo $programSlug ?>" src="<? echo the_post_thumbnail_url('full'); ?>"/>
+                    <img class="<?php echo $programSlug ?>" src="<? echo the_post_thumbnail_url('medium'); ?>"/>
+
+
+                    <?php $times = get_field('times'); ?>
+
+                    <?php if ($times): ?>
+
 
                     <!-- Professors and Places -->
                     <div class="left-sidebar">
@@ -50,23 +56,27 @@
                                 <h5>professeurs</h5>
                             </div>
                         </div>
-
-
-                        <!-- <?php
-                        $program_items = get_program_data($post->ID);
-                        foreach($program_items as $item){ ?>
-                            <div class="row no-margin body body-item">
-                                <div class="col-sm-6 col-xs-12 font-bold">
-                                    <span><?php echo $item['location']; ?></span>
-                                </div>
-                                <div class="col-sm-6 col-xs-12">
-                                    <?php echo $item['teachers']; ?>
-                                </div>
+                        <?php foreach($times as $time): ?>
+                        <div class="row no-margin body body-item">
+                            <div class="col-sm-6 col-xs-12 font-bold">
+                                <?php if ($time['location']): ?>
+                                <span><a  style="color:inherit" href="<?php echo $time['location']->guid; ?>"><?php echo $time['location']->post_title; ?></a></span>
+                            <?php endif; ?>
                             </div>
-                        <?php
-                        }
-                        ?> -->
+                            <div class="col-sm-6 col-xs-12">
+                                <?php if($time['teachers']): ?>
+                                <?php foreach ($time['teachers'] as $teacher) :; ?>
+                                        <?php echo $teacher->post_title; ?>
+                                <?php endforeach; ?>
+                                <?php endif; ?>
+                            </div>
+                        </div>
+                    <?php endforeach; ?>
+
+
                     </div>
+
+                <?php endif;  // end of it have times ?>
                 </div>
 
                 <div class="col-sm-5 col-xs-12">
