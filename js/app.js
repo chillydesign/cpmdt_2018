@@ -31,6 +31,14 @@ $('.toggle-categories').click(function(event){
 
 
 
+$('.program-inner').matchHeight({
+     byRow: true
+});
+// $('.program-children').matchHeight({
+//      byRow: true
+// });
+
+
 
     function filterTeachers(){
         $('.teachers-filter a').click(function(event){
@@ -424,7 +432,7 @@ function displayCourses(courses, courses_container, compiled){
 
 
     courses_container.html(  compiled({ courses:   s_courses  })  );
-    $('.program').matchHeight();
+
 
     $('#back_to_top').on('click', function(e){
         e.preventDefault();

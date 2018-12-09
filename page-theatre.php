@@ -15,6 +15,7 @@
 	<div class="page-programs dance container">
         <div class="row">
 		<?php
+            $count = 0;
 			$args = array (
                 'post_type' => 'programme',
                 'post_status' => 'any',
@@ -36,7 +37,8 @@
 					$query->the_post();
 				?>
 
-                <div class="col-sm-4 col-xs-12 program">
+                <div class="col-sm-4 col-xs-12 ">
+                    <div class="program">
                     <div class="program-inner"
                     style="
                         background-image: url('<? echo the_post_thumbnail_url('full'); ?>');
@@ -71,12 +73,14 @@
                                 </ul>
                             </div>
                             <?php else:?>
-                                <a href="<?php the_permalink(); ?>"></a>
+                                <a class="fullsizelink" href="<?php the_permalink(); ?>"></a>
                             <?php
                             endif;
                         ?>
                     </div>
                 </div>
+            </div>
+            <?php $count++;  echo ($count % 3 == 0) ? '</div><!--END OF ROW --><div class="row">' : '';   ?>
 
 
 

@@ -1,10 +1,10 @@
 <?php
-    /* Template Name: Music page template */ 
+    /* Template Name: Music page template */
     get_header(); ?>
 
 	<!-- Search bar -->
-    <?php get_template_part('programme.search'); ?> 
-    
+    <?php get_template_part('programme.search'); ?>
+
 	<!-- Page title -->
     <div class="page-title background-music">
         <div class="container">
@@ -15,7 +15,8 @@
     <!-- Content container -->
 	<div class="page-programs dance container">
         <div class="row">
-		<?php 
+		<?php
+            $count = 0;
 			$args = array (
                 'post_type' => 'programme',
                 'post_status' => 'any',
@@ -38,23 +39,24 @@
 					$query->the_post();
 				?>
 
-                <div class="col-sm-4 col-xs-12 program">
-                    <div class="program-inner" 
+                <div class="col-sm-4 col-xs-12 ">
+                    <div class="program">
+                    <div class="program-inner"
                     style="
                         background-image: url('<? echo the_post_thumbnail_url('full'); ?>');
                         background-size: cover;
                         background-repeat: no-repeat;
                     ">
-                        
+
                         <h4> <?php the_title(); ?> </h4>
                         <!-- Children posts -->
-                        <?php 
+                        <?php
                             $childrenArgs = array(
                                 'post_parent' => get_the_id(),
                                 'post_type' => 'programme',
                                 'posts_per_page' => -1
-                                
-                            ); 
+
+                            );
                         ?>
                         <?php
                             $the_query = new WP_Query( $childrenArgs );
@@ -70,34 +72,36 @@
                                     }
                                 endwhile;
                             ?>
-                            <span class="before-music"></span>
+                            <!-- <span class="before-music"></span> -->
                             <div class="program-children music">
                                 <ul>
                                     <!-- <?php //var_dump($menu2); ?> -->
-                                <?php 
+                                <?php
                                     foreach ($menu as $data) {
                                         foreach ($data as $key => $value) {
                                             echo '<li><a href='.$key.'>'.$value.'</a></li>';
                                         }
-                                        
+
                                     }
                                     foreach ($menu2 as $data2) {
                                         foreach ($data2 as $key => $value) {
                                             echo '<li><a href='.$key.'>'.$value.'</a></li>';
                                         }
-                                        
+
                                     }
                                 ?>
-                            
+
                                 </ul>
                             </div>
-                            <?php else:?> 
-                                <a href="<?php the_permalink(); ?>"></a>
-                            <?php 
+                            <?php else:?>
+                                <a class="fullsizelink" href="<?php the_permalink(); ?>"></a>
+                            <?php
                             endif;
                         ?>
                     </div>
-                </div>				
+                </div>
+            </div>
+                <?php $count++;  echo ($count % 3 == 0) ? '</div><!--END OF ROW --><div class="row">' : '';   ?>
 
 				<?php } } else {
 				// display when no posts found
