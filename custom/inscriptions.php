@@ -543,6 +543,7 @@ function inscription_form_shortcode($atts , $content = null) {
     $rq_frm .= '<div class="inscription_field submit_group_button">
     <input type="submit" id="submit_inscription_form" value="Envoyer">
     <input type="hidden" name="action" value="inscription_form">
+    <input type="hidden" name="course_type" value="'. $course_type .'">
     <div id="stopsubmit"></div>
     </div>
     <br><br>
@@ -559,6 +560,25 @@ function inscription_form_shortcode($atts , $content = null) {
 
     }
 
+
+    function translate_course_type($type) {
+
+        if ($type == 'adults') {
+            return 'en course d\'adults';
+        } else if ($type == 'danse') {
+            return 'en cours de danse';
+        } else if ($type == 'theatre') {
+            return 'en course de theatre';
+        } else if ($type == '47musicale') {
+            return 'en course de 47musicale';
+        } else if ($type == 'instrumentchant') {
+            return 'en course d\'instrumentchant';
+        } else {
+            return 'en cours de danse';
+            // return $type;
+        };
+
+    }
 
 
     function all_inscription_fields(){
@@ -782,7 +802,8 @@ function inscription_form_shortcode($atts , $content = null) {
                 }
 
 
-                // TODO SEND EMAILS FOR INSCRIPTION HERE
+                // SEND EMAILS TO THE ADMIN AND THE PERSON WHO SUBMITTED
+                send_inscription_emails( $_POST );
 
 
 
@@ -802,6 +823,78 @@ function inscription_form_shortcode($atts , $content = null) {
 
 
     } // save_inscription_form
+
+
+
+
+
+
+        function send_inscription_emails($data){
+
+
+            $course_id = $data['course_id'];
+            $course = get_post( $course_id );
+            $course_title = $course->post_title;
+            $course_type = $data['course_type'];
+
+
+            $headers = 'From: Conservatoire populaire de musique, danse et théâtre <inscription@conservatoirepopualire.ch>' . "\r\n";
+            $headers .= 'Reply-To: Conservatoire populaire de musique, danse et théâtre <inscription@conservatoirepopualire.ch>' . "\r\n";
+            $emailheader = ''; // file_get_contents(dirname(__FILE__) . '/emails/email_header.php');
+            $emailfooter = ''; // file_get_contents(dirname(__FILE__) . '/emails/email_footer.php');
+            add_filter('wp_mail_content_type',create_function('', 'return "text/html"; '));
+
+
+            $paragraph_for_user = '<p>Madame, Monsieur,</p>
+            <p>Nous accusons réception de votre inscription ' . translate_course_type($course_type) .  '.</p>
+            <p></p>Après votre inscription, vous recevrez une convocation pour un test qui aura lieu fin août.</p>
+            <p>Ce rendez-vous nous permettra de faire connaissance avec l’enfant et lui donnera l’occasion de faire un essai.</p>
+            <p>Vous recevrez, à ce moment-là, toutes les informations utiles ainsi que la confirmation finale de votre inscription.</p>
+            <p>Avec nos remerciements pour la confiance que vous accordez au CPMDT, nous vous prions de recevoir nos meilleures salutations.</p>
+            <p>L\'administration du CPMDT </p> <hr />';
+
+
+            $paragraph_for_user .= '<table style="font-size:14px;line-height:135%;border-bottom:1px solid #000" cellspacing="0"><tbody>';
+
+
+            $fields = all_inscription_fields();
+            $cssstyle = ' style="text-align:left;color:#555555;padding:7px 9px;vertical-align:top;border-top:1px solid #000"';
+
+            foreach ($fields as $field => $translation) :
+
+                if (isset($data[$field])) :
+                    $value = $data[$field];
+                    if ($value != '') :
+                        $paragraph_for_user .= '<tr>
+                        <td '. $cssstyle .'>' .  $translation .'</td>
+                        <td '. $cssstyle .'>' . $value .' </td>
+                        </tr>';
+                    endif;
+                endif;
+            endforeach;
+
+
+            $paragraph_for_user .= '</tbody></table>';
+
+
+            $email_subject_for_user = 'Inscription';
+            $email_content_for_user = $emailheader . $paragraph_for_user .  $emailfooter;
+
+
+            wp_mail( $_POST['email'], $email_subject_for_user, $email_content_for_user, $headers );
+
+
+
+            remove_filter( 'wp_mail_content_type', 'wpdocs_set_html_mail_content_type' );
+
+
+
+        }
+
+
+
+
+
 
     function inscription_add_file_upload($file, $parent){
         $upload = wp_upload_bits($file['name'], null, file_get_contents( $file['tmp_name'] ) );
