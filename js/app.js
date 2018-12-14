@@ -128,7 +128,7 @@ if (typeof locations_for_map != 'undefined'){
     for (var  i = 0;  i < locations_for_map.length ;i++) {
         var location_for_map = locations_for_map[i];
         if (location_for_map != null) {
-            addPointToMap(location_map, location_for_map, location_bounds, location_infowindow, location_markers);
+            addPointToMap(location_map, location_for_map, location_bounds, location_infowindow, location_markers, true);
         }
 
     }
@@ -154,23 +154,27 @@ if (typeof single_location_for_map !== 'undefined') {
         var single_location_bounds = new google.maps.LatLngBounds();
         var single_location_infowindow = new google.maps.InfoWindow({content: '...'});
         var single_location_markers = [];
-        addPointToMap(single_map, single_location_for_map, single_location_bounds, single_location_infowindow, single_location_markers);
+        addPointToMap(single_map, single_location_for_map, single_location_bounds, single_location_infowindow, single_location_markers, false);
         single_map.setCenter( single_location_markers[0].position );
         single_map.setZoom(16);
 
 }
 
 
-function addPointToMap(map,  location, bounds, infowindow, markers ) {
+function addPointToMap(map,  location, bounds, infowindow, markers, custom_icon ) {
 	var latitude = location.lat;
 	var longitude = location.lng;
 
-	var customMarker = {
-		url: theme_directory + '/assets/marker.svg',
-		size: new google.maps.Size(30, 45),
-		origin: new google.maps.Point(0, 0),
-		anchor: new google.maps.Point(5, 22)
-	};
+    var customMarker = null;
+    if (custom_icon) {
+         customMarker = {
+            url: theme_directory + '/assets/marker.svg',
+            size: new google.maps.Size(30, 45),
+            origin: new google.maps.Point(0, 0),
+            anchor: new google.maps.Point(5, 22)
+        };
+    }
+
 
 
 

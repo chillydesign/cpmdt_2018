@@ -15,7 +15,7 @@
     <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
         <?php $location_id = get_the_ID(); ?>
 
-        <?php $centers = get_posts(array('post_type' => 'location' , 'posts_per_page' => -1)); ?>
+        <?php $centers = get_posts(array('order' => 'ASC',  'orderby'=>'title',  'post_type' => 'location' , 'posts_per_page' => -1)); ?>
 
 
         <!-- Locations information -->
@@ -27,7 +27,7 @@
                 <select name="locations" class="locations_dropdown">
                     <?php foreach ($centers as $center) : ?>
                         <?php $selected = ($center->ID == $location_id ) ? 'selected' : ''; ?>
-                        <option <?php echo $selected; ?> value="<?php echo $center->guid; ?>"><?php echo $center->post_title; ?></option>
+                        <option <?php echo $selected; ?> value="<?php echo  get_permalink( $center->ID ); ?>"><?php echo $center->post_title; ?></option>
                     <?php endforeach; ?>
                 </select>
 

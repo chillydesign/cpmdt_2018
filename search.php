@@ -72,6 +72,7 @@
                 'paged' => get_query_var( 'paged' ),
                 'orderby' => 'a_date',
                 'order'=> 'ASC',
+                's' => get_query_var('s'),
                 'meta_query' =>	array(
 
                     array(

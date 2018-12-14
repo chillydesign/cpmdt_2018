@@ -6,20 +6,29 @@ get_header(); ?>
         <h2> <?php the_title(); ?> </h2>
     </div>
 </div>
-
-<?php $centers = get_posts(array('post_type' => 'location' , 'posts_per_page' => -1)); ?>
+<?php $args = array(
+    'post_type' => 'location' ,
+    'orderby' => 'title',
+    'order' => 'ASC',
+    'posts_per_page' => -1
+); ?>
+<?php $centers = get_posts($args); ?>
 
 <div class="container">
-    <ul class="centers_container">
-        <?php foreach ($centers as $center): ?>
+    <div class="row">
 
-            <li class="single_center">
-                <a href="<?php echo $center->guid; ?>"><?php echo $center->post_title; ?></a>
-            </li>
 
-        <?php endforeach; ?>
-    </ul>
-</div>
+        <?php $c = 0; foreach ($centers as $center): ?>
+            <div class="col-sm-6 col-md-3">
+                <div class="single_center">
+                    <a href="<?php echo get_permalink( $center->ID ); ?>"><?php echo $center->post_title; ?></a>
+                </div>
+            </div>
+            <?php echo ($c % 4 == 3) ? '</div><!-- END OF ROW --><div class="row">' : ''; ?>
+
+            <?php $c++; endforeach; ?>
+        </div><!-- END OF ROW -->
+    </div>
 
 <!-- Scripts -->
 <?php get_footer(); ?>
