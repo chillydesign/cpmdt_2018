@@ -234,7 +234,7 @@ function theme_js() {
 	/*Main JS*/
 	wp_enqueue_script( 'bootstrap-js', get_template_directory_uri() . '/bower_components/bootstrap-sass/assets/javascripts/bootstrap.min.js', array('jquery'), '', true );
 	/*Main JS*/
-	wp_enqueue_script( 'matchheight', get_template_directory_uri() . '/js/matchHeight.min.js', array('jquery'), '', true );
+	// wp_enqueue_script( 'matchheight', get_template_directory_uri() . '/js/matchHeight.min.js', array('jquery'), '', true );
 	wp_enqueue_script( 'underscore', get_template_directory_uri() . '/js/underscore.min.js', array('jquery'), '', true );
 	wp_enqueue_script( 'app', get_template_directory_uri() . '/js/app.js', array('jquery'), '', true );
 }
@@ -649,5 +649,10 @@ function remove_events_from_search( $wp_query ) {
 add_filter('pre_get_posts', 'remove_events_from_search' );
 
 
+
+
+
+
+require get_template_directory() . '/custom/archivedposttype.php';
 
 ?>

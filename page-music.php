@@ -41,7 +41,7 @@
 
                 <div class="col-sm-4 col-xs-12 ">
                     <div class="program">
-                    <div class="program-inner"
+                    <div class="program-inner music"
                     style="
                         background-image: url('<? echo the_post_thumbnail_url('full'); ?>');
                         background-size: cover;
@@ -73,7 +73,7 @@
                                 endwhile;
                             ?>
                             <!-- <span class="before-music"></span> -->
-                            <div class="program-children music">
+                            <div class="program-children ">
                                 <ul>
                                     <!-- <?php //var_dump($menu2); ?> -->
                                 <?php
@@ -98,6 +98,7 @@
                             <?php
                             endif;
                         ?>
+                        <div class="program_overlay"></div>
                     </div>
                 </div>
             </div>

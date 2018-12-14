@@ -95,7 +95,8 @@
             </div> <!--END OF LOCATIONS CONTAINER -->
 
             <?php $courses = courses_from_location_id( $location_id ); ?>
-            <?php if ($courses): ?>
+
+            <?php if (sizeof($courses) > 0): ?>
                 <div class="locations-connections ">
                     <h4>Disciplines enseignées:</h4>
                     <?php foreach( $courses as $course ) : ?>
@@ -127,10 +128,39 @@
                             </div>
                         </div>
                     <?php endforeach; ?>
-
-
                 </div> <!-- END OF LOCATIONS CONNECTIONS -->
             <?php endif; // end if courses ?>
+
+        <?php $cours_complementaires = get_field('cours_complementaires'); ?>
+        <?php if (sizeof($cours_complementaires) > 0): ?>
+            <div class="locations-connections ">
+                <h4>Cours Complémentaires:</h4>
+                <?php foreach( $cours_complementaires as $course ) : ?>
+                    <div class="connection-row">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <a  target="_blank"  href="<?php echo $course['url']; ?>"><?php echo $course['name']; ?></a>
+                            </div>
+                            <div class="col-sm-6">
+                                <ul>
+                                    <?php $professeurs = $course['professeurs']; ?>
+                                    <?php if ($professeurs): ?>
+                                    <?php foreach ($professeurs as $prof): ?>
+
+                                            <li>
+                                                <?php echo $prof->post_title; ?>
+                                            </li>
+                                    <?php endforeach; ?>
+                                        <?php endif; ?>
+
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                <?php endforeach; ?>
+            </div> <!-- END OF LOCATIONS CONNECTIONS -->
+        <?php endif; // end if courses ?>
+
 
         </div>
 

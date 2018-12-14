@@ -31,9 +31,9 @@ $('.toggle-categories').click(function(event){
 
 
 
-$('.program-inner').matchHeight({
-     byRow: true
-});
+// $('.program-inner').matchHeight({
+//      byRow: true
+// });
 // $('.program-children').matchHeight({
 //      byRow: true
 // });

@@ -39,7 +39,7 @@
 
                 <div class="col-sm-4 col-xs-12 ">
                     <div class="program">
-                    <div class="program-inner"
+                    <div class="program-inner dance"
                     style="
                         background-image: url('<? echo the_post_thumbnail_url('full'); ?>');
                         background-size: cover;
@@ -63,7 +63,7 @@
                             if ( $the_query->have_posts() ) :
 
                             ?>
-                            <div class="program-children dance">
+                            <div class="program-children ">
                                 <ul>
                             <?php while ( $the_query->have_posts() ) : $the_query->the_post();
                             ?>
@@ -78,6 +78,7 @@
                             <?php
                             endif;
                         ?>
+                            <div class="program_overlay"></div>
                     </div>
                 </div>
                 </div>

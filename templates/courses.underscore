@@ -13,7 +13,7 @@
                     <h4><%= cours.post_title %></h4>
                     </a>
 
-
+    <div class="program_overlay"></div>
                 </div>
             </div>
             </div>
