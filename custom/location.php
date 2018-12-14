@@ -92,7 +92,9 @@
         }
         $courses = get_posts( array(
             'include' => $course_ids,
-            'post_type' => 'programme'
+            'post_type' => 'programme',
+            'order' => 'ASC',
+            'orderby' => 'title'
         ) );
 
         return $courses;
