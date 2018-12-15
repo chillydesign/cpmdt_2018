@@ -96,6 +96,218 @@ function inscription_form_shortcode($atts , $content = null) {
 
 
 
+
+        if ( in_array($course_type,  array('instrumentchant') ) ):
+            $rq_frm .=  '<h3> COURS D’INSTRUMENT / CHANT (choisir un cours) </h3>';
+        endif; // end if in array instrumentchant
+
+
+        $rq_frm .= '
+        <div class="inscription_field">
+        <label for="course_id">Choix du cours * </label>
+        <div class="field_content">
+        <select class="course_picker" id="course_id" name="course_id" data-field="location" >';
+        $rq_frm .= '<option value="0">Choisir un cours</option>';
+        foreach ($courses as $course) :
+            $selected =  '' ; // ($course->ID == $get_course_id  ) ? 'selected' : '';
+            $rq_frm .= '<option '. $selected .' value="'.  $course->ID  .'">'.  ($course->post_title)   .'</option>';
+        endforeach;
+        $rq_frm .= '</select>
+        </div>
+        </div>';
+
+        if ( in_array($course_type,  array('instrumentchant') ) ):
+            $rq_frm .=' <div class="inscription_field">
+            <label for="instrument_chant_remarks">Remarque</label>
+            <div class="field_content">
+            <textarea  name="instrument_chant_remarks" id="instrument_chant_remarks"></textarea>
+            <p class="meta">Pour la danse, spécifier le choix du jour.</p>
+            </div>
+            </div>';
+            $rq_frm .=' <div class="inscription_field">
+            <label for="prof_inst_chant">Professeur Instr. / chant  </label>
+            <div class="field_content">
+            <input type="text" name="prof_inst_chant" id="prof_inst_chant" />
+            </div>
+            </div>';
+
+        endif; // end if in array instrumentchant
+
+
+
+            $rq_frm .= '<div class="inscription_field">
+            <label for="location_id">Lieu </label>
+            <div class="field_content">
+            <select name="location_id" id="locations_container"></select>
+            <script id="locations_template" type="x-underscore">
+                <%  _.each(locations,function(location,key,list){  %>
+                <option value="<%= location.wid %>"><%= location.post_title %></option>
+                <% }) %>
+            </script>
+            </div>
+            </div>';
+
+
+        if ( in_array($course_type,  array('47musicale', 'instrumentchant') ) ):
+            $rq_frm .=' <div class="inscription_field">
+            <label for="other_place_possible"> Autre lieu possible *</label>
+            <div class="field_content">
+            <label><input type="radio" class="radio_input" name="other_place_possible" value="Oui" />Oui</label>
+            <label><input type="radio" class="radio_input" name="other_place_possible" value="Non" />Non</label>
+            <p class="meta">Etes-vous d\'accord de vous déplacer dans un centre plus éloigné?</p>
+            </div>
+            </div>';
+        endif;
+
+
+        if ( in_array($course_type,  array( 'instrumentchant') ) ):
+            $rq_frm .= '
+            <div class="inscription_field" >
+            <label for="course_id_second_choice">Second choix  </label>
+            <div class="field_content">
+            <select  id="course_id_second_choice" name="course_id_second_choice">';
+            $rq_frm .= '<option value="0">Choisir un cours</option>';
+            foreach ($courses as $course) :
+                $selected =  '' ; // ($course->ID == $get_course_id  ) ? 'selected' : '';
+                $rq_frm .= '<option '. $selected .' value="'.  $course->ID  .'">'.  ($course->post_title)   .'</option>';
+            endforeach;
+            $rq_frm .= '</select>
+            <p class="meta">Si pas de place disponible dans le choix principal.</p>
+            </div>
+            </div>';
+        endif;  // end if have second choice course id
+
+
+
+
+        if ( in_array($course_type,  array('adults') ) ):
+        $rq_frm .=
+        '<div class="inscription_field">
+        <label for="inscription_year">Inscription pour l\'année </label>
+        <div class="field_content">
+        <select id="inscription_year" name="inscription_year">
+        <option value="2018-2019">2018-2019</option>
+        </select>
+        </div>
+        </div>';
+
+
+        $rq_frm .=
+        '<div class="inscription_field">
+        <label for="formation_musicale">Formation musicale *</label>
+        <div class="field_content">
+        <select id="formation_musicale" name="formation_musicale">
+        <option value="débutant"  selected="selected">débutant</option>
+        <option value="à classer">à classer</option>
+        <option value="Actuellement en FM au CPMDT">Actuellement en FM au CPMDT</option>
+        <option value="Autre école (donc sera à classer)">Autre école (donc sera à classer)</option>
+        <option value="FM terminée (envoyer attestation)">FM terminée (envoyer attestation)</option>
+        <option value="danse ou théâtre = pas de FM" >danse ou théâtre = pas de FM</option>
+        </select>
+        <p class="meta">Cours obligatoire selon le plan d\'études</p>
+        </div>
+        </div>';
+
+        $rq_frm .=' <div class="inscription_field">
+        <label for="musical_level">Niveau musical </label>
+        <div class="field_content">
+        <input type="text" name="musical_level" id="musical_level"  />
+        </div>
+        </div>';
+
+
+        $rq_frm .=
+        '<div class="inscription_field">
+        <label for="choix_tarif">Choix du tarif *</label>
+        <div class="field_content">
+        <select id="choix_tarif" name="choix_tarif">
+        <option value="Cours de 50 minutes toutes les 2 semaines / 1970.-"  selected="selected">Cours de 50 minutes toutes les 2 semaines / 1970.-</option>
+        <option value="Cours hebdomadaire de 30 minutes / 2360.-" >Cours hebdomadaire de 30 minutes / 2360.-</option>
+        <option value="Cours hebdomadaire de 40 minutes / 3150.-" >Cours hebdomadaire de 40 minutes / 3150.-</option>
+        <option value="Cours hebdomadaire de 50 minutes / 3940.-" >Cours hebdomadaire de 50 minutes / 3940.-</option>
+        <option value="Abonnement de 10 leçons individuelles de 40 minutes / 880.-" >Abonnement de 10 leçons individuelles de 40 minutes / 880.-</option>
+        <option value="Abonnement de 10 leçons individuelles de 50 minutes / 1100.-" >Abonnement de 10 leçons individuelles de 50 minutes / 1100.-</option>
+        <option value="Cours collectif, prix selon brochure" >Cours collectif, prix selon brochure</option>
+        </select>
+        <p class="meta"> Instrument / chant. Pour les abonnements l’écolage est payable d’avance en une fois à la réception du CPMDT. </p>
+        </div>
+        </div>';
+
+
+
+        $rq_frm .=' <div class="inscription_field">
+
+        <label for="choix_tarif_collectif">Choix du tarif – cours collectif </label>
+        <div class="field_content">
+        <input type="text" name="choix_tarif_collectif" id="choix_tarif_collectif" value="Prix selon brochure" readonly="readonly" disabled />
+        </div>
+        </div>';
+
+        endif; // end if course type adults
+
+
+        if ( in_array($course_type,  array('instrumentchant') ) ):
+            $rq_frm .=  '<hr />';
+            $rq_frm .=  '<h3> COURS DE FORMATION MUSICALE </h3>';
+
+            $rq_frm .= '
+            <div class="inscription_field">
+            <label for="musical_course_id">Formation musicale * </label>
+            <div class="field_content">
+            <select class="course_picker" id="musical_course_id" name="musical_course_id" data-field="musical_location">';
+            $rq_frm .= '<option value="0">Choisir un cours</option>';
+            foreach ($courses as $course) :
+                $selected =  '' ; // ($course->ID == $get_course_id  ) ? 'selected' : '';
+                $rq_frm .= '<option '. $selected .' value="'.  $course->ID  .'">'.  ($course->post_title)   .'</option>';
+            endforeach;
+            $rq_frm .= '</select>
+            </div>
+            </div>';
+            $rq_frm .=' <div class="inscription_field">
+            <label for="musical_remarks">Remarque</label>
+            <div class="field_content">
+            <textarea  name="musical_remarks" id="musical_remarks"></textarea>
+            </div>
+            </div>';
+            $rq_frm .=' <div class="inscription_field">
+            <label for="prof_musical">Professeur FM</label>
+            <div class="field_content">
+            <input type="text" name="prof_musical" id="prof_musical" />
+            </div>
+            </div>';
+
+            $rq_frm .= '<div class="inscription_field">
+            <label for="musical_location_id">Lieu </label>
+            <div class="field_content">
+            <select name="musical_location_id" id="musical_locations_container"></select>
+            <script id="musical_locations_template" type="x-underscore">
+                <%  _.each(locations,function(location,key,list){  %>
+                <option value="<%= location.wid %>"><%= location.post_title %></option>
+                <% }) %>
+            </script>
+            <p class="meta">Si le cours n’est pas disponible dans le lieu choisi, le centre le plus proche vous sera affecté.</p>
+            </div>
+            </div>';
+
+            $rq_frm .=' <div class="inscription_field">
+            <label for="musical_other_place_possible"> Autre lieu possible *</label>
+            <div class="field_content">
+            <label><input type="radio" class="radio_input" name="musical_other_place_possible" value="Oui" />Oui</label>
+            <label><input type="radio" class="radio_input" name="musical_other_place_possible" value="Non" />Non</label>
+            <p class="meta">Etes-vous d\'accord de vous déplacer dans un centre plus éloigné?</p>
+            </div>
+            </div>';
+
+        endif; // end if in array instrumentchant
+
+
+
+
+        $rq_frm .= '<hr/>';
+
+
+
+
     if ( in_array($course_type,  array('adults') ) ):
         $rq_frm .=
         '<div class="inscription_field">
@@ -164,7 +376,7 @@ function inscription_form_shortcode($atts , $content = null) {
 
     if ( in_array($course_type,  array('danse', 'theatre', '47musicale', 'instrumentchant') ) ):
         $rq_frm .=  '<hr />';
-        $rq_frm .=  '<h3> REPRÉSENTANT LÉGAL / RÉPONDANT </h3>';
+        $rq_frm .=  '<h3> REPRÉSENTANT LÉGAL / RÉPONDANT </h3> <br />';
         $rq_frm .=
         '<div class="inscription_field">
         <label for="title_guardian">Titre</label>
@@ -261,213 +473,6 @@ function inscription_form_shortcode($atts , $content = null) {
 
 
 
-    if ( in_array($course_type,  array('instrumentchant') ) ):
-        $rq_frm .=  '<h3> COURS D’INSTRUMENT / CHANT (choisir un cours) </h3>';
-    endif; // end if in array instrumentchant
-
-
-    $rq_frm .= '
-    <div class="inscription_field">
-    <label for="course_id">Choix du cours * </label>
-    <div class="field_content">
-    <select class="course_picker" id="course_id" name="course_id" data-field="location" >';
-    $rq_frm .= '<option value="0">Choisir un cours</option>';
-    foreach ($courses as $course) :
-        $selected =  '' ; // ($course->ID == $get_course_id  ) ? 'selected' : '';
-        $rq_frm .= '<option '. $selected .' value="'.  $course->ID  .'">'.  ($course->post_title)   .'</option>';
-    endforeach;
-    $rq_frm .= '</select>
-    </div>
-    </div>';
-
-    if ( in_array($course_type,  array('instrumentchant') ) ):
-        $rq_frm .=' <div class="inscription_field">
-        <label for="instrument_chant_remarks">Remarque</label>
-        <div class="field_content">
-        <textarea  name="instrument_chant_remarks" id="instrument_chant_remarks"></textarea>
-        <p class="meta">Pour la danse, spécifier le choix du jour.</p>
-        </div>
-        </div>';
-        $rq_frm .=' <div class="inscription_field">
-        <label for="prof_inst_chant">Professeur Instr. / chant  </label>
-        <div class="field_content">
-        <input type="text" name="prof_inst_chant" id="prof_inst_chant" />
-        </div>
-        </div>';
-
-    endif; // end if in array instrumentchant
-
-
-
-        $rq_frm .= '<div class="inscription_field">
-        <label for="location_id">Lieu </label>
-        <div class="field_content">
-        <select name="location_id" id="locations_container"></select>
-        <script id="locations_template" type="x-underscore">
-            <%  _.each(locations,function(location,key,list){  %>
-            <option value="<%= location.wid %>"><%= location.post_title %></option>
-            <% }) %>
-        </script>
-        </div>
-        </div>';
-
-
-    if ( in_array($course_type,  array('47musicale', 'instrumentchant') ) ):
-        $rq_frm .=' <div class="inscription_field">
-        <label for="other_place_possible"> Autre lieu possible *</label>
-        <div class="field_content">
-        <label><input type="radio" class="radio_input" name="other_place_possible" value="Oui" />Oui</label>
-        <label><input type="radio" class="radio_input" name="other_place_possible" value="Non" />Non</label>
-        <p class="meta">Etes-vous d\'accord de vous déplacer dans un centre plus éloigné?</p>
-        </div>
-        </div>';
-    endif;
-
-
-    if ( in_array($course_type,  array( 'instrumentchant') ) ):
-        $rq_frm .= '
-        <div class="inscription_field" >
-        <label for="course_id_second_choice">Second choix  </label>
-        <div class="field_content">
-        <select  id="course_id_second_choice" name="course_id_second_choice">';
-        $rq_frm .= '<option value="0">Choisir un cours</option>';
-        foreach ($courses as $course) :
-            $selected =  '' ; // ($course->ID == $get_course_id  ) ? 'selected' : '';
-            $rq_frm .= '<option '. $selected .' value="'.  $course->ID  .'">'.  ($course->post_title)   .'</option>';
-        endforeach;
-        $rq_frm .= '</select>
-        <p class="meta">Si pas de place disponible dans le choix principal.</p>
-        </div>
-        </div>';
-    endif;  // end if have second choice course id
-
-
-
-
-    if ( in_array($course_type,  array('adults') ) ):
-    $rq_frm .=
-    '<div class="inscription_field">
-    <label for="inscription_year">Inscription pour l\'année </label>
-    <div class="field_content">
-    <select id="inscription_year" name="inscription_year">
-    <option value="2018-2019">2018-2019</option>
-    </select>
-    </div>
-    </div>';
-
-
-    $rq_frm .=
-    '<div class="inscription_field">
-    <label for="formation_musicale">Formation musicale *</label>
-    <div class="field_content">
-    <select id="formation_musicale" name="formation_musicale">
-    <option value="débutant"  selected="selected">débutant</option>
-    <option value="à classer">à classer</option>
-    <option value="Actuellement en FM au CPMDT">Actuellement en FM au CPMDT</option>
-    <option value="Autre école (donc sera à classer)">Autre école (donc sera à classer)</option>
-    <option value="FM terminée (envoyer attestation)">FM terminée (envoyer attestation)</option>
-    <option value="danse ou théâtre = pas de FM" >danse ou théâtre = pas de FM</option>
-    </select>
-    <p class="meta">Cours obligatoire selon le plan d\'études</p>
-    </div>
-    </div>';
-
-    $rq_frm .=' <div class="inscription_field">
-    <label for="musical_level">Niveau musical </label>
-    <div class="field_content">
-    <input type="text" name="musical_level" id="musical_level"  />
-    </div>
-    </div>';
-
-
-    $rq_frm .=
-    '<div class="inscription_field">
-    <label for="choix_tarif">Choix du tarif *</label>
-    <div class="field_content">
-    <select id="choix_tarif" name="choix_tarif">
-    <option value="Cours de 50 minutes toutes les 2 semaines / 1970.-"  selected="selected">Cours de 50 minutes toutes les 2 semaines / 1970.-</option>
-    <option value="Cours hebdomadaire de 30 minutes / 2360.-" >Cours hebdomadaire de 30 minutes / 2360.-</option>
-    <option value="Cours hebdomadaire de 40 minutes / 3150.-" >Cours hebdomadaire de 40 minutes / 3150.-</option>
-    <option value="Cours hebdomadaire de 50 minutes / 3940.-" >Cours hebdomadaire de 50 minutes / 3940.-</option>
-    <option value="Abonnement de 10 leçons individuelles de 40 minutes / 880.-" >Abonnement de 10 leçons individuelles de 40 minutes / 880.-</option>
-    <option value="Abonnement de 10 leçons individuelles de 50 minutes / 1100.-" >Abonnement de 10 leçons individuelles de 50 minutes / 1100.-</option>
-    <option value="Cours collectif, prix selon brochure" >Cours collectif, prix selon brochure</option>
-    </select>
-    <p class="meta"> Instrument / chant. Pour les abonnements l’écolage est payable d’avance en une fois à la réception du CPMDT. </p>
-    </div>
-    </div>';
-
-
-
-    $rq_frm .=' <div class="inscription_field">
-
-    <label for="choix_tarif_collectif">Choix du tarif – cours collectif </label>
-    <div class="field_content">
-    <input type="text" name="choix_tarif_collectif" id="choix_tarif_collectif" value="Prix selon brochure" readonly="readonly" disabled />
-    </div>
-    </div>';
-
-    endif; // end if course type adults
-
-
-    if ( in_array($course_type,  array('instrumentchant') ) ):
-        $rq_frm .=  '<hr />';
-        $rq_frm .=  '<h3> COURS DE FORMATION MUSICALE </h3>';
-
-        $rq_frm .= '
-        <div class="inscription_field">
-        <label for="musical_course_id">Formation musicale * </label>
-        <div class="field_content">
-        <select class="course_picker" id="musical_course_id" name="musical_course_id" data-field="musical_location">';
-        $rq_frm .= '<option value="0">Choisir un cours</option>';
-        foreach ($courses as $course) :
-            $selected =  '' ; // ($course->ID == $get_course_id  ) ? 'selected' : '';
-            $rq_frm .= '<option '. $selected .' value="'.  $course->ID  .'">'.  ($course->post_title)   .'</option>';
-        endforeach;
-        $rq_frm .= '</select>
-        </div>
-        </div>';
-        $rq_frm .=' <div class="inscription_field">
-        <label for="musical_remarks">Remarque</label>
-        <div class="field_content">
-        <textarea  name="musical_remarks" id="musical_remarks"></textarea>
-        </div>
-        </div>';
-        $rq_frm .=' <div class="inscription_field">
-        <label for="prof_musical">Professeur FM</label>
-        <div class="field_content">
-        <input type="text" name="prof_musical" id="prof_musical" />
-        </div>
-        </div>';
-
-        $rq_frm .= '<div class="inscription_field">
-        <label for="musical_location_id">Lieu </label>
-        <div class="field_content">
-        <select name="musical_location_id" id="musical_locations_container"></select>
-        <script id="musical_locations_template" type="x-underscore">
-            <%  _.each(locations,function(location,key,list){  %>
-            <option value="<%= location.wid %>"><%= location.post_title %></option>
-            <% }) %>
-        </script>
-        <p class="meta">Si le cours n’est pas disponible dans le lieu choisi, le centre le plus proche vous sera affecté.</p>
-        </div>
-        </div>';
-
-        $rq_frm .=' <div class="inscription_field">
-        <label for="musical_other_place_possible"> Autre lieu possible *</label>
-        <div class="field_content">
-        <label><input type="radio" class="radio_input" name="musical_other_place_possible" value="Oui" />Oui</label>
-        <label><input type="radio" class="radio_input" name="musical_other_place_possible" value="Non" />Non</label>
-        <p class="meta">Etes-vous d\'accord de vous déplacer dans un centre plus éloigné?</p>
-        </div>
-        </div>';
-
-    endif; // end if in array instrumentchant
-
-
-
-
-    $rq_frm .= '<hr/>';
 
     // $rq_frm .=' <div class="inscription_field">
     // <label for="hypothetical_file">Hypothetical file upload </label>

@@ -1,32 +1,41 @@
 	<?php get_header(); ?>
-	
+
 	<!-- Slider Container -->
 	<div class="front-slider">
-		<?php echo do_shortcode('[rev_slider alias="homepage"]'); ?>
+		<?php // echo do_shortcode('[rev_slider alias="homepage"]'); ?>
+        <?php get_template_part('frontpageslider'); ?>
 
-		<!-- Search bar -->
-		<?php get_template_part('programme.search'); ?> 
-		
+        <!-- Search bar -->
+		<?php get_template_part('programme.search'); ?>
+
 	</div>
-	
+
 	<!-- News section -->
 	<div class="front-posts">
 		<div class="container">
 
 			<h1>ACTUALITÉS</h1>
 
-			<div class="row" style="margin-top: 60px">
-			<?php 
+			<div  style="margin-top: 60px">
+			<?php
 				$args = array (
 					'nopaging'               => false,
-					'posts_per_page'         => '4'
+					'posts_per_page'         => '8',
+                    'meta_query' => array(
+                    		array(
+                    			'key'     => 'in_slider',
+                    			'value'   => 1,
+                                'type'    => 'numeric',
+                    			'compare' => '=',
+                    		),
+                    	),
 				);
 
 				$query = new WP_Query( $args );
 
-				if ( $query->have_posts() ) {
-					$i = 1;
-					while ( $query->have_posts() ) {
+				if ( $query->have_posts() ) : ?>
+                    <div class="news_slider">
+					<?php while ( $query->have_posts() ) :
 						$query->the_post();
 
 						$category = get_the_category();
@@ -34,8 +43,8 @@
 						$categorySlug = $category[0]->slug;
 					?>
 
-						<div class="col-sm-6 col-xs-12 item">
-							<?php 
+						<div class=" item">
+							<?php
 								$categories = get_categories();
 									foreach ($categories as $cat) {
 									$category_link = get_category_link($cat->cat_ID);
@@ -56,16 +65,9 @@
 								<a class="button button-default" href="<?php the_permalink(); ?>"> en savoir plus</a>
 							</div>
 						</div>
-						<?php
-						if($i%2==0){
-							echo '</div><!--/.row in loop--><div class="row" style="margin-top: 60px">';
-						}
-						$i++;
-					}
-				} else {
-					// display when no posts found
-				}
-			?>
+						<?php endwhile; ?>
+                     </div> <!-- END OF news_slider-- >
+				<?php  endif; ?>
 			</div>
 		</div>
 	</div>
@@ -79,8 +81,8 @@
 
 		<ul class="agenda-categories text-center">
 			<!-- Exclude "Archives" or whatever category on the 'exclude' -->
-			<?php $wcatTerms = get_terms('agenda-category', array('hide_empty' => 0, 'parent' =>0, 'exclude' => '23')); 
-			foreach($wcatTerms as $wcatTerm) : 
+			<?php $wcatTerms = get_terms('agenda-category', array('hide_empty' => 0, 'parent' =>0, 'exclude' => '23'));
+			foreach($wcatTerms as $wcatTerm) :
 			?>
 				<li>
 					<a class="button button-default" href="<?php echo get_term_link( $wcatTerm->slug, $wcatTerm->taxonomy ); ?>"><?php echo $wcatTerm->name; ?></a>
@@ -89,7 +91,7 @@
 		</ul>
 
 
-		<?php 
+		<?php
 			$args = array (
 				'post_type' => 'agenda',
 				'posts_per_page' => '3',
@@ -104,16 +106,16 @@
         		'orderby' => 'meta_value', //if the meta_key (population) is numeric use meta_value_num instead
         		'order' => 'ASC' //setting order direction
 			);
-			
+
 			$query = new WP_Query( $args );
-			
+
 			if ( $query->have_posts() ) {
 				while ( $query->have_posts() ) {
 					$query->the_post();
 					$address = get_address($post->ID);
 				?>
 
-								
+
 				<?php // Get terms for "Program" Taxonomy
 				$programs = get_the_terms( $post->ID , 'agenda-program' );
 				// Loop over each item since it's an array
@@ -125,7 +127,7 @@
 
 					// Get rid of the other data stored in the object, since it's not needed
 					unset($program);
-				} } ?>		
+				} } ?>
 
 				<?php // Get terms for "Type" Taxonomy
 				$types = get_the_terms( $post->ID , 'agenda-type' );
@@ -148,10 +150,10 @@
 								<b style="text-transform: capitalize;"> <?php echo utf8_encode(strftime("%A %d %B %Y", strtotime( $dd ) )); ?> </b>
 							</div>
 							<div class="col-sm-1 col-xs-12 agenda-item-column">
-								<?php echo get_custom_field('a_time') ?> 
+								<?php echo get_custom_field('a_time') ?>
 							</div>
 							<div class="col-sm-2 col-xs-12 agenda-item-column">
-								<?php echo $address['short_address']; ?> 
+								<?php echo $address['short_address']; ?>
 							</div>
 							<div class="col-sm-7 col-xs-12 agenda-information agenda-item-column">
 								<h5><b> <?php echo $programName ?></b> //
@@ -159,17 +161,17 @@
 
 								<h4> <?php the_title(); ?> </h4>
 								<?php the_excerpt(); ?>
-								
+
 								<div class="buttons">
 									<div class="share-buttons pull-left hidden">
 										<small>JE PARTAGE</small>
 											<a target="_blank" href="http://www.facebook.com/sharer.php?u=<?php the_permalink() ?>">
-												<i class="fa fa-facebook"></i> 
+												<i class="fa fa-facebook"></i>
 											</a>
 
 
-											<!-- <a target="_blank" href="http://twitter.com/home/?status=<?php the_permalink() ?>"> 
-												<i class="fa fa-twitter"></i> 
+											<!-- <a target="_blank" href="http://twitter.com/home/?status=<?php the_permalink() ?>">
+												<i class="fa fa-twitter"></i>
 											</a> -->
 
 									</div>
@@ -178,16 +180,16 @@
 							</div>
 						</div>
 					</div>
-				</div>	
-				
-				
+				</div>
+
+
 
 				<?php } } else {
 				// display when no posts found
 			}
 		?>
 		<div class="text-center discover-more">
-			<a class="button button-default" href="/agenda">découvrir tout l’agenda</a>
+			<a class="button button-default" href="<?php echo get_site_url(); ?>/agenda">découvrir tout l’agenda</a>
 		</div>
 	</div>
 
@@ -196,7 +198,7 @@
 		<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 
 			<?php the_content(); ?>
-			
+
 		<?php endwhile; else: ?>
 
 			<h1>No posts found!</h1>

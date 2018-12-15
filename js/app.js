@@ -5,6 +5,21 @@
 		'use strict';
 
 
+      $('.frontpage_slider').bxSlider({
+          'pager': false,
+          'controls': false,
+          'auto': true
+      });
+
+
+      $('.news_slider').bxSlider({
+          'pager': true,
+          'controls': false,
+          'minSlides': 2,
+          'maxSlides': 2,
+          'moveSlides': 1,
+      });
+
 
 $('.teacher-toggle').click(function(event){
     event.preventDefault();

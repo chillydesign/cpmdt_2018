@@ -42,8 +42,9 @@
                         <ul>
                             <li style="text-transform: capitalize;">
                                 <!-- <?php  //get_custom_field('a_date'); ?> -->
-                                <?php  $dd = date('Y-m-d', strtotime(get_custom_field('a_date'))); ?>
-                                <?php echo utf8_encode(strftime("%A %d %B %Y", strtotime( $dd ) )); ?>
+                                <?php $a_date = strtotime(get_custom_field('a_date')); ?>
+                                <?php $dd = date('Y-m-d', $a_date); ?>
+                                <?php echo strftime("%A %d %B %Y", $a_date );   // utf8_encode()  ?>
                             </li>
                             <li>
                                 <?php echo get_custom_field('a_time');; ?>
@@ -78,8 +79,14 @@
                                     $count_persons = count_people_at_event(  $agenda_id  );
                                     $places_allowed = intval(get_field("a_amount"));
                                     $places_left = $places_allowed - $count_persons;
+
+                                    $event_in_future = ($a_date >  strtotime(date('Y-m-d')));
+
+
+
                                     ?>
-                                <?php if (get_custom_field('is_required') == "YES"){?>
+                                <?php if ( $event_in_future) : ?>
+                                <?php if (get_custom_field('is_required') == "YES"): ?>
                                     <div class="row text-uppercase">
                                         <div class="col-sm-6 col-xs-12"><h3>je m’inscris à cet événement</h3></div>
                                         <div class="col-sm-6 col-xs-12"><b class="pull-right">
@@ -94,12 +101,13 @@
                                     </div>
                                     <br>
                                         <?php
-                                        if($places_left > 0){
+                                        if($places_left > 0 ){
                                             get_template_part('booking-form');
                                         //    echo do_shortcode('[formidable id=10]');
                                         }
                                         ?> </div>
-                                <?php } ?>
+                                <?php endif; # if is_required == yes ?>
+                            <?php endif; # if event is in the future ?>
 
                             </div>
                         </div>
