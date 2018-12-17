@@ -475,6 +475,12 @@ function processCourses(courses, search, category, location, ages){
 
 
 
+    // DONT SHOW COURSE PARENTS
+    var courses = _.reject(courses, function(c) {
+        return c.post_parent == 0;
+    });
+
+
     if (search && search != '' ){
         var search_array = _.reject( removeDiacritics(search.toLowerCase()  ).split(' ') , function(t) { return t == '' })  ;
         var courses = _.filter(  courses ,  function(c) {
