@@ -336,6 +336,11 @@ function addPointToMap(map,  location, bounds, infowindow, markers, custom_icon 
     }
 
 
+    $('.search_check').on('click', function(e){
+         displayCourses(null,null,null);
+    });
+
+
 
 if (typeof search_url != 'undefined' ) {
 
@@ -449,8 +454,10 @@ function displayCourses(courses, courses_container, compiled){
         $course_size.html('' ); //  s_courses.length + ' courses found'
     }
 
+    if (courses_container) { // required for homepage not having courses_container
+        courses_container.html(  compiled({ courses:   s_courses  })  );
+    }
 
-    courses_container.html(  compiled({ courses:   s_courses  })  );
 
 
     $('#back_to_top').on('click', function(e){

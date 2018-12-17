@@ -928,4 +928,46 @@ function inscription_form_shortcode($atts , $content = null) {
     }
 
 
+
+
+
+    function fws_admin_posts_filter( $query ) {
+        global $pagenow;
+        if ( is_admin() && $pagenow == 'edit.php' && !empty($_GET['page_parent'])) {
+            $query->set( 'post_parent', intval($_GET['page_parent']));
+
+            // BUG WHERE IF ?s is present but no value, no posts show. BELOW DOESNT WORK!
+            // if ( empty( $_GET['s'] ) ) {
+            //         $query->set( 'search', 'e');
+            //         $query->set( 's', 'e');
+            // }
+
+        }
+    }
+    add_filter( 'parse_query', 'fws_admin_posts_filter' );
+
+    function admin_page_filter_parentpages() {
+        global $wpdb;
+        if (isset($_GET['post_type']) && $_GET['post_type'] == 'booking') {
+            $sql = "SELECT ID, post_title FROM ".$wpdb->posts." WHERE post_type = 'agenda' AND post_parent = 0 AND post_status = 'publish' ORDER BY post_title";
+            $parent_pages = $wpdb->get_results($sql, OBJECT_K);
+            $select = '
+            <select name="page_parent">
+            <option value="">Parent Pages</option>';
+            $current = isset($_GET['page_parent']) ? $_GET['page_parent'] : '';
+            foreach ($parent_pages as $page) {
+                $select .= sprintf('
+                <option value="%s"%s>%s</option>', $page->ID, $page->ID == $current ? ' selected="selected"' : '', $page->post_title);
+            }
+            $select .= '</select>';
+            echo $select;
+        } else {
+            return;
+        }
+    }
+    add_action( 'restrict_manage_posts', 'admin_page_filter_parentpages' );
+
+
+
+
     ?>

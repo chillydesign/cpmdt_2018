@@ -273,7 +273,7 @@
 
         //Filter on dashboard for agenda
 
-        add_action( 'restrict_manage_posts', 'filter_events_by_taxonomies' , 10, 2);
+    //    add_action( 'restrict_manage_posts', 'filter_events_by_taxonomies' , 10, 2);
 
         function filter_events_by_taxonomies( $post_type, $which ) {
         // Apply this only on a specific post type
@@ -312,7 +312,7 @@
     }
 
     //
-    add_action( 'pre_get_posts', 'wpse_189824_date_meta_query' );
+    // add_action( 'pre_get_posts', 'wpse_189824_date_meta_query' );
     function wpse_189824_date_meta_query( $wp_query ) {
         global $pagenow;
         if ( is_admin() && $wp_query->get( 'post_type' ) === 'agenda' && 'edit.php' == $pagenow && isset( $_GET['a_date'] )) {

@@ -62,7 +62,7 @@
 
 
 
-            <a href="#" id="reset_course_form">réinitialiser</a>
+            <!-- <a href="#" id="reset_course_form">réinitialiser</a> -->
 
 
         </div>

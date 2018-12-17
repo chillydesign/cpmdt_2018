@@ -66,7 +66,7 @@
 							</div>
 						</div>
 						<?php endwhile; ?>
-                     </div> <!-- END OF news_slider-- >
+                     </div> <!-- END OF news_slider -->
 				<?php  endif; ?>
 			</div>
 		</div>
