@@ -51,7 +51,7 @@
 								}
 							?>
 							<div class="item-thumbnail">
-								<img src="<?php  echo the_post_thumbnail_url('full'); ?>"/>
+								<img src="<?php  echo the_post_thumbnail_url('medium'); ?>"/>
 							</div>
 							<div class="item-date">
 								<h5><?php echo get_the_date( '<b>d</b> F' ); ?></h5>

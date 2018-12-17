@@ -432,7 +432,18 @@ width: 18%;
 
 
 .frontpage_slider {
-    height: 500px;
+    height: 700px;
+}
+
+.frontpage_slider h3 {
+    color: white;
+    text-transform: uppercase;
+    font-size: 55px;
+    line-height: 70px;
+    font-weight: 200;
+    padding: 30px 50px;
+    text-shadow:0 2px 20px rgba(0,0,0,0.5);
+    max-width: 600px;
 }
 
 
@@ -908,7 +919,7 @@ width: 18%;
   }
 
   .program-inner.music .program_overlay {
-       background-color: rgba(255, 153, 61, 0.9); 
+       background-color: rgba(255, 153, 61, 0.9);
   }
   .program-inner.theatre .program_overlay {
       background-color: rgba(0, 158, 227, 0.9);
