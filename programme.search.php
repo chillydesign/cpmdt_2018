@@ -8,7 +8,7 @@
                 </div>
                 <div class="col-sm-3">
                     <a href="#" data-box="#age_box"  class="search_button" id="age_button">
-                        <div class="search_heading">Age</div>
+                        <div class="search_heading">Âge</div>
                         <span id="age_summary" class="search_summary" data-default="Tous les âges">Tous les âges</span>
 
                         <div id="age_box" class="search_box">
