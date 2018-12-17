@@ -641,8 +641,22 @@ function inscription_form_shortcode($atts , $content = null) {
                 'post_type'  => 'programme',
                 'order'=> 'ASC',
                 'orderby' => 'title',
-                'posts_per_page' => 3,
+                'posts_per_page' => -1,
                 'post_status' => 'published',
+                'meta_query' => array(
+                    'relation' => 'OR',
+                    array(
+                        'key' => 'external_signup',
+                        'value' => '0',
+                        'compare' => '=',
+                        'type' => 'NUMERIC'
+                    ),
+                    array(
+                        'key' => 'external_signup',
+                        'value' => '0',
+                        'compare' => 'NOT EXISTS',
+                    )
+                ),
 
             )
         );
@@ -658,6 +672,20 @@ function inscription_form_shortcode($atts , $content = null) {
                 'orderby' => 'title',
                 'posts_per_page' => -1,
                 'post_status' => 'published',
+                'meta_query' => array(
+                    'relation' => 'OR',
+                    array(
+                        'key' => 'external_signup',
+                        'value' => '0',
+                        'compare' => '=',
+                        'type' => 'NUMERIC'
+                    ),
+                    array(
+                        'key' => 'external_signup',
+                        'value' => '0',
+                        'compare' => 'NOT EXISTS',
+                    )
+                ),
                 'tax_query' => array(
                     array(
                         'taxonomy' => 'programmes',
@@ -679,7 +707,21 @@ function inscription_form_shortcode($atts , $content = null) {
                 'order'=> 'ASC',
                 'orderby' => 'title',
                 'posts_per_page' => -1,
-                'post_status' => 'published'
+                'post_status' => 'published',
+                'meta_query' => array(
+                    'relation' => 'OR',
+                    array(
+                        'key' => 'external_signup',
+                        'value' => '0',
+                        'compare' => '=',
+                        'type' => 'NUMERIC'
+                    ),
+                    array(
+                        'key' => 'external_signup',
+                        'value' => '0',
+                        'compare' => 'NOT EXISTS',
+                    )
+                ),
 
             )
         );
@@ -843,6 +885,24 @@ function inscription_form_shortcode($atts , $content = null) {
             $course_type = $data['course_type'];
 
 
+            if ($course_type == 'adults') {
+                $extra_email_text = get_field('email_text_adults', 'option');
+            } else if ($course_type == 'danse') {
+                $extra_email_text = get_field('email_text_dance', 'option');
+            } else if ($course_type == 'theatre') {
+                $extra_email_text = get_field('email_text_theatre', 'option');
+            } else if ($course_type == '47musicale') {
+                $extra_email_text = get_field('email_text_47musicale', 'option');
+            } else if ($course_type == 'instrumentchant') {
+                $extra_email_text = get_field('email_text_instrumentchant', 'option');
+            } else {
+                $extra_email_text = '';
+            }
+
+
+
+
+
             $headers = 'From: Conservatoire populaire de musique, danse et théâtre <inscription@conservatoirepopualire.ch>' . "\r\n";
             $headers .= 'Reply-To: Conservatoire populaire de musique, danse et théâtre <inscription@conservatoirepopualire.ch>' . "\r\n";
             $emailheader = ''; // file_get_contents(dirname(__FILE__) . '/emails/email_header.php');
@@ -966,6 +1026,8 @@ function inscription_form_shortcode($atts , $content = null) {
         }
     }
     add_action( 'restrict_manage_posts', 'admin_page_filter_parentpages' );
+
+
 
 
 

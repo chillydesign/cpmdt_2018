@@ -653,9 +653,22 @@ add_filter('pre_get_posts', 'remove_events_from_search' );
 
 
 
-
-
-
 require get_template_directory() . '/custom/archivedposttype.php';
+
+
+/// PAGE TO ALLOW ADMINS TO CHANGE TEXT INSIDE INSCRIPTION EMAILS
+if( function_exists('acf_add_options_page') ) {
+
+    acf_add_options_page(array(
+        'page_title' 	=> 'Email Settings',
+        'menu_title'	=> 'Email Settings',
+        'menu_slug' 	=> 'email_settings',
+        'capability'	=> 'edit_posts',
+        'redirect'		=> false
+    ));
+
+}
+
+
 
 ?>
