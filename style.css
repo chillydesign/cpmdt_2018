@@ -475,7 +475,7 @@ width: 18%;
 
 .bx-next, .bx-prev {
     text-indent: -9999px;
-    background: url('./assets/arrow_right.png') no-repeat center center;
+    background: url('./assets/arrow_right_1.png') no-repeat center center;
     background-size: contain;
     height: 150px;
     width: 50px;
@@ -489,7 +489,7 @@ width: 18%;
 .bx-prev {
     left: 10px;
     right: auto;
-    background-image: url('./assets/arrow_left.png');
+    background-image: url('./assets/arrow_left_1.png');
 }
 
 
@@ -506,14 +506,14 @@ width: 18%;
 }
 
 .front-posts .bx-next {
-    background-image: url('./assets/arrow_right_black.png');
+    /* background-image: url('./assets/arrow_right_black.png'); */
     top: auto;
     bottom: -20px;
     height: 40px;
 }
 .front-posts .bx-prev {
 
-    background-image: url('./assets/arrow_left_black.png');
+    /* background-image: url('./assets/arrow_left_black.png'); */
     top: auto;
     bottom: -20px;
     height: 40px;
