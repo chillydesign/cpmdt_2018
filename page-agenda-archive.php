@@ -10,8 +10,8 @@
 	<!-- News section -->
 	<div class="page-agenda">
 
-		<div class="container">
-			<!-- <a href="#" class="archives-link pull-right button button-default">voir les archives</a> -->
+        <div class="container">
+			<a href="<?php echo get_site_url(); ?>/agenda/" class="archives-link pull-right button button-default">Agenda</a>
 		</div>
 
 		<?php

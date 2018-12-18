@@ -1013,7 +1013,7 @@ function inscription_form_shortcode($atts , $content = null) {
             $parent_pages = $wpdb->get_results($sql, OBJECT_K);
             $select = '
             <select name="page_parent">
-            <option value="">Parent Pages</option>';
+            <option value="">Filtrer par évènement</option>';
             $current = isset($_GET['page_parent']) ? $_GET['page_parent'] : '';
             foreach ($parent_pages as $page) {
                 $select .= sprintf('
