@@ -49,6 +49,7 @@
                             <li>
                                 <?php echo get_custom_field('a_time');; ?>
                             </li>
+                            <li><a href="<?php echo get_site_url(); ?>/agenda">Retour à l'agenda</a></li>
                         </ul>
                     </div>
                     <div class="col-sm-9">

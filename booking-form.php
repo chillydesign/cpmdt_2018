@@ -96,5 +96,5 @@ if ($places_left <= 5 ) {
         <div id="stopsubmit"></div>
     </div>
     <br><br>
-    <p class="fillitall">Veuillez remplir tous les champs pour valider l'booking.</p>
+    <p class="fillitall">Veuillez remplir tous les champs pour valider la réservation.</p>
 </form>
