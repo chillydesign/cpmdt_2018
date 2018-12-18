@@ -475,9 +475,9 @@ function processCourses(courses, search, category, location, ages){
 
 
 
-    // DONT SHOW COURSE PARENTS
+    // DONT SHOW COURSE PARENTS FOR MUSIC
     var courses = _.reject(courses, function(c) {
-        return c.post_parent == 0;
+        return (c.slug == 'music' && c.post_parent == 0);
     });
 
 

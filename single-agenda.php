@@ -44,7 +44,7 @@
                                 <!-- <?php  //get_custom_field('a_date'); ?> -->
                                 <?php $a_date = strtotime(get_custom_field('a_date')); ?>
                                 <?php $dd = date('Y-m-d', $a_date); ?>
-                                <?php echo strftime("%A %d %B %Y", $a_date );   // utf8_encode()  ?>
+                                <?php echo utf8_encode(strftime("%A %d %B %Y", $a_date ));  ?>
                             </li>
                             <li>
                                 <?php echo get_custom_field('a_time');; ?>
