@@ -15,7 +15,7 @@ if ($places_left <= 5 ) {
 
 
     <?php if (  isset( $_GET['success']) ) : ?>
-        <div class="alert alert-success">Votre booking a bien été enregistrée!</div>
+        <div class="alert alert-success">Votre réservation a bien été enregistrée!</div>
     <?php elseif ( isset($_GET['problem'])  ) : ?>
         <div class="alert alert-danger">Une erreur s’est produite. Veuillez réessayer.</div>
     <?php endif; ?>
@@ -23,7 +23,7 @@ if ($places_left <= 5 ) {
 
 
     <div class="inscription_field">
-        <label for="no_people">Nombre de personne </label>
+        <label for="no_people">Nombre de personnes </label>
         <div class="field_content">
             <select id="no_people" name="no_people">
                 <?php for ( $i = 1; $i <= $places_allowed ; $i++) { ?>

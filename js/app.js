@@ -7,14 +7,14 @@
 
       $('.frontpage_slider').bxSlider({
           'pager': false,
-          'controls': false,
+          'controls': true,
           'auto': true
       });
 
 
       $('.news_slider').bxSlider({
           'pager': true,
-          'controls': false,
+          'controls': true,
           'minSlides': 2,
           'maxSlides': 2,
           'moveSlides': 1,

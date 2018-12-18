@@ -12,7 +12,7 @@
                 <?php endif; ?>
             </li>
         <?php endforeach; ?>
-    </div>
+    </ul>
 
 
 <?php endif; ?>

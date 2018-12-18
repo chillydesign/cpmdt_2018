@@ -18,54 +18,37 @@
 
 			<div  style="margin-top: 60px">
 			<?php
-				$args = array (
-					'nopaging'               => false,
-					'posts_per_page'         => '8',
-                    'meta_query' => array(
-                    		array(
-                    			'key'     => 'in_slider',
-                    			'value'   => 1,
-                                'type'    => 'numeric',
-                    			'compare' => '=',
-                    		),
-                    	),
-				);
-
-				$query = new WP_Query( $args );
-
-				if ( $query->have_posts() ) : ?>
+            $home_page_news = get_field('news');
+				if ( $home_page_news) : ?>
                     <div class="news_slider">
-					<?php while ( $query->have_posts() ) :
-						$query->the_post();
+					<?php foreach ( $home_page_news as $news_item) :
 
-						$category = get_the_category();
+                        $post = $news_item['post'];
+                        $excerpt = get_field('post_excerptCF', $post->ID);
+						$category = get_the_category( $post->ID );
 						$categoryName = $category[0]->cat_name;
 						$categorySlug = $category[0]->slug;
+                        $image = thumbnail_of_post_url( $post->ID, 'medium');
 					?>
 
 						<div class=" item">
-							<?php
-								$categories = get_categories();
-									foreach ($categories as $cat) {
-									$category_link = get_category_link($cat->cat_ID);
-								}
-							?>
+
 							<div class="item-thumbnail">
-								<img src="<?php  echo the_post_thumbnail_url('medium'); ?>"/>
+								<img src="<?php  echo $image; ?>"/>
 							</div>
 							<div class="item-date">
-								<h5><?php echo get_the_date( '<b>d</b> F' ); ?></h5>
+								<h5><?php echo get_the_date( '<b>d</b> F', $post->ID ); ?></h5>
 							</div>
 							<div class="item-information">
-								<!-- <a href="<?php echo esc_url( $category_link ); ?>" title="Category Name"></a> -->
-								<h6 class="color-<?php echo $categorySlug ?>" > <?php echo $categoryName ?> </h6>
-								<h3> <?php the_title(); ?> </h3>
-								<p><?php echo get_custom_field("post_excerptCF"); ?></p>
 
-								<a class="button button-default" href="<?php the_permalink(); ?>"> en savoir plus</a>
+								<h6 class="color-<?php echo $categorySlug ?>" > <?php echo $categoryName ?> </h6>
+								<h3> <?php $post->post_title; ?> </h3>
+								<p><?php echo $excerpt; ?></p>
+
+								<a class="button button-default" href="<?php echo get_permalink($post->ID); ?>"> en savoir plus</a>
 							</div>
 						</div>
-						<?php endwhile; ?>
+                    <?php endforeach; ?>
                      </div> <!-- END OF news_slider -->
 				<?php  endif; ?>
 			</div>

@@ -57,7 +57,7 @@ function all_booking_fields(){
 
     return array(
 
-        'no_people' => 'Nombre de personne',
+        'no_people' => 'Nombre de personnes',
         'last_name' =>  'Nom',
         'first_name' => 'Prénom',
         'telephone' => 'Téléphone',

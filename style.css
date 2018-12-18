@@ -445,7 +445,9 @@ width: 18%;
     text-shadow:0 2px 20px rgba(0,0,0,0.5);
     max-width: 600px;
 }
-
+.bx-wrapper {
+    position: relative;
+}
 
 .bx-pager {
     width: 100%;
@@ -470,6 +472,26 @@ width: 18%;
 .bx-pager-link.active {
     background: #aaa;
 }
+
+.bx-next, .bx-prev {
+    text-indent: -9999px;
+    background: url('./assets/arrow_right.png') no-repeat center center;
+    background-size: cover;
+    height: 150px;
+    width: 60px;
+    position: absolute;
+    top: 50%;
+    right: 0;
+    z-index: 50;
+
+}
+
+.bx-prev {
+    left: 0;
+    right: auto;
+    transform: scaleX(-1);
+}
+
 
 .frontpage_slider li {
     height: 100%;
