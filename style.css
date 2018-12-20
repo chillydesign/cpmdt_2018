@@ -475,7 +475,7 @@ width: 18%;
 
 .bx-next, .bx-prev {
     text-indent: -9999px;
-    background: url('./assets/arrow_right_1.png') no-repeat center center;
+    background: url('./assets/arrow_right_1.svg') no-repeat center center;
     background-size: contain;
     height: 150px;
     width: 50px;
@@ -489,7 +489,7 @@ width: 18%;
 .bx-prev {
     left: 10px;
     right: auto;
-    background-image: url('./assets/arrow_left_1.png');
+    background-image: url('./assets/arrow_left_1.svg');
 }
 
 
