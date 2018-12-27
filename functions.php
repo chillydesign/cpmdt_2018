@@ -660,8 +660,8 @@ require get_template_directory() . '/custom/archivedposttype.php';
 if( function_exists('acf_add_options_page') ) {
 
     acf_add_options_page(array(
-        'page_title' 	=> 'Email Settings',
-        'menu_title'	=> 'Email Settings',
+        'page_title' 	=> 'Textes emails',
+        'menu_title'	=> 'Textes emails',
         'menu_slug' 	=> 'email_settings',
         'capability'	=> 'edit_posts',
         'redirect'		=> false
