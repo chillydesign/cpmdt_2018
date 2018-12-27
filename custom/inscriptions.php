@@ -911,12 +911,15 @@ function inscription_form_shortcode($atts , $content = null) {
 
 
             $paragraph_for_user = '<p>Madame, Monsieur,</p>
-            <p>Nous accusons réception de votre inscription ' . translate_course_type($course_type) .  '.</p>
-            <p></p>Après votre inscription, vous recevrez une convocation pour un test qui aura lieu fin août.</p>
-            <p>Ce rendez-vous nous permettra de faire connaissance avec l’enfant et lui donnera l’occasion de faire un essai.</p>
-            <p>Vous recevrez, à ce moment-là, toutes les informations utiles ainsi que la confirmation finale de votre inscription.</p>
-            <p>Avec nos remerciements pour la confiance que vous accordez au CPMDT, nous vous prions de recevoir nos meilleures salutations.</p>
-            <p>L\'administration du CPMDT </p> ';
+            <p>Nous accusons réception de votre inscription ' . translate_course_type($course_type) .  '.</p>';
+
+            $paragraph_for_user .= $extra_email_text;
+
+            // <p>Après votre inscription, vous recevrez une convocation pour un test qui aura lieu fin août.</p>
+            // <p>Ce rendez-vous nous permettra de faire connaissance avec l’enfant et lui donnera l’occasion de faire un essai.</p>
+            // <p>Vous recevrez, à ce moment-là, toutes les informations utiles ainsi que la confirmation finale de votre inscription.</p>
+            // <p>Avec nos remerciements pour la confiance que vous accordez au CPMDT, nous vous prions de recevoir nos meilleures salutations.</p>
+            $paragraph_for_user .= '<p>L\'administration du CPMDT </p> ';
 
 
             $paragraph_for_user .= '<table style="font-size:14px;line-height:135%;border-bottom:1px solid #000;margin: 30px 0 20px;" cellspacing="0"><tbody>';
