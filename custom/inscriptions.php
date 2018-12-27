@@ -390,13 +390,13 @@ function inscription_form_shortcode($atts , $content = null) {
         </div>';
         $rq_frm .=
         '<div class="inscription_field">
-        <label for="last_name_guardian">Nom de le guardian * </label>
+        <label for="last_name_guardian">Nom du répondant * </label>
         <div class="field_content">
         <input type="text" name="last_name_guardian" id="last_name_guardian" />
         </div>
         </div>';
         $rq_frm .=' <div class="inscription_field">
-        <label for="first_name_guardian">Prénom de le guardian * </label>
+        <label for="first_name_guardian">Prénom du répondant * </label>
         <div class="field_content">
         <input type="text" name="first_name_guardian" id="first_name_guardian" />
         </div>
@@ -566,24 +566,24 @@ function inscription_form_shortcode($atts , $content = null) {
     }
 
 
-    function translate_course_type($type) {
-
-        if ($type == 'adults') {
-            return 'en course d\'adults';
-        } else if ($type == 'danse') {
-            return 'en cours de danse';
-        } else if ($type == 'theatre') {
-            return 'en course de theatre';
-        } else if ($type == '47musicale') {
-            return 'en course de 47musicale';
-        } else if ($type == 'instrumentchant') {
-            return 'en course d\'instrumentchant';
-        } else {
-            return 'en cours de danse';
-            // return $type;
-        };
-
-    }
+    // function translate_course_type($type) {
+    //
+    //     if ($type == 'adults') {
+    //         return 'en course d\'adults';
+    //     } else if ($type == 'danse') {
+    //         return 'en cours de danse';
+    //     } else if ($type == 'theatre') {
+    //         return 'en course de theatre';
+    //     } else if ($type == '47musicale') {
+    //         return 'en course de 47musicale';
+    //     } else if ($type == 'instrumentchant') {
+    //         return 'en course d\'instrumentchant';
+    //     } else {
+    //         return 'en cours de danse';
+    //         // return $type;
+    //     };
+    //
+    // }
 
 
     function all_inscription_fields(){
@@ -602,8 +602,8 @@ function inscription_form_shortcode($atts , $content = null) {
             'telephone_professional' => 'Téléphone professionnel ',
             'telephone_portable' => 'Téléphone portable ',
             'title_guardian' => 'Titre de guardian',
-            'last_name_guardian' =>  'Nom de le guardian',
-            'first_name_guardian' => 'Prénom de le guardian',
+            'last_name_guardian' =>  'Nom du répondant',
+            'first_name_guardian' => 'Prénom du répondant',
             'address_guardian' => 'address_guardian',
             'town_guardian' => 'town_guardian',
             'email' =>  'Email de l\'élève',
@@ -907,11 +907,11 @@ function inscription_form_shortcode($atts , $content = null) {
             $headers .= 'Reply-To: Conservatoire populaire de musique, danse et théâtre <inscription@conservatoirepopualire.ch>' . "\r\n";
             $emailheader = ''; // file_get_contents(dirname(__FILE__) . '/emails/email_header.php');
             $emailfooter = ''; // file_get_contents(dirname(__FILE__) . '/emails/email_footer.php');
-            add_filter('wp_mail_content_type',create_function('', 'return "text/html"; '));
+            add_filter('wp_mail_content_type', create_function('', 'return "text/html"; '));
 
 
             $paragraph_for_user = '<p>Madame, Monsieur,</p>
-            <p>Nous accusons réception de votre inscription ' . translate_course_type($course_type) .  '.</p>';
+            <p>Nous accusons réception de votre inscription au cours ' .    $course_title .  '.</p>';
 
             $paragraph_for_user .= $extra_email_text;
 
@@ -919,7 +919,7 @@ function inscription_form_shortcode($atts , $content = null) {
             // <p>Ce rendez-vous nous permettra de faire connaissance avec l’enfant et lui donnera l’occasion de faire un essai.</p>
             // <p>Vous recevrez, à ce moment-là, toutes les informations utiles ainsi que la confirmation finale de votre inscription.</p>
             // <p>Avec nos remerciements pour la confiance que vous accordez au CPMDT, nous vous prions de recevoir nos meilleures salutations.</p>
-            $paragraph_for_user .= '<p>L\'administration du CPMDT </p> ';
+            // $paragraph_for_user .= '<p>L\'administration du CPMDT </p> ';
 
 
             $paragraph_for_user .= '<table style="font-size:14px;line-height:135%;border-bottom:1px solid #000;margin: 30px 0 20px;" cellspacing="0"><tbody>';
