@@ -216,10 +216,11 @@ function wf_version(){
 /*Theme Stylesheets*/
 function theme_styles() {
 	/*Main Stylesheet*/
-	wp_enqueue_style( 'bootstrap-sass', get_template_directory_uri() . '/bower_components/bootstrap-sass/assets/stylesheets/bootstrap.css' );
+    $tdu =  get_template_directory_uri();
+	wp_enqueue_style( 'bootstrap-sass', $tdu . '/bower_components/bootstrap-sass/assets/stylesheets/bootstrap.css' );
 	/*Main Stylesheet*/
 
-    wp_register_style('wf_style', get_template_directory_uri() . '/style.css', array(), wf_version(),  'all');
+    wp_register_style('wf_style', $tdu . '/style.css', array(), wf_version(),  'all');
     wp_enqueue_style('wf_style'); // Enqueue it!
 
 
