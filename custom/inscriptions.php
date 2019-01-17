@@ -839,6 +839,10 @@ function inscription_form_shortcode($atts , $content = null) {
                     }
                 }
 
+                if (isset($_POST['course_type'])) {
+                    add_post_meta($new_inscription, 'course_type',  $_POST['course_type'] , true);    
+                }
+
 
                 if (isset($_FILES['hypothetical_file'])) {
                 $hypothetical_file_file = $_FILES['hypothetical_file'];
@@ -1031,6 +1035,16 @@ function inscription_form_shortcode($atts , $content = null) {
     add_action( 'restrict_manage_posts', 'admin_page_filter_parentpages' );
 
 
+
+    add_action( 'manage_posts_extra_tablenav', 'add_download_link_inscription'  );
+    function add_download_link_inscription($which){
+        if ( is_post_type_archive('inscription') ) {
+
+                $download_link = get_home_url() . '/api/v1/?inscriptions'  ;
+                echo '<div class="alignleft actions"><a class="action button-primary button" href="'. $download_link .'">Télécharger CSV</a></div>';
+        }
+
+    }
 
 
 

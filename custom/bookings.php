@@ -221,8 +221,8 @@ function all_booking_fields(){
     }
 
 
-add_action( 'manage_posts_extra_tablenav', 'add_download_link'  );
-function add_download_link($which){
+add_action( 'manage_posts_extra_tablenav', 'add_download_link_booking'  );
+function add_download_link_booking($which){
     if ( is_post_type_archive('booking') ) {
 
             $download_link = get_home_url() . '/api/v1/?bookings'  ;
