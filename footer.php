@@ -73,7 +73,7 @@
 		<!-- Scripts -->
 		<?php wp_footer(); ?>
 
-		<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAxQfqRqtPLAW4BolFMCxTiv9y--R8CXdU"></script>
+		<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBc9birEXZTWqHOAUTHvX59jm-MxESi048"></script>
 
 
 		<script>
