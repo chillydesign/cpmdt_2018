@@ -560,9 +560,7 @@ function processCourses(courses, search, category, location, ages){
     for (var i = 0; i < courses.length ; i++) {
         var course = courses[i];
 
-        course['proper_url'] = function(){
-            return '/agenda/?course=' +   this.id ;
-        }
+
 
         if (course.categories.length > 0) {
             course['slug'] =    course.categories[0].slug;
