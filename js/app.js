@@ -616,6 +616,7 @@ if (typeof search_url != 'undefined') {
         $.ajax({
             url : search_url + '?course_id=' + $this.val(),
             type : 'get',
+            dataType: 'json',
             beforeSend: function(){
                 // $teacher_id_cont.html('');
             },
