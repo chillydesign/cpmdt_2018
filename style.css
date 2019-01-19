@@ -496,18 +496,28 @@ width: 18%;
     background: #aaa;
 }
 
+
 .bx-next, .bx-prev {
     text-indent: -9999px;
     background: url('./assets/arrow_right_1.svg') no-repeat center center;
     background-size: contain;
     height: 150px;
-    width: 50px;
+    width: 25px;
     position: absolute;
     top: 50%;
     right: 10px;
     z-index: 50;
 
 }
+
+
+@media (min-width: 768px) {
+    .bx-next, .bx-prev {
+            width: 50px;
+    }
+}
+
+
 
 .bx-prev {
     left: 10px;
