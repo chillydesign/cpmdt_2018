@@ -981,6 +981,12 @@ width: 18%;
 
 .program-single {
   padding-top: 50px; }
+
+
+  .program-single img {
+      width: 100%;
+      height: auto;
+  }
   .program-single img.dance {
     border-top: 5px solid #e5007c; }
   .program-single img.music {
