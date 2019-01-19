@@ -132,7 +132,7 @@
             <?php endif; // end if courses ?>
 
         <?php $cours_complementaires = get_field('cours_complementaires'); ?>
-        <?php var_dump($cours_complementaires); ?>
+        <?php if($cours_complementaires) :  ?>
         <?php if (sizeof($cours_complementaires) > 0): ?>
             <div class="locations-connections ">
                 <h4>Cours Complémentaires:</h4>
@@ -160,6 +160,7 @@
                     </div>
                 <?php endforeach; ?>
             </div> <!-- END OF LOCATIONS CONNECTIONS -->
+        <?php endif; // end if courses length > 0 ?>
         <?php endif; // end if courses ?>
 
 
