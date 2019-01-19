@@ -22,7 +22,8 @@
 				if ( $home_page_news) : ?>
                     <div class="news_slider">
 					<?php foreach ( $home_page_news as $news_item) :
-
+                        $status = $news_item->post_status;
+                        if ($status == 'publish') :
                         $post = $news_item['post'];
                         $excerpt = get_field('post_excerptCF', $post->ID);
 						$category = get_the_category( $post->ID );
@@ -48,6 +49,7 @@
 								<a class="button button-default" href="<?php echo get_permalink($post->ID); ?>"> en savoir plus</a>
 							</div>
 						</div>
+                    <?php endif;  # if published ?>
                     <?php endforeach; ?>
                      </div> <!-- END OF news_slider -->
 				<?php  endif; ?>
