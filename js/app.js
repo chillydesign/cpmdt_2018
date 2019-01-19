@@ -8,7 +8,10 @@
       $('.frontpage_slider').bxSlider({
           'pager': false,
           'controls': true,
-          'auto': true
+          'auto': true,
+          'speed': 1200,
+          'pause' : 6000
+
       });
 
 
