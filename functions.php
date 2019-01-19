@@ -536,7 +536,7 @@ function get_agenda_count($field_id, $agenda_id, $count_field){
 add_action( 'admin_menu', 'my_remove_admin_menus' );
 function my_remove_admin_menus() {
     remove_menu_page( 'edit-comments.php' );
-    remove_menu_page( 'tools.php' );
+    //remove_menu_page( 'tools.php' );
 }
 // Removes from post and pages
 add_action('init', 'remove_comment_support', 100);
