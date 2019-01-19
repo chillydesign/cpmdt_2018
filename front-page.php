@@ -23,7 +23,7 @@
                     <div class="news_slider">
 					<?php foreach ( $home_page_news as $news_item) :
                         $post = $news_item['post'];
-                        $status = $news_item->post_status;
+                        $status = $post->post_status;
                         if ($status == 'publish') :
                         $excerpt = get_field('post_excerptCF', $post->ID);
 						$category = get_the_category( $post->ID );
