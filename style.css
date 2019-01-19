@@ -511,17 +511,17 @@ width: 18%;
 .front-posts .bx-next {
     /* background-image: url('./assets/arrow_right_black.png'); */
     top: auto;
-    bottom: -20px;
+    bottom: 48%;
     height: 40px;
-    right : - 15px;
+    right : -55px;
 }
 .front-posts .bx-prev {
 
     /* background-image: url('./assets/arrow_left_black.png'); */
     top: auto;
-    bottom: -20px;
+    bottom: 48%;
     height: 40px;
-    left : - 15px;
+    left : -55px;
 }
 
 .front-posts .bx-pager-item {
