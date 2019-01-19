@@ -459,7 +459,7 @@ width: 18%;
 }
 
 @media (min-width: 768px) {
-    .frontpageslider h3 {
+    .frontpage_slider h3 {
         position: absolute;
         bottom: 180px;
         left: 30px;
