@@ -23,7 +23,7 @@
                     <div class="news_slider">
 					<?php foreach ( $home_page_news as $news_item) :
                         $status = $news_item->post_status;
-                        echo $status;
+                        var_dump( $status);
                         if ($status == 'publish') :
                         $post = $news_item['post'];
                         $excerpt = get_field('post_excerptCF', $post->ID);
