@@ -22,8 +22,8 @@ get_header(); ?>
         <div class="single_center">
             <a href="<?php echo get_permalink( $center->ID ); ?>"><?php echo $center->post_title; ?></a>
         </div>
-    </div>
-    
+
+
 
     <?php $c++; endforeach; ?>
 
