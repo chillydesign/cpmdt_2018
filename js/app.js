@@ -9,8 +9,8 @@
           'pager': false,
           'controls': true,
           'auto': true,
-          'speed': 1200,
-          'pause' : 6000
+          'speed': 1300,
+          'pause' : 8000
 
       });
 
