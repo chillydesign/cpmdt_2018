@@ -42,7 +42,7 @@
 							<div class="item-information">
 
 								<h6 class="color-<?php echo $categorySlug ?>" > <?php echo $categoryName ?> </h6>
-								<h3> <?php $post->post_title; ?> </h3>
+								<h3> <?php echo $post->post_title; ?> </h3>
 								<p><?php echo $excerpt; ?></p>
 
 								<a class="button button-default" href="<?php echo get_permalink($post->ID); ?>"> en savoir plus</a>
