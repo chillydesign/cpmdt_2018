@@ -132,6 +132,7 @@
             <?php endif; // end if courses ?>
 
         <?php $cours_complementaires = get_field('cours_complementaires'); ?>
+        <?php var_dump($cours_complementaires); ?>
         <?php if (sizeof($cours_complementaires) > 0): ?>
             <div class="locations-connections ">
                 <h4>Cours Complémentaires:</h4>
