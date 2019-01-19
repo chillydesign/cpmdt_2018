@@ -1721,15 +1721,15 @@ input.radio_input, input.checkbox_input {
 }
 
 
-.single_center {
+/* .single_center {
 
     color: white;
     margin: 0 0  10px;
-}
+} */
 
 .single_center a {
-    color: white !important;
-    background: #009992;
+    /* color: white !important;
+    background: #009992; */
     display: block;
     padding: 10px;
     font-weight: bold;
@@ -1740,7 +1740,7 @@ input.radio_input, input.checkbox_input {
 }
 
 
-@media (min-width: 768px) {
+/* @media (min-width: 768px) {
 
     .single_center a {
         height: 100px;
@@ -1748,9 +1748,9 @@ input.radio_input, input.checkbox_input {
 
     }
 }
-
+*/
 .single_center a:hover {
-    background: #005450;
+    background: #f1f1f1;
 }
 
 

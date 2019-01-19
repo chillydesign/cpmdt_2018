@@ -15,20 +15,19 @@ get_header(); ?>
 <?php $centers = get_posts($args); ?>
 
 <div class="container">
-    <div class="row">
 
 
-        <?php $c = 0; foreach ($centers as $center): ?>
-            <div class="col-sm-6 col-md-3">
-                <div class="single_center">
-                    <a href="<?php echo get_permalink( $center->ID ); ?>"><?php echo $center->post_title; ?></a>
-                </div>
-            </div>
-            <?php echo ($c % 4 == 3) ? '</div><!-- END OF ROW --><div class="row">' : ''; ?>
+    <?php $c = 0; foreach ($centers as $center): ?>
 
-            <?php $c++; endforeach; ?>
-        </div><!-- END OF ROW -->
+        <div class="single_center">
+            <a href="<?php echo get_permalink( $center->ID ); ?>"><?php echo $center->post_title; ?></a>
+        </div>
     </div>
+    
+
+    <?php $c++; endforeach; ?>
+
+</div>
 
 <!-- Scripts -->
 <?php get_footer(); ?>
