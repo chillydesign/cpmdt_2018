@@ -553,11 +553,11 @@ width: 18%;
     height: 40px;
     left : -55px;
 }
-.news_slider .bx-controls-direction {
+.front-posts .bx-controls-direction {
     display: none;
 }
 @media (min-width: 768px) {
-.news_slider .bx-controls-direction {
+.front-posts .bx-controls-direction {
     display: block;
 }
 }
