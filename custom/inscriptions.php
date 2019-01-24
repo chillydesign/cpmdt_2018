@@ -810,7 +810,7 @@ function inscription_form_shortcode($atts , $content = null) {
         // IF DATA HAS BEEN POSTED
         if ( isset($_POST['action'])  && $_POST['action'] == 'inscription_form'   ) :
 
-            if (isset($_POST['first_name']) && isset($_POST['last_name']) ) :
+            if (isset($_POST['first_name']) && isset($_POST['last_name'])  && isset($_POST['email']) ) :
             // TO DO CHECK IF ALL NECESSARY FIELDS HAVE BEEN FILLED IN
 
             $serv_referer = $_SERVER['HTTP_REFERER'];
@@ -911,8 +911,8 @@ function inscription_form_shortcode($atts , $content = null) {
 
 
 
-            $headers = 'From: Conservatoire populaire de musique, danse et théâtre <inscription@conservatoirepopualire.ch>' . "\r\n";
-            $headers .= 'Reply-To: Conservatoire populaire de musique, danse et théâtre <inscription@conservatoirepopualire.ch>' . "\r\n";
+            $headers = 'From: Conservatoire populaire de musique, danse et théâtre <inscription@cpmdt.ch>' . "\r\n";
+            $headers .= 'Reply-To: Conservatoire populaire de musique, danse et théâtre <inscription@cpmdt.ch>' . "\r\n";
             $emailheader = ''; // file_get_contents(dirname(__FILE__) . '/emails/email_header.php');
             $emailfooter = ''; // file_get_contents(dirname(__FILE__) . '/emails/email_footer.php');
             add_filter('wp_mail_content_type', create_function('', 'return "text/html"; '));
@@ -923,14 +923,8 @@ function inscription_form_shortcode($atts , $content = null) {
 
             $paragraph_for_user .= $extra_email_text;
 
-            // <p>Après votre inscription, vous recevrez une convocation pour un test qui aura lieu fin août.</p>
-            // <p>Ce rendez-vous nous permettra de faire connaissance avec l’enfant et lui donnera l’occasion de faire un essai.</p>
-            // <p>Vous recevrez, à ce moment-là, toutes les informations utiles ainsi que la confirmation finale de votre inscription.</p>
-            // <p>Avec nos remerciements pour la confiance que vous accordez au CPMDT, nous vous prions de recevoir nos meilleures salutations.</p>
-            // $paragraph_for_user .= '<p>L\'administration du CPMDT </p> ';
 
-
-            $paragraph_for_user .= '<table style="font-size:14px;line-height:135%;border-bottom:1px solid #000;margin: 30px 0 20px;" cellspacing="0"><tbody>';
+            $paragraph_for_both = '<table style="font-size:14px;line-height:135%;border-bottom:1px solid #000;margin: 30px 0 20px;" cellspacing="0"><tbody>';
 
 
             $fields = all_inscription_fields();
@@ -946,7 +940,7 @@ function inscription_form_shortcode($atts , $content = null) {
                     if (isset($data[$field])) :
                         $value = $data[$field];
                         if ($value != '') :
-                            $paragraph_for_user .= '<tr>
+                            $paragraph_for_both .= '<tr>
                             <td '. $cssstyle .'>' .  $translation .'</td>
                             <td '. $cssstyle .'>' . $value .' </td>
                             </tr>';
@@ -956,14 +950,21 @@ function inscription_form_shortcode($atts , $content = null) {
             endforeach;
 
 
-            $paragraph_for_user .= '</tbody></table>';
+            $paragraph_for_both .= '</tbody></table>';
+
+
+            $paragraph_for_user = $paragraph_for_user . $paragraph_for_both;
 
 
             $email_subject_for_user = 'Inscription';
             $email_content_for_user = $emailheader . $paragraph_for_user .  $emailfooter;
-
-
+            $email_content_for_admin = $emailheader . $paragraph_for_both .  $emailfooter;
             wp_mail( $_POST['email'], $email_subject_for_user, $email_content_for_user, $headers );
+
+
+            $admin_emails = array( 'harvey.charles+cpmdt@gmail.com' );
+            // inscription@cpmdt.ch
+            wp_mail( $admin_emails , $email_subject_for_user, $email_content_for_admin, $headers );
 
 
 
