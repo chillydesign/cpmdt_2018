@@ -71,7 +71,8 @@ function inscription_form_shortcode($atts , $content = null) {
     } else if ($course_type == 'theatre') {
         $courses = get_all_courses_with_cat('theatre');
     } else if ($course_type == '47musicale') {
-        $courses = get_all_47_musicale_courses();
+        // $courses = get_all_47_musicale_courses();
+        $courses = get_all_courses_with_cat('cours-4-7-ans');
     } else if ($course_type == 'instrumentchant') {
         $courses = get_all_instrumentchant_courses();
     } else {
@@ -185,7 +186,7 @@ function inscription_form_shortcode($atts , $content = null) {
         <label for="inscription_year">Inscription pour l\'année </label>
         <div class="field_content">
         <select id="inscription_year" name="inscription_year">
-        <option value="2018-2019">2018-2019</option>
+        <option value="2019-2020">2019-2020</option>
         </select>
         </div>
         </div>';
@@ -466,7 +467,7 @@ function inscription_form_shortcode($atts , $content = null) {
     <label><input required type="radio" class="radio_input" name="payment_frequency" value="1 fois" />1 fois</label>
     <label><input required type="radio" class="radio_input" name="payment_frequency" value="3 fois" />3 fois</label>
     <label><input required type="radio" class="radio_input" name="payment_frequency" value="6 fois" />6 fois</label>
-    <p class="meta">Les factures de cours jusque 500.- se paient en une fois. Pour les abonnements l’écolage est payable d’avance en une fois à la réception du CPMDT.</p>
+    <p class="meta">Les factures de cours en dessous de 500.- se paient en une fois. Pour les abonnements l’écolage est payable d’avance en une fois à la réception du CPMDT.</p>
     </div>
     </div>';
 
@@ -506,10 +507,11 @@ function inscription_form_shortcode($atts , $content = null) {
     </div>';
 
 
+    $date = date('d-m-Y');
     $rq_frm .=' <div class="inscription_field">
     <label for="date_inscription">Date de l’inscription  </label>
     <div class="field_content">
-    <input type="text" name="date_inscription" id="date_inscription"  />
+    <input type="text" name="date_inscription" id="date_inscription"  disabled value="' . $date  .'" />
     <p class="meta">Date du jour – non modifiable</p>
     </div>
     </div>';
