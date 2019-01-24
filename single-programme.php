@@ -41,8 +41,10 @@
 
                     <?php $times = get_field('times'); ?>
 
-                    <?php if ($times): ?>
 
+
+                    <?php if ($times): ?>
+                    <?php usort($times, 'sort_times_by_location'); ?>
 
                     <!-- Professors and Places -->
                     <div class="left-sidebar">
@@ -56,7 +58,7 @@
                                 <h5>professeurs</h5>
                             </div>
                         </div>
-                        <?php foreach($times as $time): ?>
+                        <?php foreach( $times as $time): ?>
                         <div class="row no-margin body body-item">
                             <div class="col-sm-6 col-xs-12 font-bold">
                                 <?php if ($time['location']): ?>
@@ -65,6 +67,7 @@
                             </div>
                             <div class="col-sm-6 col-xs-12">
                                 <?php if($time['teachers']): ?>
+                                    <?php usort($time['teachers'], 'sort_teachers_by_title'   ); ?>
                                 <?php foreach ($time['teachers'] as $teacher) :; ?>
                                         <?php echo $teacher->post_title; ?>
                                 <?php endforeach; ?>

@@ -680,4 +680,13 @@ if( function_exists('acf_add_options_page') ) {
 
 
 
+function sort_times_by_location($a, $b) {
+    return strnatcmp($a['location']->post_title, $b['location']->post_title);
+}
+function sort_teachers_by_title($a, $b) {
+    return strnatcmp($a->post_title, $b->post_title);
+}
+
+
+
 ?>
