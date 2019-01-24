@@ -252,14 +252,16 @@ function inscription_form_shortcode($atts , $content = null) {
 
             $rq_frm .= '
             <div class="inscription_field">
-            <label for="musical_course_id">Formation musicale * </label>
+            <label for="musical_course">Formation musicale * </label>
             <div class="field_content">
-            <select class="course_picker" id="musical_course_id" name="musical_course_id" data-field="musical_location">';
-            $rq_frm .= '<option value="0">Choisir un cours</option>';
-            foreach ($courses as $course) :
-                $selected =  '' ; // ($course->ID == $get_course_id  ) ? 'selected' : '';
-                $rq_frm .= '<option '. $selected .' value="'.  $course->ID  .'">'.  ($course->post_title)   .'</option>';
-            endforeach;
+            <select class="course_picker" id="musical_course" name="musical_course" data-field="musical_location">
+            <option value="Débutant" selected="selected">Débutant</option>
+            <option value="A classer">A classer</option>
+            <option value="Actuellement en FM au CPMDT">Actuellement en FM au CPMDT</option>
+            <option value="Inscrit au CMG">Inscrit au CMG</option>
+            <option value="Inscrit à IJD">Inscrit à IJD</option>
+            <option value="Autres école (donc sera à classer)">Autres école (donc sera à classer)</option>
+            <option value="FM terminée (envoyer attestation)">FM terminée (envoyer attestation)</option>';
             $rq_frm .= '</select>
             </div>
             </div>';
@@ -615,7 +617,8 @@ function inscription_form_shortcode($atts , $content = null) {
             'instrument_chant_remarks' => 'Remarques',
             'prof_inst_chant' => 'Professeur Instr. / chant',
             'other_place_possible' => 'Autre lieu possible',
-            'musical_course_id' =>'musical_course_id',
+    //        'musical_course_id' =>'musical_course_id',
+            'musical_course' =>'Formation musicale',
             'musical_remarks' =>'Remarques',
             'prof_musical' =>'Professeur',
             'musical_location_id' =>'musical_location_id',
@@ -840,7 +843,7 @@ function inscription_form_shortcode($atts , $content = null) {
                 }
 
                 if (isset($_POST['course_type'])) {
-                    add_post_meta($new_inscription, 'course_type',  $_POST['course_type'] , true);    
+                    add_post_meta($new_inscription, 'course_type',  $_POST['course_type'] , true);
                 }
 
 
@@ -933,7 +936,8 @@ function inscription_form_shortcode($atts , $content = null) {
             $cssstyle = ' style="text-align:left;color:#555555;padding:7px 9px;vertical-align:top;border-top:1px solid #000"';
 
             foreach ($fields as $field => $translation) :
-                if (  $field != 'musical_course_id' &&
+                if (
+                    // $field != 'musical_course_id' &&
                 $field != 'course_id' &&
                 $field != 'location_id' &&
                 $field != 'course_id_second_choice' &&

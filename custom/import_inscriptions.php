@@ -1,9 +1,9 @@
 <?php
 
 
-// DONE import_old_inscriptions_data(17, false); 
-// DONE import_old_inscriptions_data(18, false); 
-// DONe import_old_inscriptions_data(23, false); 
+// DONE import_old_inscriptions_data(17, false);
+// DONE import_old_inscriptions_data(18, false);
+// DONe import_old_inscriptions_data(23, false);
 
 
     function import_old_inscriptions_data($form_id, $testing) {
@@ -65,7 +65,8 @@
             $instrument_chant_remarks = '';
             $prof_inst_chant = '';
             $other_place_possible = '';
-            $musical_course_id = '';
+            // $musical_course_id = '';
+            $musical_course = '';
             $musical_remarks = '';
             $prof_musical = '';
             $musical_location_id = '';
@@ -187,8 +188,8 @@
 
                     if (
                         $keyy == 'course_id' ||
-                        $keyy == 'course_id_second_choice' ||
-                        $keyy == 'musical_course_id' )
+                        $keyy == 'course_id_second_choice' )
+                        //  ||    $keyy == 'musical_course_id'
                     {
                         $course = get_page_by_title( $old_meta->meta_value, OBJECT, 'programme');
                         if ($course) {
