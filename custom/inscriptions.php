@@ -106,7 +106,7 @@ function inscription_form_shortcode($atts , $content = null) {
         <div class="inscription_field">
         <label for="course_id">Choix du cours * </label>
         <div class="field_content">
-        <select class="course_picker" id="course_id" name="course_id" data-field="location" >';
+        <select required class="course_picker" id="course_id" name="course_id" data-field="location" >';
         $rq_frm .= '<option value="0">Choisir un cours</option>';
         foreach ($courses as $course) :
             $selected =  '' ; // ($course->ID == $get_course_id  ) ? 'selected' : '';
@@ -120,10 +120,9 @@ function inscription_form_shortcode($atts , $content = null) {
             $rq_frm .=' <div class="inscription_field">
             <label for="instrument_chant_remarks">Remarque</label>
             <div class="field_content">
-            <textarea  name="instrument_chant_remarks" id="instrument_chant_remarks"></textarea>
-            <p class="meta">Pour la danse, spécifier le choix du jour.</p>
-            </div>
-            </div>';
+            <textarea  name="instrument_chant_remarks" id="instrument_chant_remarks"></textarea>';
+            $rq_frm .= '</div>';
+            $rq_frm .= '</div>';
             $rq_frm .=' <div class="inscription_field">
             <label for="prof_inst_chant">Professeur Instr. / chant  </label>
             <div class="field_content">
@@ -152,8 +151,8 @@ function inscription_form_shortcode($atts , $content = null) {
             $rq_frm .=' <div class="inscription_field">
             <label for="other_place_possible"> Autre lieu possible *</label>
             <div class="field_content">
-            <label><input type="radio" class="radio_input" name="other_place_possible" value="Oui" />Oui</label>
-            <label><input type="radio" class="radio_input" name="other_place_possible" value="Non" />Non</label>
+            <label><input required type="radio" class="radio_input" name="other_place_possible" value="Oui" />Oui</label>
+            <label><input required type="radio" class="radio_input" name="other_place_possible" value="Non" />Non</label>
             <p class="meta">Etes-vous d\'accord de vous déplacer dans un centre plus éloigné?</p>
             </div>
             </div>';
@@ -196,8 +195,8 @@ function inscription_form_shortcode($atts , $content = null) {
         '<div class="inscription_field">
         <label for="formation_musicale">Formation musicale *</label>
         <div class="field_content">
-        <select id="formation_musicale" name="formation_musicale">
-        <option value="débutant"  selected="selected">débutant</option>
+        <select required id="formation_musicale" name="formation_musicale">
+        <option value="débutant"  >débutant</option>
         <option value="à classer">à classer</option>
         <option value="Actuellement en FM au CPMDT">Actuellement en FM au CPMDT</option>
         <option value="Autre école (donc sera à classer)">Autre école (donc sera à classer)</option>
@@ -220,7 +219,7 @@ function inscription_form_shortcode($atts , $content = null) {
         '<div class="inscription_field">
         <label for="choix_tarif">Choix du tarif *</label>
         <div class="field_content">
-        <select id="choix_tarif" name="choix_tarif">
+        <select required id="choix_tarif" name="choix_tarif">
         <option value="Cours de 50 minutes toutes les 2 semaines / 1970.-"  selected="selected">Cours de 50 minutes toutes les 2 semaines / 1970.-</option>
         <option value="Cours hebdomadaire de 30 minutes / 2360.-" >Cours hebdomadaire de 30 minutes / 2360.-</option>
         <option value="Cours hebdomadaire de 40 minutes / 3150.-" >Cours hebdomadaire de 40 minutes / 3150.-</option>
@@ -254,7 +253,7 @@ function inscription_form_shortcode($atts , $content = null) {
             <div class="inscription_field">
             <label for="musical_course">Formation musicale * </label>
             <div class="field_content">
-            <select class="course_picker" id="musical_course" name="musical_course" data-field="musical_location">
+            <select required class="course_picker" id="musical_course" name="musical_course" data-field="musical_location">
             <option value="Débutant" selected="selected">Débutant</option>
             <option value="A classer">A classer</option>
             <option value="Actuellement en FM au CPMDT">Actuellement en FM au CPMDT</option>
@@ -294,8 +293,8 @@ function inscription_form_shortcode($atts , $content = null) {
             $rq_frm .=' <div class="inscription_field">
             <label for="musical_other_place_possible"> Autre lieu possible *</label>
             <div class="field_content">
-            <label><input type="radio" class="radio_input" name="musical_other_place_possible" value="Oui" />Oui</label>
-            <label><input type="radio" class="radio_input" name="musical_other_place_possible" value="Non" />Non</label>
+            <label><input required type="radio" class="radio_input" name="musical_other_place_possible" value="Oui" />Oui</label>
+            <label><input required type="radio" class="radio_input" name="musical_other_place_possible" value="Non" />Non</label>
             <p class="meta">Etes-vous d\'accord de vous déplacer dans un centre plus éloigné?</p>
             </div>
             </div>';
@@ -329,49 +328,49 @@ function inscription_form_shortcode($atts , $content = null) {
     '<div class="inscription_field">
     <label for="last_name">Nom de l\'élève * </label>
     <div class="field_content">
-    <input type="text" name="last_name" id="last_name" />
+    <input required type="text" name="last_name" id="last_name" />
     </div>
     </div>';
     $rq_frm .=' <div class="inscription_field">
     <label for="first_name">Prénom de l\'élève * </label>
     <div class="field_content">
-    <input type="text" name="first_name" id="first_name" />
+    <input required type="text" name="first_name" id="first_name" />
     </div>
     </div>';
     $rq_frm .=' <div class="inscription_field">
-    <label for="date_of_birth">Date de naissance</label>
+    <label for="date_of_birth">Date de naissance *</label>
     <div class="field_content">
-    <input type="text" name="date_of_birth" id="date_of_birth"  />
+    <input required type="text" name="date_of_birth" id="date_of_birth"  />
     </div>
     </div>';
 
 
     if (  in_array($course_type,  array('danse', 'theatre', '47musicale', 'instrumentchant') ) ):
         $rq_frm .=' <div class="inscription_field">
-        <label for="gender">Sexe </label>
+        <label for="gender">Sexe * </label>
         <div class="field_content">
-        <label><input type="radio" class="radio_input" name="gender" value="Fille" />Fille</label>
-        <label><input type="radio" class="radio_input" name="gender" value="Garçon" />Garçon</label>
+        <label><input required type="radio" class="radio_input" name="gender" value="Fille" />Fille</label>
+        <label><input required type="radio" class="radio_input" name="gender" value="Garçon" />Garçon</label>
         </div>
         </div>';
     endif;
 
     $rq_frm .=  '<div class="inscription_field">
-    <label for="address">Adresse</label>
+    <label for="address">Adresse *</label>
     <div class="field_content">
-    <input type="text" name="address" id="address" />
+    <input required type="text" name="address" id="address" />
     </div>
     </div>';
     $rq_frm .=' <div class="inscription_field">
-    <label for="postcode">N° postal</label>
+    <label for="postcode">N° postal * </label>
     <div class="field_content">
-    <input type="text" name="postcode" id="postcode" />
+    <input required type="text" name="postcode" id="postcode" />
     </div>
     </div>';
     $rq_frm .=' <div class="inscription_field">
-    <label for="town">Ville</label>
+    <label for="town">Ville * </label>
     <div class="field_content">
-    <input type="text" name="town" id="town" />
+    <input required type="text" name="town" id="town" />
     </div>
     </div>';
 
@@ -394,13 +393,13 @@ function inscription_form_shortcode($atts , $content = null) {
         '<div class="inscription_field">
         <label for="last_name_guardian">Nom du répondant * </label>
         <div class="field_content">
-        <input type="text" name="last_name_guardian" id="last_name_guardian" />
+        <input required type="text" name="last_name_guardian" id="last_name_guardian" />
         </div>
         </div>';
         $rq_frm .=' <div class="inscription_field">
         <label for="first_name_guardian">Prénom du répondant * </label>
         <div class="field_content">
-        <input type="text" name="first_name_guardian" id="first_name_guardian" />
+        <input required type="text" name="first_name_guardian" id="first_name_guardian" />
         </div>
         </div>';
 
@@ -428,7 +427,7 @@ function inscription_form_shortcode($atts , $content = null) {
     $rq_frm .=' <div class="inscription_field">
     <label for="telephone_private">Téléphone privé * </label>
     <div class="field_content">
-    <input type="text" name="telephone_private" id="telephone_private" />
+    <input required type="text" name="telephone_private" id="telephone_private" />
     </div>
     </div>';
     $rq_frm .=' <div class="inscription_field">
@@ -444,9 +443,9 @@ function inscription_form_shortcode($atts , $content = null) {
     </div>
     </div>';
     $rq_frm .=' <div class="inscription_field">
-    <label for="email">Courriel </label>
+    <label for="email">Courriel * </label>
     <div class="field_content">
-    <input type="name" name="email" id="email" />
+    <input required type="name" name="email" id="email" />
     </div>
     </div>';
 
@@ -455,8 +454,8 @@ function inscription_form_shortcode($atts , $content = null) {
     $rq_frm .=' <div class="inscription_field">
     <label for="geneva_taxpayer">Contribuable à Genève * </label>
     <div class="field_content">
-    <label><input type="radio"  class="radio_input" name="geneva_taxpayer" value="Oui" />Oui</label>
-    <label><input type="radio"  class="radio_input" name="geneva_taxpayer" value="Non" />Non</label>
+    <label><input required type="radio"  class="radio_input" name="geneva_taxpayer" value="Oui" />Oui</label>
+    <label><input required type="radio"  class="radio_input" name="geneva_taxpayer" value="Non" />Non</label>
     </div>
     </div>';
 
@@ -464,9 +463,9 @@ function inscription_form_shortcode($atts , $content = null) {
     $rq_frm .=' <div class="inscription_field">
     <label for="payment_frequency">Je paierai ma facture en *</label>
     <div class="field_content">
-    <label><input type="radio" class="radio_input" name="payment_frequency" value="1 fois" />1 fois</label>
-    <label><input type="radio" class="radio_input" name="payment_frequency" value="3 fois" />3 fois</label>
-    <label><input type="radio" class="radio_input" name="payment_frequency" value="6 fois" />6 fois</label>
+    <label><input required type="radio" class="radio_input" name="payment_frequency" value="1 fois" />1 fois</label>
+    <label><input required type="radio" class="radio_input" name="payment_frequency" value="3 fois" />3 fois</label>
+    <label><input required type="radio" class="radio_input" name="payment_frequency" value="6 fois" />6 fois</label>
     <p class="meta">Les factures de cours jusque 500.- se paient en une fois. Pour les abonnements l’écolage est payable d’avance en une fois à la réception du CPMDT.</p>
     </div>
     </div>';
@@ -488,12 +487,10 @@ function inscription_form_shortcode($atts , $content = null) {
     '<div class="inscription_field">
     <label for="authorisation_photo">Authorisation photo *</label>
     <div class="field_content">
-    <div class="field_content">
-    <label><input type="radio"  class="radio_input" name="authorisation_photo" value="Oui" />Oui</label>
-    <label><input type="radio"  class="radio_input" name="authorisation_photo" value="Non" />Non</label>
+    <label><input required type="radio"  class="radio_input" name="authorisation_photo" value="Oui" />Oui</label>
+    <label><input required type="radio"  class="radio_input" name="authorisation_photo" value="Non" />Non</label>
     </div>
     <p class="meta">L\'institution peut utiliser des images (photo, vidéos) où apparaît mon enfant pour les diffuser sur son site Internet, dans des brochures, des articles ou autres publications institutionnelles.</p>
-    </div>
     </div>';
 
 
@@ -501,7 +498,7 @@ function inscription_form_shortcode($atts , $content = null) {
     $rq_frm .= '<div class="inscription_field">
         <label for="">Conditions générales *</label>
         <div class="field_content">
-    <label><input id="agree_terms" type="checkbox" class="checkbox_input" value="agree" name="terms" />
+    <label><input required id="agree_terms" type="checkbox" class="checkbox_input" value="agree" name="terms" />
 
     Je certifie avoir pris connaissance des
     <a href="' . get_home_url() . '/conditions-generales/">conditions générales</a> d’inscription et les accepte. </a>  </label>
@@ -535,10 +532,12 @@ function inscription_form_shortcode($atts , $content = null) {
     $rq_frm .=' <div class="inscription_field">
     <label for="message">Remarques si nécessaire </label>
     <div class="field_content">
-    <textarea  name="message" id="message"></textarea>
-    <p class="meta">Pour la danse, spécifier le choix du jour.</p>
-    </div>
-    </div>';
+    <textarea  name="message" id="message"></textarea>';
+    if ( in_array($course_type,  array('danse') ) ):
+        $rq_frm .=' <p class="meta">Pour la danse, spécifier le choix du jour.</p>';
+    endif; // end if in array instrumentchant
+    $rq_frm .= '</div>';
+    $rq_frm .= '</div>';
 
 
 
@@ -618,13 +617,13 @@ function inscription_form_shortcode($atts , $content = null) {
             'prof_inst_chant' => 'Professeur Instr. / chant',
             'other_place_possible' => 'Autre lieu possible',
     //        'musical_course_id' =>'musical_course_id',
-            'musical_course' =>'Formation musicale',
+            'musical_course' =>'usicale',
             'musical_remarks' =>'Remarques',
             'prof_musical' =>'Professeur',
             'musical_location_id' =>'musical_location_id',
             'musical_other_place_possible' =>'Autre lieu possible',
             'inscription_year' => 'Inscription pour l\'année ',
-            'formation_musicale' => 'Formation musicale',
+            'formation_musicale' => 'usicale',
             'musical_level' => 'Niveau musical ',
             'choix_tarif' => 'Choix du tarif ',
             'choix_tarif_collectif' => 'Choix du tarif – cours collectif ',
