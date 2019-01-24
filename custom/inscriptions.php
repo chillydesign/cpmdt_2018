@@ -918,7 +918,7 @@ function inscription_form_shortcode($atts , $content = null) {
             add_filter('wp_mail_content_type', create_function('', 'return "text/html"; '));
 
 
-            $paragraph_for_user = '<p>Madame, Monsieur,</p>
+            $paragraph_for_user = '<p style="font-weight:bold">Conservatoire populaire de musique, danse et théâtre</p><p>Madame, Monsieur,</p>
             <p>Nous accusons réception de votre inscription au cours ' .    $course_title .  '.</p>';
 
             $paragraph_for_user .= $extra_email_text;
