@@ -962,8 +962,7 @@ function inscription_form_shortcode($atts , $content = null) {
             wp_mail( $_POST['email'], $email_subject_for_user, $email_content_for_user, $headers );
 
 
-            $admin_emails = array( 'harvey.charles+cpmdt@gmail.com' );
-            // inscription@cpmdt.ch
+            $admin_emails = array( 'inscription@cpmdt.ch');
             wp_mail( $admin_emails , $email_subject_for_user, $email_content_for_admin, $headers );
 
 
