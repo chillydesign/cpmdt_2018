@@ -252,9 +252,9 @@ function inscription_form_shortcode($atts , $content = null) {
 
             $rq_frm .= '
             <div class="inscription_field">
-            <label for="musical_course">Formation musicale * </label>
+            <label for="formation_musicale">Formation musicale * </label>
             <div class="field_content">
-            <select required class="course_picker" id="musical_course" name="musical_course" data-field="musical_location">
+            <select required id="formation_musicale" name="formation_musicale">
             <option value="Débutant" selected="selected">Débutant</option>
             <option value="A classer">A classer</option>
             <option value="Actuellement en FM au CPMDT">Actuellement en FM au CPMDT</option>
@@ -416,6 +416,13 @@ function inscription_form_shortcode($atts , $content = null) {
         <label for="town_guardian">Ville</label>
         <div class="field_content">
         <input type="text" name="town_guardian" id="town_guardian" />
+        </div>
+        </div>';
+
+        $rq_frm .=' <div class="inscription_field">
+        <label for="postcode_guardian">N° postal </label>
+        <div class="field_content">
+        <input type="text" name="postcode_guardian" id="postcode_guardian" />
         </div>
         </div>';
 
@@ -609,6 +616,7 @@ function inscription_form_shortcode($atts , $content = null) {
             'first_name_guardian' => 'Prénom du répondant',
             'address_guardian' => 'Adresse du répondant',
             'town_guardian' => 'Ville du répondant',
+            'postcode_guardian' => 'N° postal du répondant',
             'email' =>  'Email de l\'élève',
             'geneva_taxpayer' => 'Contribuable à Genève',
             'payment_frequency' => 'Je paierai ma facture en',
@@ -619,7 +627,6 @@ function inscription_form_shortcode($atts , $content = null) {
             'prof_inst_chant' => 'Professeur Instr. / chant',
             'other_place_possible' => 'Autre lieu possible',
     //        'musical_course_id' =>'musical_course_id',
-            'musical_course' =>'usicale',
             'musical_remarks' =>'Remarques',
             'prof_musical' =>'Professeur',
             'musical_location_id' =>'musical_location_id',
@@ -1046,7 +1053,11 @@ function inscription_form_shortcode($atts , $content = null) {
         if ( is_post_type_archive('inscription') ) {
 
                 $download_link = get_home_url() . '/api/v1/?inscriptions'  ;
-                echo '<div class="alignleft actions"><a class="action button-primary button" href="'. $download_link .'">Télécharger CSV</a></div>';
+                echo '<div class="alignleft actions">
+                <a style="margin:0"  class="action button-primary button" href="'. $download_link .'&type=47musicale">Télécharger 47musicale</a>
+                </div>
+                <div class="alignleft actions"><a style="margin:0" class="action button-primary button" href="'. $download_link .'&type=instrumentchant">Télécharger instrumentchant</a>
+                </div>';
         }
 
     }
