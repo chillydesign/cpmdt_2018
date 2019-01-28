@@ -169,7 +169,7 @@ if (typeof locations_for_map != 'undefined' ){
 
 if (typeof single_location_for_map !== 'undefined') {
 
-    if (single_location_map.default_style) {
+    if (single_location_for_map.default_style) {
         map_options.styles = null;
     }
 
