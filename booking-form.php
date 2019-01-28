@@ -90,11 +90,16 @@ if ($places_left <= 5 ) {
 
     <?php // HIDDEN ACTION INPUT IS REQUIRED TO POST THE DATA TO THE CORRECT PLACE ?>
     <div class="inscription_field submit_group_button">
-        <input type="submit" id="submit_booking_form" value="Envoyer">
-        <input type="hidden" name="action" value="booking_form">
-        <input type="hidden" name="agenda_id" value="<?php echo get_the_ID(); ?>">
-        <div id="stopsubmit"></div>
+
+        <div class="field_content">
+            <input type="submit" id="submit_booking_form" value="Envoyer">
+            <input type="hidden" name="action" value="booking_form">
+            <input type="hidden" name="agenda_id" value="<?php echo get_the_ID(); ?>">
+            <div id="stopsubmit"></div>
+            <br><br>
+            <p class="fillitall">Veuillez remplir tous les champs pour valider la réservation.</p>
+        </div>
+
     </div>
-    <br><br>
-    <p class="fillitall">Veuillez remplir tous les champs pour valider la réservation.</p>
+
 </form>
