@@ -208,12 +208,14 @@ function addPointToMap(map,  location, bounds, infowindow, markers, custom_icon 
 		id: location.id,
 	    icon: customMarker
 	});
-    if (this.id > 0) {
-    	marker.addListener('click', function() {
-    		infowindow.setContent('<span style="color:black">' + this.title +  '<br><a style="color:red" href="?p='+ this.id + '">Afficher</a></span>'     );
-    		infowindow.open(map, this);
-    	});
-    }
+
+	marker.addListener('click', function() {
+        if (this.id > 0) {
+            infowindow.setContent('<span style="color:black">' + this.title +  '<br><a style="color:red" href="?p='+ this.id + '">Afficher</a></span>'     );
+            infowindow.open(map, this);
+        }
+	});
+
 
 	markers.push(marker);
 
