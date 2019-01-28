@@ -135,7 +135,7 @@ var map_options = {
 if (typeof map_style_default !== 'undefined') {
 
 } else {
-    map_options.styles: map_theme
+    map_options.styles =  map_theme
 }
 
 
