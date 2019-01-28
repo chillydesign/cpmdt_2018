@@ -106,7 +106,8 @@
                                             get_template_part('booking-form');
                                         //    echo do_shortcode('[formidable id=10]');
                                         }
-                                        ?> </div>
+                                        ?>
+                                    </div>
                                 <?php endif; # if is_required == yes ?>
                             <?php endif; # if event is in the future ?>
 
@@ -114,7 +115,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            
 
         <?php endwhile; else: ?>
 
