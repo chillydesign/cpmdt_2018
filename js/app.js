@@ -128,15 +128,10 @@ var map_options = {
     scrollwheel: false,
     draggable: true,
     navigationControlOptions: {style: google.maps.NavigationControlStyle.SMALL},
-    mapTypeId: google.maps.MapTypeId.ROADMAP
+    mapTypeId: google.maps.MapTypeId.ROADMAP,
+    styles:  map_theme
 };
 
-
-if (typeof map_style_default !== 'undefined') {
-
-} else {
-    map_options.styles =  map_theme
-}
 
 
 if (typeof locations_for_map != 'undefined' ){
@@ -173,6 +168,11 @@ if (typeof locations_for_map != 'undefined' ){
 
 
 if (typeof single_location_for_map !== 'undefined') {
+
+    if (single_location_map.default_style) {
+        map_options.styles = null;
+    }
+
 
         var single_map_container = $('#single_location_map');
         single_map_container.css({
