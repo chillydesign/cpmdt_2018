@@ -92,6 +92,7 @@ if ($places_left <= 5 ) {
     <div class="inscription_field submit_group_button">
 
         <div class="field_content">
+            <label for="email">&nbsp;</label>
             <input type="submit" id="submit_booking_form" value="Envoyer">
             <input type="hidden" name="action" value="booking_form">
             <input type="hidden" name="agenda_id" value="<?php echo get_the_ID(); ?>">
