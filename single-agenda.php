@@ -83,6 +83,10 @@
 
                                     $event_in_future = ($a_date >  strtotime(date('Y-m-d')));
 
+                                    var_dump($a_date);
+                                    var_dump($dd);
+                                    var_dump( (date('Y-m-d'))  );
+                                    var_dump( strtotime(date('Y-m-d'))  );
 
 
                                     ?>
