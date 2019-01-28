@@ -341,7 +341,7 @@ function inscription_form_shortcode($atts , $content = null) {
     $rq_frm .=' <div class="inscription_field">
     <label for="date_of_birth">Date de naissance *</label>
     <div class="field_content">
-    <input required type="text" name="date_of_birth" id="date_of_birth"  />
+    <input required type="date" name="date_of_birth" id="date_of_birth"  />
     </div>
     </div>';
 
