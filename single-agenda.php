@@ -87,11 +87,18 @@
                                     var_dump($dd);
                                     var_dump( (date('Y-m-d'))  );
                                     var_dump( strtotime(date('Y-m-d'))  );
+                                    var_dump( $event_in_future );
+                                    var_dump( $places_left );
+                                    var_dump( $places_allowed );
+                                    var_dump( $count_persons );
+
 
 
                                     ?>
                                 <?php if ( $event_in_future) : ?>
                                 <?php if (get_custom_field('is_required') == "YES"): ?>
+
+                                    <?php var_dump('is_required'); ?>
                                     <div class="row text-uppercase">
                                         <div class="col-sm-6 col-xs-12"><h3>je m’inscris à cet événement</h3></div>
                                         <div class="col-sm-6 col-xs-12"><b class="pull-right">
