@@ -23,9 +23,9 @@ if ($places_left <= 5 ) {
 
 
     <div class="inscription_field">
-        <label for="no_people">Nombre de personnes </label>
+        <label for="no_people">Nombre de personnes *</label>
         <div class="field_content">
-            <select id="no_people" name="no_people">
+            <select required id="no_people" name="no_people">
                 <?php for ( $i = 1; $i <= $places_allowed ; $i++) { ?>
                         <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
                 <?php }; ?>
@@ -36,28 +36,28 @@ if ($places_left <= 5 ) {
 
 
     <div class="inscription_field">
-        <label for="last_name">Nom</label>
+        <label for="last_name">Nom *</label>
         <div class="field_content">
-            <input type="text" name="last_name" id="last_name" />
+            <input required type="text" name="last_name" id="last_name" />
         </div>
     </div>
     <div class="inscription_field">
-        <label for="first_name">Prénom</label>
+        <label for="first_name">Prénom *</label>
         <div class="field_content">
-            <input type="text" name="first_name" id="first_name" />
+            <input required type="text" name="first_name" id="first_name" />
         </div>
     </div>
 
     <div class="inscription_field">
-        <label for="email">Email </label>
+        <label for="email">Email *</label>
         <div class="field_content">
-            <input type="name" name="email" id="email" />
+            <input required type="name" name="email" id="email" />
         </div>
     </div>
     <div class="inscription_field">
-        <label for="telephone">Téléphone  </label>
+        <label for="telephone">Téléphone * </label>
         <div class="field_content">
-            <input type="text" name="telephone" id="telephone" />
+            <input required type="text" name="telephone" id="telephone" />
         </div>
     </div>
 
