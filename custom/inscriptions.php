@@ -855,13 +855,13 @@ function inscription_form_shortcode($atts , $content = null) {
                 }
 
 
-                if (isset($_FILES['hypothetical_file'])) {
-                $hypothetical_file_file = $_FILES['hypothetical_file'];
-                if ($hypothetical_file_file['size'] > 0 ) {
-                    $photo_id = inscription_add_file_upload( $hypothetical_file_file, $new_inscription );
-                    update_field( 'hypothetical_file', $photo_id,  $new_inscription  );
-                };
-                }
+                // if (isset($_FILES['hypothetical_file'])) {
+                // $hypothetical_file_file = $_FILES['hypothetical_file'];
+                // if ($hypothetical_file_file['size'] > 0 ) {
+                //     $photo_id = inscription_add_file_upload( $hypothetical_file_file, $new_inscription );
+                //     update_field( 'hypothetical_file', $photo_id,  $new_inscription  );
+                // };
+                // }
 
 
                 // SEND EMAILS TO THE ADMIN AND THE PERSON WHO SUBMITTED
