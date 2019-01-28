@@ -208,7 +208,7 @@ add_action( 'init', 'revcon_change_post_object' );
 
 
 function wf_version(){
-  return '1.0.9';
+  return '1.1.0';
 }
 
 
@@ -704,6 +704,7 @@ function chilly_map( $atts, $content = null ) {
     $chilly_map .= '<script>
             var single_location_for_map = {"title": "' .  $title .   '","lat":' . $lat. ',"lng":' . $lng . ',"id":0};
             var theme_directory = "' .   get_template_directory_uri() . '";
+            var map_style_default = true;
         </script>';
     return $chilly_map;
 
