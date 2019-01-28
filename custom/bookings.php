@@ -245,20 +245,26 @@ add_action("add_meta_boxes", "add_booking_meta_box");
 
 function count_people_at_event($post_id) {
     global $wpdb;
-    $sql = "SELECT ID FROM wp_posts
-    WHERE `post_parent` = " .$post_id . " AND `post_type` LIKE 'booking' ";
-    $items = $wpdb->get_results($sql, OBJECT);
-    if(count($items) > 0){
-        $booking_ids = array_map(function ($object) { return $object->ID; }, $items);
-        $item_ids = implode(', ', $booking_ids);
-        $sql = "SELECT SUM(meta_value) as 'sum' FROM wp_postmeta
-        WHERE meta_key = 'no_people'
-        AND post_id IN ($item_ids) ";
-        $results = $wpdb->get_results($sql, OBJECT);
+    // $sql = "SELECT ID FROM wp_posts
+    // WHERE `post_parent` = " .$post_id . " AND `post_type` LIKE 'booking' ";
+    // $items = $wpdb->get_results($sql, OBJECT);
+    // if(count($items) > 0){
+    //     $booking_ids = array_map(function ($object) { return $object->ID; }, $items);
+    //     $item_ids = implode(', ', $booking_ids);
+    //     $sql = "SELECT SUM(meta_value) as 'sum' FROM wp_postmeta
+    //     WHERE meta_key = 'no_people'
+    //     AND post_id IN ($item_ids) ";
+    //     $results = $wpdb->get_results($sql, OBJECT);
+    //     return intval($results[0]->sum);
+    // }
+    // return 0;
 
-        return intval($results[0]->sum);
-    }
-    return 0;
+    // MORE EFFICIENT QUERY
+
+    $sql = "SELECT SUM(meta_value) as 'sum' FROM wp_postmeta LEFT JOIN wp_posts ON wp_posts.ID = wp_postmeta.post_id WHERE wp_postmeta.meta_key = 'no_people' AND wp_posts.post_status = 'publish' AND wp_posts.post_type = 'booking' AND wp_posts.post_parent = " . $post_id ;
+    $results = $wpdb->get_results($sql, OBJECT);
+    return intval($results[0]->sum);
+    
 
 }
 
