@@ -83,14 +83,14 @@
 
                                     $event_in_future = ($a_date >  strtotime(date('Y-m-d')));
 
-                                    var_dump($a_date);
-                                    var_dump($dd);
-                                    var_dump( (date('Y-m-d'))  );
-                                    var_dump( strtotime(date('Y-m-d'))  );
-                                    var_dump( $event_in_future );
-                                    var_dump( $places_left );
-                                    var_dump( $places_allowed );
-                                    var_dump( $count_persons );
+                                    // var_dump($a_date);
+                                    // var_dump($dd);
+                                    // var_dump( (date('Y-m-d'))  );
+                                    // var_dump( strtotime(date('Y-m-d'))  );
+                                    // var_dump( $event_in_future );
+                                    // var_dump( $places_left );
+                                    // var_dump( $places_allowed );
+                                    // var_dump( $count_persons );
 
 
 
