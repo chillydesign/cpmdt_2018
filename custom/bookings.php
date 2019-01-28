@@ -200,12 +200,12 @@ function all_booking_fields(){
 
 
         $paragraph_for_user = '<p>Madame, Monsieur,</p>
-        <p>Nous avons bien pris note de votre réservation pour ' . $data['no_people'] . '  personne(s) pour le spectacle '.  $agenda_title . ' le '. $agenda_date . ' à '. $agenda_time . ' à '. $agenda_location . '.</p>
+        <p>Nous avons bien pris note de votre réservation pour ' . $data['no_people'] . '  personne(s) pour le spectacle '.  $agenda_title . ' le '. $agenda_date . ' à '. $agenda_time . ' au Conservatoire populaire - '. $agenda_location . '.</p>
         <p>Les contremarques seront à votre disposition à l’entrée 1 heure avant le spectacle.</p>
-        <p> Si vous désirez annuler ou modifier votre réservation, veuillez, s’il vous plaît, écrire à: <a href="mailto:info@conservatoirepopualire.ch">info@conservatoirepopualire.ch</a></p>
+        <p> Si vous désirez annuler ou modifier votre réservation, veuillez, s’il vous plaît, écrire à: <a href="mailto:info@conservatoirepopulaire.ch">info@conservatoirepopulaire.ch</a></p>
         <p>Avec nos remerciements. <br />
-        <br/> Conservatoire Populaire de musique danse et théâtre <br />
-        <a href="https://cpmdt.ch/">www.cpmdt.ch</a>
+        <br/> Conservatoire Populaire de musique danse et théâtre  <br />
+        <a href="https://cpmdt.ch/">www.conservatoirepopulaire.ch</a>
         </p>';
 
         $email_subject_for_user = 'Réservation pour l’évènement  ' . $agenda_title;
@@ -264,7 +264,7 @@ function count_people_at_event($post_id) {
     $sql = "SELECT SUM(meta_value) as 'sum' FROM wp_postmeta LEFT JOIN wp_posts ON wp_posts.ID = wp_postmeta.post_id WHERE wp_postmeta.meta_key = 'no_people' AND wp_posts.post_status = 'publish' AND wp_posts.post_type = 'booking' AND wp_posts.post_parent = " . $post_id ;
     $results = $wpdb->get_results($sql, OBJECT);
     return intval($results[0]->sum);
-    
+
 
 }
 
