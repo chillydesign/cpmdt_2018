@@ -688,5 +688,28 @@ function sort_teachers_by_title($a, $b) {
 }
 
 
+function chilly_map( $atts, $content = null ) {
+
+    $attributes = shortcode_atts( array(
+        'title' => "Conservatoire populaire de musique, danse et théâtre",
+        'lat' => 46.1971525,
+        'lng' => 6.1511941,
+    ), $atts );
+
+
+    $title = $attributes['title'];
+    $lat = $attributes['lat'];
+    $lng = $attributes['lng'];
+    $chilly_map = '<div style="height:450px" id="single_location_map"></div>';
+    $chilly_map .= '<script>
+            var single_location_for_map = {"title": "' .  $title .   '","lat":' . $lat. ',"lng":' . $lng . ',"id":0};
+            var theme_directory = "' .   get_template_directory_uri() . '";
+        </script>';
+    return $chilly_map;
+
+}
+add_shortcode( 'chilly_map', 'chilly_map' );
+
+
 
 ?>
