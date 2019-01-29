@@ -25,7 +25,7 @@
                         $post = $news_item['post'];
                         $status = $post->post_status;
                         if ($status == 'publish') :
-                        $excerpt = get_field('post_excerptCF', $post->ID);
+                        $excerpt = get_field('post_excerptcf', $post->ID);
 						$category = get_the_category( $post->ID );
 						$categoryName = $category[0]->cat_name;
 						$categorySlug = $category[0]->slug;
