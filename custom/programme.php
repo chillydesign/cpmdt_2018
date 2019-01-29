@@ -60,24 +60,31 @@
 			add_meta_box("programme_meta2", "Programme autres informations", "programs_age_meta", "programme", "normal", "default");
 		}
 		function programs_age_meta() {
+
+            $p_age = get_custom_field("p_age");
+            $p_age2 = get_custom_field("p_age2");
 			 $ret = '
 				</br>
 				<select name="p_age" id="p_age">';
-					for($i=4;$i<26;$i++){
-						$ret .= '<option value="'.$i.'" '.checkSelected($i, get_custom_field("p_age")).'>'.$i.' Ans</option>';
+					for($i = 4; $i < 26; $i++){
+						$ret .= '<option value="'.$i.'" '.checkSelected($i, $p_age).'>'.$i.' Ans</option>';
 					}
 				$ret .= '</select>
 					';
 			$ret .= '
 				</br>
-				<select name="p_age2" id="p_age2">';
-					$selected_value = get_custom_field("p_age2");
-					if($selected_value != '' && $selected_value != null){
-						for($i=get_custom_field("p_age")+1;$i<70;$i++){
-							$ret .= '<option value="'.$i.'" '.checkSelected($i, get_custom_field("p_age2")).'>'.$i.' Ans</option>';
+                <select name="p_age2" id="p_age2">';
+
+                        if( $p_age == '' || $p_age == null){
+                            $p_age = 4;
+                        }
+
+						for($i = $p_age + 1 ; $i < 70; $i++){
+							$ret .= '<option value="'.$i.'" '.checkSelected($i, $p_age2).'>'.$i.' Ans</option>';
 						}
-					}
-				$ret .= '</select>';
+                        $ret .= '</select>';
+
+
 				$ret .= '<p><label for="p_starlink">Lien cours complémentaire: </label><br/><input style="width:50%;" type="text" size="70" placeholder="" id="p_starlink" name="p_starlink" value="' . get_custom_field("p_starlink") . '" /></p>';
 				$ret .= '<p><label for="p_notifications">Informations du programme: </label><br/><textarea style="width:50%;" id="p_notifications" name="p_notifications">' . get_custom_field("p_notifications") . '</textarea></p>';
 				$ret .= '<p><label for="p_related">A découvrir aussi:<small style="display: block;">Please use <span style="background-color:#eee;padding:3px 5px;">HTML</span> tags.</small> </label><textarea style="width:50%;" id="p_related" name="p_related">' . get_custom_field("p_related") . '</textarea></p>';
