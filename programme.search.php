@@ -26,7 +26,11 @@
                         <span id="cat_summary"  class="search_summary" data-default="Toutes les catégories"> Toutes les catégories</span>
 
                         <div id="category_box" class="search_box">
-                            <?php $terms = get_terms( 'programmes'); ?>
+                            <?php $terms = get_terms(array(
+                                'taxonomy' => 'programmes',
+                                'hide_empty' => true,
+                                'exclude' => array(51) // exclude cat of cours47
+                            ) ); ?>
                             <?php foreach ($terms as $term)  : ?>
                                 <label><input name="category" type="checkbox" class="search_check" value="<?php echo $term->term_id; ?>" data-label="<?php echo $term->name; ?>" data-field="category" /> <span><?php echo $term->name; ?> </span>  </label>
                             <?php endforeach; ?>
