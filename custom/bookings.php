@@ -178,8 +178,8 @@ function all_booking_fields(){
         $agenda_location = $address->post_title;
 
 
-        $headers = 'From: Conservatoire populaire de musique, danse et théâtre <info@conservatoirepopualire.ch>' . "\r\n";
-        $headers .= 'Reply-To: Conservatoire populaire de musique, danse et théâtre <info@conservatoirepopualire.ch>' . "\r\n";
+        $headers = 'From: Conservatoire populaire de musique, danse et théâtre <info@conservatoirepopulaire.ch>' . "\r\n";
+        $headers .= 'Reply-To: Conservatoire populaire de musique, danse et théâtre <info@conservatoirepopulaire.ch>' . "\r\n";
         $emailheader = ''; // file_get_contents(dirname(__FILE__) . '/emails/email_header.php');
         $emailfooter = ''; // file_get_contents(dirname(__FILE__) . '/emails/email_footer.php');
         add_filter('wp_mail_content_type',create_function('', 'return "text/html"; '));
@@ -195,7 +195,7 @@ function all_booking_fields(){
 
         $email_subject_for_admin = 'Nouvelle réservation pour l’évènement ' . $agenda_title;
         $email_content_for_admin = $emailheader  . $paragraph_for_admin  . $emailfooter;
-        wp_mail( 'info@conservatoirepopualire.ch' , $email_subject_for_admin, $email_content_for_admin, $headers );
+        wp_mail( 'info@conservatoirepopulaire.ch' , $email_subject_for_admin, $email_content_for_admin, $headers );
 
 
 
