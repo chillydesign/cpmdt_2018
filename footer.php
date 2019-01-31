@@ -12,27 +12,15 @@
 						<hr>
 						<?php echo do_shortcode('[mc4wp_form id="494"]'); ?>
 						<ul class="share-buttons">
+						     <li><a href="https://www.facebook.com/conservatoirepopulaire.ch"><i class="fa fa-facebook"></i></a></li>
 							<?php
-								$facebook = get_theme_mod( 'er-facebook' );
-								if($facebook){
-									$result = '<li><a href="'.$facebook.'"><i class="fa fa-facebook"></i></a></li>';
-									echo $result;
-								}
+								// $insta = get_theme_mod( 'er-insta' );
+								// if($insta){
+								// 	$result = '<li><a href="'.$insta.'"><i class="fa fa-instagram"></i></a></li>';
+								// 	echo $result;
+								// }
 							?>
-							<?php
-								$insta = get_theme_mod( 'er-insta' );
-								if($insta){
-									$result = '<li><a href="'.$insta.'"><i class="fa fa-instagram"></i></a></li>';
-									echo $result;
-								}
-							?>
-							<?php
-								$youtube = get_theme_mod( 'er-youtube' );
-								if($youtube){
-									$result = '<li><a href="'.$youtube.'"><i class="fa fa-youtube"></i></a></li>';
-									echo $result;
-								}
-							?>
+							<li><a href="https://www.youtube.com/channel/UCsz_j1Ve382sFk3Pmo97Vlw"><i class="fa fa-youtube"></i></a></li>
 						</ul>
 						<p>Le Conservatoire populaire de musique, danse et théâtre, école accréditée par le département de l'instruction publique, de la formation et de la jeunesse, bénéficie du soutien de la République et canton de Genève.</p>
 
