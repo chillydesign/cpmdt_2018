@@ -93,14 +93,17 @@
             array_push($course_ids, intval($value->post_id));
         }
 
-        var_dump($location_id);
-        var_dump($course_ids);
-        $courses = get_posts( array(
-            'include' => $course_ids,
-            'post_type' => 'programme',
-            'order' => 'ASC',
-            'orderby' => 'title'
-        ) );
+        if (sizeof($course_ids) > 0) {
+            $courses = get_posts( array(
+                'include' => $course_ids,
+                'posts_per_page' => -1,
+                'post_type' => 'programme',
+                'order' => 'ASC',
+                'orderby' => 'title'
+            ) );
+        } else {
+            return array();
+        }
 
         return $courses;
 
