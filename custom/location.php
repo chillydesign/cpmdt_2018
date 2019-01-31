@@ -84,12 +84,17 @@
 
     function courses_from_location_id($location_id) {
         global $wpdb;
-        $sql = "SELECT post_id FROM wp_postmeta WHERE meta_value =  $location_id";
+        $sql = "SELECT post_id FROM wp_postmeta
+        WHERE meta_key LIKE '%_location%'
+        AND meta_value =  $location_id";
         $course_id_obj = $wpdb->get_results($sql, OBJECT);
         $course_ids = array();
         foreach ($course_id_obj as $value) {
             array_push($course_ids, intval($value->post_id));
         }
+
+        var_dump($location_id);
+        var_dump($course_ids);
         $courses = get_posts( array(
             'include' => $course_ids,
             'post_type' => 'programme',
