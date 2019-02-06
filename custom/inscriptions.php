@@ -362,6 +362,14 @@ function inscription_form_shortcode($atts , $content = null) {
     <input required type="text" name="address" id="address" />
     </div>
     </div>';
+
+    $rq_frm .=  '<div class="inscription_field">
+    <label for="housenumber">Numéro *</label>
+    <div class="field_content">
+    <input type="text" name="housenumber" id="housenumber" />
+    </div>
+    </div>';
+
     $rq_frm .=' <div class="inscription_field">
     <label for="postcode">N° postal * </label>
     <div class="field_content">
@@ -392,13 +400,13 @@ function inscription_form_shortcode($atts , $content = null) {
         </div>';
         $rq_frm .=
         '<div class="inscription_field">
-        <label for="last_name_guardian">Nom du répondant * </label>
+        <label for="last_name_guardian">Nom du répondant&nbsp;* </label>
         <div class="field_content">
         <input required type="text" name="last_name_guardian" id="last_name_guardian" />
         </div>
         </div>';
         $rq_frm .=' <div class="inscription_field">
-        <label for="first_name_guardian">Prénom du répondant * </label>
+        <label for="first_name_guardian">Prénom du répondant&nbsp;* </label>
         <div class="field_content">
         <input required type="text" name="first_name_guardian" id="first_name_guardian" />
         </div>
@@ -409,6 +417,13 @@ function inscription_form_shortcode($atts , $content = null) {
         <label for="address_guardian">Adresse si différente de l\'élève</label>
         <div class="field_content">
         <input type="text" name="address_guardian" id="address_guardian" />
+        </div>
+        </div>';
+
+        $rq_frm .=' <div class="inscription_field">
+        <label for="housenumber_guardian">Numéro</label>
+        <div class="field_content">
+        <input type="text" name="housenumber_guardian" id="housenumber_guardian" />
         </div>
         </div>';
 
@@ -433,7 +448,7 @@ function inscription_form_shortcode($atts , $content = null) {
 
 
     $rq_frm .=' <div class="inscription_field">
-    <label for="telephone_private">Téléphone privé * </label>
+    <label for="telephone_private">Téléphone privé&nbsp;* </label>
     <div class="field_content">
     <input required type="text" name="telephone_private" id="telephone_private" />
     </div>
@@ -460,7 +475,7 @@ function inscription_form_shortcode($atts , $content = null) {
 
 
     $rq_frm .=' <div class="inscription_field">
-    <label for="geneva_taxpayer">Contribuable à Genève * </label>
+    <label for="geneva_taxpayer">Contribuable à Genève&nbsp;* </label>
     <div class="field_content">
     <label><input required type="radio"  class="radio_input" name="geneva_taxpayer" value="Oui" />Oui</label>
     <label><input required type="radio"  class="radio_input" name="geneva_taxpayer" value="Non" />Non</label>
@@ -469,7 +484,7 @@ function inscription_form_shortcode($atts , $content = null) {
 
 
     $rq_frm .=' <div class="inscription_field">
-    <label for="payment_frequency">Je paierai ma facture en *</label>
+    <label for="payment_frequency">Je paierai ma facture en&nbsp;*</label>
     <div class="field_content">
     <label><input required type="radio" class="radio_input" name="payment_frequency" value="1 fois" />1 fois</label>
     <label><input required type="radio" class="radio_input" name="payment_frequency" value="3 fois" />3 fois</label>
@@ -606,6 +621,7 @@ function inscription_form_shortcode($atts , $content = null) {
             'date_of_birth' =>  'Date de naissance de l\'élève',
             'gender' =>  'Sexe',
             'address' =>  'Adresse de l\'élève',
+            'housenumber' => 'Numéro',
             'postcode' => 'N° postal ',
             'town' => 'Ville',
             'telephone_private' => 'Téléphone privé',
@@ -615,6 +631,7 @@ function inscription_form_shortcode($atts , $content = null) {
             'last_name_guardian' =>  'Nom du répondant',
             'first_name_guardian' => 'Prénom du répondant',
             'address_guardian' => 'Adresse du répondant',
+            'housenumber_guardian' => 'Numéro',
             'town_guardian' => 'Ville du répondant',
             'postcode_guardian' => 'N° postal du répondant',
             'email' =>  'Email de l\'élève',
@@ -1054,7 +1071,7 @@ function inscription_form_shortcode($atts , $content = null) {
 
                 $download_link = get_home_url() . '/api/v1/?inscriptions'  ;
                 echo '<div class="alignleft actions">
-                <a style="margin:0"  class="action button-primary button" href="'. $download_link .'&type=47musicale">Télécharger 47musicale</a>
+                <a style="margin:0"  class="action button-primary button" href="'. $download_link .'&type=47musicale">Télécharger inscriptions 4 -7 ans</a>
                 </div>
                 <div class="alignleft actions"><a style="margin:0" class="action button-primary button" href="'. $download_link .'&type=instrumentchant">Télécharger instrumentchant</a>
                 </div>';
