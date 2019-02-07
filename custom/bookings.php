@@ -92,6 +92,7 @@ function all_booking_fields(){
             $first_name = $_POST['first_name'];
             $last_name = $_POST['last_name'];
             $email = $_POST['email'];
+            $email_confirmation = $_POST['email_confirmation'];
             $no_people = intval($_POST['no_people']);
 
 
@@ -101,54 +102,61 @@ function all_booking_fields(){
             //  && $current_user_id > 0
             if ( !empty($email)  && !empty($first_name) &&  !empty($last_name)  ) {
 
-
-                $count_persons = count_people_at_event(  $agenda_id  );
-                $places_allowed = intval( get_field("a_amount" ,  $agenda_id ));
-                $places_left = $places_allowed - $count_persons;
-                // only allow booking if  have spaces for people
-               if ($places_left >= $no_people  ) {
-
-                $post = array(
-                    'post_title'   => $first_name . ' ' . $last_name,
-                    'post_status'  => 'publish',
-                    'post_type'    => 'booking',
-                    'post_content' => '',
-                    'post_parent' =>  $agenda_id
-
-                );
+                // if email equal to email_confirmation
+                if ($email == $email_confirmation) {
 
 
-                // EDIT OR ADD NEW POST
-                $new_booking = wp_insert_post( $post );
+                    $count_persons = count_people_at_event(  $agenda_id  );
+                    $places_allowed = intval( get_field("a_amount" ,  $agenda_id ));
+                    $places_left = $places_allowed - $count_persons;
+                    // only allow booking if  have spaces for people
+                    if ($places_left >= $no_people  ) {
 
-                // IF SUCCESS
-                if ($new_booking > 0) {
-                    // add email to ACF
+                        $post = array(
+                            'post_title'   => $first_name . ' ' . $last_name,
+                            'post_status'  => 'publish',
+                            'post_type'    => 'booking',
+                            'post_content' => '',
+                            'post_parent' =>  $agenda_id
 
-                    $fields = all_booking_fields();
-                    foreach ($fields as $field => $value ) {
-                        if (isset($_POST[$field])){
-                            add_post_meta($new_booking, $field,  $_POST[$field] , true);
+                        );
+
+
+                        // EDIT OR ADD NEW POST
+                        $new_booking = wp_insert_post( $post );
+
+                        // IF SUCCESS
+                        if ($new_booking > 0) {
+                            // add email to ACF
+
+                            $fields = all_booking_fields();
+                            foreach ($fields as $field => $value ) {
+                                if (isset($_POST[$field])){
+                                    add_post_meta($new_booking, $field,  $_POST[$field] , true);
+                                }
+                            }
+
+
+                            // SEND EMAILS TO THE ADMIN AND THE PERSON WHO SUBMITTED
+                            send_booking_emails( $_POST );
+
+
+
+                            wp_redirect( $referer . '?success', $status = 302 );
+
+
+                            // something went wrong with adding the booking post
+                        } else {
+                            wp_redirect($referer . '?problem', $status = 302);
                         }
+
+                    } else { //not enough places left
+                        wp_redirect($referer . '?problem=notenoughplaces', $status = 302);
                     }
 
-
-                    // SEND EMAILS TO THE ADMIN AND THE PERSON WHO SUBMITTED
-                    send_booking_emails( $_POST );
-
-
-
-                    wp_redirect( $referer . '?success', $status = 302 );
-
-
-                    // something went wrong with adding the booking post
-                } else {
-                    wp_redirect($referer . '?problem', $status = 302);
-                }
-
-            } else { //not enough places left
-                wp_redirect($referer . '?problem=notenoughplaces', $status = 302);
-            }
+                } else {  // if email not equal to email_confirmation
+                    wp_redirect($referer . '?problem=emailconfirmation', $status = 302);
+                } // end if email not equal to email_confirmation
 
                 // if we dont have all the data or user not logged in
             } else {

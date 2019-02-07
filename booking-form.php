@@ -51,9 +51,17 @@ if ($places_left <= 5 ) {
     <div class="inscription_field">
         <label for="email">Email *</label>
         <div class="field_content">
-            <input required type="name" name="email" id="email" />
+            <input required type="text" name="email" id="email" />
         </div>
     </div>
+
+    <div class="inscription_field">
+        <label for="email_confirmation">Confirmation Courriel *</label>
+        <div class="field_content">
+            <input class="prevent_pasting" required type="text" name="email_confirmation" id="email_confirmation" />
+        </div>
+    </div>
+
     <div class="inscription_field">
         <label for="telephone">Téléphone * </label>
         <div class="field_content">

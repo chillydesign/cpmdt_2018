@@ -24,6 +24,11 @@
       });
 
 
+      $('.prevent_pasting').bind('copy paste', function (e) {
+          e.preventDefault();
+      });
+
+
 $('.teacher-toggle').click(function(event){
     event.preventDefault();
     var $teacherRow = $(this).closest('.teachers-row');
@@ -610,11 +615,8 @@ if (typeof search_url != 'undefined') {
     $course_pickers.on('change', function(){
 
         var $this = $(this);
-
         var $field = $this.data('field');
-
-        console.log($field, $this.val());
-
+        // console.log($field, $this.val());
         updateLocationForCourse($field, $this.val());
 
 
