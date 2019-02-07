@@ -55,7 +55,9 @@
                             $childrenArgs = array(
                                 'post_parent' => get_the_id(),
                                 'post_type' => 'programme',
-                                'posts_per_page' => -1
+                                'posts_per_page' => -1,
+                                'order' => 'ASC',
+                                'orderby' => 'menu_order'
 
                             );
                         ?>
