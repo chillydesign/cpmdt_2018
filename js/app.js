@@ -360,12 +360,15 @@ function addPointToMap(map,  location, bounds, infowindow, markers, custom_icon 
     };
 
     if (typeof course_category != 'undefined') {
-        $search_checks.each( function() {
-            var $this = $(this);
-            if ( $this.data('field') == 'category'  &&  $this.val() == course_category ) {
-                this.click();
-            }
-        } )
+        setTimeout( function() {
+            $search_checks.each( function() {
+                var $this = $(this);
+                if ( $this.data('field') == 'category'  &&  $this.val() == course_category ) {
+                    this.click();
+                }
+            } )
+
+        }, 300);
 
     }
 
