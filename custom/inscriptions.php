@@ -66,15 +66,20 @@ function inscription_form_shortcode($atts , $content = null) {
 
     if ($course_type == 'adults') {
         $courses = get_all_adult_courses();
+        // $courses = get_all_courses_in_form('adultes');
     } else if ($course_type == 'danse') {
         $courses = get_all_courses_with_cat('dance');
+        // $courses = get_all_courses_in_form('danse');
     } else if ($course_type == 'theatre') {
         $courses = get_all_courses_with_cat('theatre');
+        // $courses = get_all_courses_in_form('theatre');
     } else if ($course_type == '47musicale') {
         // $courses = get_all_47_musicale_courses();
         $courses = get_all_courses_with_cat('cours-4-7-ans');
+        // $courses = get_all_courses_in_form('47ans');
     } else if ($course_type == 'instrumentchant') {
         $courses = get_all_instrumentchant_courses();
+        // $courses = get_all_courses_in_form('instruments');
     } else {
         $courses = get_all_current_courses();
     }
@@ -691,6 +696,42 @@ function inscription_form_shortcode($atts , $content = null) {
         return $posts_array;
     }
 
+    function get_all_courses_in_form($slug) {
+        $posts_array = get_posts(
+            array(
+                'post_type'  => 'programme',
+                'order'=> 'ASC',
+                'orderby' => 'title',
+                'posts_per_page' => -1,
+                'post_status' => 'published',
+                'meta_query' => array(
+                    'relation' => 'OR',
+                    array(
+                        'key' => 'external_signup',
+                        'value' => '0',
+                        'compare' => '=',
+                        'type' => 'NUMERIC'
+                    ),
+                    array(
+                        'key' => 'external_signup',
+                        'value' => '0',
+                        'compare' => 'NOT EXISTS',
+                    )
+                ),
+                'tax_query' => array(
+                    array(
+                        'taxonomy' => 'inscriptionform',
+                        'field' => 'slug',
+                        'terms' => $slug
+                    ),
+                )
+
+            )
+        );
+        return $posts_array;
+    }
+
+
 
     function get_all_courses_with_cat($category) {
         $posts_array = get_posts(
@@ -818,7 +859,21 @@ function inscription_form_shortcode($atts , $content = null) {
                 'order'=> 'ASC',
                 'orderby' => 'title',
                 'posts_per_page' => -1,
-                'post_status' => 'published'
+                'post_status' => 'published',
+                'meta_query' => array(
+                    'relation' => 'OR',
+                    array(
+                        'key' => 'external_signup',
+                        'value' => '0',
+                        'compare' => '=',
+                        'type' => 'NUMERIC'
+                    ),
+                    array(
+                        'key' => 'external_signup',
+                        'value' => '0',
+                        'compare' => 'NOT EXISTS',
+                    )
+                )
 
             )
         );

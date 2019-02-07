@@ -50,6 +50,15 @@
 				)
 		);
 
+        // WHICH COURSE IS IN WHICH INSCRIPTION FORM
+        register_taxonomy( "inscriptionform",
+            array( 	"programme" ),
+            array( 	"hierarchical" => true,
+                    "labels" => array('name'=>"Inscription form"),
+                    "rewrite" => array( 'slug' => 'programmes', 'with_front' => false)
+                )
+        );
+
 
 		// Adding the metabox
         // TODO remove this at some point, been replaced by ACF
