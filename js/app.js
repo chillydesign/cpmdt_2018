@@ -606,6 +606,20 @@ function processCourses(courses, search, category, location, ages){
 if (typeof search_url != 'undefined') {
     var $course_pickers = $('.course_picker');
 
+
+    $course_pickers.on('change', function(){
+
+        var $this = $(this);
+
+        var $field = $this.data('field');
+
+        console.log($field, $this.val());
+
+        updateLocationForCourse($field, $this.val());
+
+
+    });
+
     ///  auto fill course field if courseid get param is set
     var wls = window.location.search;
     if (wls) {
@@ -619,16 +633,23 @@ if (typeof search_url != 'undefined') {
 
 
 
-    $course_pickers.on('change', function(){
 
-        var $this = $(this);
+}
 
-        var $field = $this.data('field');
+// INSCRIPTION FORM
+// INSCRIPTION FORM
+
+
+
+
+
+
+    function updateLocationForCourse($field, $course_id) {
         var $container = $('#' + $field  + 's_container');
         var $template = $('#' + $field  + 's_template').html();
 
         $.ajax({
-            url : search_url + '?course_id=' + $this.val(),
+            url : search_url + '?course_id=' + $course_id,
             type : 'get',
             dataType: 'json',
             beforeSend: function(){
@@ -644,23 +665,13 @@ if (typeof search_url != 'undefined') {
                 }
             }
         })
-
-
-    });
-}
-
-// INSCRIPTION FORM
-// INSCRIPTION FORM
-
-
-
+    }
 
 
 
 	});
 
 })(jQuery, this);
-
 
 
 
