@@ -617,7 +617,7 @@ if (typeof search_url != 'undefined') {
         var $this = $(this);
         var $field = $this.data('field');
         // console.log($field, $this.val());
-        updateLocationForCourse($field, $this.val());
+        updateLocationAndOptionsForCourse($field, $this.val());
 
 
     });
@@ -646,9 +646,13 @@ if (typeof search_url != 'undefined') {
 
 
 
-    function updateLocationForCourse($field, $course_id) {
-        var $container = $('#' + $field  + 's_container');
-        var $template = $('#' + $field  + 's_template').html();
+    function updateLocationAndOptionsForCourse($field, $course_id) {
+        var $loc_container = $('#' + $field  + 's_container');
+        var $loc_template = $('#' + $field  + 's_template').html();
+
+        var $options_container = $('#courseoption_container');
+        var $options_template = $('#courseoption_template').html();
+        var $options_field = $('#options_field');
 
         $.ajax({
             url : search_url + '?course_id=' + $course_id,
@@ -658,12 +662,25 @@ if (typeof search_url != 'undefined') {
                 // $teacher_id_cont.html('');
             },
             success: function( data ) {
+
+                if (data.options) {
+                    if ( data.options.length > 0) {
+                        var optcompiled =  _.template($options_template);
+                        $options_container.html(  optcompiled({ options:   data.options  })  );
+                        $options_field.show();
+                    } else {
+                        $options_field.hide();
+                    }
+                } else {
+                    $options_field.hide();
+                }
+
                 if (data.locations.length > 0) {
-                    var compiled =  _.template($template);
-                    $container.html(  compiled({ locations:   data.locations  })  );
+                    var loccompiled =  _.template($loc_template);
+                    $loc_container.html(  loccompiled({ locations:   data.locations  })  );
 
                 } else {
-                    $container.html('');
+                    $loc_container.html('');
                 }
             }
         })

@@ -140,17 +140,32 @@ function inscription_form_shortcode($atts , $content = null) {
 
 
 
-            $rq_frm .= '<div class="inscription_field">
-            <label for="location_id">Lieu </label>
-            <div class="field_content">
-            <select name="location_id" id="locations_container"></select>
-            <script id="locations_template" type="x-underscore">
-                <%  _.each(locations,function(location,key,list){  %>
-                <option value="<%= location.wid %>"><%= location.post_title %></option>
-                <% }) %>
-            </script>
-            </div>
-            </div>';
+        $rq_frm .= '<div class="inscription_field" id="options_field" style="display:none">
+        <label for="course_option">Course Option </label>
+        <div class="field_content">
+        <select name="course_option" id="courseoption_container"></select>
+        <script id="courseoption_template" type="x-underscore">
+            <%  _.each(options,function(option,key,list){  %>
+            <option value="<%= option %>"><%= option %></option>
+            <% }) %>
+        </script>
+        </div>
+        </div>';
+
+
+
+
+        $rq_frm .= '<div class="inscription_field">
+        <label for="location_id">Lieu </label>
+        <div class="field_content">
+        <select name="location_id" id="locations_container"></select>
+        <script id="locations_template" type="x-underscore">
+            <%  _.each(locations,function(location,key,list){  %>
+            <option value="<%= location.wid %>"><%= location.post_title %></option>
+            <% }) %>
+        </script>
+        </div>
+        </div>';
 
 
         if ( in_array($course_type,  array('47musicale', 'instrumentchant') ) ):
@@ -643,6 +658,7 @@ function inscription_form_shortcode($atts , $content = null) {
             'geneva_taxpayer' => 'Contribuable à Genève',
             'payment_frequency' => 'Je paierai ma facture en',
             'course_id' => 'Cours',
+            'course_option' => 'Options',
             'course_id_second_choice' => 'Second choix',
             'location_id' => 'Location',
             'instrument_chant_remarks' => 'Remarques',
