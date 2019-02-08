@@ -680,7 +680,8 @@ if (typeof search_url != 'undefined') {
 
                 if (data.locations.length > 0) {
                     var loccompiled =  _.template($loc_template);
-                    $loc_container.html(  loccompiled({ locations:   data.locations  })  );
+                    var locations = _.sortBy(data.locations, 'post_title') ;
+                    $loc_container.html(  loccompiled({ locations:   locations  })  );
 
                 } else {
                     $loc_container.html('');
