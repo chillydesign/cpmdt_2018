@@ -564,9 +564,9 @@ function inscription_form_shortcode($atts , $content = null) {
 
     $date = date('d-m-Y');
     $rq_frm .=' <div class="inscription_field">
-    <label for="date_inscription">Date de l\'inscription  </label>
+    <label for="date_inscription">Date de l\'inscription</label>
     <div class="field_content">
-    <input type="text" name="date_inscription" id="date_inscription"  disabled value="' . $date  .'" />
+    <input type="text" name="date_inscription" id="date_inscription"  readonly  value="' . $date  .'" />
     <p class="meta">Date du jour – non modifiable</p>
     </div>
     </div>';
@@ -688,7 +688,7 @@ function inscription_form_shortcode($atts , $content = null) {
             'choix_tarif' => 'Choix du tarif ',
             'choix_tarif_collectif' => 'Choix du tarif – cours collectif ',
             'terms' => 'Conditions générales',
-            'date_inscription' => 'Date de l\'inscription ',
+            'date_inscription' => 'Date de l\'inscription',
             'how_know_school' => 'Comment avez-vous eu connaissance de notre école? ',
             'message' => 'Remarques si nécessaire ',
             'authorisation_photo' => 'Authorisation Photo',
