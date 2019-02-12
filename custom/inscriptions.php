@@ -93,6 +93,16 @@ function inscription_form_shortcode($atts , $content = null) {
     $rq_frm .= ' <form class="inscription_form" action="' .  esc_url( admin_url('admin-post.php') ) . '" method="post"  enctype="multipart/form-data" >';
 
 
+    $locations = get_posts(
+        array(
+            'post_type'  => 'location',
+            'order'=> 'ASC',
+            'orderby' => 'title',
+            'posts_per_page' => -1,
+            'post_status' => 'published'
+        )
+    );
+
 
     if (  isset( $_GET['success']) ) :
         $rq_frm .=  '<div class="alert alert-success">Votre inscription a bien été enregistrée!</div>';
@@ -305,13 +315,12 @@ function inscription_form_shortcode($atts , $content = null) {
             $rq_frm .= '<div class="inscription_field">
             <label for="musical_location_id">Lieu </label>
             <div class="field_content">
-            <select name="musical_location_id" id="musical_locations_container"></select>
-            <script id="musical_locations_template" type="x-underscore">
-                <%  _.each(locations,function(location,key,list){  %>
-                <option value="<%= location.wid %>"><%= location.post_title %></option>
-                <% }) %>
-            </script>
-            <p class="meta">Si le cours n’est pas disponible dans le lieu choisi, le centre le plus proche vous sera affecté.</p>
+            <select name="musical_location_id" id="musical_locations_container"></select>';
+            foreach ($locations as $location) {
+                $rq_frm .= '<option value="'.  $location->ID .'">' . $location->post_title. '</option>';
+            };
+
+            $rq_frm .= '</select><p class="meta">Si le cours n’est pas disponible dans le lieu choisi, le centre le plus proche vous sera affecté.</p>
             </div>
             </div>';
 
@@ -686,6 +695,7 @@ function inscription_form_shortcode($atts , $content = null) {
 
         );
     }
+
 
 
     function get_all_adult_courses() {
