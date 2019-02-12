@@ -541,7 +541,7 @@ function inscription_form_shortcode($atts , $content = null) {
 
     $rq_frm .=
     '<div class="inscription_field">
-    <label for="authorisation_photo">Authorisation photo *</label>
+    <label for="authorisation_photo">Autorisation photo *</label>
     <div class="field_content">
     <label><input required type="radio"  class="radio_input" name="authorisation_photo" value="Oui" />Oui</label>
     <label><input required type="radio"  class="radio_input" name="authorisation_photo" value="Non" />Non</label>
@@ -691,7 +691,7 @@ function inscription_form_shortcode($atts , $content = null) {
             'date_inscription' => 'Date de l\'inscription',
             'how_know_school' => 'Comment avez-vous eu connaissance de notre école? ',
             'message' => 'Remarques si nécessaire ',
-            'authorisation_photo' => 'Authorisation Photo',
+            'authorisation_photo' => 'Autorisation Photo',
 
         );
     }
