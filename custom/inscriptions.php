@@ -315,7 +315,7 @@ function inscription_form_shortcode($atts , $content = null) {
             $rq_frm .= '<div class="inscription_field">
             <label for="musical_location_id">Lieu </label>
             <div class="field_content">
-            <select name="musical_location_id" id="musical_locations_container"></select>';
+            <select name="musical_location_id" id="musical_locations_container">';
             foreach ($locations as $location) {
                 $rq_frm .= '<option value="'.  $location->ID .'">' . $location->post_title. '</option>';
             };
