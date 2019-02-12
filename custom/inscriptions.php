@@ -65,21 +65,21 @@ function inscription_form_shortcode($atts , $content = null) {
 	$course_type = $atts['type'];
 
     if ($course_type == 'adults') {
-        $courses = get_all_adult_courses();
-        // $courses = get_all_courses_in_form('adultes');
+        // $courses = get_all_adult_courses();
+        $courses = get_all_courses_in_form('adultes');
     } else if ($course_type == 'danse') {
-        $courses = get_all_courses_with_cat('dance');
-        // $courses = get_all_courses_in_form('danse');
+        // $courses = get_all_courses_with_cat('dance');
+        $courses = get_all_courses_in_form('danse');
     } else if ($course_type == 'theatre') {
-        $courses = get_all_courses_with_cat('theatre');
-        // $courses = get_all_courses_in_form('theatre');
+        // $courses = get_all_courses_with_cat('theatre');
+        $courses = get_all_courses_in_form('theatre');
     } else if ($course_type == '47musicale') {
         // $courses = get_all_47_musicale_courses();
-        $courses = get_all_courses_with_cat('cours-4-7-ans');
-        // $courses = get_all_courses_in_form('47ans');
+        // $courses = get_all_courses_with_cat('cours-4-7-ans');
+        $courses = get_all_courses_in_form('47ans');
     } else if ($course_type == 'instrumentchant') {
-        $courses = get_all_instrumentchant_courses();
-        // $courses = get_all_courses_in_form('instruments');
+        // $courses = get_all_instrumentchant_courses();
+        $courses = get_all_courses_in_form('instruments');
     } else {
         $courses = get_all_current_courses();
     }
@@ -1096,7 +1096,7 @@ function inscription_form_shortcode($atts , $content = null) {
 
 
             $admin_emails = array( 'inscription@cpmdt.ch');
-            // $admin_emails = array( 'harvey.charles@gmail.com');
+
             wp_mail( $admin_emails , $email_subject_for_user, $email_content_for_admin, $headers );
 
 
