@@ -107,14 +107,14 @@ function inscription_form_shortcode($atts , $content = null) {
     if (  isset( $_GET['success']) ) :
         $rq_frm .=  '<div class="alert alert-success">Votre inscription a bien été enregistrée!</div>';
     elseif ( isset($_GET['problem'])  ) :
-        $rq_frm .=  '<div class="alert alert-danger">Une erreur s’est produite. Veuillez réessayer..</div>';
+        $rq_frm .=  "<div class='alert alert-danger'>Une erreur s'est produite. Veuillez réessayer.</div>";
     endif;
 
 
 
 
         if ( in_array($course_type,  array('instrumentchant') ) ):
-            $rq_frm .=  '<h3> COURS D’INSTRUMENT / CHANT (choisir un cours) </h3>';
+            $rq_frm .=  "<h3> COURS D'INSTRUMENT / CHANT (choisir un cours) </h3>";
         endif; // end if in array instrumentchant
 
 
@@ -261,7 +261,7 @@ function inscription_form_shortcode($atts , $content = null) {
         <option value="Abonnement de 10 leçons individuelles de 50 minutes / 1100.-" >Abonnement de 10 leçons individuelles de 50 minutes / 1100.-</option>
         <option value="Cours collectif, prix selon brochure" >Cours collectif, prix selon brochure</option>
         </select>
-        <p class="meta"> Instrument / chant. Pour les abonnements l’écolage est payable d’avance en une fois à la réception du CPMDT. </p>
+        <p class="meta"> Instrument / chant. Pour les abonnements l\'écolage est payable d\'avance en une fois à la réception du CPMDT. </p>
         </div>
         </div>';
 
@@ -320,7 +320,7 @@ function inscription_form_shortcode($atts , $content = null) {
                 $rq_frm .= '<option value="'.  $location->ID .'">' . $location->post_title. '</option>';
             };
 
-            $rq_frm .= '</select><p class="meta">Si le cours n’est pas disponible dans le lieu choisi, le centre le plus proche vous sera affecté.</p>
+            $rq_frm .= '</select><p class="meta">Si le cours n\'est pas disponible dans le lieu choisi, le centre le plus proche vous sera affecté.</p>
             </div>
             </div>';
 
@@ -522,7 +522,7 @@ function inscription_form_shortcode($atts , $content = null) {
     <label><input required type="radio" class="radio_input" name="payment_frequency" value="1 fois" />1 fois</label>
     <label><input required type="radio" class="radio_input" name="payment_frequency" value="3 fois" />3 fois</label>
     <label><input required type="radio" class="radio_input" name="payment_frequency" value="6 fois" />6 fois</label>
-    <p class="meta">Les factures de cours en dessous de 500.- se paient en une fois. Pour les abonnements l’écolage est payable d’avance en une fois à la réception du CPMDT.</p>
+    <p class="meta">Les factures de cours en dessous de 500.- se paient en une fois. Pour les abonnements l\'écolage est payable d\'avance en une fois à la réception du CPMDT.</p>
     </div>
     </div>';
 
@@ -554,17 +554,17 @@ function inscription_form_shortcode($atts , $content = null) {
     $rq_frm .= '<div class="inscription_field">
         <label for="">Conditions générales *</label>
         <div class="field_content">
-    <label><input required id="agree_terms" type="checkbox" class="checkbox_input" value="Je certifie avoir pris connaissance des conditions générales d’inscription et les accepte." name="terms" />
+    <label><input required id="agree_terms" type="checkbox" class="checkbox_input" value="Je certifie avoir pris connaissance des conditions générales d\'inscription et les accepte." name="terms" />
 
     Je certifie avoir pris connaissance des
-    <a href="' . get_home_url() . '/conditions-generales/">conditions générales</a> d’inscription et les accepte. </a>  </label>
+    <a href="' . get_home_url() . '/conditions-generales/">conditions générales</a> d\'inscription et les accepte. </a>  </label>
     </div>
     </div>';
 
 
     $date = date('d-m-Y');
     $rq_frm .=' <div class="inscription_field">
-    <label for="date_inscription">Date de l’inscription  </label>
+    <label for="date_inscription">Date de l\'inscription  </label>
     <div class="field_content">
     <input type="text" name="date_inscription" id="date_inscription"  disabled value="' . $date  .'" />
     <p class="meta">Date du jour – non modifiable</p>
@@ -688,7 +688,7 @@ function inscription_form_shortcode($atts , $content = null) {
             'choix_tarif' => 'Choix du tarif ',
             'choix_tarif_collectif' => 'Choix du tarif – cours collectif ',
             'terms' => 'Conditions générales',
-            'date_inscription' => 'Date de l’inscription ',
+            'date_inscription' => 'Date de l\'inscription ',
             'how_know_school' => 'Comment avez-vous eu connaissance de notre école? ',
             'message' => 'Remarques si nécessaire ',
             'authorisation_photo' => 'Authorisation Photo',
@@ -948,7 +948,14 @@ function inscription_form_shortcode($atts , $content = null) {
 
                 foreach ($fields as $field => $value ) {
                     if (isset($_POST[$field])){
-                        add_post_meta($new_inscription, $field,  $_POST[$field] , true);
+
+                        if ($field == 'date_of_birth') {
+                            $timestamp = strtotime( $_POST[$field] );
+                            $v = date('d-m-Y', $timestamp);
+                        }  else {
+                            $v = $_POST[$field]
+                        }
+                        add_post_meta($new_inscription, $field, $v  , true);
                     }
                 }
 
