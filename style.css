@@ -1718,34 +1718,28 @@ input.radio_input, input.checkbox_input {
 
 
 .centers_container {
-
+    column-count: 1
+}
+@media (min-width: 768px) {
+    .centers_container {
+        column-count: 2
+    }
+}
+@media (min-width: 992px) {
+    .centers_container {
+        column-count: 3
+    }
 }
 
+.single_center {
+    display: block;
+}
 
 /* .single_center {
 
     color: white;
     margin: 0 0  10px;
 } */
-
-.single_center {
-
-    display: block;
-}
-
- @media (min-width: 768px) {
-     .single_center {
-         width: 48%;
-             display: inline-block;
-     }
-}
-@media (min-width: 992px) {
-    .single_center {
-        width: 32%;
-        display: inline-block;
-    }
-}
-
 
 .single_center a {
     /* color: white !important;

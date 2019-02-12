@@ -14,7 +14,7 @@ get_header(); ?>
 ); ?>
 <?php $centers = get_posts($args); ?>
 
-<div class="container">
+<div class="container centers_container">
 
 
     <?php $c = 0; foreach ($centers as $center): ?>
