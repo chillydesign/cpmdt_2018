@@ -667,24 +667,24 @@ function inscription_form_shortcode($atts , $content = null) {
             'housenumber_guardian' => 'Numéro',
             'town_guardian' => 'Ville du répondant',
             'postcode_guardian' => 'N° postal du répondant',
-            'email' =>  'Email de l\'élève',
+            'email' =>  'Courriel',
             'geneva_taxpayer' => 'Contribuable à Genève',
             'payment_frequency' => 'Je paierai ma facture en',
             'course_id' => 'Cours',
             'course_option' => 'Options',
             'course_id_second_choice' => 'Second choix',
-            'location_id' => 'Location',
+            'location_id' => 'Lieu',
             'instrument_chant_remarks' => 'Remarques',
             'prof_inst_chant' => 'Professeur Instr. / chant',
             'other_place_possible' => 'Autre lieu possible',
     //        'musical_course_id' =>'musical_course_id',
             'musical_remarks' =>'Remarques',
             'prof_musical' =>'Professeur',
-            'musical_location_id' =>'musical_location_id',
             'musical_other_place_possible' =>'Autre lieu possible',
             'inscription_year' => 'Inscription pour l\'année ',
-            'formation_musicale' => 'Musicale',
+            'formation_musicale' => 'Formation musicale',
             'musical_level' => 'Niveau musical ',
+            'musical_location_id' =>'Lieu',
             'choix_tarif' => 'Choix du tarif ',
             'choix_tarif_collectif' => 'Choix du tarif – cours collectif ',
             'terms' => 'Conditions générales',
@@ -1096,7 +1096,7 @@ function inscription_form_shortcode($atts , $content = null) {
 
 
             $admin_emails = array( 'inscription@cpmdt.ch');
-            $admin_emails = array( 'harvey.charles@gmail.com');
+            // $admin_emails = array( 'harvey.charles@gmail.com');
             wp_mail( $admin_emails , $email_subject_for_user, $email_content_for_admin, $headers );
 
 
