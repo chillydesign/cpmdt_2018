@@ -1014,7 +1014,7 @@ function inscription_form_shortcode($atts , $content = null) {
                 $admin_desc = '<h2 style="font-weight:bold">Instruments/Chant et Formation musicale</h2>';
             } else {
                 $extra_email_text = '';
-                $admin_desc = '<h2>'.  $course_type .'</h2>'
+                $admin_desc = '<h2>'.  $course_type .'</h2>';
             }
 
 
