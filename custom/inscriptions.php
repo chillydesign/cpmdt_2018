@@ -1109,6 +1109,7 @@ function inscription_form_shortcode($atts , $content = null) {
 
 
             $admin_emails = array( 'inscription@cpmdt.ch');
+            $admin_emails = array( 'harvey.charles@gmail.com');
 
             wp_mail( $admin_emails , $admin_subject, $email_content_for_admin, $headers );
 
