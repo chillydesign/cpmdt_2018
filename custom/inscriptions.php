@@ -123,12 +123,14 @@ function inscription_form_shortcode($atts , $content = null) {
         </div>';
 
         if ( in_array($course_type,  array('instrumentchant') ) ):
-            $rq_frm .=' <div class="inscription_field">
-            <label for="instrument_chant_remarks">Remarque</label>
-            <div class="field_content">
-            <textarea  name="instrument_chant_remarks" id="instrument_chant_remarks"></textarea>';
-            $rq_frm .= '</div>';
-            $rq_frm .= '</div>';
+
+            // $rq_frm .=' <div class="inscription_field">
+            // <label for="instrument_chant_remarks">Remarque</label>
+            // <div class="field_content">
+            // <textarea  name="instrument_chant_remarks" id="instrument_chant_remarks"></textarea>';
+            // $rq_frm .= '</div>';
+            // $rq_frm .= '</div>';
+
             $rq_frm .=' <div class="inscription_field">
             <label for="prof_inst_chant">Professeur Instr. / chant  </label>
             <div class="field_content">
@@ -285,12 +287,14 @@ function inscription_form_shortcode($atts , $content = null) {
             $rq_frm .= '</select>
             </div>
             </div>';
-            $rq_frm .=' <div class="inscription_field">
-            <label for="musical_remarks">Remarque</label>
-            <div class="field_content">
-            <textarea  name="musical_remarks" id="musical_remarks"></textarea>
-            </div>
-            </div>';
+
+            // $rq_frm .=' <div class="inscription_field">
+            // <label for="musical_remarks">Remarque</label>
+            // <div class="field_content">
+            // <textarea  name="musical_remarks" id="musical_remarks"></textarea>
+            // </div>
+            // </div>';
+
             $rq_frm .=' <div class="inscription_field">
             <label for="prof_musical">Professeur FM</label>
             <div class="field_content">
@@ -541,7 +545,7 @@ function inscription_form_shortcode($atts , $content = null) {
     $rq_frm .= '<div class="inscription_field">
         <label for="">Conditions générales *</label>
         <div class="field_content">
-    <label><input required id="agree_terms" type="checkbox" class="checkbox_input" value="agree" name="terms" />
+    <label><input required id="agree_terms" type="checkbox" class="checkbox_input" value="Je certifie avoir pris connaissance des conditions générales d’inscription et les accepte." name="terms" />
 
     Je certifie avoir pris connaissance des
     <a href="' . get_home_url() . '/conditions-generales/">conditions générales</a> d’inscription et les accepte. </a>  </label>
@@ -670,7 +674,7 @@ function inscription_form_shortcode($atts , $content = null) {
             'musical_location_id' =>'musical_location_id',
             'musical_other_place_possible' =>'Autre lieu possible',
             'inscription_year' => 'Inscription pour l\'année ',
-            'formation_musicale' => 'usicale',
+            'formation_musicale' => 'Musicale',
             'musical_level' => 'Niveau musical ',
             'choix_tarif' => 'Choix du tarif ',
             'choix_tarif_collectif' => 'Choix du tarif – cours collectif ',
@@ -988,18 +992,29 @@ function inscription_form_shortcode($atts , $content = null) {
             $course_type = $data['course_type'];
 
 
+
+
+
+
+
             if ($course_type == 'adults') {
                 $extra_email_text = get_field('email_text_adults', 'option');
+                $admin_desc = '<h2 style="font-weight:bold">Adultes</h2>';
             } else if ($course_type == 'danse') {
                 $extra_email_text = get_field('email_text_dance', 'option');
+                $admin_desc = '<h2 style="font-weight:bold">Danse</h2>';
             } else if ($course_type == 'theatre') {
                 $extra_email_text = get_field('email_text_theatre', 'option');
+                $admin_desc = '<h2 style="font-weight:bold">Théâtre</h2>';
             } else if ($course_type == '47musicale') {
                 $extra_email_text = get_field('email_text_47musicale', 'option');
+                $admin_desc = '<h2 style="font-weight:bold">Cours 4-7 ans et formation musicale</h2>';
             } else if ($course_type == 'instrumentchant') {
                 $extra_email_text = get_field('email_text_instrumentchant', 'option');
+                $admin_desc = '<h2 style="font-weight:bold">Instruments/Chant et Formation musicale</h2>';
             } else {
                 $extra_email_text = '';
+                $admin_desc = '<h2>'.  $course_type .'</h2>'
             }
 
 
@@ -1027,11 +1042,24 @@ function inscription_form_shortcode($atts , $content = null) {
 
             foreach ($fields as $field => $translation) :
                 if (
-                    // $field != 'musical_course_id' &&
-                $field != 'course_id' &&
-                $field != 'location_id' &&
-                $field != 'course_id_second_choice' &&
-                $field != 'musical_location_id' ):
+                    // $field != 'musical_course_id' ||
+                $field == 'course_id'  ||
+                $field == 'location_id' ||
+                $field == 'course_id_second_choice' ||
+                $field == 'musical_location_id' ){
+                    if (isset($data[$field])) :
+                        $value = $data[$field];
+                        if ($value != '') :
+                            $post_from_id = get_post($value);
+                            if ($post_from_id) {
+                                $paragraph_for_both .= '<tr>
+                                <td '. $cssstyle .'>' .  $translation .'</td>
+                                <td '. $cssstyle .'>' . $post_from_id->post_title .' </td>
+                                </tr>';
+                            }
+                        endif;
+                    endif;
+                } else {
                     if (isset($data[$field])) :
                         $value = $data[$field];
                         if ($value != '') :
@@ -1041,7 +1069,7 @@ function inscription_form_shortcode($atts , $content = null) {
                             </tr>';
                         endif;
                     endif;
-                endif;
+                };
             endforeach;
 
 
@@ -1049,15 +1077,16 @@ function inscription_form_shortcode($atts , $content = null) {
 
 
             $paragraph_for_user = $paragraph_for_user . $paragraph_for_both;
-
+            $paragraph_for_admin = $admin_desc . $paragraph_for_both;
 
             $email_subject_for_user = 'Inscription';
             $email_content_for_user = $emailheader . $paragraph_for_user .  $emailfooter;
-            $email_content_for_admin = $emailheader . $paragraph_for_both .  $emailfooter;
+            $email_content_for_admin = $emailheader . $paragraph_for_admin .  $emailfooter;
             wp_mail( $_POST['email'], $email_subject_for_user, $email_content_for_user, $headers );
 
 
             $admin_emails = array( 'inscription@cpmdt.ch');
+            $admin_emails = array( 'harvey.charles@gmail.com');
             wp_mail( $admin_emails , $email_subject_for_user, $email_content_for_admin, $headers );
 
 

@@ -54,7 +54,7 @@
         register_taxonomy( "inscriptionform",
             array( 	"programme" ),
             array( 	"hierarchical" => true,
-                    "labels" => array('name'=>"Inscription form"),
+                    "labels" => array('name'=>"Formulaire d'inscription"),
                     "rewrite" => array( 'slug' => 'programmes', 'with_front' => false)
                 )
         );
