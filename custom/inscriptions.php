@@ -963,6 +963,12 @@ function inscription_form_shortcode($atts , $content = null) {
                     add_post_meta($new_inscription, 'course_type',  $_POST['course_type'] , true);
                 }
 
+                // add client ip address
+                if (isset( $_SERVER['REMOTE_ADDR'] ) ) {
+                    add_post_meta($new_inscription, 'ip_address',  $_SERVER['REMOTE_ADDR'] , true);
+                };
+
+
 
                 // if (isset($_FILES['hypothetical_file'])) {
                 // $hypothetical_file_file = $_FILES['hypothetical_file'];

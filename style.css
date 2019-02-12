@@ -1728,6 +1728,25 @@ input.radio_input, input.checkbox_input {
     margin: 0 0  10px;
 } */
 
+.single_center {
+    width: 100%;
+    display: block;
+}
+
+ @media (min-width: 768px) {
+     .single_center {
+         width: 50%;
+             display: inline-block;
+     }
+}
+@media (min-width: 992px) {
+    .single_center {
+        width: 33%;
+            display: inline-block;
+    }
+}
+
+
 .single_center a {
     /* color: white !important;
     background: #009992; */
