@@ -953,7 +953,7 @@ function inscription_form_shortcode($atts , $content = null) {
                             $timestamp = strtotime( $_POST[$field] );
                             $v = date('d-m-Y', $timestamp);
                         }  else {
-                            $v = $_POST[$field]
+                            $v = $_POST[$field];
                         }
                         add_post_meta($new_inscription, $field, $v  , true);
                     }
