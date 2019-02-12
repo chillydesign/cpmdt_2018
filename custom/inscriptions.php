@@ -1016,22 +1016,22 @@ function inscription_form_shortcode($atts , $content = null) {
 
             if ($course_type == 'adults') {
                 $extra_email_text = get_field('email_text_adults', 'option');
-                $admin_desc = '<h2 style="font-weight:bold">Adultes</h2>';
+                $admin_subject = 'Inscription: Adultes';
             } else if ($course_type == 'danse') {
                 $extra_email_text = get_field('email_text_dance', 'option');
-                $admin_desc = '<h2 style="font-weight:bold">Danse</h2>';
+                $admin_subject = 'Inscription: Danse';
             } else if ($course_type == 'theatre') {
                 $extra_email_text = get_field('email_text_theatre', 'option');
-                $admin_desc = '<h2 style="font-weight:bold">Théâtre</h2>';
+                $admin_subject = 'Inscription: Théâtre';
             } else if ($course_type == '47musicale') {
                 $extra_email_text = get_field('email_text_47musicale', 'option');
-                $admin_desc = '<h2 style="font-weight:bold">Cours 4-7 ans et formation musicale</h2>';
+                $admin_subject = 'Inscription: Cours 4-7 ans et formation musicale';
             } else if ($course_type == 'instrumentchant') {
                 $extra_email_text = get_field('email_text_instrumentchant', 'option');
-                $admin_desc = '<h2 style="font-weight:bold">Instruments/Chant et Formation musicale</h2>';
+                $admin_subject = 'Inscription: Instruments/Chant et Formation musicale';
             } else {
                 $extra_email_text = '';
-                $admin_desc = '<h2>'.  $course_type .'</h2>';
+                $admin_subject = 'Inscription:' . $course_type ;
             }
 
 
@@ -1094,7 +1094,7 @@ function inscription_form_shortcode($atts , $content = null) {
 
 
             $paragraph_for_user = $paragraph_for_user . $paragraph_for_both;
-            $paragraph_for_admin = $admin_desc . $paragraph_for_both;
+            $paragraph_for_admin = $paragraph_for_both;
 
             $email_subject_for_user = 'Inscription';
             $email_content_for_user = $emailheader . $paragraph_for_user .  $emailfooter;
@@ -1104,7 +1104,7 @@ function inscription_form_shortcode($atts , $content = null) {
 
             $admin_emails = array( 'inscription@cpmdt.ch');
 
-            wp_mail( $admin_emails , $email_subject_for_user, $email_content_for_admin, $headers );
+            wp_mail( $admin_emails , $admin_subject, $email_content_for_admin, $headers );
 
 
 

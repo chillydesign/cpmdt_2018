@@ -606,6 +606,7 @@ width: 18%;
     float: left;
     width: 60px;
     text-align: center;
+    display: none;
     visibility: hidden; }
     .front-posts .item .item-date b {
       display: block; }
