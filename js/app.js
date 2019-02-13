@@ -444,7 +444,16 @@ function displayCourses(courses, courses_container, compiled){
                 $location.push( parseInt($this.val())  );
                 $locations_summary.push(  $this.data('label') )
             } else if( $check_type == 'age' ){
-                $ages.push( parseInt($this.val())  );
+
+
+                if (typeof use_new_age_range !== "undefined") {
+                    $ages.push( $this.val()  );
+                } else {
+                    $ages.push( parseInt($this.val())  );
+                }
+
+
+
                 $ages_summary.push(  $this.data('label') )
             } else if( $check_type =='category' ){
                 $cat.push( parseInt($this.val())  );
@@ -544,35 +553,60 @@ function processCourses(courses, search, category, location, ages){
     }
 
 
+    if (typeof use_new_age_range !== "undefined") {
+        if (ages && ages.length > 0) {
+            console.log(ages);
+            var courses = _.reject(  courses ,  function(c) {
+                if (c.age_ranges.length > 0) {
+                    return ( _.intersection(    ages  ,  c.age_ranges ).length == 0 );
+                } else {
+                    return true;
+                }
 
-    if (ages && ages.length > 0) {
-        var min_age = 100;
-        var max_age = 0;
-         _.each(ages, function(age, index, list) {
-             if (age == 4) {
-                var mn = 4;
-                var mx = 7;
-             } else if (age == 7) {
-                var mn = 7;
-                var mx = 25;
-             } else if (age == 25) {
-                var mn = 25;
-                var mx = 70;
-             }
-             if (mn < min_age) {
-                 min_age = mn;
-             };
-             if (mx > max_age) {
-                 max_age = mx;
-             }
-         });
+            });
+        }
+
+    } else { // if use old range system
+
+        if (ages && ages.length > 0) {
+            var min_age = 100;
+            var max_age = 0;
+             _.each(ages, function(age, index, list) {
+                 if (age == 4) {
+                    var mn = 4;
+                    var mx = 7;
+                 } else if (age == 7) {
+                    var mn = 7;
+                    var mx = 25;
+                 } else if (age == 25) {
+                    var mn = 25;
+                    var mx = 70;
+                 }
+                 if (mn < min_age) {
+                     min_age = mn;
+                 };
+                 if (mx > max_age) {
+                     max_age = mx;
+                 }
+             });
 
 
 
-         var courses = _.filter(  courses ,  function(c) {
-             return   (  ( c.lower_age > min_age    ||   c.upper_age > min_age ) && ( (  c.lower_age < max_age ||  c.upper_age <=  max_age ) )    )
-         });
-    }
+
+             var courses = _.filter(  courses ,  function(c) {
+                 return   (  ( c.lower_age > min_age    ||   c.upper_age > min_age ) && ( (  c.lower_age < max_age ||  c.upper_age <=  max_age ) )    )
+             });
+
+        }
+
+    } // if use old range system
+
+
+
+
+
+
+
 
 
     var courses =  _.toArray(courses)  ;//  CONVERT  OBJECT TO ARRAY

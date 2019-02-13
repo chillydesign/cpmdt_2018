@@ -711,5 +711,9 @@ function chilly_map( $atts, $content = null ) {
 add_shortcode( 'chilly_map', 'chilly_map' );
 
 
+function  use_new_age_range() {
+    return false;
+}
+
 
 ?>

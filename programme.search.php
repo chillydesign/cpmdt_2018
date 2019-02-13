@@ -11,11 +11,25 @@
                         <div class="search_heading">Âge</div>
                         <span id="age_summary" class="search_summary" data-default="Tous les âges">Tous les âges</span>
 
+
+
+                        <?php if ( use_new_age_range()   ) : ?>
+                            <div id="age_box" class="search_box">
+                                <label><input name="age" type="checkbox" class="search_check" value="entre-4-et-7-ans" data-field="age" data-label="ENTRE 4 ET 7 ANS" /><span>ENTRE 4 ET 7 ANS</span></label>
+                                <label><input name="age" type="checkbox" class="search_check" value="entre-7-et-25-ans" data-field="age" data-label="ENTRE 7 ET 25 ANS" /><span>ENTRE 7 ET 25 ANS</span></label>
+                                <label><input name="age" type="checkbox" class="search_check" value="de-25-ans" data-field="age" data-label="+DE 25 ANS" /><span>+DE 25 ANS</span></label>
+                            </div>
+
+                            <script>var use_new_age_range = true; </script>
+                        <?php else : ?>
                         <div id="age_box" class="search_box">
                             <label><input name="age" type="checkbox" class="search_check" value="4" data-field="age" data-label="ENTRE 4 ET 7 ANS" /><span>ENTRE 4 ET 7 ANS</span></label>
                             <label><input name="age" type="checkbox" class="search_check" value="7" data-field="age" data-label="ENTRE 7 ET 25 ANS" /><span>ENTRE 7 ET 25 ANS</span></label>
                             <label><input name="age" type="checkbox" class="search_check" value="25" data-field="age" data-label="+DE 25 ANS" /><span>+DE 25 ANS</span></label>
                         </div>
+                        <?php endif; ?>
+
+
                     </a>
 
                 </div>

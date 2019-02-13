@@ -91,6 +91,12 @@
 
                     <!-- *! Get age of the program -->
                     <?php
+                    if (use_new_age_range()) {
+                        $age = get_field("age_grey_box");
+                        if ($age) {
+                            echo '<div class="sidebar-box sidebar-age">' . $age . '</div>';
+                        }
+                    } else {
                         $age = get_custom_field("p_age");
                         if(!empty($age)){
                             $result =
@@ -99,6 +105,7 @@
                                 </div>';
                             echo $result;
                         }
+                    }
                     ?>
 
                     <!-- First *Media Upload Box -->

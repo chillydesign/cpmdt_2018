@@ -60,6 +60,23 @@
         );
 
 
+
+
+    // Entre 4 Et 7 Ans  entre-4-et-7-ans
+    // Entre 7 Et 25 Ans   entre-7-et-25-ans
+    // De 25 Ans  de-25-ans
+        // WHICH COURSE IS IN WHICH AGE RANGE
+        register_taxonomy( "agerange",
+            array( 	"programme" ),
+            array( 	"hierarchical" => true,
+                    "labels" => array('name'=>"Trance(s) d'âge pour la recherche"),
+                    "rewrite" => array( 'slug' => 'programmes', 'with_front' => false)
+                )
+        );
+
+
+
+
 		// Adding the metabox
         // TODO remove this at some point, been replaced by ACF
 		add_action("admin_init", "programs_admin_init");
