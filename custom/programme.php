@@ -69,7 +69,7 @@
         register_taxonomy( "agerange",
             array( 	"programme" ),
             array( 	"hierarchical" => true,
-                    "labels" => array('name'=>"Trance(s) d'âge pour la recherche"),
+                    "labels" => array('name'=>"Tranche(s) d'âge pour la recherche"),
                     "rewrite" => array( 'slug' => 'programmes', 'with_front' => false)
                 )
         );
