@@ -538,16 +538,16 @@ function inscription_form_shortcode($atts , $content = null) {
     // </div>
     // </div>';
 
-
-    $rq_frm .=
-    '<div class="inscription_field">
-    <label for="authorisation_photo">Autorisation photo *</label>
-    <div class="field_content">
-    <label><input required type="radio"  class="radio_input" name="authorisation_photo" value="Oui" />Oui</label>
-    <label><input required type="radio"  class="radio_input" name="authorisation_photo" value="Non" />Non</label>
-    </div>
-    <p class="meta">L\'institution peut utiliser des images (photo, vidéos) où apparaît mon enfant pour les diffuser sur son site Internet, dans des brochures, des articles ou autres publications institutionnelles.</p>
-    </div>';
+    //
+    // $rq_frm .=
+    // '<div class="inscription_field">
+    // <label for="authorisation_photo">Autorisation photo *</label>
+    // <div class="field_content">
+    // <label><input required type="radio"  class="radio_input" name="authorisation_photo" value="Oui" />Oui</label>
+    // <label><input required type="radio"  class="radio_input" name="authorisation_photo" value="Non" />Non</label>
+    // </div>
+    // <p class="meta">L\'institution peut utiliser des images (photo, vidéos) où apparaît mon enfant pour les diffuser sur son site Internet, dans des brochures, des articles ou autres publications institutionnelles.</p>
+    // </div>';
 
 
 
@@ -606,6 +606,7 @@ function inscription_form_shortcode($atts , $content = null) {
     $rq_frm .= '<div class="inscription_field submit_group_button">
     <input type="submit" id="submit_inscription_form" value="Envoyer">
     <input type="hidden" name="action" value="inscription_form">
+    <input type="hidden" name="authorisation_photo" value="Oui">
     <input type="hidden" name="course_type" value="'. $course_type .'">
     <div id="stopsubmit"></div>
     </div>
