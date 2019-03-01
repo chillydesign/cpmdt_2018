@@ -77,9 +77,8 @@
 
 
 
-		// Adding the metabox
-        // TODO remove this at some point, been replaced by ACF
-		add_action("admin_init", "programs_admin_init");
+		// Adding the metabox // NOW HIDDEN
+		// add_action("admin_init", "programs_admin_init");
 
 		function programs_admin_init(){
 			add_meta_box("programme_meta", "Programme informations", "programs_details_meta", "programme", "normal", "default");
