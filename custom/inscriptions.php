@@ -1198,7 +1198,7 @@ function inscription_form_shortcode($atts , $content = null) {
                 echo '<div class="alignleft actions">
                 <a style="margin:0"  class="action button-primary button" href="'. $download_link .'&type=47musicale">Télécharger inscriptions 4 -7 ans</a>
                 </div>
-                <div class="alignleft actions"><a style="margin:0" class="action button-primary button" href="'. $download_link .'&type=instrumentchant">Télécharger instrumentchant</a>
+                <div class="alignleft actions"><a style="margin:0" class="action button-primary button" href="'. $download_link .'&type=instrumentchant">Télécharger instrument chant</a>
                 </div>';
         }
 
