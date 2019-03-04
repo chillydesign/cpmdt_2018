@@ -69,7 +69,7 @@
                                 <?php if($time['teachers']): ?>
                                     <?php usort($time['teachers'], 'sort_teachers_by_title'   ); ?>
                                 <?php foreach ($time['teachers'] as $teacher) :; ?>
-                                        <?php echo $teacher->post_title; ?>
+                                        <?php echo $teacher->post_title; ?> <br>
                                 <?php endforeach; ?>
                                 <?php endif; ?>
                             </div>

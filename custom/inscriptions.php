@@ -114,7 +114,7 @@ function inscription_form_shortcode($atts , $content = null) {
 
 
         if ( in_array($course_type,  array('instrumentchant') ) ):
-            $rq_frm .=  "<h3> COURS D'INSTRUMENT / CHANT (choisir un cours) </h3>";
+            $rq_frm .=  "<h3> COURS D'INSTRUMENT / CHANT (choisir un cours) </h3><br />";
         endif; // end if in array instrumentchant
 
 
@@ -152,7 +152,7 @@ function inscription_form_shortcode($atts , $content = null) {
 
 
 
-        $rq_frm .= '<div class="inscription_field" id="options_field" style="display:none">
+        $rq_frm .= '<div class="inscription_field" id="options_field">
         <label for="course_option">Course Option </label>
         <div class="field_content">
         <select name="course_option" id="courseoption_container"></select>
@@ -280,7 +280,7 @@ function inscription_form_shortcode($atts , $content = null) {
 
         if ( in_array($course_type,  array('instrumentchant') ) ):
             $rq_frm .=  '<hr />';
-            $rq_frm .=  '<h3> COURS DE FORMATION MUSICALE </h3>';
+            $rq_frm .=  '<h3> COURS DE FORMATION MUSICALE </h3><br />';
 
             $rq_frm .= '
             <div class="inscription_field">
