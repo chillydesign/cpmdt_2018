@@ -589,7 +589,7 @@ function inscription_form_shortcode($atts , $content = null) {
     $rq_frm .=' <div class="inscription_field">
     <label for="message">Remarques si nécessaire </label>
     <div class="field_content">
-    <textarea  name="message" id="message"></textarea>';
+    <textarea  maxlength="250" name="message" id="message"></textarea>';
     if ( in_array($course_type,  array('danse') ) ):
         $rq_frm .=' <p class="meta">Pour la danse, spécifier le choix du jour.</p>';
     endif; // end if in array instrumentchant
