@@ -712,7 +712,7 @@ add_shortcode( 'chilly_map', 'chilly_map' );
 
 
 function  use_new_age_range() {
-    return false;
+    return true;
 }
 
 
