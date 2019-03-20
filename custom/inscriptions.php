@@ -153,7 +153,7 @@ function inscription_form_shortcode($atts , $content = null) {
 
 
         $rq_frm .= '<div class="inscription_field" id="options_field" style="display:none">
-        <label for="course_option">Course Option </label>
+        <label for="course_option"> Option </label>
         <div class="field_content">
         <select name="course_option" id="courseoption_container"></select>
         <script id="courseoption_template" type="x-underscore">
