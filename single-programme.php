@@ -58,6 +58,7 @@
                                 <h5>professeurs</h5>
                             </div>
                         </div>
+                        <div class="teacher_list">
                         <?php foreach( $times as $time): ?>
                         <div class="row no-margin body body-item">
                             <div class="col-sm-6 col-xs-12 font-bold">
@@ -75,6 +76,7 @@
                             </div>
                         </div>
                     <?php endforeach; ?>
+                  </div>
 
 
                     </div>
