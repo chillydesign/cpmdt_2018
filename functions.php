@@ -222,6 +222,8 @@ function theme_styles() {
 
     wp_register_style('wf_style', $tdu . '/style.css', array(), wf_version(),  'all');
     wp_enqueue_style('wf_style'); // Enqueue it!
+    wp_register_style('cpmdt-print', $tdu . '/cpmdt-print.css', array(), wf_version(),  'all');
+    wp_enqueue_style('cpmdt-print'); // Enqueue it!
 
 
 }

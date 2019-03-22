@@ -1,0 +1,60 @@
+@media print {
+    header, footer, .search-container, .program-categories, .right-sidebar, a:after {display:none;}
+
+
+
+body .page-title.background-music, body .page-title.background-theatre, body .page-title.background-dance {
+    background-color:white!important;
+}
+
+.col-sm-4.col-xs-12 {
+    width: 100%;
+}
+
+img.music, img.theatre, img.dance {
+    width: 35%;
+    float: right;
+        position: relative;
+    top: -20px;
+    margin-bottom: 30px;
+}
+
+.left-sidebar {
+    width: 60%;
+    margin-left: 0px;
+    margin-top: -20px;
+    column-count:2;
+    float:left;
+    font-size: 11px;
+    line-height:120%;
+    background-color:#eee!important;
+    padding : 20px;
+    margin-bottom: 30px;
+}
+
+.left-sidebar .header {width:100%; column-span: all; -webkit-column-span: all; -moz-column-span: all; -o-column-span:all; height: 40px;}
+
+.left-sidebar .header .col-sm-6:first-child{display:none;}
+
+.left-sidebar .header > div {
+    padding: 0 15px;
+}
+.left-sidebar .header > div img {
+float: left;
+    width: 20px;
+    margin-right: 12px;
+    top: 8px;
+    position: relative;
+}
+
+.body-item .col-xs-12 {
+    width:50%; float: left;
+}
+
+
+.col-sm-5.col-xs-12 {width: 100%;}
+
+
+
+
+}
