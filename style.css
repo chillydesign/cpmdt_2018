@@ -305,6 +305,9 @@ width: 18%;
 
    }
 
+
+   .print_header {display: none;}
+
 .program-categories {
   color: #fff;
   top: 300px;

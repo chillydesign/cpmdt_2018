@@ -80,6 +80,8 @@
         </nav>
     </header>
 
+    <div class="print_header container"><img src="<?php echo get_template_directory_uri(); ?>/assets/cpmdt_print_header_grey.jpg" alt="CPMDT"></div>
+
     <div class="program-categories font-bold  fixed text-uppercase">
         <div class="arrow toggle-categories">
             <i class="background-primary"></i>
