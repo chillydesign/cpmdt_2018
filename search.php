@@ -22,13 +22,7 @@
 
                         <?php
 
-
                         $post_id = get_the_ID();
-                        ?>
-
-                        <!-- <?php echo $post_id; ?>     -->
-                        
-                        <?php
                         // dont show pages with children
                         $args = array(
                             'post_parent' => get_the_ID(),
@@ -37,12 +31,15 @@
                             'post_status' => 'any'
                         );
                         $hasChildren = get_children($args);
+                        var_dump($post_id);
+                        var_dump(count($hasChildren));
+
                         if( count($hasChildren) <= 0) : ?>
+
                         <div class=" col-sm-4">
                             <?php $image =  ( has_post_thumbnail()) ?  thumbnail_of_post_url( $post_id, 'small' ) : ''; ?>
                             <a  href="<?php the_permalink(); ?>" class="search-item" style="background-image:url(<?php echo $image; ?>)" >
                                 <h4><?php the_title(); ?></h4>
-
 
                             </a>
                         </div>
