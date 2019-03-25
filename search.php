@@ -26,12 +26,12 @@
                         // dont show pages with children
                         $args = array(
                             'post_parent' => get_the_ID(),
-                            'post_type'   => 'any',
+                            'post_type'   => 'programme',
                             'numberposts' => -1,
-                            'post_status' => 'programme'
+                            'post_status' => 'any'
                         );
                         $hasChildren = get_children($args);
-                        
+
 
 
                         if( count($hasChildren) <= 0) : ?>
