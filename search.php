@@ -28,13 +28,10 @@
                             'post_parent' => get_the_ID(),
                             'post_type'   => 'any',
                             'numberposts' => -1,
-                            'post_status' => 'any'
+                            'post_status' => 'programme'
                         );
                         $hasChildren = get_children($args);
-                        if($post_id == 284) {
-                                var_dump(($hasChildren));
-
-                        };
+                        
 
 
                         if( count($hasChildren) <= 0) : ?>
