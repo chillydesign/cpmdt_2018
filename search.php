@@ -22,7 +22,13 @@
 
                         <?php
 
+
                         $post_id = get_the_ID();
+                        ?>
+
+                        <!-- <?php echo $post_id; ?>     -->
+                        
+                        <?php
                         // dont show pages with children
                         $args = array(
                             'post_parent' => get_the_ID(),
@@ -42,10 +48,10 @@
                         </div>
 
                         <?php $count++; ?>
+                        <?php echo ($count % 3 == 0) ? '</div><!--END OF ROW --><div class="row">' : '';  ?>
                     <?php endif; ?>
 
 
-                    <?php echo ($count % 3 == 0) ? '</div><!--END OF ROW --><div class="row">' : '';  ?>
                     <?php endwhile; ?>
                 </div> <!-- END ROW -->
 
