@@ -31,8 +31,11 @@
                             'post_status' => 'any'
                         );
                         $hasChildren = get_children($args);
-                        var_dump($post_id);
-                        var_dump(count($hasChildren));
+                        if($post_id == 284) {
+                                var_dump(($hasChildren));
+
+                        };
+
 
                         if( count($hasChildren) <= 0) : ?>
 
