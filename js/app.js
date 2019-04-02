@@ -10,7 +10,11 @@
         var $date_of_birth = $('#date_of_birth');
         if ( $date_of_birth.prop('type') != 'date' ) {
             $date_of_birth.datepicker({
-                "dateFormat" : 'dd-mm-yy'
+                dateFormat : 'dd-mm-yy',
+                changeMonth: true,
+                changeYear: true,
+                 minDate: '-100Y',
+                 maxDate:  0,
             });
         }
 
