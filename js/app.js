@@ -5,6 +5,17 @@
 		'use strict';
 
 
+
+
+        var $date_of_birth = $('#date_of_birth');
+        if ( $date_of_birth.prop('type') != 'date' ) {
+            $date_of_birth.datepicker({
+                "dateFormat" : 'dd-mm-yy'
+            });
+        }
+
+
+
       $('.frontpage_slider').bxSlider({
           'pager': false,
           'controls': true,
