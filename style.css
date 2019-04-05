@@ -1436,6 +1436,10 @@ footer {
     font-weight: 300; }
   footer .widget {
     margin-bottom: 20px; }
+
+    footer label {
+        display: block;
+    }
   footer hr {
     opacity: .5; }
   footer ul:not(.sub-menu) > li > a {
