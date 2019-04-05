@@ -41,20 +41,19 @@
 					</div>
 
 
-                    <div class="col-sm-5 col-sm-push-1 col-xs-12 googlemaps-footerview">
-                        <h4>les centres d’enseignements</h4>
-                        <?php $centers = get_posts(array(  'orderby'=> 'post_title' , 'order' =>'ASC' , 'post_type' => 'location' , 'posts_per_page' => -1)); ?>
-                        <select name="locations" class="locations_dropdown" style="margin-bottom: 20px">
-                            <?php foreach ($centers as $center) : ?>
-                                <option value="<?php echo $center->guid; ?>"><?php echo $center->post_title; ?></option>
-                            <?php endforeach; ?>
-                        </select>
+                    <?php $locations_url =  get_site_url() . '/centres-denseignement/'; ?>
+                    <h4><a href="<?php echo $locations_url; ?>">les centres d’enseignements</a></h4>
+                    <?php $centers = get_posts(array(  'orderby'=> 'post_title' , 'order' =>'ASC' , 'post_type' => 'location' , 'posts_per_page' => -1)); ?>
+                    <select name="locations" class="locations_dropdown" style="margin-bottom: 20px">
+                        <?php foreach ($centers as $center) : ?>
+                            <option value="<?php echo $center->guid; ?>"><?php echo $center->post_title; ?></option>
+                        <?php endforeach; ?>
+                    </select>
 
-                        <?php get_template_part('locations-map'); ?>
+                    <a href="<?php echo $locations_url; ?>">
+                        <img src="<?php echo $tdu; ?>/assets/actus2insc2019.jpg" alt="les centres d’enseignements" />
+                    </a>
 
-
-
-					</div>
 				</div>
 			</div>
 		</footer>

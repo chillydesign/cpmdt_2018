@@ -29,5 +29,9 @@ get_header(); ?>
 
 </div>
 
+
+<?php // get_template_part('locations-map'); ?>
+
+
 <!-- Scripts -->
 <?php get_footer(); ?>
