@@ -42,7 +42,7 @@
                         <ul>
                             <li style="text-transform: capitalize;">
                                 <!-- <?php  //get_custom_field('a_date'); ?> -->
-                                <?php $a_date = strtotime(get_custom_field('a_date')); ?>
+                                <?php $a_date = strtotime(get_custom_field('a_date'));  // start date ?>
                                 <?php $dd = date('Y-m-d', $a_date); ?>
                                 <?php echo utf8_encode(strftime("%A %d %B %Y", $a_date ));  ?>
                             </li>
@@ -80,9 +80,10 @@
                                     $count_persons = count_people_at_event(  $agenda_id  );
                                     $places_allowed = intval(get_field("a_amount"));
                                     $places_left = $places_allowed - $count_persons;
-
-                                    $event_in_future = ($a_date >  strtotime(date('Y-m-d')));
-
+                                    $today = strtotime(date('Y-m-d'));
+                                    // let people make booking until end of day
+                                    // 86399 seconds = 23:59:59
+                                    $event_in_future = ( $a_date + 86399  >  $today  );
 
                                     ?>
                                 <?php if ( $event_in_future) : ?>
@@ -115,7 +116,7 @@
                         </div>
                     </div>
                 </div>
-            
+                
 
         <?php endwhile; else: ?>
 
