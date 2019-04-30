@@ -667,7 +667,10 @@ add_filter( 'posts_search', '__search_by_title_only', 500, 2 );
 function __search_by_title_only( $search, $wp_query ) {
     global $wpdb;
 
-    if ( !is_admin() ){
+
+    if ( is_admin() ) {
+        return $search;
+    } else {
 
         if ( empty( $search ) )
         return $search; // skip processing - no search term in query
@@ -691,7 +694,10 @@ function __search_by_title_only( $search, $wp_query ) {
         }
 
         return $search;
-    }
+
+    } // end if not admin pages
+
+
 }
 
 
