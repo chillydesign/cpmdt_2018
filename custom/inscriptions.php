@@ -372,10 +372,42 @@ function inscription_form_shortcode($atts , $content = null) {
     </div>
     </div>';
     $rq_frm .=' <div class="inscription_field">
-    <label for="date_of_birth">Date de naissance *</label>
-    <div class="field_content">
-    <input required type="text" name="date_of_birth" id="date_of_birth"  />
-    </div>
+    <label for="birth_day">Date de naissance (d/m/y) *</label>
+    <div class="field_content">';
+
+    $rq_frm .='<select required id="birth_day" name="birth_day">';
+        $rq_frm .= '<option value="">JOUR</option>';
+    for($i = 1; $i <= 31; $i++) {
+        $rq_frm .='<option value="'. $i .'">'. $i .'</option>';
+    }
+    $rq_frm .='</select>';
+
+
+    $rq_frm .= '<select required id="birth_month" name="birth_month">';
+    $rq_frm .= '<option value="">MOIS</option>';
+    $rq_frm .= '<option value="01">janvier</option>';
+    $rq_frm .= '<option value="02">févrieroption>';
+    $rq_frm .= '<option value="03">mars</option>';
+    $rq_frm .= '<option value="04">avril</option>';
+    $rq_frm .= '<option value="05">mai</option>';
+    $rq_frm .= '<option value="06">juin</option>';
+    $rq_frm .= '<option value="07">juillet</option>';
+    $rq_frm .= '<option value="08">août</option>';
+    $rq_frm .= '<option value="09">septembre</option>';
+    $rq_frm .= '<option value="10">octobre</option>';
+    $rq_frm .= '<option value="11">novembre</option>';
+    $rq_frm .= '<option value="12">décembre</option>';
+    $rq_frm .= '</select>';
+
+    $rq_frm .= '<select required id="birth_year" name="birth_year">';
+     $rq_frm .= '<option value="">ANNÉE</option>';
+    for($i = 1900; $i <= 2019; $i++) {
+        $rq_frm .= '<option value="'.  $i.'">'. $i .'</option>';
+    }
+    $rq_frm .= '</select>';
+
+    // <input required type="text" name="date_of_birth" id="date_of_birth"  />
+    $rq_frm .= '</div>
     </div>';
 
 
@@ -951,14 +983,23 @@ function inscription_form_shortcode($atts , $content = null) {
                     if (isset($_POST[$field])){
 
                         if ($field == 'date_of_birth') {
+                            // not used any more, we now get date_of_birthdate_of_birth from 
+                            // separate day month and year fields and concat them
                             $timestamp = strtotime( $_POST[$field] );
                             $v = date('d-m-Y', $timestamp);
                         }  else {
                             $v = $_POST[$field];
                         }
+
                         add_post_meta($new_inscription, $field, $v  , true);
                     }
                 }
+
+                if (isset($_POST['birth_year'])){
+                    $birth_str = $_POST['birth_day'] . '-'. $_POST['birth_month'] .  '-' . $_POST['birth_year'];
+                    add_post_meta($new_inscription, 'date_of_birth', $birth_str, true);
+                }
+
 
                 if (isset($_POST['course_type'])) {
                     add_post_meta($new_inscription, 'course_type',  $_POST['course_type'] , true);
