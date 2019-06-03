@@ -372,21 +372,21 @@ function inscription_form_shortcode($atts , $content = null) {
     </div>
     </div>';
     $rq_frm .=' <div class="inscription_field">
-    <label for="birth_day">Date de naissance (d/m/y) *</label>
+    <label for="birth_day">Date de naissance *</label>
     <div class="field_content">';
 
-    $rq_frm .='<select required id="birth_day" name="birth_day">';
-        $rq_frm .= '<option value="">JOUR</option>';
+    $rq_frm .='<select  style="width:30%" required id="birth_day" name="birth_day">';
+        $rq_frm .= '<option value="">Jour</option>';
     for($i = 1; $i <= 31; $i++) {
         $rq_frm .='<option value="'. $i .'">'. $i .'</option>';
     }
     $rq_frm .='</select>';
 
 
-    $rq_frm .= '<select required id="birth_month" name="birth_month">';
-    $rq_frm .= '<option value="">MOIS</option>';
+    $rq_frm .= '<select style="width:30%" required id="birth_month" name="birth_month">';
+    $rq_frm .= '<option value="">Mois</option>';
     $rq_frm .= '<option value="01">janvier</option>';
-    $rq_frm .= '<option value="02">févrieroption>';
+    $rq_frm .= '<option value="02">février</option>';
     $rq_frm .= '<option value="03">mars</option>';
     $rq_frm .= '<option value="04">avril</option>';
     $rq_frm .= '<option value="05">mai</option>';
@@ -399,9 +399,9 @@ function inscription_form_shortcode($atts , $content = null) {
     $rq_frm .= '<option value="12">décembre</option>';
     $rq_frm .= '</select>';
 
-    $rq_frm .= '<select required id="birth_year" name="birth_year">';
-     $rq_frm .= '<option value="">ANNÉE</option>';
-    for($i = 1900; $i <= 2019; $i++) {
+    $rq_frm .= '<select  style="width:30%" required id="birth_year" name="birth_year">';
+     $rq_frm .= '<option value="">Année</option>';
+    for($i = 2019; $i >= 1900; $i--) {
         $rq_frm .= '<option value="'.  $i.'">'. $i .'</option>';
     }
     $rq_frm .= '</select>';
