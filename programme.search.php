@@ -15,6 +15,7 @@
 
                         <?php if ( use_new_age_range()   ) : ?>
                             <div id="age_box" class="search_box">
+                                 <label><input name="age" type="checkbox" class="search_check" value="entre-1-et-4-ans" data-field="age" data-label="ENTRE 1 ET 4 ANS" /><span>ENTRE 1 ET 4 ANS</span></label>
                                 <label><input name="age" type="checkbox" class="search_check" value="entre-4-et-7-ans" data-field="age" data-label="ENTRE 4 ET 7 ANS" /><span>ENTRE 4 ET 7 ANS</span></label>
                                 <label><input name="age" type="checkbox" class="search_check" value="entre-7-et-25-ans" data-field="age" data-label="ENTRE 7 ET 25 ANS" /><span>ENTRE 7 ET 25 ANS</span></label>
                                 <label><input name="age" type="checkbox" class="search_check" value="de-25-ans" data-field="age" data-label="+DE 25 ANS" /><span>+DE 25 ANS</span></label>
