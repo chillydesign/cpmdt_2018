@@ -998,6 +998,7 @@ function inscription_form_shortcode($atts , $content = null) {
                 if (isset($_POST['birth_year'])){
                     $birth_str = $_POST['birth_day'] . '-'. $_POST['birth_month'] .  '-' . $_POST['birth_year'];
                     add_post_meta($new_inscription, 'date_of_birth', $birth_str, true);
+                    $_POST['date_of_birth'] = $birth_str; // needed for the email to people;
                 }
 
 
