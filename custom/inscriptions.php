@@ -182,7 +182,7 @@ function inscription_form_shortcode($atts , $content = null) {
         </div>';
 
 
-        if ( in_array($course_type,  array('47musicale', 'instrumentchant') ) ):
+        if ( in_array($course_type,  array( '14musicale', '47musicale', 'instrumentchant') ) ):
             $rq_frm .=' <div class="inscription_field">
             <label for="other_place_possible"> Autre lieu possible *</label>
             <div class="field_content">
@@ -413,7 +413,7 @@ function inscription_form_shortcode($atts , $content = null) {
     </div>';
 
 
-    if (  in_array($course_type,  array('danse', 'theatre', '47musicale', 'instrumentchant') ) ):
+    if (  in_array($course_type,  array('danse', 'theatre', '14musicale',  '47musicale', 'instrumentchant') ) ):
         $rq_frm .=' <div class="inscription_field">
         <label for="gender">Sexe * </label>
         <div class="field_content">
@@ -451,7 +451,7 @@ function inscription_form_shortcode($atts , $content = null) {
     </div>';
 
 
-    if ( in_array($course_type,  array('danse', 'theatre', '47musicale', 'instrumentchant') ) ):
+    if ( in_array($course_type,  array('danse', 'theatre', '14musicale', '47musicale', 'instrumentchant') ) ):
         $rq_frm .=  '<hr />';
         $rq_frm .=  '<h3> REPRÉSENTANT LÉGAL / RÉPONDANT </h3> <br />';
         $rq_frm .=
@@ -1077,6 +1077,9 @@ function inscription_form_shortcode($atts , $content = null) {
             } else if ($course_type == '47musicale') {
                 $extra_email_text = get_field('email_text_47musicale', 'option');
                 $admin_subject = 'Inscription: Cours 4-7 ans et formation musicale';
+            } else if ($course_type == '14musicale') {
+                $extra_email_text = get_field('email_text_14musicale', 'option');
+                $admin_subject = 'Inscription: Cours 1-4 ans et formation musicale';
             } else if ($course_type == 'instrumentchant') {
                 $extra_email_text = get_field('email_text_instrumentchant', 'option');
                 $admin_subject = 'Inscription: Instruments/Chant et Formation musicale';
