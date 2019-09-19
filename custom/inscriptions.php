@@ -77,6 +77,8 @@ function inscription_form_shortcode($atts , $content = null) {
         // $courses = get_all_47_musicale_courses();
         // $courses = get_all_courses_with_cat('cours-4-7-ans');
         $courses = get_all_courses_in_form('47ans');
+    } else if ($course_type == '14musicale') {
+        $courses = get_all_courses_in_form('14ans');
     } else if ($course_type == 'instrumentchant') {
         // $courses = get_all_instrumentchant_courses();
         $courses = get_all_courses_in_form('instruments');
