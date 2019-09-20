@@ -185,6 +185,7 @@
                     <!-- *! Whoever knows what this is -->
                     <?php
                         $p_inscription = get_custom_field("p_inscription");
+                        var_dump($p_inscription);
                         if(!empty($p_inscription)){
                             // ADD ID TO INSCIPRION LINK SO WE CAN PREFILL THE FORM
                             $p_inscription = $p_inscription . '?course_id=' . $post->ID;
