@@ -90,13 +90,15 @@
             <span>inscription</span>
         </div>
         <div class="background-music links">
+        <?php $home_url =  get_home_url(); ?>
             <ul>
-                <li><a href="<?php echo get_home_url(); ?>/inscription-pour-les-enfants-4-7-ans-et-formation-musicale/">COURS 4-7 ANS ET FORMATION MUSICALE</a></li>
-                <li><a href="<?php echo get_home_url(); ?>/inscription-en-instrument-chant-et-formation-musicale-fm/">Instruments/Chant et Formation musicale</a></li>
-                <li><a href="<?php echo get_home_url(); ?>/inscription-adultes/">Offre adultes</a></li>
+                <li><a href="<?php echo $home_url; ?>/inscription-pour-les-enfants-1-3-ans/">COURS 1-3 ANS</a></li>
+                <li><a href="<?php echo $home_url; ?>/inscription-pour-les-enfants-4-7-ans-et-formation-musicale/">COURS 4-7 ANS ET FORMATION MUSICALE</a></li>
+                <li><a href="<?php echo $home_url; ?>/inscription-en-instrument-chant-et-formation-musicale-fm/">Instruments/Chant et Formation musicale</a></li>
+                <li><a href="<?php echo $home_url; ?>/inscription-adultes/">Offre adultes</a></li>
                 <li><a target="_blank" href="http://courscomplementaires.ch/">Cours complémentaires</a></li>
             </ul>
         </div>
-        <a class="background-dance" href="<?php echo get_home_url(); ?>/inscription-danse/">Danse</a>
-        <a class="background-theatre" href="<?php echo get_home_url(); ?>/inscription-theatre/">Théâtre</a>
+        <a class="background-dance" href="<?php echo $home_url; ?>/inscription-danse/">Danse</a>
+        <a class="background-theatre" href="<?php echo $home_url; ?>/inscription-theatre/">Théâtre</a>
     </div>
