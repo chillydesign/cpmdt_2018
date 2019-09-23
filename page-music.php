@@ -25,12 +25,18 @@
                 'order' => 'ASC',
                 'orderby' => 'menu_order',
                 'meta_query' => array(
+                    'relation' => 'OR',
 			        array(
 			            'key' => 'hide_in_search',
-			            'value' => 1,
-                        'compare' => '!=',
+			            'value' => 0,
+                        'compare' => '=',
                         'type' => 'NUMERIC'
-			        ),
+                    ),
+                    array(
+			            'key' => 'hide_in_search',
+			            'value' => 0,
+                        'compare' => 'NOT EXISTS'
+			        )
 			    ),
                 'tax_query' => array(
                     array(
