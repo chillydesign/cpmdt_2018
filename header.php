@@ -92,7 +92,7 @@
         <div class="background-music links">
         <?php $home_url =  get_home_url(); ?>
             <ul>
-                <li><a href="<?php echo $home_url; ?>/inscription-pour-les-enfants-1-3-ans/">COURS 1-3 ANS</a></li>
+                <li><a href="<?php echo $home_url; ?>/inscription-pour-les-enfants-1-4-ans/">COURS 1-4 ANS</a></li>
                 <li><a href="<?php echo $home_url; ?>/inscription-pour-les-enfants-4-7-ans-et-formation-musicale/">COURS 4-7 ANS ET FORMATION MUSICALE</a></li>
                 <li><a href="<?php echo $home_url; ?>/inscription-en-instrument-chant-et-formation-musicale-fm/">Instruments/Chant et Formation musicale</a></li>
                 <li><a href="<?php echo $home_url; ?>/inscription-adultes/">Offre adultes</a></li>
