@@ -24,6 +24,14 @@
                 'posts_per_page'         => -1,
                 'order' => 'ASC',
                 'orderby' => 'menu_order',
+                'meta_query' => array(
+			        array(
+			            'key' => 'hide_in_search',
+			            'value' => 1,
+                        'compare' => '!=',
+                        'type' => 'NUMERIC'
+			        ),
+			    ),
                 'tax_query' => array(
                     array(
                         'taxonomy' => 'programmes',
