@@ -1241,14 +1241,19 @@ function inscription_form_shortcode($atts , $content = null) {
     function add_download_link_inscription($which){
         if ( is_post_type_archive('inscription') ) {
 
-                $download_link = get_home_url() . '/api/v1/?inscriptions';
-                echo '<div class="alignleft actions"><a style="margin:0"  class="action button-primary button" href="'. $download_link .'&type=47musicale">Télécharger inscriptions 4 -7 ans</a></div>
-                <div class="alignleft actions"><a style="margin:0" class="action button-primary button" href="'. $download_link .'&type=instrumentchant">Télécharger instrument chant</a></div>
-                <div class="alignleft actions"><a style="margin:0" class="action button-primary button" href="'. $download_link .'&type=theatre">Télécharger théâtre</a></div>';
+                echo download_insc_button('47musicale', '4 -7 ans' );
+                echo download_insc_button('instrumentchant', 'instrument chant' );
+                echo download_insc_button('theatre', 'théâtre' );
+              
         }
 
     }
 
+
+    function download_insc_button($type, $title) {
+        $download_link = get_home_url() . '/api/v1/?inscriptions&type=';
+        echo '<div class="alignleft actions"><a style="margin:0" title="Télécharger '. $title .'" class="action button-primary button" href="'. $download_link . $type .'&type=theatre"> <span class="dashicons dashicons-download"></span> ' . $title . '</a></div>';
+    };
 
 
 
