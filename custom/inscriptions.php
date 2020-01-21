@@ -1252,7 +1252,7 @@ function inscription_form_shortcode($atts , $content = null) {
 
     function download_insc_button($type, $title) {
         $download_link = get_home_url() . '/api/v1/?inscriptions&type=';
-        echo '<div class="alignleft actions"><a style="margin:0" title="Télécharger '. $title .'" class="action button-primary button" href="'. $download_link . $type .'&type=theatre"> <span class="dashicons dashicons-download"></span> ' . $title . '</a></div>';
+        echo '<div class="alignleft actions"><a style="margin:0" title="Télécharger '. $title .'" class="action button-primary button" href="'. $download_link . $type .'&type=theatre"> <span style="position:relative;top:4px" class="dashicons dashicons-download"></span> ' . $title . '</a></div>';
     };
 
 
