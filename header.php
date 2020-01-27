@@ -20,85 +20,36 @@
 </head>
 <body <?php body_class(); ?>>
 
-    <header>
-        <div class="navbar-pre">
-            <div class="container">
-                <div class="show_on_mobile">
-                <?php  wp_nav_menu(
-                    array(
-                        'theme_location' => 'header-menu',
-                        'menu_class'  => 'links-list'
-                    ));
-                ?>
-                </div>
-                    <?php  wp_nav_menu(
-                        array(
-                            'theme_location' => 'prenav-menu',
-                            'menu_class' => 'links-list'
-                        ));
-                    ?>
+  <header>
+    <div class="container">
+      <a href="<?php echo home_url(); ?>" id="branding">CPMDT</a>
+      <a id="prenav-toggle" href="#">MENU </a>
+      <div class="headermenus">
+        <div class="topnav">
+          <?php  wp_nav_menu(
+              array(
+                  'theme_location' => 'prenav-menu',
+                  'menu_class' => 'links-list'
+              ));
+          ?>
 
-            </div>
+          <!-- Search in the nav links, right side of the header -->
+          <div class="search-nav search-menu">
+              <form role="search" action="<?php echo site_url('/'); ?>" method="get">
+                  <input type="search" name="s" placeholder=""/>
+                  <input type="submit" alt="Search" value="OK" />
+              </form>
+          </div>
         </div>
-        <a id="prenav-toggle" href="#">MENU </a>
-        <nav class="navbar navbar-default">
-            <div class="container flex-container">
-                    <!-- Brand and toggle get grouped for better mobile display -->
-                    <div class="navbar-header">
 
-                        <!-- Brand -->
-                        <a class="navbar-brand" href="<?php echo site_url(); ?>">
-                            <span class="hidden-gap"></span>
-                            <?php if ( get_theme_mod( 'er-logo_change' ) ) : ?>
-                                <img
-                                    src='<?php echo esc_url( get_theme_mod( 'er-logo_change' ) ); ?>'
-                                    alt='<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>'>
-
-                            <?php endif; ?>
-                        </a>
-                    </div>
-
-                    <!-- Collect the nav links, forms, and other content for toggling -->
-                    <div class="collapse navbar-collapse flex-align-bottom hide_on_mobile" id="menu-collapse">
-                        <?php  wp_nav_menu(
-                            array(
-                                'theme_location' => 'header-menu',
-                                'menu_class'  => 'nav navbar-nav'
-                            ));
-                        ?>
-                    </div><!-- /.navbar-collapse -->
-
-                    <!-- Search in the nav links, right side of the header -->
-                    <div class="search-nav search-menu">
-                        <form role="search" action="<?php echo site_url('/'); ?>" method="get">
-                            <input type="search" name="s" placeholder=""/>
-                            <input type="submit" alt="Search" value="OK" />
-                        </form>
-                    </div>
-
-            </div><!-- /.container-fluid -->
-        </nav>
-    </header>
-
-    <div class="print_header container"><img src="<?php echo get_template_directory_uri(); ?>/assets/cpmdt_print_header_grey.jpg" alt="CPMDT"></div>
-
-    <div class="program-categories font-bold  fixed text-uppercase">
-        <div class="arrow toggle-categories">
-            <i class="background-primary"></i>
-        </div>
-        <div class="background-primary header toggle-categories">
-            <span>inscription</span>
-        </div>
-        <div class="background-music links">
-        <?php $home_url =  get_home_url(); ?>
-            <ul>
-                <li><a href="<?php echo $home_url; ?>/inscription-pour-les-enfants-1-4-ans/">COURS 1-4 ANS</a></li>
-                <li><a href="<?php echo $home_url; ?>/inscription-pour-les-enfants-4-7-ans-et-formation-musicale/">COURS 4-7 ANS ET FORMATION MUSICALE</a></li>
-                <li><a href="<?php echo $home_url; ?>/inscription-en-instrument-chant-et-formation-musicale-fm/">Instruments/Chant et Formation musicale</a></li>
-                <li><a href="<?php echo $home_url; ?>/inscription-adultes/">Offre adultes</a></li>
-                <li><a target="_blank" href="http://courscomplementaires.ch/">Cours complémentaires</a></li>
-            </ul>
-        </div>
-        <a class="background-dance" href="<?php echo $home_url; ?>/inscription-danse/">Danse</a>
-        <a class="background-theatre" href="<?php echo $home_url; ?>/inscription-theatre/">Théâtre</a>
+          <nav class="bottomnav">
+            <?php  wp_nav_menu(
+                array(
+                    'theme_location' => 'header-menu',
+                    'menu_class'  => 'nav navbar-nav'
+                ));
+            ?>
+          </div>
+      </div>
     </div>
+  </header>
