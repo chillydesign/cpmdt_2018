@@ -374,17 +374,18 @@
 
 
 
-    add_action( 'manage_posts_extra_tablenav', 'add_download_link_agenda'  );
-    function add_download_link_agenda($which){
-        if ( is_post_type_archive('agenda') ) {
+    // add_action( 'manage_posts_extra_tablenav', 'add_download_link_agenda'  );
+    // function add_download_link_agenda($which){
+    //     if ( is_post_type_archive('agenda') ) {
 
-            $download_link = get_home_url() . '/api/v1/?agenda'  ;
-            echo '<div class="alignleft actions"><a class="action button-primary button" href="'. $download_link .'">Télécharger CSV</a></div>';
-        }
+    //         $download_link = get_home_url() . '/api/v1/?agenda';
+    //         echo '<div class="alignleft actions"><a style="margin:0" title="Télécharger" class="action button-primary button" href="'. $download_link . '"> <span style="position:relative;top:4px" class="dashicons dashicons-download"></span>Télécharger</a></div>';
+              
+    //     }
 
-    }
+    // }
 
 
- 
+
 
 ?>
