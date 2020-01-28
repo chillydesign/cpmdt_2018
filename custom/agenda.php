@@ -378,9 +378,10 @@
     function add_download_link_agenda($which){
 
 
-        var_dump(   is_post_type_archive('agenda')  );
-        var_dump(   is_post_type_archive('agenda')  );
-        if ( is_post_type_archive('agenda') ) {
+        // if ( is_post_type_archive('agenda') ) {
+
+            global $pagenow;
+         if ( is_admin() && $wp_query->get( 'post_type' ) === 'agenda' && 'edit.php' == $pagenow ) {
 
             $download_link = get_home_url() . '/api/v1/?agenda';
             echo '<div class="alignleft actions"><a style="margin:0" title="Télécharger" class="action button-primary button" href="'. $download_link . '"> <span style="position:relative;top:4px" class="dashicons dashicons-download"></span>Télécharger</a></div>';
