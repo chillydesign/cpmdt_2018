@@ -377,10 +377,10 @@
     add_action( 'manage_posts_extra_tablenav', 'add_download_link_agenda'  );
     function add_download_link_agenda($which){
 
+        // if ( is_post_type_archive('agenda') ) { 
+             // THIS IS NOT WORKING FOR SOME REASON NOT SURE WHY IT WORKS ON OTHER PAGES
 
-        // if ( is_post_type_archive('agenda') ) {
-
-            global $pagenow;
+          global $pagenow;
          if ( is_admin()  && 'edit.php' == $pagenow ) {
 
             $download_link = get_home_url() . '/api/v1/?agenda';
