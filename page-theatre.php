@@ -1,5 +1,7 @@
 <?php /* Template Name: Theatre page template */ get_header(); ?>
 
+
+
 	<!-- Search bar -->
     <?php get_template_part('programme.search'); ?>
 	<!-- Page title -->
@@ -8,7 +10,9 @@
             <h2>THÉÂTRE</h2>
         </div>
 	</div>
-
+  <div class="container">
+    <?php the_content(); ?>
+  </div>
     <script>
         var course_category = '21'; // id of theatre category
     </script>

@@ -2,17 +2,27 @@
 
 <?php if ($gallery): ?>
 
-
-    <ul class="frontpage_slider">
+<?php if( count( $gallery ) > 1) : ?>
+    <ul class="front-page_slider">
         <?php foreach ($gallery as $image) : ?>
-            <li style="background-image:url('<?php echo $image['sizes']['large']; ?>');">
-
-                <?php if ($image['caption']): ?>
-                        <h3><?php echo $image['caption']; ?></h3>
-                <?php endif; ?>
-            </li>
+            <li class="frontpage_image" style="background-image:url('<?php echo $image['sizes']['large']; ?>');">  </li>
         <?php endforeach; ?>
     </ul>
-
+    <div class="container">
+      <div class="hometitle">
+        <h1>Musique, Danse, Théâtre</h1>
+        <h2>Trois arts de la scène réunis dans une même école</h2>
+      </div>
+    </div>
+<?php else: ?>
+  <div class="frontpage_image"style="background-image:url('<?php echo $gallery[0]['sizes']['large']; ?>');">
+    <div class="container">
+      <div class="hometitle">
+        <h1>Musique, Danse, Théâtre</h1>
+        <h2>Trois arts de la scène réunis dans une même école</h2>
+      </div>
+    </div>
+  </div>
+<?php endif; ?>
 
 <?php endif; ?>

@@ -8,7 +8,9 @@
             <h2>DANSE</h2>
         </div>
 	</div>
-
+  <div class="container">
+    <?php the_content(); ?>
+  </div>
     <script>
         var course_category = '19'; // id of danse category
     </script>

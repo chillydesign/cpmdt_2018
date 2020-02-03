@@ -8,7 +8,11 @@
         <!-- Search bar -->
 		<?php get_template_part('programme.search'); ?>
 
+
 	</div>
+
+	<?php get_template_part('introduction'); ?>
+	<?php get_template_part('services'); ?>
 
 	<!-- News section -->
 	<div class="front-posts">

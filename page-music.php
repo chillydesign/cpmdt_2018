@@ -2,6 +2,8 @@
     /* Template Name: Music page template */
     get_header(); ?>
 
+
+
 	<!-- Search bar -->
     <?php get_template_part('programme.search'); ?>
 
@@ -11,6 +13,10 @@
             <h2>MUSIQUE</h2>
         </div>
 	</div>
+
+  <div class="container">
+    <?php the_content(); ?>
+  </div>
 
     <!-- Content container -->
 	<div class="page-programs dance container">
