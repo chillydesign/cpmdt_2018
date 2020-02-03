@@ -16,7 +16,7 @@ get_header(); ?>
 
 
 <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
-  <div class="container"><?php the_content(); ?></div>
+  <div class="intro"><div class="container"><?php the_content(); ?></div></div>
 <?php endwhile; endif; ?>
 
 

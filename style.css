@@ -2205,3 +2205,10 @@ input.radio_input, input.checkbox_input {
  .ui-datepicker-prev:after {
 content: '<'
  }
+
+
+ .intro {
+   padding: 30px 15px 20px;
+    font-size: 1.2em;
+    line-height: 150%;
+ }

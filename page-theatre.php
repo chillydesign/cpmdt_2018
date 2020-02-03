@@ -10,9 +10,11 @@
             <h2>THÉÂTRE</h2>
         </div>
 	</div>
+
   <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
-    <div class="container"><?php the_content(); ?></div>
+    <div class="intro"><div class="container"><?php the_content(); ?></div></div>
   <?php endwhile; endif; ?>
+  
     <script>
         var course_category = '21'; // id of theatre category
     </script>
