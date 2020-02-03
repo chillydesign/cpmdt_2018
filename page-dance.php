@@ -8,9 +8,9 @@
             <h2>DANSE</h2>
         </div>
 	</div>
-  <div class="container">
-    <?php the_content(); ?>
-  </div>
+  <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
+    <div class="container"><?php the_content(); ?></div>
+  <?php endwhile; endif; ?>
     <script>
         var course_category = '19'; // id of danse category
     </script>
