@@ -18,7 +18,7 @@
 	<div class="front-posts">
 		<div class="container">
 
-			<h1>ACTUALITÉS</h1>
+			<h2>ACTUALITÉS</h2>
 
 			<div  style="margin-top: 60px">
 			<?php
@@ -66,7 +66,7 @@
 
 	<!-- News section -->
 	<div class="page-agenda">
-		<h1>AGENDA</h1>
+		<h2>AGENDA</h2>
 
 		<ul class="agenda-categories text-center">
 			<!-- Exclude "Archives" or whatever category on the 'exclude' -->
@@ -190,7 +190,7 @@
 
 		<?php endwhile; else: ?>
 
-			<h1>No posts found!</h1>
+			<h2>No posts found!</h2>
 
 		<?php endif; ?>
 	</div>
