@@ -277,6 +277,7 @@ header form[role="search"] {
 
   ul#menu-main-header-1 li ul.sub-menu{
     display: none;
+    box-shadow: 5px 5px 13px rgba(0,0,0,0.2);
   }
   ul#menu-main-header-1 li.menu-item-has-children:hover ul.sub-menu, ul#menu-main-header-1 li.menu-item-has-children ul.sub-menu:hover {
     display: block;
@@ -301,6 +302,10 @@ header form[role="search"] {
     padding: 15px;
   }
 
+  .nav li a:focus, .nav li a:hover {
+      text-decoration: none;
+      background-color: #eee;
+  }
 
 .mobile-nav{display: none;}
 
