@@ -246,7 +246,7 @@ header form[role="search"] {
   }
 
   ul#menu-main-header-1 {
-    width: calc(100% + 37px);
+    width: calc(100% + 30px);
     display: flex;
     justify-content: space-between;
     padding: 0;
@@ -254,12 +254,12 @@ header form[role="search"] {
 
   @media(min-width:992px){
     ul#menu-main-header-1 {
-      width: calc(100% + 52px);
+      width: calc(100% + 72px);
     }
   }
   @media(min-width:1200px){
     ul#menu-main-header-1 {
-      width: calc(100% + 95px);
+      width: calc(100% + 113px);
     }
   }
 
@@ -277,6 +277,7 @@ header form[role="search"] {
 
   ul#menu-main-header-1 li ul.sub-menu{
     display: none;
+    box-shadow: 5px 5px 13px rgba(0,0,0,0.2);
   }
   ul#menu-main-header-1 li.menu-item-has-children:hover ul.sub-menu, ul#menu-main-header-1 li.menu-item-has-children ul.sub-menu:hover {
     display: block;
@@ -291,7 +292,7 @@ header form[role="search"] {
 
   .bottomnav ul li ul {
     position: absolute;
-    z-index: 99;
+    z-index: 9999;
     width: 200px;
     background: white;
     list-style: none;
@@ -301,6 +302,10 @@ header form[role="search"] {
     padding: 15px;
   }
 
+  .nav li a:focus, .nav li a:hover {
+      text-decoration: none;
+      background-color: #eee;
+  }
 
 .mobile-nav{display: none;}
 
@@ -488,11 +493,11 @@ header .headermenus { display: none;}
   position: relative; }
 .front-posts {
   padding: 50px 0; }
-  .front-posts h1 {
+  .front-posts h1, .front-posts h2 {
     font-weight: 200;
     margin-bottom: 50px;
     text-align: center; }
-
+    .front-posts h2, .page-agenda h2 {font-size: 2.6em;}
 
     .front-page_slider {
         height: 400px;
@@ -875,8 +880,9 @@ margin: auto;
   margin-bottom: 50px; }
   .page-agenda a.archives-link {
     margin-bottom: 15px; }
-  .page-agenda h1 {
+  .page-agenda h2, .introduction h1 {
     font-weight: 200;
+    text-transform: uppercase;
     text-align: center;
     margin-bottom: 20px; }
   .page-agenda .agenda-categories {
