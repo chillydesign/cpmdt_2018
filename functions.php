@@ -219,6 +219,8 @@ function theme_styles() {
     $tdu =  get_template_directory_uri();
 
 
+	// remove gutenberg css
+	wp_dequeue_style('wp-block-library');
 
 	wp_enqueue_style( 'bootstrap-sass', 'https://stackpath.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css'  );
 	/*Main Stylesheet*/
