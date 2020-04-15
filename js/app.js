@@ -665,7 +665,7 @@
         // INSCRIPTION FORM
         // INSCRIPTION FORM
 
-        if (typeof search_url != 'undefined') {
+        if (typeof course_api_url != 'undefined') {
             var $course_pickers = $('.course_picker');
 
 
@@ -712,7 +712,7 @@
             var $options_field = $('#options_field');
 
             $.ajax({
-                url: search_url + '?course_id=' + $course_id,
+                url: course_api_url + '?course_id=' + $course_id,
                 type: 'get',
                 dataType: 'json',
                 beforeSend: function () {

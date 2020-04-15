@@ -651,7 +651,7 @@ function inscription_form_shortcode($atts , $content = null) {
     </form>';
 
     $rq_frm .= '<script type="text/javascript">
-    	var search_url = "' . get_home_url(). '/api/v1/";
+    	var course_api_url = "' . get_home_url(). '/api/v1/";
     </script>';
 
 
