@@ -101,7 +101,7 @@ function inscription_form_shortcode($atts , $content = null) {
             'order'=> 'ASC',
             'orderby' => 'title',
             'posts_per_page' => -1,
-            'post_status' => 'published'
+            'post_status' => 'publish'
         )
     );
 
@@ -742,7 +742,7 @@ function inscription_form_shortcode($atts , $content = null) {
                 'order'=> 'ASC',
                 'orderby' => 'title',
                 'posts_per_page' => -1,
-                'post_status' => 'published',
+                'post_status' => 'publish',
                 'meta_query' => array(
                     'relation' => 'OR',
                     array(
@@ -770,7 +770,7 @@ function inscription_form_shortcode($atts , $content = null) {
                 'order'=> 'ASC',
                 'orderby' => 'title',
                 'posts_per_page' => -1,
-                'post_status' => 'published',
+                'post_status' => 'publish',
                 'meta_query' => array(
                     'relation' => 'OR',
                     array(
@@ -807,7 +807,7 @@ function inscription_form_shortcode($atts , $content = null) {
                 'order'=> 'ASC',
                 'orderby' => 'title',
                 'posts_per_page' => -1,
-                'post_status' => 'published',
+                'post_status' => 'publish',
                 'meta_query' => array(
                     'relation' => 'OR',
                     array(
@@ -843,7 +843,7 @@ function inscription_form_shortcode($atts , $content = null) {
                 'order'=> 'ASC',
                 'orderby' => 'title',
                 'posts_per_page' => -1,
-                'post_status' => 'published',
+                'post_status' => 'publish',
                 'meta_query' => array(
                     'relation' => 'OR',
                     array(
@@ -872,7 +872,7 @@ function inscription_form_shortcode($atts , $content = null) {
                 'order'=> 'ASC',
                 'orderby' => 'title',
                 'posts_per_page' => -1,
-                'post_status' => 'published',
+                'post_status' => 'publish',
                 'tax_query' => array(
                     array(
                         'taxonomy' => 'programmes',
@@ -926,7 +926,7 @@ function inscription_form_shortcode($atts , $content = null) {
                 'order'=> 'ASC',
                 'orderby' => 'title',
                 'posts_per_page' => -1,
-                'post_status' => 'published',
+                'post_status' => 'publish',
                 'meta_query' => array(
                     'relation' => 'OR',
                     array(
