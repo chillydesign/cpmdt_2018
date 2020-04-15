@@ -541,7 +541,7 @@
             // SHOW COUSE 5656 always
             var courses = _.reject(courses, function (c) {
                 return (
-                    (c.slug == 'music' && c.post_parent == 0 && c.id != 5656) ||
+                    (c.slug == 'music' && c.post_parent == 0 && c.ID != 5656) ||
                     (c.hide_in_search == true)
                 );
             });
