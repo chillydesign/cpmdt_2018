@@ -538,8 +538,12 @@
 
             // DONT SHOW COURSE PARENTS FOR MUSIC
             // ALSO DONT SHOW COURSES THAT HAVE A TICKBOX TICKED hide_in_search
+            // SHOW COUSE 5656 always
             var courses = _.reject(courses, function (c) {
-                return (c.slug == 'music' && c.post_parent == 0) || (c.hide_in_search == true);
+                return (
+                    (c.slug == 'music' && c.post_parent == 0 && c.id != 5656) ||
+                    (c.hide_in_search == true)
+                );
             });
 
 

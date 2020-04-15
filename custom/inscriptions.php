@@ -147,6 +147,7 @@ function inscription_form_shortcode($atts , $content = null) {
             <label for="prof_inst_chant">Professeur Instr. / chant  </label>
             <div class="field_content">
             <input type="text" name="prof_inst_chant" id="prof_inst_chant" />
+            <p class="meta">Indiquez si vous avez une éventuelle préférence dans le choix du/de la professeur·e</p>
             </div>
             </div>';
 
@@ -174,6 +175,7 @@ function inscription_form_shortcode($atts , $content = null) {
         <div class="field_content">
         <select name="location_id" id="locations_container"></select>
         <script id="locations_template" type="x-underscore">
+            <option value="">Choisir un lieu</option>
             <%  _.each(locations,function(location,key,list){  %>
             <option value="<%= location.wid %>"><%= location.post_title %></option>
             <% }) %>
