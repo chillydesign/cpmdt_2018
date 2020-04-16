@@ -199,13 +199,12 @@ function inscription_form_shortcode($atts , $content = null) {
         if (isset($_GET['testing'])) :
          
         $rq_frm .= '<div class="inscription_field">
-        <label for="other_places_container"> Autres lieux possibles *</label>
+        <label for="other_places_container"> Autres lieux possibles </label>
         <div class="field_content">
         <select  multiple name="other_place_possible_ids[]" id="other_places_container"></select>
-        <p class="meta">Etes-vous d\'accord de vous déplacer dans un centre plus éloigné?</p>
+        <p class="meta">Etes-vous d\'accord de vous déplacer dans un centre plus éloigné? Cliquez sur Ctrl ou Cmd pour sélectionner plusieurs options</p>
         </div>
         </div>';
-
         endif;
 
 
@@ -350,6 +349,17 @@ function inscription_form_shortcode($atts , $content = null) {
             </div>
             </div>';
 
+            if (isset($_GET['testing'])) :
+         
+                $rq_frm .= '<div class="inscription_field">
+                <label for="musical_other_places_container"> Autres lieux possibles </label>
+                <div class="field_content">
+                <select  multiple name="musical_other_place_possible_ids[]" id="musical_other_places_container"></select>
+                <p class="meta">Etes-vous d\'accord de vous déplacer dans un centre plus éloigné? Cliquez sur Ctrl ou Cmd pour sélectionner plusieurs options</p>
+                </div>
+                </div>';
+            endif;
+
         endif; // end if in array instrumentchant
 
 
@@ -366,6 +376,7 @@ function inscription_form_shortcode($atts , $content = null) {
         <label for="title">Titre</label>
         <div class="field_content">
         <select id="title" name="title">
+        <option value="">Choisir un lieu</option>
         <option value="Madame">Madame</option>
         <option value="Mademoiselle">Mademoiselle</option>
         <option value="Monsieur">Monsieur</option>
@@ -474,6 +485,7 @@ function inscription_form_shortcode($atts , $content = null) {
         <label for="title_guardian">Titre</label>
         <div class="field_content">
         <select id="title_guardian" name="title_guardian">
+        <option value="">Choisir un lieu</option>
         <option value="Madame">Madame</option>
         <option value="Mademoiselle">Mademoiselle</option>
         <option value="Monsieur">Monsieur</option>
@@ -626,6 +638,7 @@ function inscription_form_shortcode($atts , $content = null) {
     <label for="how_know_school">Comment avez-vous eu connaissance de notre école? </label>
     <div class="field_content">
     <select id="how_know_school" name="how_know_school">
+    <option value="">Choisir un lieu</option>
     <option value="Site internet"  selected="selected">Site internet</option>
     <option value="Bouche-à-oreille, réputation" >Bouche-à-oreille, réputation</option>
     <option value="Autre enfant déjà inscrit au CPMDT" >Autre enfant déjà inscrit au CPMDT</option>
@@ -1029,6 +1042,11 @@ function inscription_form_shortcode($atts , $content = null) {
                 $other_place_ids = $_POST['other_place_possible_ids'];
                 if (sizeof($other_place_ids) > 0) {
                  add_post_meta($new_inscription, 'other_place_possible_ids', $other_place_ids  , true);
+                }
+
+                $musical_other_place_ids = $_POST['musical_other_place_possible_ids'];
+                if (sizeof($musical_other_place_ids) > 0) {
+                 add_post_meta($new_inscription, 'musical_other_place_possible_ids', $musical_other_place_ids  , true);
                 }
 
                 // add client ip address
