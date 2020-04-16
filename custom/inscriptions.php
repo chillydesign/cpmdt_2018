@@ -994,58 +994,61 @@ function inscription_form_shortcode($atts , $content = null) {
             } else {
 
 
-                if (isset($_POST['other_place_possible_ids'])) {
-                    var_dump($_POST);
-                } else {
+            
 
+                $fields = all_inscription_fields();
 
-                    $fields = all_inscription_fields();
+                foreach ($fields as $field => $value ) {
+                    if (isset($_POST[$field])){
 
-                    foreach ($fields as $field => $value ) {
-                        if (isset($_POST[$field])){
-
-                            if ($field == 'date_of_birth') {
-                                // not used any more, we now get date_of_birthdate_of_birth from 
-                                // separate day month and year fields and concat them
-                                $timestamp = strtotime( $_POST[$field] );
-                                $v = date('d-m-Y', $timestamp);
-                            }  else {
-                                $v = $_POST[$field];
-                            }
-
-                            add_post_meta($new_inscription, $field, $v  , true);
+                        if ($field == 'date_of_birth') {
+                            // not used any more, we now get date_of_birthdate_of_birth from 
+                            // separate day month and year fields and concat them
+                            $timestamp = strtotime( $_POST[$field] );
+                            $v = date('d-m-Y', $timestamp);
+                        }  else {
+                            $v = $_POST[$field];
                         }
+
+                        add_post_meta($new_inscription, $field, $v  , true);
                     }
+                }
 
-                    if (isset($_POST['birth_year'])){
-                        $birth_str = $_POST['birth_day'] . '-'. $_POST['birth_month'] .  '-' . $_POST['birth_year'];
-                        add_post_meta($new_inscription, 'date_of_birth', $birth_str, true);
-                        $_POST['date_of_birth'] = $birth_str; // needed for the email to people;
-                    }
-
-
-                    if (isset($_POST['course_type'])) {
-                        add_post_meta($new_inscription, 'course_type',  $_POST['course_type'] , true);
-                    }
-
-                    // add client ip address
-                    if (isset( $_SERVER['REMOTE_ADDR'] ) ) {
-                        add_post_meta($new_inscription, 'ip_address',  $_SERVER['REMOTE_ADDR'] , true);
-                    };
+                if (isset($_POST['birth_year'])){
+                    $birth_str = $_POST['birth_day'] . '-'. $_POST['birth_month'] .  '-' . $_POST['birth_year'];
+                    add_post_meta($new_inscription, 'date_of_birth', $birth_str, true);
+                    $_POST['date_of_birth'] = $birth_str; // needed for the email to people;
+                }
 
 
-
-                    // if (isset($_FILES['hypothetical_file'])) {
-                    // $hypothetical_file_file = $_FILES['hypothetical_file'];
-                    // if ($hypothetical_file_file['size'] > 0 ) {
-                    //     $photo_id = inscription_add_file_upload( $hypothetical_file_file, $new_inscription );
-                    //     update_field( 'hypothetical_file', $photo_id,  $new_inscription  );
-                    // };
-                    // }
+                if (isset($_POST['course_type'])) {
+                    add_post_meta($new_inscription, 'course_type',  $_POST['course_type'] , true);
+                }
 
 
-                    // SEND EMAILS TO THE ADMIN AND THE PERSON WHO SUBMITTED
-                    send_inscription_emails( $_POST );
+                $other_place_ids = $_POST['other_place_possible_ids'];
+                if (sizeof($other_place_ids) > 0) {
+                 add_post_meta($new_inscription, 'other_place_possible_ids', $other_place_ids  , true);
+                }
+
+                // add client ip address
+                if (isset( $_SERVER['REMOTE_ADDR'] ) ) {
+                    add_post_meta($new_inscription, 'ip_address',  $_SERVER['REMOTE_ADDR'] , true);
+                };
+
+
+
+                // if (isset($_FILES['hypothetical_file'])) {
+                // $hypothetical_file_file = $_FILES['hypothetical_file'];
+                // if ($hypothetical_file_file['size'] > 0 ) {
+                //     $photo_id = inscription_add_file_upload( $hypothetical_file_file, $new_inscription );
+                //     update_field( 'hypothetical_file', $photo_id,  $new_inscription  );
+                // };
+                // }
+
+
+                // SEND EMAILS TO THE ADMIN AND THE PERSON WHO SUBMITTED
+                send_inscription_emails( $_POST );
 
 
 
@@ -1053,7 +1056,7 @@ function inscription_form_shortcode($atts , $content = null) {
                     // $redirect = get_home_url() . '/inscription-reussie/';
                     // wp_redirect( $redirect );
 
-                    }
+                    
             }
 
 
