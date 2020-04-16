@@ -199,9 +199,9 @@ function inscription_form_shortcode($atts , $content = null) {
         if (isset($_GET['testing'])) :
          
         $rq_frm .= '<div class="inscription_field">
-        <label for="other_place_possible_ids"> Autres lieux possibles *</label>
+        <label for="other_places_container"> Autres lieux possibles *</label>
         <div class="field_content">
-        <select  multiple name="other_place_possible_ids" id="other_places_container"></select>
+        <select  multiple name="other_place_possible_ids[]" id="other_places_container"></select>
         <p class="meta">Etes-vous d\'accord de vous déplacer dans un centre plus éloigné?</p>
         </div>
         </div>';
