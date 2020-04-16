@@ -187,18 +187,6 @@ function inscription_form_shortcode($atts, $content = null)
 
 
     if (in_array($course_type,  array('14musicale', '47musicale', 'instrumentchant'))) :
-        $rq_frm .= ' <div class="inscription_field">
-            <label for="other_place_possible"> Autre lieu possible *</label>
-            <div class="field_content">
-            <label><input required type="radio" class="radio_input" name="other_place_possible" value="Oui" />Oui</label>
-            <label><input required type="radio" class="radio_input" name="other_place_possible" value="Non" />Non</label>
-            <p class="meta">Etes-vous d\'accord de vous déplacer dans un centre plus éloigné?</p>
-            </div>
-            </div>';
-    endif;
-
-
-    if (isset($_GET['testing'])) :
 
         $rq_frm .= '<div class="inscription_field">
         <label for="other_places_container"> Autres lieux possibles </label>
@@ -207,7 +195,12 @@ function inscription_form_shortcode($atts, $content = null)
         <p class="meta">Etes-vous d\'accord de vous déplacer dans un centre plus éloigné? Cliquez sur Ctrl ou Cmd pour sélectionner plusieurs options</p>
         </div>
         </div>';
+
     endif;
+
+
+
+
 
 
     if (in_array($course_type,  array('instrumentchant'))) :
@@ -336,7 +329,9 @@ function inscription_form_shortcode($atts, $content = null)
         $rq_frm .= '<div class="inscription_field">
             <label for="musical_location_id">Lieu </label>
             <div class="field_content">
-            <select name="musical_location_id" id="musical_locations_container">';
+            <select name="musical_location_id" id="musical_locations_container">
+            <option value="">Choisir une option</option>';
+
         foreach ($locations as $location) {
             $rq_frm .= '<option value="' .  $location->ID . '">' . $location->post_title . '</option>';
         };
@@ -345,25 +340,17 @@ function inscription_form_shortcode($atts, $content = null)
             </div>
             </div>';
 
-        $rq_frm .= ' <div class="inscription_field">
-            <label for="musical_other_place_possible"> Autre lieu possible *</label>
-            <div class="field_content">
-            <label><input required type="radio" class="radio_input" name="musical_other_place_possible" value="Oui" />Oui</label>
-            <label><input required type="radio" class="radio_input" name="musical_other_place_possible" value="Non" />Non</label>
-            <p class="meta">Etes-vous d\'accord de vous déplacer dans un centre plus éloigné?</p>
-            </div>
-            </div>';
 
-        if (isset($_GET['testing'])) :
 
-            $rq_frm .= '<div class="inscription_field">
+
+        $rq_frm .= '<div class="inscription_field">
                 <label for="musical_other_places_container"> Autres lieux possibles </label>
                 <div class="field_content">
                 <select  multiple name="musical_other_place_possible_ids[]" id="musical_other_places_container"></select>
                 <p class="meta">Etes-vous d\'accord de vous déplacer dans un centre plus éloigné? Cliquez sur Ctrl ou Cmd pour sélectionner plusieurs options</p>
                 </div>
                 </div>';
-        endif;
+
 
     endif; // end if in array instrumentchant
 
