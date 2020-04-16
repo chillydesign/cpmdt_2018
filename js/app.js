@@ -705,6 +705,7 @@
 
         function updateLocationAndOptionsForCourse($field, $course_id) {
             var $loc_container = $('#' + $field + 's_container');
+            var $other_places_container = $('#other_places_container');
             var $loc_template = $('#' + $field + 's_template').html();
 
             var $options_container = $('#courseoption_container');
@@ -736,6 +737,7 @@
                         var loccompiled = _.template($loc_template);
                         var locations = _.sortBy(data.locations, 'post_title');
                         $loc_container.html(loccompiled({ locations: locations }));
+                        $other_places_container.html(loccompiled({ locations: locations }));
 
                     } else {
                         $loc_container.html('');
