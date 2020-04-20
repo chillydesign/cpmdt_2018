@@ -206,7 +206,7 @@ function inscription_form_shortcode($atts, $content = null)
     if (in_array($course_type,  array('instrumentchant'))) :
         $rq_frm .= '
             <div class="inscription_field" >
-            <label for="course_id_second_choice">Second choix  </label>
+            <label for="course_id_second_choice">Second choix de cours   </label>
             <div class="field_content">
             <select  id="course_id_second_choice" name="course_id_second_choice">';
         $rq_frm .= '<option value="0">Choisir un cours</option>';
