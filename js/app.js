@@ -750,11 +750,11 @@
                                 if (time.teachers && time.location) {
                                     var teacher_names = time.teachers.map(t => post_title).join(' & ');
                                     time.option = teacher_names + ' | ' + time.horaires + ' | ' + time.location.post_title;
-                                    returned_times.push(time);
                                 }
+                                console.log(time);
                             }
-                            console.log(returned_times);
-                            $times_container.html(timescompiled({ times: returned_times }));
+                            console.log(times);
+                            $times_container.html(timescompiled({ times: times }));
                             $times_field.show();
                         }
                     }
