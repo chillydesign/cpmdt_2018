@@ -768,6 +768,8 @@
                         // only show the locations select dropdown if  we have no times
                         $locations_field.hide();
 
+                    } else {
+                        $locations_field.show();
                     }
 
                     if (data.locations.length > 0) {
