@@ -750,7 +750,7 @@
                             for (var i = 0; i < data.times.length; i++) {
                                 var time = data.times[i];
                                 if (time.teachers && time.location && time.location.post_title) {
-                                    var teacher_names = time.teachers.map(t => post_title).join(' & ');
+                                    var teacher_names = time.teachers.map(t => t.post_title).join(' & ');
                                     time.option = teacher_names + ' | ' + time.horaires + ' | ' + time.location.post_title;
                                 }
                                 console.log(time);
