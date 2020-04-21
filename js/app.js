@@ -712,11 +712,12 @@
             var $times_container = $('#times_container');
             var $times_template = $('#times_template').html();
             var $times_field = $('#times_field');
-
+            var $locations_field = $('#locations_field');
 
             var $options_container = $('#courseoption_container');
             var $options_template = $('#courseoption_template').html();
             var $options_field = $('#options_field');
+
 
             $.ajax({
                 url: course_api_url + '?course_id=' + $course_id,
@@ -764,22 +765,24 @@
                     if (returned_times.length > 0) {
                         $times_container.html(timescompiled({ times: returned_times }));
                         $times_field.show();
+                        // only show the locations select dropdown if  we have no times
+                        $locations_field.hide();
+
+                    }
+
+                    if (data.locations.length > 0) {
+                        var loccompiled = _.template($loc_template);
+                        var locations = _.sortBy(data.locations, 'post_title');
+                        $loc_container.html(loccompiled({ locations: locations }));
+                        $other_places_container.html(loccompiled({ locations: locations }));
+                        $musical_other_places_container.html(loccompiled({ locations: locations }));
 
                     } else {
-                        // only show the locations select dropdown if  we have no times
-                        if (data.locations.length > 0) {
-                            var loccompiled = _.template($loc_template);
-                            var locations = _.sortBy(data.locations, 'post_title');
-                            $loc_container.html(loccompiled({ locations: locations }));
-                            $other_places_container.html(loccompiled({ locations: locations }));
-                            $musical_other_places_container.html(loccompiled({ locations: locations }));
-
-                        } else {
-                            $loc_container.html('');
-                            $other_places_container.html('');
-                            $musical_other_places_container.html('');
-                        }
+                        $loc_container.html('');
+                        $other_places_container.html('');
+                        $musical_other_places_container.html('');
                     }
+
 
 
                 }
