@@ -739,13 +739,14 @@
                         $options_field.hide();
                     }
 
-                    $times_field.hide();
 
+                    $times_field.hide();
+                    var returned_times = [];
                     if ($times_container) {
                         if (data.times.length > 0) {
                             var timescompiled = _.template($times_template);
 
-                            var returned_times = [];
+
                             for (var i = 0; i < data.times.length; i++) {
                                 var time = data.times[i];
                                 if (time.teachers && time.location && time.horaires) {
@@ -756,28 +757,31 @@
                                     }
                                 }
                             }
-                            if (returned_times.length > 0) {
-                                console.log(returned_times);
-                                $times_container.html(timescompiled({ times: returned_times }));
-                                $times_field.show();
-                            }
-
                         }
                     }
 
 
-                    if (data.locations.length > 0) {
-                        var loccompiled = _.template($loc_template);
-                        var locations = _.sortBy(data.locations, 'post_title');
-                        $loc_container.html(loccompiled({ locations: locations }));
-                        $other_places_container.html(loccompiled({ locations: locations }));
-                        $musical_other_places_container.html(loccompiled({ locations: locations }));
+                    if (returned_times.length > 0) {
+                        $times_container.html(timescompiled({ times: returned_times }));
+                        $times_field.show();
 
                     } else {
-                        $loc_container.html('');
-                        $other_places_container.html('');
-                        $musical_other_places_container.html('');
+                        // only show the locations select dropdown if  we have no times
+                        if (data.locations.length > 0) {
+                            var loccompiled = _.template($loc_template);
+                            var locations = _.sortBy(data.locations, 'post_title');
+                            $loc_container.html(loccompiled({ locations: locations }));
+                            $other_places_container.html(loccompiled({ locations: locations }));
+                            $musical_other_places_container.html(loccompiled({ locations: locations }));
+
+                        } else {
+                            $loc_container.html('');
+                            $other_places_container.html('');
+                            $musical_other_places_container.html('');
+                        }
                     }
+
+
                 }
             })
         }
