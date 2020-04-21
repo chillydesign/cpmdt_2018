@@ -742,17 +742,20 @@
                     if ($times_container) {
                         if (data.times.length > 0) {
                             var timescompiled = _.template($times_template);
-                            var times = data.times;
+
                             var returned_times = [];
 
-                            for (var i = 0; i < times.length; i++) {
-                                var time = times[i];
+                            console.log(data.times);
+
+                            for (var i = 0; i < data.times.length; i++) {
+                                var time = data.times[i];
                                 if (time.teachers && time.location) {
                                     var teacher_names = time.teachers.map(t => post_title).join(' & ');
                                     time.option = teacher_names + ' | ' + time.horaires + ' | ' + time.location.post_title;
                                 }
                                 console.log(time);
                             }
+                            var times = data.times;
                             console.log(times);
                             $times_container.html(timescompiled({ times: times }));
                             $times_field.show();
