@@ -743,10 +743,8 @@
 
                     $times_field.hide();
                     var returned_times = [];
-                    if ($times_container) {
+                    if ($times_container.length > 0) {
                         if (data.times.length > 0) {
-                            var timescompiled = _.template($times_template);
-
 
                             for (var i = 0; i < data.times.length; i++) {
                                 var time = data.times[i];
@@ -766,6 +764,7 @@
 
 
                     if (returned_times.length > 0) {
+                        var timescompiled = _.template($times_template);
                         $times_container.html(timescompiled({ times: returned_times }));
                         $times_field.show();
                         // only show the locations select dropdown if  we have no times
