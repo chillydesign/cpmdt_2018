@@ -739,6 +739,8 @@
                         $options_field.hide();
                     }
 
+                    $times_field.hide();
+
                     if ($times_container) {
                         if (data.times.length > 0) {
                             var timescompiled = _.template($times_template);
@@ -746,18 +748,23 @@
                             var returned_times = [];
                             for (var i = 0; i < data.times.length; i++) {
                                 var time = data.times[i];
-                                if (time.teachers && time.location && time.location.post_title) {
-                                    var teacher_names = time.teachers.map(t => t.post_title).join(' & ');
-                                    time.option = teacher_names + ' | ' + time.horaires + ' | ' + time.location.post_title;
-                                    returned_times.push(time);
+                                if (time.teachers && time.location && time.horaires) {
+                                    if (time.horaires != '') {
+                                        var teacher_names = time.teachers.map(t => t.post_title).join(' & ');
+                                        time.option = teacher_names + ' | ' + time.horaires + ' | ' + time.location.post_title;
+                                        returned_times.push(time);
+                                    }
                                 }
-
                             }
-                            console.log(returned_times);
-                            $times_container.html(timescompiled({ times: returned_times }));
-                            $times_field.show();
+                            if (returned_times.length > 0) {
+                                console.log(returned_times);
+                                $times_container.html(timescompiled({ times: returned_times }));
+                                $times_field.show();
+                            }
+
                         }
                     }
+
 
                     if (data.locations.length > 0) {
                         var loccompiled = _.template($loc_template);
