@@ -154,6 +154,21 @@ function inscription_form_shortcode($atts, $content = null)
 
     endif; // end if in array instrumentchant
 
+    if (isset($_GET['testing'])) :
+        $rq_frm .= '<div class="inscription_field" id="times_field" style="display:none">
+        <label for="time_option"> Option </label>
+        <div class="field_content">
+        <select name="time_option" id="times_container"></select>
+        <script id="times_template" type="x-underscore">
+           <option value="">Choisir une time</option>
+            <%  _.each(times,function(time,key,list){  %>
+            <option value="<%= time.option %>"><%= time.option %></option>
+            <% }) %>
+        </script>
+        </div>
+        </div>';
+    endif;
+
 
 
     $rq_frm .= '<div class="inscription_field" id="options_field" style="display:none">

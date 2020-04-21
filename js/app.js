@@ -709,6 +709,11 @@
             var $musical_other_places_container = $('#musical_other_places_container');
             var $loc_template = $('#' + $field + 's_template').html();
 
+            var $times_container = $('#times_container');
+            var $times_template = $('#times_template').html();
+            var $times_field = $('#times_field');
+
+
             var $options_container = $('#courseoption_container');
             var $options_template = $('#courseoption_template').html();
             var $options_field = $('#options_field');
@@ -732,6 +737,26 @@
                         }
                     } else {
                         $options_field.hide();
+                    }
+
+                    if ($times_container) {
+                        if (data.times.length > 0) {
+                            var timescompiled = _.template($times_template);
+                            var times = data.times;
+                            var returned_times = [];
+
+                            for (var i = 0; i < times.length; i++) {
+                                var time = times[i];
+                                if (time.teachers && time.location) {
+                                    var teacher_names = time.teachers.map(t => post_title).join(' & ');
+                                    time.option = teacher_names + ' | ' + time.horaires + ' | ' + time.location.post_title;
+                                    returned_times.push(time);
+                                }
+                            }
+                            console.log(returned_times);
+                            $times_container.html(timescompiled({ times: returned_times }));
+                            $times_field.show();
+                        }
                     }
 
                     if (data.locations.length > 0) {
