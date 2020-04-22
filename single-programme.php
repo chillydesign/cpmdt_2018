@@ -61,6 +61,7 @@ wp_reset_query();
                             <div class="teacher_list">
                                 <?php $current_loc_title = '-'; ?>
                                 <?php foreach ($times as $time) : ?>
+                                    <?php $teachers_shown = array(); ?>
 
                                     <div class="row no-margin body body-item">
                                         <div class="col-sm-6 col-xs-12 font-bold">
@@ -77,7 +78,10 @@ wp_reset_query();
                                             <?php if ($time['teachers']) : ?>
                                                 <?php usort($time['teachers'], 'sort_teachers_by_title'); ?>
                                                 <?php foreach ($time['teachers'] as $teacher) :; ?>
-                                                    <?php echo $teacher->post_title; ?> <br>
+                                                    <?php if (!in_array($teachers_shown, $teacher->post_title)) : ?>
+                                                        <?php echo $teacher->post_title; ?> <br>
+                                                        <?php array_push($teachers_shown, $teacher->post_title); ?>
+                                                    <?php endif; ?>
                                                 <?php endforeach; ?>
                                             <?php endif; ?>
                                         </div>
