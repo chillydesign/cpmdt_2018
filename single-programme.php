@@ -63,10 +63,10 @@ wp_reset_query();
                                 <?php $location_teachers = array(); ?>
                                 <?php foreach ($times as $time) : ?>
                                     <?php $location_id = $time['location']->ID; ?>
-                                    LOCATION ID = <?php echo $location_id; ?>
-                                    <?php  if ( !array_key_exists( $location_id, $location_teachers) )  {
+
+                                    <?php if (!array_key_exists($location_id, $location_teachers)) {
                                         $location_teachers[$location_id] = array();
-                                     ?>
+                                    } ?>
                                     <div class="row no-margin body body-item">
                                         <div class="col-sm-6 col-xs-12 font-bold">
                                             <?php if ($time['location']) : ?>
@@ -82,7 +82,7 @@ wp_reset_query();
                                             <?php if ($time['teachers']) : ?>
                                                 <?php usort($time['teachers'], 'sort_teachers_by_title'); ?>
                                                 <?php foreach ($time['teachers'] as $teacher) :; ?>
-                                                    TEACHER ID<?php echo $teacher->ID; ?>
+
                                                     <?php if (!in_array($teacher->ID, $location_teachers[$location_id])) : ?>
                                                         <?php echo $teacher->post_title; ?> <br>
                                                     <?php endif; ?>
@@ -92,7 +92,7 @@ wp_reset_query();
                                         </div>
                                     </div>
                                 <?php endforeach; ?>
-                                <?php var_dump($location_teachers); ?>
+
                             </div>
 
 
