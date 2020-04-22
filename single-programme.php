@@ -86,6 +86,7 @@ wp_reset_query();
                                             <?php endif; ?>
                                         </div>
                                     </div>
+                                    <?php var_dump($teachers_shown); ?>
                                 <?php endforeach; ?>
                             </div>
 
