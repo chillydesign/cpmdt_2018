@@ -88,6 +88,7 @@ wp_reset_query();
                                         </div>
                                     </div>
                                 <?php endforeach; ?>
+                                <?php var_dump($location_teachers); ?>
                             </div>
 
 
