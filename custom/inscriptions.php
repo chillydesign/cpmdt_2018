@@ -290,6 +290,8 @@ function inscription_form_shortcode($atts, $content = null)
         <option value="Cours collectif, prix selon brochure" >Cours collectif, prix selon brochure</option>
         </select>
         <p class="meta"> Instrument / chant. Pour les abonnements l\'écolage est payable d\'avance en une fois à la réception du CPMDT. </p>
+
+        <p class="meta"><strong> Attention</strong>, le cours de Formation Musicale ne peut être suivi avec l\'option "Cours de 50 minutes toutes les 2 semaines" car il s\'agit obligatoirement d’un cours de 50 minutes hebdomadaires comme pour tous les autres élèves.</p>
         </div>
         </div>';
 
