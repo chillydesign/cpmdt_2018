@@ -78,7 +78,7 @@ wp_reset_query();
                                             <?php if ($time['teachers']) : ?>
                                                 <?php usort($time['teachers'], 'sort_teachers_by_title'); ?>
                                                 <?php foreach ($time['teachers'] as $teacher) :; ?>
-                                                    <?php if (!in_array($teachers_shown, $teacher->post_title)) : ?>
+                                                    <?php if (!in_array($teacher->post_title, $teachers_shown)) : ?>
                                                         <?php echo $teacher->post_title; ?> <br>
                                                         <?php array_push($teachers_shown, $teacher->post_title); ?>
                                                     <?php endif; ?>
