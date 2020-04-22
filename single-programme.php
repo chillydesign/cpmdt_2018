@@ -64,7 +64,9 @@ wp_reset_query();
                                 <?php foreach ($times as $time) : ?>
                                     <?php $location_id = $time['location']->ID; ?>
                                     LOCATION ID = <?php echo $location_id; ?>
-                                    <?php $location_teachers[$location_id] = array(); ?>
+                                    <?php  if ( !array_key_exists( $location_id, $location_teachers) )  {
+                                        $location_teachers[$location_id] = array();
+                                     ?>
                                     <div class="row no-margin body body-item">
                                         <div class="col-sm-6 col-xs-12 font-bold">
                                             <?php if ($time['location']) : ?>
