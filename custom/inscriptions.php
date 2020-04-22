@@ -177,7 +177,7 @@ function inscription_form_shortcode($atts, $content = null)
             <div class="field_content">
             <select name="location_time" id="times_container"></select>
             <script id="times_template" type="x-underscore">
-               <option value="">Choisir une time</option>
+               <option value="">Choisir un lieu</option>
                 <%  _.each(times,function(time,key,list){  %>
                 <option value="<%= time.option %>"><%= time.option %></option>
                 <% }) %>
