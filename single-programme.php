@@ -60,9 +60,10 @@ wp_reset_query();
                             </div>
                             <div class="teacher_list">
                                 <?php $current_loc_title = '-'; ?>
+                                <?php $location_teachers = array(); ?>
                                 <?php foreach ($times as $time) : ?>
-                                    <?php $teachers_shown = array(); ?>
-
+                                    <?php $location_id = $time['location']->ID; ?>
+                                    <?php $location_teachers[$loation_id] = array(); ?>
                                     <div class="row no-margin body body-item">
                                         <div class="col-sm-6 col-xs-12 font-bold">
                                             <?php if ($time['location']) : ?>
@@ -78,15 +79,14 @@ wp_reset_query();
                                             <?php if ($time['teachers']) : ?>
                                                 <?php usort($time['teachers'], 'sort_teachers_by_title'); ?>
                                                 <?php foreach ($time['teachers'] as $teacher) :; ?>
-                                                    <?php if (!in_array($teacher->post_title, $teachers_shown)) : ?>
+                                                    <?php if (!in_array($teacher->post_title, $location_teachers[$location_id])) : ?>
                                                         <?php echo $teacher->post_title; ?> <br>
                                                     <?php endif; ?>
-                                                    <?php array_push($teachers_shown, $teacher->post_title); ?>
+                                                    <?php array_push($location_teachers[$location_id], $teacher->post_title); ?>
                                                 <?php endforeach; ?>
                                             <?php endif; ?>
                                         </div>
                                     </div>
-                                    <?php var_dump($teachers_shown); ?>
                                 <?php endforeach; ?>
                             </div>
 
