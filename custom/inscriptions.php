@@ -171,8 +171,8 @@ function inscription_form_shortcode($atts, $content = null)
         </div>';
 
 
-    if (isset($_GET['testing'])) :
-        $rq_frm .= '<div class="inscription_field" id="times_field" style="display:none">
+
+    $rq_frm .= '<div class="inscription_field" id="times_field" style="display:none">
             <label for="location_time"> Lieu </label>
             <div class="field_content">
             <select name="location_time" id="times_container"></select>
@@ -184,7 +184,7 @@ function inscription_form_shortcode($atts, $content = null)
             </script>
             </div>
             </div>';
-    endif;
+
 
 
     $rq_frm .= '<div class="inscription_field" id="locations_field">

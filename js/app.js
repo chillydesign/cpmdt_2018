@@ -725,6 +725,7 @@
                 dataType: 'json',
                 beforeSend: function () {
                     // $teacher_id_cont.html('');
+                    $times_field.hide();
                 },
                 success: function (data) {
 
@@ -741,7 +742,7 @@
                     }
 
 
-                    $times_field.hide();
+
                     var returned_times = [];
                     if ($times_container.length > 0) {
                         if (data.times.length > 0) {
