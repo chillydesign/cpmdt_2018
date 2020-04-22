@@ -173,9 +173,9 @@ function inscription_form_shortcode($atts, $content = null)
 
     if (isset($_GET['testing'])) :
         $rq_frm .= '<div class="inscription_field" id="times_field" style="display:none">
-            <label for="time_option"> Lieu </label>
+            <label for="location_time"> Lieu </label>
             <div class="field_content">
-            <select name="time_option" id="times_container"></select>
+            <select name="location_time" id="times_container"></select>
             <script id="times_template" type="x-underscore">
                <option value="">Choisir une time</option>
                 <%  _.each(times,function(time,key,list){  %>
@@ -742,7 +742,7 @@ function all_inscription_fields()
         'payment_frequency' => 'Je paierai ma facture en',
         'course_id' => 'Cours',
         'course_option' => 'Options',
-        'time_option' => 'Options Temps',
+        'location_time' => 'Lieu',
         'course_id_second_choice' => 'Second choix',
         'location_id' => 'Lieu',
         'instrument_chant_remarks' => 'Remarques',
