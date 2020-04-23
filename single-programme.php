@@ -82,11 +82,12 @@ wp_reset_query();
                                             <?php if ($time['teachers']) : ?>
                                                 <?php usort($time['teachers'], 'sort_teachers_by_title'); ?>
                                                 <?php foreach ($time['teachers'] as $teacher) :; ?>
-
-                                                    <?php if (!in_array($teacher->ID, $location_teachers[$location_id])) : ?>
-                                                        <?php echo $teacher->post_title; ?> <br>
+                                                    <?php if ($teacher) : ?>
+                                                        <?php if (!in_array($teacher->ID, $location_teachers[$location_id])) : ?>
+                                                            <?php echo $teacher->post_title; ?> <br>
+                                                        <?php endif; ?>
+                                                        <?php array_push($location_teachers[$location_id], $teacher->ID); ?>
                                                     <?php endif; ?>
-                                                    <?php array_push($location_teachers[$location_id], $teacher->ID); ?>
                                                 <?php endforeach; ?>
                                             <?php endif; ?>
                                         </div>
