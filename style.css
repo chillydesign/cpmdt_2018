@@ -777,6 +777,7 @@ margin: auto;
         padding: 0 15px;
         display: inline-block;
         vertical-align: top;
+        width: 100%;
     }
 
     .newsblock .item {max-width: 400px; margin: auto;}
