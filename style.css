@@ -779,12 +779,12 @@ margin: auto;
         vertical-align: top;
     }
 
+    .newsblock .item {max-width: 400px; margin: auto;}
+
     @media (min-width:768px) {
-      .newsblock { width: calc(100%/4 - 3px);}
-    }
-    @media (min-width:992px) {
       .newsblock { width: calc(100%/3 - 3px);}
     }
+
 
       .front-posts .item .item-thumbnail {
 
