@@ -20,7 +20,7 @@
 
 			<h2>ACTUALITÉS</h2>
 
-			<div  style="margin-top: 60px">
+			<div  style="margin-top: 60px; display:none;">
 			<?php
             $home_page_news = get_field('news');
 				if ( $home_page_news) : ?>
@@ -58,6 +58,48 @@
                      </div> <!-- END OF news_slider -->
 				<?php  endif; ?>
 			</div>
+
+			<div  style="margin-top: 60px">
+			<?php
+            $home_page_news = get_field('news');
+				if ( $home_page_news) : ?>
+                    <div class="row">
+					<?php foreach ( $home_page_news as $news_item) :
+                        $post = $news_item['post'];
+                        $status = $post->post_status;
+                        if ($status == 'publish') :
+                        $excerpt = get_field('post_excerptcf', $post->ID);
+						$category = get_the_category( $post->ID );
+						$categoryName = $category[0]->cat_name;
+						$categorySlug = $category[0]->slug;
+                        $image = thumbnail_of_post_url( $post->ID, 'medium');
+					?>
+					<div class="col-md-2 col-sm-4">
+						<div class=" item">
+
+							<div class="item-thumbnail">
+								<img src="<?php  echo $image; ?>"/>
+							</div>
+							<div class="item-date">
+								<h5><?php echo get_the_date( '<b>d</b> F', $post->ID ); ?></h5>
+							</div>
+							<div class="item-information">
+
+								<h6 class="color-<?php echo $categorySlug ?>" > <?php echo $categoryName ?> </h6>
+								<h3> <?php echo $post->post_title; ?> </h3>
+								<p><?php echo $excerpt; ?></p>
+
+								<a class="button button-default" href="<?php echo get_permalink($post->ID); ?>"> en savoir plus</a>
+							</div>
+						</div>
+						</div>
+                    <?php endif;  # if published ?>
+                    <?php endforeach; ?>
+									</div> <!-- END OF news -->
+				<?php  endif; ?>
+			</div>
+
+
 		</div>
 	</div>
 
