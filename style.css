@@ -773,12 +773,25 @@ margin: auto;
     }
 
 
+    .newsblock {
+        padding: 0 15px;
+        display: inline-block;
+        vertical-align: top;
+    }
+
+    @media (min-width:768px) {
+      .newsblock { width: calc(100%/4 - 3px);}
+    }
+    @media (min-width:992px) {
+      .newsblock { width: calc(100%/3 - 3px);}
+    }
+
       .front-posts .item .item-thumbnail {
 
       }
 
   .front-posts .item .item-thumbnail img {
-    width: 100%; 
+    width: 100%;
     height: auto;
 
  }
