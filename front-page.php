@@ -35,7 +35,7 @@
 						$categorySlug = $category[0]->slug;
                         $image = thumbnail_of_post_url( $post->ID, 'medium');
 					?>
-					<div class="col-md-4 col-sm-3" style="margin-top: 60px">
+					<div class="newsblock" style="margin-top: 60px">
 						<div class=" item">
 
 							<div class="item-thumbnail">
