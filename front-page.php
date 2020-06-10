@@ -35,7 +35,7 @@
 						$categorySlug = $category[0]->slug;
                         $image = thumbnail_of_post_url( $post->ID, 'medium');
 					?>
-					<div class="col-md-2 col-sm-4">
+					<div class="col-md-4 col-sm-3">
 						<div class=" item">
 
 							<div class="item-thumbnail">
