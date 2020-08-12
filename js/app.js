@@ -560,6 +560,9 @@
             if (category && category != '') {
                 var courses = _.reject(courses, function (c) {
                     //	return c.categories[0].term_id !=  category
+                    if (c.categories[0] == undefined) {
+                        return true;
+                    }
                     return !_.contains(category, c.categories[0].term_id);
                 });
             }
