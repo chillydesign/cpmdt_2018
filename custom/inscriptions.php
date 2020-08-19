@@ -214,7 +214,7 @@ function inscription_form_shortcode($atts, $content = null)
 
         $rq_frm .= '<script id="multiloc_template" type="x-underscore">
          <%  _.each(locations,function(location,key,list){  %>
-        <label> <input type="checkbox" name="other_place_possible_ids[]" value="<%= location.option %>" /> <%= location.option %> </label>
+        <label> <input type="checkbox" name="other_place_possible_ids[]" value="<%= location.wid %>" /> <%= location.post_title %> </label>
          <% }) %>
          </script>';
 
@@ -380,7 +380,7 @@ function inscription_form_shortcode($atts, $content = null)
 
         $rq_frm .= '<script id="musicmultiloc_template" type="x-underscore">
                 <%  _.each(locations,function(location,key,list){  %>
-               <label> <input type="checkbox" name="musical_other_place_possible_ids[]" value="<%= location.option %>" /> <%= location.option %></label>
+               <label> <input type="checkbox" name="musical_other_place_possible_ids[]" value="<%= location.wid %>" /> <%= location.post_title %></label>
                 <% }) %>
                 </script>';
 
