@@ -206,10 +206,17 @@ function inscription_form_shortcode($atts, $content = null)
         $rq_frm .= '<div class="inscription_field">
         <label for="other_places_container"> Autres lieux possibles </label>
         <div class="field_content">
-        <select  multiple name="other_place_possible_ids[]" id="other_places_container"></select>
+       <!-- <select  multiple name="other_place_possible_ids[]" id="other_places_container"></select> -->
+       <div id="other_places_container"></div>
         <p class="meta">Etes-vous d\'accord de vous déplacer dans un centre plus éloigné? Cliquez sur Ctrl ou Cmd pour sélectionner plusieurs options</p>
         </div>
         </div>';
+
+        $rq_frm .= '<script id="multiloc_template" type="x-underscore">
+         <%  _.each(times,function(time,key,list){  %>
+        <label> <input type="checkbox" name="other_place_possible_ids[]" value="<%= time.option %>" /> <%= time.option %> </label>
+         <% }) %>
+         </script>';
 
     endif;
 
@@ -363,10 +370,19 @@ function inscription_form_shortcode($atts, $content = null)
         $rq_frm .= '<div class="inscription_field">
                 <label for="musical_other_places_container"> Autres lieux possibles </label>
                 <div class="field_content">
-                <select  multiple name="musical_other_place_possible_ids[]" id="musical_other_places_container"></select>
+              <!--  <select  multiple name="musical_other_place_possible_ids[]" id="musical_other_places_container"></select> -->
+
+                <div id="musical_other_places_container"></div>
+
                 <p class="meta">Etes-vous d\'accord de vous déplacer dans un centre plus éloigné? Cliquez sur Ctrl ou Cmd pour sélectionner plusieurs options</p>
                 </div>
                 </div>';
+
+        $rq_frm .= '<script id="musicmultiloc_template" type="x-underscore">
+                <%  _.each(times,function(time,key,list){  %>
+               <label> <input type="checkbox" name="musical_other_place_possible_ids[]" value="<%= time.option %>" /> <%= time.option %></label>
+                <% }) %>
+                </script>';
 
 
     endif; // end if in array instrumentchant
@@ -999,11 +1015,14 @@ function save_inscription_form()
     // IF DATA HAS BEEN POSTED
     if (isset($_POST['action'])  && $_POST['action'] == 'inscription_form') :
 
+
+        $serv_referer = $_SERVER['HTTP_REFERER'];
+        $referer =  explode('?',   $serv_referer)[0];
+
+
         if (isset($_POST['first_name']) && isset($_POST['last_name'])  && isset($_POST['email'])) :
             // TO DO CHECK IF ALL NECESSARY FIELDS HAVE BEEN FILLED IN
 
-            $serv_referer = $_SERVER['HTTP_REFERER'];
-            $referer =  explode('?',   $serv_referer)[0];
 
 
             $fullname = $_POST['first_name'] . ' ' . $_POST['last_name'];
