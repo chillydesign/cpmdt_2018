@@ -750,18 +750,20 @@
 
                     var returned_times = [];
                     if ($times_container.length > 0) {
-                        if (data.times.length > 0) {
+                        if (data.times) {
+                            if (data.times.length > 0) {
 
-                            for (var i = 0; i < data.times.length; i++) {
-                                var time = data.times[i];
-                                if (time.location && time.horaires) {
-                                    if (time.horaires != '') {
-                                        var teacher_names = '';
-                                        if (time.teachers) {
-                                            teacher_names = ' | ' + time.teachers.map(t => t.post_title).join(', ');
+                                for (var i = 0; i < data.times.length; i++) {
+                                    var time = data.times[i];
+                                    if (time.location && time.horaires) {
+                                        if (time.horaires != '') {
+                                            var teacher_names = '';
+                                            if (time.teachers) {
+                                                teacher_names = ' | ' + time.teachers.map(t => t.post_title).join(', ');
+                                            }
+                                            time.option = time.location.post_title + ' | ' + time.horaires + teacher_names;
+                                            returned_times.push(time);
                                         }
-                                        time.option = time.location.post_title + ' | ' + time.horaires + teacher_names;
-                                        returned_times.push(time);
                                     }
                                 }
                             }
