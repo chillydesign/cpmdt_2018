@@ -711,8 +711,6 @@
             var $other_places_container = $('#other_places_container');
             var $musical_other_places_container = $('#musical_other_places_container');
             var $loc_template = $('#' + $field + 's_template').html();
-            var $multiloc_template = $('#multiloc_template').html();
-            var $musicmultiloc_template = $('#musicmultiloc_template').html();
 
             var $times_container = $('#times_container');
             var $times_template = $('#times_template').html();
@@ -788,11 +786,16 @@
                         $loc_container.html(loccompiled({ locations: locations }));
 
 
-                        if ($multiloc_template.length > 0) {
+                        var $multiloc = $('#multiloc_template');
+                        var $musicmultiloc = $('#musicmultiloc_template');
+
+                        if ($multiloc.length > 0) {
+                            var $multiloc_template = $multiloc.html();
                             var multiloccompiled = _.template($multiloc_template);
                             $other_places_container.html(multiloccompiled({ locations: locations }));
                         }
-                        if (musicmultiloc_template.length > 0) {
+                        if ($musicmultiloc.length > 0) {
+                            var $musicmultiloc_template = $musicmultiloc.html();
                             var musicmultiloccompiled = _.template($musicmultiloc_template);
                             $musical_other_places_container.html(musicmultiloccompiled({ locations: locations }));
 
