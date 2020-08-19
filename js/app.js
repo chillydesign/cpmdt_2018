@@ -784,12 +784,22 @@
 
                     if (data.locations.length > 0) {
                         var loccompiled = _.template($loc_template);
-                        var multiloccompiled = _.template($multiloc_template);
-                        var musicmultiloccompiled = _.template($musicmultiloc_template);
                         var locations = _.sortBy(data.locations, 'post_title');
                         $loc_container.html(loccompiled({ locations: locations }));
-                        $other_places_container.html(multiloccompiled({ locations: locations }));
-                        $musical_other_places_container.html(musicmultiloccompiled({ locations: locations }));
+
+
+                        if ($multiloc_template.length > 0) {
+                            var multiloccompiled = _.template($multiloc_template);
+                            $other_places_container.html(multiloccompiled({ locations: locations }));
+                        }
+                        if (musicmultiloc_template.length > 0) {
+                            var musicmultiloccompiled = _.template($musicmultiloc_template);
+                            $musical_other_places_container.html(musicmultiloccompiled({ locations: locations }));
+
+                        }
+
+
+
 
                     } else {
                         $loc_container.html('');
