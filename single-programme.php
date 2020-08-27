@@ -207,7 +207,7 @@ wp_reset_query();
                     $p_inscription = get_custom_field("p_inscription");
 
                     if (!empty($p_inscription)) {
-                        $p_inscription =  str_replace($p_inscription, 'cpmdt.ch', 'conservatoirepopulaire.ch');
+                        $p_inscription =  str_replace('cpmdt.ch', 'conservatoirepopulaire.ch', $p_inscription);
 
 
                         // ADD ID TO INSCIPRION LINK SO WE CAN PREFILL THE FORM
