@@ -757,12 +757,14 @@
 
                         var $fields_for_non_exempt_fm = $('.fields_for_non_exempt_fm');
 
-                        $fields_for_non_exempt_fm.show();
+
                         $formation_musicale_field.on('change', function (e) {
                             var $thiss = $(this);
                             var $fm_val = $thiss.val();
                             if ($fm_val == 'Exempt de formation musicale') {
                                 $fields_for_non_exempt_fm.hide();
+                            } else {
+                                $fields_for_non_exempt_fm.show();
                             }
                         });
 
