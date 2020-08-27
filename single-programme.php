@@ -26,7 +26,8 @@ wp_reset_query();
 <!-- Page title -->
 <div class="page-title background-<? echo $programSlug ?>">
     <div class="container">
-        <h2> <? echo $programName ?> / <?php the_title(); ?></h2>
+        <h2>
+            <? echo $programName ?> / <?php the_title(); ?></h2>
     </div>
 </div>
 
@@ -206,6 +207,9 @@ wp_reset_query();
                     $p_inscription = get_custom_field("p_inscription");
 
                     if (!empty($p_inscription)) {
+                        $p_inscription =  str_replace($p_inscription, 'cpmdt.ch', 'conservatoirepopulaire.ch');
+
+
                         // ADD ID TO INSCIPRION LINK SO WE CAN PREFILL THE FORM
                         $p_inscription = $p_inscription . '?course_id=' . $post->ID;
                         $result =
