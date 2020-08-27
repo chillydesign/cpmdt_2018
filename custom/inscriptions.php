@@ -343,14 +343,14 @@ function inscription_form_shortcode($atts, $content = null)
         // </div>
         // </div>';
 
-        $rq_frm .= ' <div class="inscription_field">
+        $rq_frm .= ' <div class="inscription_field fields_for_non_exempt_fm">
             <label for="prof_musical">Professeur FM</label>
             <div class="field_content">
             <input type="text" name="prof_musical" id="prof_musical" />
             </div>
             </div>';
 
-        $rq_frm .= '<div class="inscription_field">
+        $rq_frm .= '<div class="inscription_field fields_for_non_exempt_fm">
             <label for="musical_location_id">Lieu </label>
             <div class="field_content">
             <select name="musical_location_id" id="musical_locations_container">
@@ -367,7 +367,7 @@ function inscription_form_shortcode($atts, $content = null)
 
 
 
-        $rq_frm .= '<div class="inscription_field">
+        $rq_frm .= '<div class="inscription_field fields_for_non_exempt_fm">
                 <label for="musical_other_places_container"> Autres lieux possibles </label>
                 <div class="field_content">
               <!--  <select  multiple name="musical_other_place_possible_ids[]" id="musical_other_places_container"></select> -->
@@ -1177,7 +1177,7 @@ function send_inscription_emails($data)
     $headers .= 'Reply-To: Conservatoire populaire de musique, danse et théâtre <inscription@cpmdt.ch>' . "\r\n";
     $emailheader = ''; // file_get_contents(dirname(__FILE__) . '/emails/email_header.php');
     $emailfooter = ''; // file_get_contents(dirname(__FILE__) . '/emails/email_footer.php');
-    add_filter('wp_mail_content_type', create_function('', 'return "text/html"; '));
+    add_filter('wp_mail_content_type', 'returnHtml');
 
 
     $paragraph_for_user = '<p style="font-weight:bold">Conservatoire populaire de musique, danse et théâtre</p><p>Madame, Monsieur,</p>

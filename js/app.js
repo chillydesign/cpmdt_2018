@@ -745,21 +745,28 @@
                     }
 
 
+
                     if ($course_id == 9285) {
                         // if course is musique theatre
                         var $exempt_option = '<option value="Exempt de formation musicale" >Exempt de formation musicale</option>';
-                        var $fields_for_non_exempt_fm = $('.fields_for_non_exempt_fm');
+
                         var $formation_musicale_field = $('#formation_musicale');
 
                         $formation_musicale_field.append($exempt_option);
 
 
+                        var $fields_for_non_exempt_fm = $('.fields_for_non_exempt_fm');
+
+                        $fields_for_non_exempt_fm.show();
+                        $formation_musicale_field.on('change', function (e) {
+                            var $thiss = $(this);
+                            var $fm_val = $thiss.val();
+                            if ($fm_val == 'Exempt de formation musicale') {
+                                $fields_for_non_exempt_fm.hide();
+                            }
+                        });
 
                     }
-
-
-
-
 
 
                     var returned_times = [];

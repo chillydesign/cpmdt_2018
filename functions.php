@@ -211,7 +211,7 @@ add_action('init', 'revcon_change_post_object');
 
 function wf_version()
 {
-	return '1.4.5';
+	return '1.4.6';
 }
 
 
@@ -754,6 +754,11 @@ if (function_exists('acf_add_options_page')) {
 }
 
 
+//neccessary to send html emails
+function returnHtml()
+{
+	return "text/html";
+}
 
 function sort_times_by_location($a, $b)
 {
