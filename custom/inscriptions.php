@@ -1326,6 +1326,7 @@ function add_download_link_inscription($which)
         echo download_insc_button('47musicale', '4 -7 ans');
         echo download_insc_button('instrumentchant', 'instrument chant');
         echo download_insc_button('theatre', 'théâtre');
+        echo download_insc_button('adultes', 'adultes');
     }
 }
 
