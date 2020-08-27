@@ -208,9 +208,11 @@ function inscription_form_shortcode($atts, $content = null)
         <div class="field_content">
        <!-- <select  multiple name="other_place_possible_ids[]" id="other_places_container"></select> -->
        <div id="other_places_container"></div>
-        <p class="meta">Etes-vous d\'accord de vous déplacer dans un centre plus éloigné? Cliquez sur Ctrl ou Cmd pour sélectionner plusieurs options</p>
+       
         </div>
         </div>';
+
+        // <p class="meta">Etes-vous d\'accord de vous déplacer dans un centre plus éloigné? Cliquez sur Ctrl ou Cmd pour sélectionner plusieurs options</p>
 
         $rq_frm .= '<script id="multiloc_template" type="x-underscore">
          <%  _.each(locations,function(location,key,list){  %>
@@ -374,9 +376,12 @@ function inscription_form_shortcode($atts, $content = null)
 
                 <div id="musical_other_places_container"></div>
 
-                <p class="meta">Etes-vous d\'accord de vous déplacer dans un centre plus éloigné? Cliquez sur Ctrl ou Cmd pour sélectionner plusieurs options</p>
+             
+
                 </div>
                 </div>';
+
+        // <p class="meta">Etes-vous d\'accord de vous déplacer dans un centre plus éloigné? Cliquez sur Ctrl ou Cmd pour sélectionner plusieurs options</p>
 
         $rq_frm .= '<script id="musicmultiloc_template" type="x-underscore">
                 <%  _.each(locations,function(location,key,list){  %>
