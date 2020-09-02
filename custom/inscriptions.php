@@ -97,12 +97,8 @@ function inscription_form_shortcode($atts, $content = null)
     $form_mus_locations = array();
     if ($form_mus_times) {
         foreach ($form_mus_times as $pt) {
-            if ($pt['horaires']) {
-                if ($pt['horaires'] != '') {
-                    if ($pt['location']) {
-                        array_push($form_mus_locations, $pt['location']);
-                    }
-                }
+            if ($pt['location']) {
+                array_push($form_mus_locations, $pt['location']);
             }
         };
     }
