@@ -90,22 +90,6 @@ function inscription_form_shortcode($atts, $content = null)
 
 
 
-    // FORMATION MUSICALE LOCATIONS
-    $form_mus_id = 650;
-    // $form_mus_course = get_post($form_mus_id);
-    $form_mus_times  = get_field('times',  $form_mus_id);
-    $form_mus_locations = array();
-    if ($form_mus_times) {
-        foreach ($form_mus_times as $pt) {
-            if ($pt['location']) {
-                array_push($form_mus_locations, $pt['location']);
-            }
-        };
-    }
-    // FORMATION MUSICALE LOCATIONS
-    // FORMATION MUSICALE LOCATIONS
-
-
 
 
     $get_course_id = isset($_GET['course_id'])  ? $_GET['course_id'] : false;
@@ -339,6 +323,26 @@ function inscription_form_shortcode($atts, $content = null)
         $rq_frm .=  '<hr />';
         $rq_frm .=  '<h3> COURS DE FORMATION MUSICALE </h3><br />';
 
+
+
+        // FORMATION MUSICALE LOCATIONS
+        $form_mus_id = 650;
+        // $form_mus_course = get_post($form_mus_id);
+        $form_mus_times  = get_field('times',  $form_mus_id);
+        $form_mus_locations = array();
+        if ($form_mus_times) {
+            foreach ($form_mus_times as $pt) {
+                if ($pt['location']) {
+                    array_push($form_mus_locations, $pt['location']);
+                }
+            };
+        }
+        // FORMATION MUSICALE LOCATIONS
+        // FORMATION MUSICALE LOCATIONS
+
+
+
+
         $rq_frm .= '
             <div class="inscription_field">
             <label for="formation_musicale">Formation musicale * </label>
@@ -404,14 +408,14 @@ function inscription_form_shortcode($atts, $content = null)
                 </div>
                 </div>';
 
-        // <p class="meta">Etes-vous d\'accord de vous déplacer dans un centre plus éloigné? Cliquez sur Ctrl ou Cmd pour sélectionner plusieurs options</p>
+    // <p class="meta">Etes-vous d\'accord de vous déplacer dans un centre plus éloigné? Cliquez sur Ctrl ou Cmd pour sélectionner plusieurs options</p>
 
-        $rq_frm .= '<script id="musicmultiloc_template" type="x-underscore">
-                <%  _.each(locations,function(location,key,list){  %>
-               <label> <input class="checkbox_input" type="checkbox" name="musical_other_place_possible_ids[]" value="<%= location.wid %>" /> <%= location.post_title %></label> <br>
+    // $rq_frm .= '<script id="musicmultiloc_template" type="x-underscore">
+    //         <%  _.each(locations,function(location,key,list){  %>
+    //        <label> <input class="checkbox_input" type="checkbox" name="musical_other_place_possible_ids[]" value="<%= location.wid %>" /> <%= location.post_title %></label> <br>
 
-                <% }) %>
-                </script>';
+    //         <% }) %>
+    //         </script>';s
 
 
     endif; // end if in array instrumentchant

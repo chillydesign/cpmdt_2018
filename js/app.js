@@ -812,19 +812,20 @@
 
 
                         var $multiloc = $('#multiloc_template');
-                        var $musicmultiloc = $('#musicmultiloc_template');
 
                         if ($multiloc.length > 0) {
                             var $multiloc_template = $multiloc.html();
                             var multiloccompiled = _.template($multiloc_template);
                             $other_places_container.html(multiloccompiled({ locations: locations }));
                         }
-                        if ($musicmultiloc.length > 0) {
-                            var $musicmultiloc_template = $musicmultiloc.html();
-                            var musicmultiloccompiled = _.template($musicmultiloc_template);
-                            $musical_other_places_container.html(musicmultiloccompiled({ locations: locations }));
 
-                        }
+                        // JUST USE PHP FOR THIS NOW
+                        // var $musicmultiloc = $('#musicmultiloc_template');
+                        // if ($musicmultiloc.length > 0) {
+                        //     var $musicmultiloc_template = $musicmultiloc.html();
+                        //     var musicmultiloccompiled = _.template($musicmultiloc_template);
+                        //     $musical_other_places_container.html(musicmultiloccompiled({ locations: locations }));
+                        // }
 
 
 
