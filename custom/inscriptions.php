@@ -90,6 +90,29 @@ function inscription_form_shortcode($atts, $content = null)
 
 
 
+    // FORMATION MUSICALE LOCATIONS
+    $form_mus_id = 650;
+    // $form_mus_course = get_post($form_mus_id);
+    $form_mus_times  = get_field('times',  $form_mus_id);
+    $form_mus_locations = array();
+    if ($form_mus_times) {
+        foreach ($form_mus_times as $pt) {
+            if ($pt['horaires']) {
+                if ($pt['horaires'] != '') {
+                    if ($pt['location']) {
+                        array_push($form_mus_locations, $pt['location']);
+                    }
+                }
+            }
+        };
+    }
+    var_dump($form_mus_locations);
+    // FORMATION MUSICALE LOCATIONS
+    // FORMATION MUSICALE LOCATIONS
+
+
+
+
     $get_course_id = isset($_GET['course_id'])  ? $_GET['course_id'] : false;
 
     $rq_frm = '';
