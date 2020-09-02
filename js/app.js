@@ -748,7 +748,7 @@
 
                     if ($course_id == 9285) {
                         // if course is musique theatre
-                        var $exempt_option = '<option value="Exempt de formation musicale" >Exempt de formation musicale</option>';
+                        var $exempt_option = '<option value="Exempt de formation musicale" >Exempt de formation musicale (musique-théâtre uniquement)</option>';
 
                         var $formation_musicale_field = $('#formation_musicale');
 
