@@ -102,7 +102,6 @@ function inscription_form_shortcode($atts, $content = null)
             }
         };
     }
-    var_dump($form_mus_locations);
     // FORMATION MUSICALE LOCATIONS
     // FORMATION MUSICALE LOCATIONS
 
@@ -377,7 +376,7 @@ function inscription_form_shortcode($atts, $content = null)
             <select name="musical_location_id" id="musical_locations_container">
             <option value="">Choisir une option</option>';
 
-        foreach ($locations as $location) {
+        foreach ($form_mus_locations as $location) {
             $rq_frm .= '<option value="' .  $location->ID . '">' . $location->post_title . '</option>';
         };
 
@@ -390,13 +389,18 @@ function inscription_form_shortcode($atts, $content = null)
 
         $rq_frm .= '<div class="inscription_field fields_for_non_exempt_fm">
                 <label for="musical_other_places_container"> Autres lieux possibles </label>
-                <div class="field_content">
-              <!--  <select  multiple name="musical_other_place_possible_ids[]" id="musical_other_places_container"></select> -->
+                <div class="field_content">';
 
-                <div id="musical_other_places_container"></div>
 
-             
+        //  <div id="musical_other_places_container"></div> 
 
+
+        $rq_frm .= '<div>';
+        foreach ($form_mus_locations as $location) {
+            $rq_frm .= ' <label> <input class="checkbox_input" type="checkbox" name="musical_other_place_possible_ids[]" value="' .  $location->ID . '" /> ' . $location->post_title . '</label> <br> ';
+        };
+
+        $rq_frm .= '</div>
                 </div>
                 </div>';
 
