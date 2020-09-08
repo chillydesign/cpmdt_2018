@@ -14,13 +14,8 @@
 
 	<?php get_template_part('introduction'); ?>
 
+	<?php get_template_part('grey_box_link'); ?>
 
-	<div class="container">
-		<a href="#" class="grey_box_link">
-			<h3>ALLOCATIONS D’ÉTUDES ET FONDS DE SOLIDARITÉ</h3>
-			En cas de revenu brut de votre groupe familial limité, des possibilités existent pour une éventuelle exonération des écolages dus. Cliquez-ici !
-		</a>
-	</div>
 
 	<?php get_template_part('services'); ?>
 
