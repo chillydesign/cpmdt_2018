@@ -380,10 +380,11 @@
                     var $this = $(this);
                     if ($this.data('field') == 'category' && $this.val() == course_category) {
                         this.click();
+                        // displayCourses(null,null,null);
                     }
                 })
 
-            }, 300);
+            }, 900);
 
         }
 
