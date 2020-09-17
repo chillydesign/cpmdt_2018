@@ -758,10 +758,12 @@ header .headermenus {
   text-align: center;
 }
 
+.grey_box_link a,
 .grey_box_link a:active,
 .grey_box_link a:hover,
 .grey_box_link a:visited {
-  color: white
+  color: white !important;
+  text-decoration: none;
 }
 
 .grey_box_link h3 {
