@@ -754,17 +754,12 @@ header .headermenus {
   margin: 20px 0;
   padding: 25px 70px;
   background-color: #001a72;
-  color: white;
-  text-align: center;
-}
-
-.grey_box_link a,
-.grey_box_link a:active,
-.grey_box_link a:hover,
-.grey_box_link a:visited {
   color: white !important;
+  text-align: center;
   text-decoration: none;
 }
+
+
 
 .grey_box_link h3 {
   padding-bottom: 20px;
