@@ -383,7 +383,11 @@ function add_download_link_agenda($which) {
 
     global $pagenow;
     if (is_admin()  && 'edit.php' == $pagenow) {
-        if (is_post_type_archive('agenda')) {
+
+
+        $on_agenda_page = strpos($_SERVER['REQUEST_URI'], 'agenda') !== false;
+
+        if ($on_agenda_page) {
 
             $download_link = get_home_url() . '/api/v1/?agenda';
             echo '<div class="alignleft actions"><a style="margin:0" title="Télécharger" class="action button-primary button" href="' . $download_link . '"> <span style="position:relative;top:4px" class="dashicons dashicons-download"></span>Télécharger</a></div>';
