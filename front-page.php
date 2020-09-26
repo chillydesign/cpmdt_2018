@@ -12,9 +12,10 @@
 
 	</div>
 
-	<?php get_template_part('introduction'); ?>
-
 	<?php get_template_part('grey_box_link'); ?>
+
+
+	<?php get_template_part('introduction'); ?>
 
 
 	<?php get_template_part('services'); ?>
