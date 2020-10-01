@@ -426,7 +426,7 @@
                     setTimeout(function () {
                         $search_checks.each(function () {
                             var $this = $(this);
-                            if ($this.data('field') == 'category' && $this.val() == category_id) {
+                            if ($this.data('field') == 'category' && $this.val() == course_category) {
                                 // this.click();
                                 $this.prop("checked", true);
                                 console.log('setting category');
