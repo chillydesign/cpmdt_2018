@@ -374,18 +374,16 @@
 
         };
 
-        if (typeof course_category != 'undefined') {
-            setTimeout(function () {
-                $search_checks.each(function () {
-                    var $this = $(this);
-                    if ($this.data('field') == 'category' && $this.val() == course_category) {
-                        this.click();
-                        // displayCourses(null,null,null);
-                    }
-                })
 
-            }, 900);
 
+        function clickCourseCat(category_id) {
+            $search_checks.each(function () {
+                var $this = $(this);
+                if ($this.data('field') == 'category' && $this.val() == category_id) {
+                    this.click();
+                    // displayCourses(null,null,null);
+                }
+            })
         }
 
 
@@ -403,6 +401,12 @@
             }).done(function (data) {
 
 
+
+                if (typeof course_category != 'undefined') {
+                    setTimeout(function () {
+                        clickCourseCat(course_category);
+                    }, 300);
+                }
 
                 // ORIGINAL SET OF COURSES
                 var courses = processCourses(data);

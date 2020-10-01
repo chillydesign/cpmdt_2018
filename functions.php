@@ -2,16 +2,14 @@
 
 //Date formatage
 add_filter('frm_csv_date_format', 'change_my_csv_format');
-function change_my_csv_format($format)
-{
+function change_my_csv_format($format) {
 	$format = 'd.m.Y';
 	return $format;
 }
 
 //Suppression de champ inutiles
 add_filter('frm_csv_columns', 'remove_id_column', 10, 2);
-function remove_id_column($headings, $form_id)
-{
+function remove_id_column($headings, $form_id) {
 	if ($form_id == 5 or $form_id == 17 or $form_id == 27 or $form_id == 18 or $form_id == 23) {
 		unset($headings['created_at']);
 		unset($headings['updated_at']);
@@ -108,8 +106,7 @@ function remove_id_column($headings, $form_id)
  */
 
 add_filter('frm_csv_row', 'conservatoire_frm_csv_row');
-function conservatoire_frm_csv_row($row, $params)
-{
+function conservatoire_frm_csv_row($row, $params) {
 	$lieux = array(
 		540, 541, 542, 543, 544, 545, 546, 547, 548, 549, 550, 551,
 		559, 561, 562, 563, 564, 565, 566, 567, 568, 569, 570, 571, 572, 573, 574, 575, 576, 577, 578, 579, 580, 581, 582, 583, 584, 585, 586, 587, 588, 589, 590
@@ -122,8 +119,7 @@ function conservatoire_frm_csv_row($row, $params)
 }
 
 
-function get_custom_field($custom_field)
-{
+function get_custom_field($custom_field) {
 	global $post;
 
 	$custom = get_post_custom($post->ID);
@@ -135,8 +131,7 @@ function get_custom_field($custom_field)
 
 
 
-function save_custom_field($custom_field)
-{
+function save_custom_field($custom_field) {
 	global $post;
 
 	if (isset($_POST[$custom_field])) {
@@ -159,8 +154,7 @@ require get_template_directory() . '/custom/bookings.php';
 
 /* Theme Supports*/
 add_theme_support('post-thumbnails');
-function max_title_length($title)
-{
+function max_title_length($title) {
 	$max = 25;
 	if (strlen($title) > $max) {
 		return substr($title, 0, $max) . " &hellip;";
@@ -177,16 +171,14 @@ function max_title_length($title)
 /*
  *! Rename the "Posts" to "News"
  */
-function revcon_change_post_label()
-{
+function revcon_change_post_label() {
 	global $menu;
 	global $submenu;
 	$menu[5][0] = 'Articles';
 	$submenu['edit.php'][5][0] = 'Articles';
 	$submenu['edit.php'][10][0] = 'Ajouter';
 }
-function revcon_change_post_object()
-{
+function revcon_change_post_object() {
 	global $wp_post_types;
 	$labels = &$wp_post_types['post']->labels;
 	$labels->name = 'Articles';
@@ -209,16 +201,14 @@ add_action('init', 'revcon_change_post_object');
 
 
 
-function wf_version()
-{
-	return '1.5.0';
+function wf_version() {
+	return '1.5.1';
 }
 
 
 
 /*Theme Stylesheets*/
-function theme_styles()
-{
+function theme_styles() {
 	/*Main Stylesheet*/
 	$tdu =  get_template_directory_uri();
 
@@ -250,8 +240,7 @@ add_image_size('square', 200, 200, true); // Custom Thumbnail Size call using
 
 
 /*Theme Javascript*/
-function theme_js()
-{
+function theme_js() {
 	/*Main JS*/
 	wp_enqueue_script('bootstrap-js', 'https://stackpath.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js', array('jquery'), '', true);
 	/*Main JS*/
@@ -269,8 +258,7 @@ add_action('wp_enqueue_scripts', 'theme_js');
 
 
 /*Theme Menus*/
-function register_my_menus()
-{
+function register_my_menus() {
 	register_nav_menus(
 		array(
 			'header-menu' => __('Header Menu'),
@@ -284,8 +272,7 @@ add_action('init', 'register_my_menus');
 
 
 
-function cc_mime_types($mimes)
-{
+function cc_mime_types($mimes) {
 	$mimes['svg'] = 'image/svg+xml';
 	return $mimes;
 }
@@ -296,8 +283,7 @@ add_filter('upload_mimes', 'cc_mime_types');
 
 
 /*Theme Widgets i.e Sidebars*/
-function create_widget($name, $id, $description)
-{
+function create_widget($name, $id, $description) {
 	register_sidebar(array(
 		'name' => __($name),
 		'id' => $id,
@@ -315,8 +301,7 @@ create_widget('Footer Center Sidebar', 'footer-2', 'Display a menu in the Footer
 
 
 add_filter('tc_show_post_metas', 'display_metas_on_home');
-function display_metas_on_home($bool)
-{
+function display_metas_on_home($bool) {
 	return  tc__f('__is_home') ? true : $bool;
 }
 
@@ -324,8 +309,7 @@ function display_metas_on_home($bool)
 
 
 /*Theme Customizer*/
-function edonrexhepi_logo_customizer($wp_customize)
-{
+function edonrexhepi_logo_customizer($wp_customize) {
 	/* Header Section*/
 	$wp_customize->add_section('logo-section', array(
 		'title' => __('Header modify', 'edonrexhepi'),
@@ -377,8 +361,7 @@ add_action('customize_register', 'edonrexhepi_logo_customizer');
 
 
 /*Limit excerpt to 17*/
-function custom_excerpt_length($length)
-{
+function custom_excerpt_length($length) {
 	return 23;
 }
 add_filter('excerpt_length', 'custom_excerpt_length', 999);
@@ -389,10 +372,8 @@ add_filter('excerpt_length', 'custom_excerpt_length', 999);
 
 
 /*Modify excerpt 'MORE' text and replace it with plain HTML*/
-function change_excerpt_more()
-{
-	function new_excerpt_more($more)
-	{
+function change_excerpt_more() {
+	function new_excerpt_more($more) {
 		// Use .read-more to style the link
 		//   return '<a href="' . get_permalink() . '">LIRE LA SUITE</a>';
 	}
@@ -409,8 +390,7 @@ add_action('after_setup_theme', 'change_excerpt_more');
 
 
 add_action('pre_get_posts', 'change_sort_order');
-function change_sort_order(&$query)
-{
+function change_sort_order(&$query) {
 	if (isset($_POST['cs_action']) && $_POST['cs_action'] == 'custom_sort_order') {
 		global $wp;
 		if (isset($wp->query_vars["CU_Order"])) {
@@ -419,8 +399,7 @@ function change_sort_order(&$query)
 	}
 }
 add_filter('query_vars', 'add_custom_order_query_vars');
-function add_custom_order_query_vars($vars)
-{
+function add_custom_order_query_vars($vars) {
 	// add CU_Order to the valid list of variables
 	$new_vars = array('CU_Order');
 	$vars = $new_vars + $vars;
@@ -440,8 +419,7 @@ function add_custom_order_query_vars($vars)
  * While we're editing a post with type of "Document(In this case)"
  * hide the Media Button
  */
-function wpse_78595_hide_editor()
-{
+function wpse_78595_hide_editor() {
 	global $current_screen;
 
 	if ($current_screen->post_type == 'document') {
@@ -462,8 +440,7 @@ add_action('admin_footer', 'wpse_78595_hide_editor');
  * Creating a shortcode
  * with a loop inside of custom post type
  */
-function posts_shortcode($atts)
-{
+function posts_shortcode($atts) {
 	extract(shortcode_atts(array(
 		'perpage' => 2
 	), $atts));
@@ -492,14 +469,12 @@ function posts_shortcode($atts)
 add_shortcode('frontpage-posts', 'posts_shortcode');
 
 
-function modify_read_more_link()
-{
+function modify_read_more_link() {
 	return '<a class="more-link" href="' . get_permalink() . '">LIRE LA SUITE</a>';
 }
 add_filter('the_content_more_link', 'modify_read_more_link');
 
-function get_program_data($id)
-{
+function get_program_data($id) {
 	global $wpdb;
 	$sql = "SELECT wp_program_data.*,  wp_posts.post_title FROM wp_program_data
 				INNER JOIN wp_posts ON wp_program_data.location_id = wp_posts.id
@@ -535,8 +510,7 @@ function get_program_data($id)
 }
 
 
-function get_agenda_count($field_id, $agenda_id, $count_field)
-{
+function get_agenda_count($field_id, $agenda_id, $count_field) {
 	global $wpdb;
 	$sql = "SELECT item_id FROM wp_frm_item_metas
 				WHERE field_id = " . $field_id
@@ -561,28 +535,24 @@ function get_agenda_count($field_id, $agenda_id, $count_field)
 
 // Removes from admin menu
 add_action('admin_menu', 'my_remove_admin_menus');
-function my_remove_admin_menus()
-{
+function my_remove_admin_menus() {
 	remove_menu_page('edit-comments.php');
 	//remove_menu_page( 'tools.php' );
 }
 // Removes from post and pages
 add_action('init', 'remove_comment_support', 100);
-function remove_comment_support()
-{
+function remove_comment_support() {
 	remove_post_type_support('post', 'comments');
 	remove_post_type_support('page', 'comments');
 }
 // Removes from admin bar
-function mytheme_admin_bar_render()
-{
+function mytheme_admin_bar_render() {
 	global $wp_admin_bar;
 	$wp_admin_bar->remove_menu('comments');
 }
 add_action('wp_before_admin_bar_render', 'mytheme_admin_bar_render');
 
-function get_address($agenda_id)
-{
+function get_address($agenda_id) {
 	global $wpdb;
 	$sql = "SELECT * FROM wp_postmeta
   					INNER JOIN wp_posts ON wp_posts.id = wp_postmeta.post_id
@@ -614,8 +584,7 @@ function get_address($agenda_id)
 // add_filter('pre_get_posts', 'set_post_order_in_admin' );
 
 // Register datepicker ui for properties
-function admin_agenda_javascript()
-{
+function admin_agenda_javascript() {
 	global $post;
 	if ($post) {
 		if ($post->post_type == 'agenda' && is_admin()) {
@@ -626,8 +595,7 @@ function admin_agenda_javascript()
 add_action('admin_print_scripts', 'admin_agenda_javascript');
 
 // Register ui styles for properties
-function admin_agenda_styles()
-{
+function admin_agenda_styles() {
 	global $post;
 	if ($post) {
 		if ($post->post_type == 'agenda' && is_admin()) {
@@ -640,8 +608,7 @@ add_action('admin_print_styles', 'admin_agenda_styles');
 
 
 
-function disable_wp_emojicons()
-{
+function disable_wp_emojicons() {
 
 	// all actions related to emojis
 	remove_action('admin_print_styles', 'print_emoji_styles');
@@ -659,8 +626,7 @@ add_action('init', 'disable_wp_emojicons');
 
 
 
-function thumbnail_of_post_url($post_id,  $size = 'large')
-{
+function thumbnail_of_post_url($post_id,  $size = 'large') {
 
 	$image_id = get_post_thumbnail_id($post_id);
 	$image_url = wp_get_attachment_image_src($image_id, $size);
@@ -669,8 +635,7 @@ function thumbnail_of_post_url($post_id,  $size = 'large')
 }
 
 // Pagination for paged posts, Page 1, Page 2, Page 3, with Next and Previous Links, No plugin
-function html5wp_pagination()
-{
+function html5wp_pagination() {
 	global $wp_query;
 	$big = 999999999;
 	echo paginate_links(array(
@@ -683,8 +648,7 @@ function html5wp_pagination()
 
 
 add_filter('pre_get_posts', 'remove_events_from_search');
-function remove_events_from_search($wp_query)
-{
+function remove_events_from_search($wp_query) {
 	if (is_search() && !is_admin()) {
 		global $wp_query;
 		$wp_query->set('post_type', array('page',  'programme'));
@@ -755,23 +719,19 @@ if (function_exists('acf_add_options_page')) {
 
 
 //neccessary to send html emails
-function returnHtml()
-{
+function returnHtml() {
 	return "text/html";
 }
 
-function sort_times_by_location($a, $b)
-{
+function sort_times_by_location($a, $b) {
 	return strnatcmp($a['location']->post_title, $b['location']->post_title);
 }
-function sort_teachers_by_title($a, $b)
-{
+function sort_teachers_by_title($a, $b) {
 	return strnatcmp($a->post_title, $b->post_title);
 }
 
 
-function chilly_map($atts, $content = null)
-{
+function chilly_map($atts, $content = null) {
 
 	$attributes = shortcode_atts(array(
 		'title' => "Conservatoire populaire de musique, danse et théâtre",
@@ -793,7 +753,6 @@ function chilly_map($atts, $content = null)
 add_shortcode('chilly_map', 'chilly_map');
 
 
-function  use_new_age_range()
-{
+function  use_new_age_range() {
 	return true;
 }
