@@ -376,16 +376,6 @@
 
 
 
-        function clickCourseCat(category_id) {
-            $search_checks.each(function () {
-                var $this = $(this);
-                if ($this.data('field') == 'category' && $this.val() == category_id) {
-                    this.click();
-                    // displayCourses(null,null,null);
-                }
-            })
-        }
-
 
         $('.search_check').on('click', function (e) {
             displayCourses(null, null, null);
@@ -401,12 +391,6 @@
             }).done(function (data) {
 
 
-
-                if (typeof course_category != 'undefined') {
-                    setTimeout(function () {
-                        clickCourseCat(course_category);
-                    }, 300);
-                }
 
                 // ORIGINAL SET OF COURSES
                 var courses = processCourses(data);
@@ -426,6 +410,7 @@
 
 
                 $search_checks.on('change', function () {
+                    console.log('checkin search checks changed');
                     displayCourses(courses, $courses_container, compiled)
                 });
 
@@ -437,13 +422,30 @@
 
 
 
+                if (typeof course_category != 'undefined') {
+                    setTimeout(function () {
+                        $search_checks.each(function () {
+                            var $this = $(this);
+                            if ($this.data('field') == 'category' && $this.val() == category_id) {
+                                // this.click();
+                                $this.prop("checked", true);
+                                console.log('setting category');
+                                displayCourses(courses, $courses_container, compiled)
+                                // displayCourses(null,null,null);
+                            }
+                        })
+                    }, 300);
+                }
+
+
+
             });
 
         }
 
 
         function displayCourses(courses, courses_container, compiled) {
-
+            console.log('display courses');
             $('.search_box').removeClass('visible');
 
             var $search_val = $cours_search.val().toLowerCase();

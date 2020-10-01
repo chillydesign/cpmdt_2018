@@ -202,7 +202,7 @@ add_action('init', 'revcon_change_post_object');
 
 
 function wf_version() {
-	return '1.5.1';
+	return '1.5.2';
 }
 
 
