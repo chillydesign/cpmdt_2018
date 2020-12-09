@@ -183,7 +183,7 @@
             var $location_name = $('#location_name');
             var $location_description = $('#location_description');
             var $location_responsible = $('#location_responsible');
-            var $location_address = $('#location_address');
+            var $location_addresse = $('#location_addresse');
             var $map_text_overlay = $('#map_text_overlay');
 
             if (typeof n_locations_for_map != 'undefined') {
@@ -205,6 +205,12 @@
                 }
                 n_location_map.initialZoom = true;
                 n_location_map.fitBounds(n_location_bounds);
+
+                google.maps.event.addListener(n_location_infowindow, 'closeclick', function () {
+                    $map_text_overlay.removeClass('visible');
+                });
+
+
             }
             // locations map
             // locations map
@@ -260,7 +266,7 @@
                 icon: customMarker,
                 description: location.description,
                 responsible: location.responsible,
-                address: location.address,
+                addresse: location.addresse,
             });
 
 
@@ -271,7 +277,7 @@
                         $location_name.html(this.title)
                         $location_description.html(this.description)
                         $location_responsible.html(this.responsible)
-                        $location_address.html(this.address);
+                        $location_addresse.html(this.addresse);
                         $map_text_overlay.addClass('visible');
 
                     }

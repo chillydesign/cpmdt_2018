@@ -15,7 +15,7 @@ get_header(); ?>
             <h2 id="location_name">....</h2>
             <p id="location_description">.....</p>
             <p id="location_responsible">.....</p>
-            <p id="location_address">.....</p>
+            <p id="location_addresse">.....</p>
         </div>
         <div id="locations_map_container"></div>
     </div>
