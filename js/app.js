@@ -192,7 +192,7 @@
                 for (var i = 0; i < n_locations_for_map.length; i++) {
                     var n_location_for_map = n_locations_for_map[i];
                     if (n_location_for_map != null) {
-                        addPointToMap(location_map, n_location_for_map, n_location_bounds, n_location_infowindow, n_location_markers, true);
+                        addPointToMap(n_location_map, n_location_for_map, n_location_bounds, n_location_infowindow, n_location_markers, true);
                     }
 
                 }
