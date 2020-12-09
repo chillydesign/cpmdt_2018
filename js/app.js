@@ -275,8 +275,7 @@
                 if (this.id > 0) {
                     if (showpopup) {
 
-                        $location_name.html(this.title)
-                        $location_link.html(this.location_link)
+                        $location_name.html(this.title);
                         $location_link.attr('href', '?p=' + this.id);
                         $location_description.html(this.description)
                         $location_responsible.html(this.responsible)
