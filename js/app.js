@@ -152,39 +152,56 @@
                 styles: map_theme
             };
 
+            // OLD LOCATIONS MAP IN FOOTER
+            // if (typeof locations_for_map != 'undefined') {
+            //     var location_map_container = $('#footer-pins');
+            //     location_map_container.css({
+            //         width: '100%'
+            //     })
+            //     var location_map = new google.maps.Map(location_map_container.get(0), map_options);
+            //     var location_bounds = new google.maps.LatLngBounds();
+            //     var location_infowindow = new google.maps.InfoWindow({ content: '...' });
+            //     var location_markers = [];
+
+            //     for (var i = 0; i < locations_for_map.length; i++) {
+            //         var location_for_map = locations_for_map[i];
+            //         if (location_for_map != null) {
+            //             addPointToMap(location_map, location_for_map, location_bounds, location_infowindow, location_markers, true);
+            //         }
+
+            //     }
+            //     location_map.initialZoom = true;
+            //     location_map.fitBounds(location_bounds);
+            // }
+            // // locations map
+            // // locations map
+            // OLD LOCATIONS MAP IN FOOTER
 
 
-            if (typeof locations_for_map != 'undefined') {
-
-
-
-                var location_map_container = $('#footer-pins');
-                location_map_container.css({
+            // NEW LOCATIONS MAP IN FOOTER
+            if (typeof n_locations_for_map != 'undefined') {
+                var location_map_container_new = $('#locations_map_container');
+                location_map_container_new.css({
                     width: '100%'
                 })
+                var n_location_map = new google.maps.Map(location_map_container_new.get(0), map_options);
+                var n_location_bounds = new google.maps.LatLngBounds();
+                var n_location_infowindow = new google.maps.InfoWindow({ content: '...' });
+                var n_location_markers = [];
 
-                var location_map = new google.maps.Map(location_map_container.get(0), map_options);
-                var location_bounds = new google.maps.LatLngBounds();
-                var location_infowindow = new google.maps.InfoWindow({ content: '...' });
-                var location_markers = [];
-
-                for (var i = 0; i < locations_for_map.length; i++) {
-                    var location_for_map = locations_for_map[i];
-                    if (location_for_map != null) {
-                        addPointToMap(location_map, location_for_map, location_bounds, location_infowindow, location_markers, true);
+                for (var i = 0; i < n_locations_for_map.length; i++) {
+                    var n_location_for_map = n_locations_for_map[i];
+                    if (n_location_for_map != null) {
+                        addPointToMap(location_map, n_location_for_map, n_location_bounds, n_location_infowindow, n_location_markers, true);
                     }
 
                 }
-                location_map.initialZoom = true;
-                location_map.fitBounds(location_bounds);
-
-
-
-
+                n_location_map.initialZoom = true;
+                n_location_map.fitBounds(n_location_bounds);
             }
-
             // locations map
             // locations map
+            // NEW LOCATIONS MAP IN FOOTER
 
 
             if (typeof single_location_for_map !== 'undefined') {

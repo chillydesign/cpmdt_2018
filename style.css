@@ -2915,3 +2915,33 @@ input.checkbox_input {
   font-size: 1.2em;
   line-height: 150%;
 }
+
+/* NEW LOCATIONS MAP */
+#new_locations_map_outer {
+  position: relative;
+  height: 500px;
+
+}
+
+.map_text_overlay {
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.9);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 200px;
+  height: 100%;
+  z-index: 20;
+}
+
+#locations_map_container {
+  height: 500px;
+  z-index: 10;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 200px;
+  height: 100%;
+}
+
+/* NEW LOCATIONS MAP */

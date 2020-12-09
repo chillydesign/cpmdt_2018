@@ -6,8 +6,26 @@ get_header(); ?>
         <h2> <?php the_title(); ?> </h2>
     </div>
 </div>
+
+
+<section>
+
+    <div id="new_locations_map_outer">
+        <div class="map_text_overlay">
+            <h2>Some text</h2>
+        </div>
+        <div id="locations_map_container"></div>
+    </div>
+</section>
+<script type="text/javascript">
+    var n_locations_for_map = <?php locations_for_map(); ?>;
+    var theme_directory = '<?php echo get_template_directory_uri(); ?>';
+</script>
+
+
+
 <?php $args = array(
-    'post_type' => 'location' ,
+    'post_type' => 'location',
     'orderby' => 'title',
     'order' => 'ASC',
     'posts_per_page' => -1
@@ -17,20 +35,23 @@ get_header(); ?>
 <div class="container centers_container">
 
 
-    <?php $c = 0; foreach ($centers as $center): ?>
+    <?php $c = 0;
+    foreach ($centers as $center) : ?>
 
         <div class="single_center">
-            <a href="<?php echo get_permalink( $center->ID ); ?>"><?php echo $center->post_title; ?></a>
+            <a href="<?php echo get_permalink($center->ID); ?>"><?php echo $center->post_title; ?></a>
         </div>
 
 
 
-    <?php $c++; endforeach; ?>
+    <?php $c++;
+    endforeach; ?>
 
 </div>
 
 
-<?php // get_template_part('locations-map'); ?>
+<?php // get_template_part('locations-map'); 
+?>
 
 
 <!-- Scripts -->
