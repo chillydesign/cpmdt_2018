@@ -2919,8 +2919,8 @@ input.checkbox_input {
 /* NEW LOCATIONS MAP */
 #new_locations_map_outer {
   position: relative;
-  height: 500px;
-  margin: 20px 0 40px;
+  height: 600px;
+  margin: 0 0 40px;
 
 }
 

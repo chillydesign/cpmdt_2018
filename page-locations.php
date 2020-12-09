@@ -1,7 +1,7 @@
 <?php
 /* Template Name: Locations Page */
 get_header(); ?>
-<div class="page-title" style="margin-bottom: 50px;">
+<div class="page-title">
     <div class="container">
         <h2> <?php the_title(); ?> </h2>
     </div>
