@@ -2923,7 +2923,8 @@ input.checkbox_input {
 
 }
 
-.map_text_overlay {
+
+#map_text_overlay {
   padding: 20px;
   background: rgba(255, 255, 255, 0.9);
   position: absolute;
@@ -2932,6 +2933,15 @@ input.checkbox_input {
   width: 200px;
   height: 100%;
   z-index: 20;
+  transition: all 0.3s;
+  transform: translateX(-200px);
+  opacity: 0.5;
+
+}
+
+#map_text_overlay.visible {
+  transform: translateX(0px);
+  opacity: 1;
 }
 
 #locations_map_container {

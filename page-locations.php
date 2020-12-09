@@ -11,8 +11,11 @@ get_header(); ?>
 <section>
 
     <div id="new_locations_map_outer">
-        <div class="map_text_overlay">
-            <h2>Some text</h2>
+        <div id="map_text_overlay">
+            <h2 id="location_name">....</h2>
+            <p id="location_description">.....</p>
+            <p id="location_responsible">.....</p>
+            <p id="location_address">.....</p>
         </div>
         <div id="locations_map_container"></div>
     </div>

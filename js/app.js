@@ -166,7 +166,7 @@
             //     for (var i = 0; i < locations_for_map.length; i++) {
             //         var location_for_map = locations_for_map[i];
             //         if (location_for_map != null) {
-            //             addPointToMap(location_map, location_for_map, location_bounds, location_infowindow, location_markers, true);
+            //             addPointToMap(location_map, location_for_map, location_bounds, location_infowindow, location_markers, true, false);
             //         }
 
             //     }
@@ -179,6 +179,13 @@
 
 
             // NEW LOCATIONS MAP IN FOOTER
+
+            var $location_name = $('#location_name');
+            var $location_description = $('#location_description');
+            var $location_responsible = $('#location_responsible');
+            var $location_address = $('#location_address');
+            var $map_text_overlay = $('#map_text_overlay');
+
             if (typeof n_locations_for_map != 'undefined') {
                 var location_map_container_new = $('#locations_map_container');
                 location_map_container_new.css({
@@ -192,7 +199,7 @@
                 for (var i = 0; i < n_locations_for_map.length; i++) {
                     var n_location_for_map = n_locations_for_map[i];
                     if (n_location_for_map != null) {
-                        addPointToMap(n_location_map, n_location_for_map, n_location_bounds, n_location_infowindow, n_location_markers, true);
+                        addPointToMap(n_location_map, n_location_for_map, n_location_bounds, n_location_infowindow, n_location_markers, true, true);
                     }
 
                 }
@@ -219,7 +226,7 @@
                 var single_location_bounds = new google.maps.LatLngBounds();
                 var single_location_infowindow = new google.maps.InfoWindow({ content: '...' });
                 var single_location_markers = [];
-                addPointToMap(single_map, single_location_for_map, single_location_bounds, single_location_infowindow, single_location_markers, false);
+                addPointToMap(single_map, single_location_for_map, single_location_bounds, single_location_infowindow, single_location_markers, false, false);
                 single_map.setCenter(single_location_markers[0].position);
                 single_map.setZoom(16);
 
@@ -228,7 +235,7 @@
         };  // end of google defined
 
 
-        function addPointToMap(map, location, bounds, infowindow, markers, custom_icon) {
+        function addPointToMap(map, location, bounds, infowindow, markers, custom_icon, showpopup) {
             var latitude = location.lat;
             var longitude = location.lng;
 
@@ -244,8 +251,6 @@
 
 
 
-
-
             var latlng = new google.maps.LatLng(latitude, longitude);
             var marker = new google.maps.Marker({
                 map: map,
@@ -255,12 +260,27 @@
                 icon: customMarker
             });
 
-            marker.addListener('click', function () {
-                if (this.id > 0) {
-                    infowindow.setContent('<span style="color:black">' + this.title + '<br><a style="color:red" href="?p=' + this.id + '">Afficher</a></span>');
-                    infowindow.open(map, this);
-                }
-            });
+
+
+            if (showpopup) {
+
+                $location_name.html(location.title)
+                $location_description.html(location.description)
+                $location_responsible.html(location.responsible)
+                $location_address.html(location.address);
+
+                $map_text_overlay.addClass('visible');
+
+            } else {
+                marker.addListener('click', function () {
+                    if (this.id > 0) {
+                        infowindow.setContent('<span style="color:black">' + this.title + '<br><a style="color:red" href="?p=' + this.id + '">Afficher</a></span>');
+                        infowindow.open(map, this);
+                    }
+                });
+            }
+
+
 
 
             markers.push(marker);
