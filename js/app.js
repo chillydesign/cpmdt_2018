@@ -257,29 +257,29 @@
                 position: latlng,
                 title: location.title,
                 id: location.id,
-                icon: customMarker
+                icon: customMarker,
+                description: location.description,
+                responsible: location.responsible,
+                address: location.address,
             });
 
 
+            marker.addListener('click', function () {
+                if (this.id > 0) {
+                    if (showpopup) {
 
-            if (showpopup) {
+                        $location_name.html(this.title)
+                        $location_description.html(this.description)
+                        $location_responsible.html(this.responsible)
+                        $location_address.html(this.address);
+                        $map_text_overlay.addClass('visible');
 
-                $location_name.html(location.title)
-                $location_description.html(location.description)
-                $location_responsible.html(location.responsible)
-                $location_address.html(location.address);
-
-                $map_text_overlay.addClass('visible');
-
-            } else {
-                marker.addListener('click', function () {
-                    if (this.id > 0) {
-                        infowindow.setContent('<span style="color:black">' + this.title + '<br><a style="color:red" href="?p=' + this.id + '">Afficher</a></span>');
-                        infowindow.open(map, this);
                     }
-                });
-            }
 
+                    infowindow.setContent('<span style="color:black">' + this.title + '<br><a style="color:red" href="?p=' + this.id + '">Afficher</a></span>');
+                    infowindow.open(map, this);
+                }
+            });
 
 
 
