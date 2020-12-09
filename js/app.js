@@ -184,6 +184,7 @@
             var $location_description = $('#location_description');
             var $location_responsible = $('#location_responsible');
             var $location_addresse = $('#location_addresse');
+            var $location_link = $('#location_link');
             var $map_text_overlay = $('#map_text_overlay');
 
             if (typeof n_locations_for_map != 'undefined') {
@@ -275,6 +276,8 @@
                     if (showpopup) {
 
                         $location_name.html(this.title)
+                        $location_link.html(this.location_link)
+                        $location_link.attr('href', '?p=' + this.id);
                         $location_description.html(this.description)
                         $location_responsible.html(this.responsible)
                         $location_addresse.html(this.addresse);
@@ -317,6 +320,8 @@
         $(document).on('keydown', function (e) {
             if (e.keyCode == 27) {
                 $('.search_box').removeClass('visible');
+                $map_text_overlay.removeClass('visible');
+
             }
         })
 
