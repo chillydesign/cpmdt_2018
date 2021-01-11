@@ -17,6 +17,9 @@ get_header(); ?>
             <p id="location_responsible">.....</p>
             <p id="location_addresse">.....</p>
             <p> <a href="" id="location_link">Afficher</a></p>
+
+            <h3>Disciplines enseignées:</h3>
+            <div id="location_courses_container"></div>
         </div>
         <div id="locations_map_container"></div>
     </div>

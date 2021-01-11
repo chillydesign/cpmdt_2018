@@ -184,6 +184,7 @@
             var $location_description = $('#location_description');
             var $location_responsible = $('#location_responsible');
             var $location_addresse = $('#location_addresse');
+            var $location_courses_container = $('#location_courses_container');
             var $location_link = $('#location_link');
             var $map_text_overlay = $('#map_text_overlay');
 
@@ -285,8 +286,7 @@
                             $location_description.html(data.description)
                             $location_responsible.html(data.responsible)
                             $location_addresse.html(data.addresse);
-
-
+                            $location_courses_container.html(data.courses_html);
                             $map_text_overlay.addClass('visible');
 
                         });

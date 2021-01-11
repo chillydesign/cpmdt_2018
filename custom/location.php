@@ -124,9 +124,9 @@ function locations_for_map() {
 		$z->title = $location->post_title;
 		$z->lat = get_field('lat', $location->ID);
 		$z->lng = get_field('long', $location->ID);
-		$z->addresse = get_field('addresse', $location->ID);
-		$z->description = get_field('description', $location->ID);
-		$z->responsible = get_field('responsible', $location->ID);
+		// $z->addresse = get_field('addresse', $location->ID); // use the api for this now
+		// $z->description = get_field('description', $location->ID); // use the api for this now
+		// $z->responsible = get_field('responsible', $location->ID); // use the api for this now
 		$z->id =  $location->ID;
 
 		if ($z->lat != '') {
