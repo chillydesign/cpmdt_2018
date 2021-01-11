@@ -265,9 +265,9 @@
                 title: location.title,
                 id: location.id,
                 icon: customMarker,
-                description: location.description,
-                responsible: location.responsible,
-                addresse: location.addresse,
+                // description: location.description,
+                // responsible: location.responsible,
+                // addresse: location.addresse,
             });
 
 
@@ -275,12 +275,23 @@
                 if (this.id > 0) {
                     if (showpopup) {
 
-                        $location_name.html(this.title);
-                        $location_link.attr('href', '?p=' + this.id);
-                        $location_description.html(this.description)
-                        $location_responsible.html(this.responsible)
-                        $location_addresse.html(this.addresse);
-                        $map_text_overlay.addClass('visible');
+
+                        $.ajax({
+                            url: search_url + '?location_id=' + this.id.toString()
+                        }).done(function (data) {
+
+                            $location_name.html(data.post_title);
+                            $location_link.attr('href', data.guid);
+                            $location_description.html(data.description)
+                            $location_responsible.html(data.responsible)
+                            $location_addresse.html(data.addresse);
+
+
+                            $map_text_overlay.addClass('visible');
+
+                        });
+
+
 
                     }
 

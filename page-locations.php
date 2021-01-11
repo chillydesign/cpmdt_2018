@@ -24,6 +24,7 @@ get_header(); ?>
 <script type="text/javascript">
     var n_locations_for_map = <?php locations_for_map(); ?>;
     var theme_directory = '<?php echo get_template_directory_uri(); ?>';
+    var search_url = '<?php echo home_url(); ?>/api/v1/';
 </script>
 
 
