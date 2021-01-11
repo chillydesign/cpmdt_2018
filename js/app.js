@@ -180,7 +180,7 @@
 
             // NEW LOCATIONS MAP IN FOOTER
 
-            var $location_name = $('#location_name');
+
             var $location_description = $('#location_description');
             var $location_responsible = $('#location_responsible');
             var $location_addresse = $('#location_addresse');
@@ -281,7 +281,7 @@
                             url: search_url + '?location_id=' + this.id.toString()
                         }).done(function (data) {
 
-                            $location_name.html(data.post_title);
+                            $location_link.html(data.post_title);
                             $location_link.attr('href', data.guid);
                             $location_description.html(data.description)
                             $location_responsible.html(data.responsible)

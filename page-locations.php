@@ -12,11 +12,10 @@ get_header(); ?>
 
     <div id="new_locations_map_outer">
         <div id="map_text_overlay">
-            <h2 id="location_name">....</h2>
+            <h2 id="location_name"><a href="" id="location_link">....</a></h2>
             <p id="location_description">.....</p>
             <p id="location_responsible">.....</p>
             <p id="location_addresse">.....</p>
-            <p> <a href="" id="location_link">Afficher</a></p>
 
             <h3>Disciplines enseignées:</h3>
             <div id="location_courses_container"></div>
