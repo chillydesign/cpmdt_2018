@@ -149,7 +149,7 @@
                 draggable: true,
                 navigationControlOptions: { style: google.maps.NavigationControlStyle.SMALL },
                 mapTypeId: google.maps.MapTypeId.ROADMAP,
-                styles: map_theme
+                // styles: map_theme
             };
 
             // OLD LOCATIONS MAP IN FOOTER
