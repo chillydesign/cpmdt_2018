@@ -7,7 +7,7 @@ get_header(); ?>
     </div>
 </div>
 
-<!--
+
 <section>
 
     <div id="new_locations_map_outer">
@@ -26,7 +26,7 @@ get_header(); ?>
     var theme_directory = '<?php echo get_template_directory_uri(); ?>';
     var search_url = '<?php echo home_url(); ?>/api/v1/';
 </script>
--->
+
 
 
 <?php $args = array(
