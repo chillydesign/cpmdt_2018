@@ -22,40 +22,48 @@ get_header(); ?>
 <section class="container-fluid">
 
 
+    <!-- <div class="col-sm-3">
+
+        <div class="centers_container">
 
 
-    <div class="col-sm-9">
+        </div>
+    </div>
 
-        <div id="new_locations_map_outer">
-            <div id="map_text_overlay">
-                <h2 id="location_name"><a href="" id="location_link">....</a></h2>
+
+    <div class="col-sm-9">  </div> -->
+
+    <div id="new_locations_map_outer">
+        <div id="map_text_overlay visible ">
+
+            <div class="">
+                <?php $c = 0;
+                foreach ($centers as $center) : ?>
+
+                    <div class="single_center" id="center_<?php echo $center->ID; ?>">
+                        <a href="<?php echo get_permalink($center->ID); ?>"><?php echo $center->post_title; ?></a>
+                    </div>
+                <?php $c++;
+                endforeach; ?>
+            </div>
+            <!-- <h2 id="location_name"><a href="" id="location_link">....</a></h2>
                 <p id="location_description">.....</p>
                 <p id="location_responsible">.....</p>
                 <p id="location_addresse">.....</p>
 
                 <h3>Disciplines enseignées:</h3>
                 <div id="location_courses_container"></div>
-            </div>
-            <div id="locations_map_container"></div>
-        </div>
 
+                # -->
+
+
+        </div>
+        <div id="locations_map_container"></div>
     </div>
 
 
-    <div class="col-sm-3">
 
-        <div class=" ">
-            <?php $c = 0;
-            foreach ($centers as $center) : ?>
 
-                <div class="single_center">
-                    <a href="<?php echo get_permalink($center->ID); ?>"><?php echo $center->post_title; ?></a>
-                </div>
-            <?php $c++;
-            endforeach; ?>
-
-        </div>
-    </div>
 
 </section>
 
