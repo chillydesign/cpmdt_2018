@@ -3040,6 +3040,8 @@ input.checkbox_input {
   font-family: monospace;
   text-align: center;
   line-height: 24px;
+  width: 24px;
+  display: inline-block;
 }
 
 
