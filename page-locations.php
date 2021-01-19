@@ -22,20 +22,6 @@ get_header(); ?>
 <section class="container-fluid">
 
 
-    <div class="col-sm-3">
-
-        <div class=" ">
-            <?php $c = 0;
-            foreach ($centers as $center) : ?>
-
-                <div class="single_center">
-                    <a href="<?php echo get_permalink($center->ID); ?>"><?php echo $center->post_title; ?></a>
-                </div>
-            <?php $c++;
-            endforeach; ?>
-
-        </div>
-    </div>
 
 
     <div class="col-sm-9">
@@ -56,6 +42,20 @@ get_header(); ?>
     </div>
 
 
+    <div class="col-sm-3">
+
+        <div class=" ">
+            <?php $c = 0;
+            foreach ($centers as $center) : ?>
+
+                <div class="single_center">
+                    <a href="<?php echo get_permalink($center->ID); ?>"><?php echo $center->post_title; ?></a>
+                </div>
+            <?php $c++;
+            endforeach; ?>
+
+        </div>
+    </div>
 
 </section>
 
