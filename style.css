@@ -2990,14 +2990,19 @@ input.checkbox_input {
 #map_text_overlay h3 {
   font-size: 1.1em;
   font-weight: bold;
-  margin: 20px 0 0;
+  margin: 20px 0 8px;
   background: #f1f1f1;
-  padding: 16px 16px 0;
+  padding: 0;
 }
 
 .single_course_for_location {
   margin: 0 0 8px;
 
+}
+
+.single_course_for_location a {
+  padding: 0;
+  margin: 0;
 }
 
 .single_course_for_location h4 {

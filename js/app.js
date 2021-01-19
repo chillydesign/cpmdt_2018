@@ -205,11 +205,11 @@
 
             })
 
-            var $location_description = $('#location_description');
-            var $location_responsible = $('#location_responsible');
-            var $location_addresse = $('#location_addresse');
-            var $location_courses_container = $('#location_courses_container');
-            var $location_link = $('#location_link');
+            // var $location_description = $('#location_description');
+            // var $location_responsible = $('#location_responsible');
+            // var $location_addresse = $('#location_addresse');
+            // var $location_courses_container = $('#location_courses_container');
+            // var $location_link = $('#location_link');
             var $map_text_overlay = $('#map_text_overlay');
 
             if (typeof n_locations_for_map != 'undefined') {
@@ -336,7 +336,7 @@
                             // $map_text_overlay.addClass('visible');
 
 
-                            $inner.html('<h3>Disciplines enseignées:</h3>' + data.courses_html);
+                            $inner.html(data.courses_html);
                             $inner.removeClass('loading');
 
                         });
