@@ -345,8 +345,6 @@
 
                             $map_text_overlay.scrollTop($offsettop); // do again in case it didnt work
 
-
-
                             $single_center_explainer.html(data.courses_html);
                             $inner.html(data.courses_html);
                             $inner.removeClass('loading');
@@ -393,6 +391,8 @@
             if (e.keyCode == 27) {
                 $('.search_box').removeClass('visible');
                 $map_text_overlay.removeClass('visible');
+                $single_center_explainer.removeClass('visible');
+
 
             }
         })
