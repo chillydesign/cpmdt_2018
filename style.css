@@ -3006,7 +3006,8 @@ input.checkbox_input {
   padding: 16px 16px 12px;
 }
 
-#map_text_overlay h3 {
+#map_text_overlay h3,
+.location_courses_container h3 {
   font-size: 1.1em;
   font-weight: bold;
   margin: 20px 0 8px;
@@ -3034,6 +3035,15 @@ input.checkbox_input {
   padding: 0;
   color: #444;
   font-size: 0.9em;
+}
+
+#location_name {
+  margin-bottom: 20px;
+}
+
+.location_courses_container {
+  background-color: #f1f1f1;
+  padding: 10px;
 }
 
 /* NEW LOCATIONS MAP */
