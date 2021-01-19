@@ -288,10 +288,17 @@
                 if (this.id > 0) {
                     if (showpopup) {
 
+                        // scrooll to place
+                        var $center_cont = $('#center_' + this.id);
+                        $map_text_overlay.scrollTop($center_cont.offset().top);
+                        var $inner = $center_cont.find('.single_center_expanded');
+
 
                         $.ajax({
                             url: search_url + '?location_id=' + this.id.toString()
                         }).done(function (data) {
+
+                            $inner.html(data.courses_html);
 
                             $location_link.html(data.post_title);
                             $location_link.attr('href', data.guid);

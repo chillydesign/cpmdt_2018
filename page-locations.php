@@ -22,7 +22,7 @@ get_header(); ?>
 <section class="container-fluid">
 
 
-    <div id="map_text_overlay" class="visible">
+    <div id="map_text_overlay">
 
         <div class="">
             <?php $c = 0;

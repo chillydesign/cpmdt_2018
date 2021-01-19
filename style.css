@@ -2935,17 +2935,19 @@ input.checkbox_input {
   height: 100%;
   z-index: 20;
   transition: all 0.3s;
-  transform: translateX(-300px);
-  opacity: 0.5;
-  box-shadow: 20px 0 20px rgba(0, 0, 0, 0.1);
-
-}
-
-#map_text_overlay.visible {
+  /* transform: translateX(-300px);
+  opacity: 0.5; */
   transform: translateX(0px);
   opacity: 1;
+  box-shadow: 20px 0 20px rgba(0, 0, 0, 0.1);
   overflow-x: scroll;
 }
+
+/* #map_text_overlay.visible {
+  transform: translateX(0px);
+  opacity: 1;
+
+} */
 
 #locations_map_container {
   height: 500px;
