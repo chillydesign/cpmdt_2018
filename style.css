@@ -3007,7 +3007,7 @@ input.checkbox_input {
 }
 
 #map_text_overlay h3,
-.location_courses_container h3 {
+#single_center_explainer h3 {
   font-size: 1.1em;
   font-weight: bold;
   margin: 20px 0 8px;
