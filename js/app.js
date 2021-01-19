@@ -133,6 +133,9 @@
 
 
 
+        var n_location_markers = [];
+        var use_custom_marker = false; // use default google marker
+
 
         if (typeof google != 'undefined') {
             // locations map
@@ -181,6 +184,18 @@
             // NEW LOCATIONS MAP IN FOOTER
 
 
+            var $single_center_a = $('.single_center a');
+            $single_center_a.on('click', function (e) {
+                e.preventDefault();
+
+                var $this = $(this);
+                var $id = $this.data('centerid');
+
+                console.log(n_location_markers);
+
+
+            })
+
             var $location_description = $('#location_description');
             var $location_responsible = $('#location_responsible');
             var $location_addresse = $('#location_addresse');
@@ -199,8 +214,6 @@
 
 
 
-                var n_location_markers = [];
-                var use_custom_marker = false; // use default google marker
 
                 for (var i = 0; i < n_locations_for_map.length; i++) {
                     var n_location_for_map = n_locations_for_map[i];
@@ -300,7 +313,7 @@
 
 
                         $.ajax({
-                            url: search_url + '?location_id=' + this.id.toString()
+                            url: api_url + '?location_id=' + this.id.toString()
                         }).done(function (data) {
 
 
@@ -314,7 +327,7 @@
                             // $map_text_overlay.addClass('visible');
 
 
-                            $inner.html(data.courses_html);
+                            $inner.html('<h3>Disciplines enseignées:</h3>' + data.courses_html);
                             $inner.removeClass('loading');
 
                         });

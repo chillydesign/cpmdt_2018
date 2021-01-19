@@ -28,7 +28,7 @@ get_header(); ?>
         <?php $c = 0;
         foreach ($centers as $center) : ?>
 
-            <div class="single_center" id="center_<?php echo $center->ID; ?>">
+            <div class="single_center" data-centerid="<?php echo $center->ID; ?>" id="center_<?php echo $center->ID; ?>">
                 <a href="<?php echo get_permalink($center->ID); ?>"><?php echo $center->post_title; ?></a>
 
                 <div class="single_center_expanded"></div>
@@ -74,7 +74,7 @@ get_header(); ?>
 <script type="text/javascript">
     var n_locations_for_map = <?php locations_for_map(); ?>;
     var theme_directory = '<?php echo get_template_directory_uri(); ?>';
-    var search_url = '<?php echo home_url(); ?>/api/v1/';
+    var api_url = '<?php echo home_url(); ?>/api/v1/';
 </script>
 
 
