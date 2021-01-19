@@ -191,6 +191,11 @@
                 var $this = $(this);
                 var $id = $this.data('centerid');
 
+                var marker = n_location_markers.find(m => m.id == $id);
+                if (marker) {
+                    marker.click();
+                }
+
                 console.log(n_location_markers);
 
 
