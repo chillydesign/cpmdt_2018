@@ -2944,6 +2944,7 @@ input.checkbox_input {
 #map_text_overlay.visible {
   transform: translateX(0px);
   opacity: 1;
+  overflow-x: scroll;
 }
 
 #locations_map_container {
