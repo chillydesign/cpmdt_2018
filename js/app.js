@@ -319,6 +319,8 @@
                         var $center_cont = $('#center_' + $id);
                         var $offsettop = $center_cont.offset().top;
 
+                        console.log($offsettop);
+
                         $center_cont.addClass('visible');
 
                         // $map_text_overlay.scrollTop( $offsettop  );
