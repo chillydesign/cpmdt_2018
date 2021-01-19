@@ -197,7 +197,7 @@
                 var marker = n_location_markers.find(m => m.id == $id);
                 if (marker) {
                     console.log(marker);
-                    marker.click();
+                    // marker.click();
                 }
 
                 console.log(n_location_markers);
