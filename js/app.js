@@ -293,6 +293,8 @@
                         $map_text_overlay.scrollTop($center_cont.offset().top);
                         var $inner = $center_cont.find('.single_center_expanded');
 
+                        $inner.addClass('loading');
+
 
                         $.ajax({
                             url: search_url + '?location_id=' + this.id.toString()
@@ -307,6 +309,8 @@
                             $location_addresse.html(data.addresse);
                             $location_courses_container.html(data.courses_html);
                             $map_text_overlay.addClass('visible');
+
+                            $inner.removeClass('loading');
 
                         });
 

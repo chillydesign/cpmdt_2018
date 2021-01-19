@@ -24,18 +24,18 @@ get_header(); ?>
 
     <div id="map_text_overlay">
 
-        <div class="">
-            <?php $c = 0;
-            foreach ($centers as $center) : ?>
 
-                <div class="single_center" id="center_<?php echo $center->ID; ?>">
-                    <a href="<?php echo get_permalink($center->ID); ?>"><?php echo $center->post_title; ?></a>
+        <?php $c = 0;
+        foreach ($centers as $center) : ?>
 
-                    <div class="single_center_expanded"></div>
-                </div>
-            <?php $c++;
-            endforeach; ?>
-        </div>
+            <div class="single_center" id="center_<?php echo $center->ID; ?>">
+                <a href="<?php echo get_permalink($center->ID); ?>"><?php echo $center->post_title; ?></a>
+
+                <div class="single_center_expanded"></div>
+            </div>
+        <?php $c++;
+        endforeach; ?>
+
         <!-- <h2 id="location_name"><a href="" id="location_link">....</a></h2>
     <p id="location_description">.....</p>
     <p id="location_responsible">.....</p>

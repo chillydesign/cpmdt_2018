@@ -2949,6 +2949,18 @@ input.checkbox_input {
 
 } */
 
+
+.single_center_expanded {
+  background-color: #f1f1f1;
+  padding: 20px;
+  margin: 0 0 30px;
+}
+
+.single_center_expanded.loading {
+  background-color: red;
+}
+
+
 #locations_map_container {
   height: 500px;
   z-index: 10;
