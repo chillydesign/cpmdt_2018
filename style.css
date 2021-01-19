@@ -2957,10 +2957,17 @@ input.checkbox_input {
   display: none;
 }
 
-.single_center_expanded.loading {
+/* .single_center_expanded.loading {
   background-color: red;
-}
+} */
 
+.loading {
+  height: 30px;
+  width: 30px;
+  background: url('assets/loading.gif') no-repeat center center;
+  background-size: 30px;
+  display: inline-block;
+}
 
 #locations_map_container {
   height: 500px;
@@ -2972,12 +2979,6 @@ input.checkbox_input {
   height: 100%;
 }
 
-.loading {
-  height: 30px;
-  width: 30px;
-  background: red;
-  display: inline-block;
-}
 
 
 
