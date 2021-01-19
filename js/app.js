@@ -317,11 +317,12 @@
 
                         // scrooll to place
                         var $center_cont = $('#center_' + $id);
+                        var $offsettop = $center_cont.offset().top;
 
                         $center_cont.addClass('visible');
 
-                        // $map_text_overlay.scrollTop($center_cont.offset().top);
-                        $map_text_overlay.animate({ scrollTop: $center_cont.offset().top });
+                        // $map_text_overlay.scrollTop( $offsettop  );
+                        $map_text_overlay.animate({ scrollTop: $offsettop });
 
                         var $inner = $center_cont.find('.single_center_expanded');
 
@@ -333,8 +334,8 @@
                         }).done(function (data) {
 
 
-                            var $center_cont = $('#center_' + $id);
-                            $map_text_overlay.scrollTop($center_cont.offset().top); // do again in case it didnt work
+
+                            $map_text_overlay.scrollTop($offsettop); // do again in case it didnt work
 
 
 
