@@ -209,7 +209,10 @@
 
                 }
 
-                var n_cluster = new MarkerClusterer(n_location_map, n_location_markers);
+                var n_cluster = new MarkerClusterer(n_location_map, n_location_markers, {
+                    imagePath:
+                        theme_directory + '/assets/',
+                });
 
 
 
