@@ -2972,6 +2972,13 @@ input.checkbox_input {
   height: 100%;
 }
 
+.loading {
+  height: 30px;
+  width: 30px;
+  background: red;
+  display: inline-block;
+}
+
 
 
 
