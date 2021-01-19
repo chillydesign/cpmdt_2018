@@ -34,7 +34,7 @@ get_header(); ?>
     <div class="col-sm-9">  </div> -->
 
     <div id="new_locations_map_outer">
-        <div id="map_text_overlay visible ">
+        <div id="map_text_overlay" class="visible">
 
             <div class="">
                 <?php $c = 0;
