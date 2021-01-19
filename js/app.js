@@ -189,10 +189,11 @@
                 e.preventDefault();
 
                 var $this = $(this);
-                var $id = $this.data('centerid');
+                var $id = parseInt($this.data('centerid'), 10);
 
                 var marker = n_location_markers.find(m => m.id == $id);
                 if (marker) {
+                    console.log(marker);
                     marker.click();
                 }
 
