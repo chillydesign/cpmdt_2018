@@ -292,7 +292,8 @@
 
                         // scrooll to place
                         var $center_cont = $('#center_' + this.id);
-                        $map_text_overlay.scrollTop($center_cont.offset().top);
+                        // $map_text_overlay.scrollTop($center_cont.offset().top);
+                        $map_text_overlay.animate({ scrollTop: $center_cont.offset().top });
                         var $inner = $center_cont.find('.single_center_expanded');
 
                         $inner.show().addClass('loading');
