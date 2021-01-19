@@ -2579,13 +2579,18 @@ input.checkbox_input {
   display: block;
 }
 
-/* .single_center {
+.single_center.visible a.center_title {
+  background: #222;
+  color: white;
+}
 
-    color: white;
-    margin: 0 0  10px;
-} */
+.single_center a.center_title:hover {
+  background: #f1f1f1;
+}
 
-.single_center a {
+
+
+.single_center a.center_title {
   /* color: white !important;
     background: #009992; */
   display: block;
@@ -2595,20 +2600,6 @@ input.checkbox_input {
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
 
-}
-
-
-/* @media (min-width: 768px) {
-
-    .single_center a {
-        height: 100px;
-
-
-    }
-}
-*/
-.single_center a:hover {
-  background: #f1f1f1;
 }
 
 
