@@ -196,6 +196,9 @@
                 var n_location_map = new google.maps.Map(location_map_container_new.get(0), map_options);
                 var n_location_bounds = new google.maps.LatLngBounds();
                 var n_location_infowindow = new google.maps.InfoWindow({ content: '...' });
+
+
+
                 var n_location_markers = [];
 
                 for (var i = 0; i < n_locations_for_map.length; i++) {
@@ -205,6 +208,11 @@
                     }
 
                 }
+
+                var n_cluster = new MarkerClusterer(n_location_map, n_location_markers, {});
+
+
+
                 n_location_map.initialZoom = true;
                 n_location_map.fitBounds(n_location_bounds);
 
