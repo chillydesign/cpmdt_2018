@@ -211,6 +211,7 @@
             // var $location_courses_container = $('#location_courses_container');
             // var $location_link = $('#location_link');
             var $map_text_overlay = $('#map_text_overlay');
+            var $single_center_explainer = $('#single_center_explainer');
 
             if (typeof n_locations_for_map != 'undefined') {
                 var location_map_container_new = $('#locations_map_container');
@@ -317,9 +318,8 @@
 
                         // scrooll to place
                         var $center_cont = $('#center_' + $id);
-                        var $offsettop = $center_cont.find('.center_title').offset().top;
+                        var $offsettop = $center_cont.offset().top;
 
-                        console.log($offsettop);
 
                         $center_cont.addClass('visible');
 
@@ -341,6 +341,7 @@
 
 
 
+                            $single_center_explainer.html(data.courses_html);
                             $inner.html(data.courses_html);
                             $inner.removeClass('loading');
 

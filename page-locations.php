@@ -38,18 +38,11 @@ get_header(); ?>
                 <?php $c++;
                 endforeach; ?>
 
-                <!-- <h2 id="location_name"><a href="" id="location_link">....</a></h2>
-<p id="location_description">.....</p>
-<p id="location_responsible">.....</p>
-<p id="location_addresse">.....</p>
-
-<h3>Disciplines enseignées:</h3>
-<div id="location_courses_container"></div>
-
-# -->
 
 
             </div>
+
+            <div id="single_center_explainer"></div>
 
 
         </div>

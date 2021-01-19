@@ -2943,6 +2943,19 @@ input.checkbox_input {
 } */
 
 
+
+#single_center_explainer {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  left: 0;
+  padding: 30px;
+  overflow-x: scroll;
+}
+
+
+
 .single_center_expanded {
   background-color: #f1f1f1;
   padding: 20px;
