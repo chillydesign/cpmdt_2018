@@ -211,6 +211,7 @@
             // var $location_courses_container = $('#location_courses_container');
             // var $location_link = $('#location_link');
             var $map_text_overlay = $('#map_text_overlay');
+            var $single_center_explainer_close = $('#single_center_explainer_close');
             var $single_center_explainer = $('#single_center_explainer');
 
             if (typeof n_locations_for_map != 'undefined') {
@@ -324,7 +325,7 @@
 
 
                         $center_cont.addClass('visible');
-
+                        $single_center_explainer_close.show();
                         $single_center_explainer.html('');
                         $single_center_explainer.addClass('visible');
                         $single_center_explainer.addClass('loading');
@@ -371,6 +372,10 @@
 
 
 
+        $single_center_explainer_close.on('click', function () {
+            hideSingleCenterExplainer();
+        })
+
 
 
         // COURSE SEARCH
@@ -391,11 +396,16 @@
             if (e.keyCode == 27) {
                 $('.search_box').removeClass('visible');
                 $map_text_overlay.removeClass('visible');
-                $single_center_explainer.removeClass('visible');
 
+                hideSingleCenterExplainer();
 
             }
         })
+
+        function hideSingleCenterExplainer() {
+            $single_center_explainer.removeClass('visible');
+            $single_center_explainer_close.hide();
+        }
 
         $('.search_box').on('click', function (e) {
             e.stopPropagation();

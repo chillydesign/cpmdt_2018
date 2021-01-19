@@ -43,6 +43,7 @@ get_header(); ?>
             </div>
 
             <div id="single_center_explainer"></div>
+            <div id="single_center_explainer_close"></div>
 
 
         </div>
