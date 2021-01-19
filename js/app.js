@@ -247,7 +247,7 @@
                 google.maps.event.addListener(n_location_infowindow, 'closeclick', function () {
                     // $map_text_overlay.removeClass('visible');
 
-                    $single_center_explainer.removeClass('visible');
+                    hideSingleCenterExplainer();
                 });
 
 
