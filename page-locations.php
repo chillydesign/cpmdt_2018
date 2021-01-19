@@ -23,10 +23,9 @@ get_header(); ?>
 
     <div class="container-fluid">
 
-        <div class="col-sm-4">
+        <div class="col-sm-4" style="padding:0">
 
             <div id="map_text_overlay">
-
 
                 <?php $c = 0;
                 foreach ($centers as $center) : ?>
@@ -54,7 +53,7 @@ get_header(); ?>
 
 
         </div>
-        <div class="col-sm-8">
+        <div class="col-sm-8" style="padding:0">
 
             <div id="locations_map_container"></div>
 
