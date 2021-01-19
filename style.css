@@ -3006,14 +3006,21 @@ input.checkbox_input {
   padding: 16px 16px 12px;
 }
 
-#map_text_overlay h3,
-#single_center_explainer h3 {
+#map_text_overlay h3 {
   font-size: 1.1em;
   font-weight: bold;
   margin: 20px 0 8px;
   background: #f1f1f1;
   padding: 0;
 }
+
+#single_center_explainer h3 {
+  font-size: 1.1em;
+  font-weight: bold;
+  margin: 20px 0 8px;
+
+}
+
 
 .single_course_for_location {
   margin: 0 0 8px;
