@@ -317,7 +317,7 @@
 
                         // scrooll to place
                         var $center_cont = $('#center_' + $id);
-                        var $offsettop = $center_cont.offset().top;
+                        var $offsettop = $center_cont.find('.center_title').offset().top;
 
                         console.log($offsettop);
 
