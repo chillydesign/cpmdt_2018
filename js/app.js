@@ -323,6 +323,9 @@
 
                         $center_cont.addClass('visible');
 
+                        $single_center_explainer.addClass('visible');
+                        $single_center_explainer.addClass('loading');
+
                         // $map_text_overlay.scrollTop( $offsettop  );
                         $map_text_overlay.animate({ scrollTop: $offsettop });
 
@@ -344,7 +347,7 @@
                             $single_center_explainer.html(data.courses_html);
                             $inner.html(data.courses_html);
                             $inner.removeClass('loading');
-
+                            $single_center_explainer.removeClass('loading');
                         });
 
 

@@ -2933,7 +2933,7 @@ input.checkbox_input {
   transform: translateX(0px);
   opacity: 1;
   box-shadow: 20px 0 20px rgba(0, 0, 0, 0.1);
-  overflow-x: scroll;
+  overflow-y: scroll;
 }
 
 /* #map_text_overlay.visible {
@@ -2951,9 +2951,19 @@ input.checkbox_input {
   width: 100%;
   left: 0;
   padding: 30px;
-  overflow-x: scroll;
+  overflow-y: scroll;
+  display: none;
 }
 
+#single_center_explainer.loading {
+  background: url('assets/loading.gif') no-repeat center center;
+  background-size: 30px;
+
+}
+
+#single_center_explainer.visible {
+  display: block;
+}
 
 
 .single_center_expanded {
@@ -2964,7 +2974,7 @@ input.checkbox_input {
 }
 
 
-.loading {
+.single_center_expanded .loading {
   height: 30px;
   width: 30px;
   background: url('assets/loading.gif') no-repeat center center;
