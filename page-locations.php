@@ -1,34 +1,6 @@
 <?php
 /* Template Name: Locations Page */
 get_header(); ?>
-<div class="page-title">
-    <div class="container">
-        <h2> <?php the_title(); ?> </h2>
-    </div>
-</div>
-
-
-<section>
-
-    <div id="new_locations_map_outer">
-        <div id="map_text_overlay">
-            <h2 id="location_name"><a href="" id="location_link">....</a></h2>
-            <p id="location_description">.....</p>
-            <p id="location_responsible">.....</p>
-            <p id="location_addresse">.....</p>
-
-            <h3>Disciplines enseignées:</h3>
-            <div id="location_courses_container"></div>
-        </div>
-        <div id="locations_map_container"></div>
-    </div>
-</section>
-<script type="text/javascript">
-    var n_locations_for_map = <?php locations_for_map(); ?>;
-    var theme_directory = '<?php echo get_template_directory_uri(); ?>';
-    var search_url = '<?php echo home_url(); ?>/api/v1/';
-</script>
-
 
 
 <?php $args = array(
@@ -39,26 +11,65 @@ get_header(); ?>
 ); ?>
 <?php $centers = get_posts($args); ?>
 
-<div class="container centers_container">
 
-
-    <?php $c = 0;
-    foreach ($centers as $center) : ?>
-
-        <div class="single_center">
-            <a href="<?php echo get_permalink($center->ID); ?>"><?php echo $center->post_title; ?></a>
-        </div>
-
-
-
-    <?php $c++;
-    endforeach; ?>
-
+<div class="page-title">
+    <div class="container">
+        <h2> <?php the_title(); ?> </h2>
+    </div>
 </div>
 
 
-<?php // get_template_part('locations-map'); 
-?>
+<section class="container-fluid">
+
+
+    <div class="col-sm-3">
+
+        <div class=" ">
+            <?php $c = 0;
+            foreach ($centers as $center) : ?>
+
+                <div class="single_center">
+                    <a href="<?php echo get_permalink($center->ID); ?>"><?php echo $center->post_title; ?></a>
+                </div>
+            <?php $c++;
+            endforeach; ?>
+
+        </div>
+    </div>
+
+
+    <div class="col-sm-9">
+
+        <div id="new_locations_map_outer">
+            <div id="map_text_overlay">
+                <h2 id="location_name"><a href="" id="location_link">....</a></h2>
+                <p id="location_description">.....</p>
+                <p id="location_responsible">.....</p>
+                <p id="location_addresse">.....</p>
+
+                <h3>Disciplines enseignées:</h3>
+                <div id="location_courses_container"></div>
+            </div>
+            <div id="locations_map_container"></div>
+        </div>
+
+    </div>
+
+
+
+</section>
+
+
+<script type="text/javascript">
+    var n_locations_for_map = <?php locations_for_map(); ?>;
+    var theme_directory = '<?php echo get_template_directory_uri(); ?>';
+    var search_url = '<?php echo home_url(); ?>/api/v1/';
+</script>
+
+
+
+
+
 
 
 <!-- Scripts -->
