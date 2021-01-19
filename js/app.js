@@ -195,7 +195,9 @@
                 var marker = n_location_markers.find(m => m.id == $id);
                 if (marker) {
 
-                    google.maps.event.trigger(marker, 'click')
+                    google.maps.event.trigger(marker, 'click');
+                    n_location_map.setCenter(marker.position);
+                    n_location_map.setZoom(16);
                 }
 
 
