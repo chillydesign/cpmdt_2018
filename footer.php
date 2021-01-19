@@ -6,8 +6,8 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-4 col-xs-12">
-                <?php if ( is_active_sidebar( 'footer-1' ) ) : ?>
-                    <?php dynamic_sidebar( 'footer-1' ); ?>
+                <?php if (is_active_sidebar('footer-1')) : ?>
+                    <?php dynamic_sidebar('footer-1'); ?>
                 <?php endif; ?>
                 <hr>
                 <?php echo do_shortcode('[mc4wp_form id="494"]'); ?>
@@ -30,8 +30,8 @@
             <div class="col-sm-4 col-xs-12">
                 <img src="<?php echo $tdu; ?>/assets/footer-image_03.png" alt="">
 
-                <?php if ( is_active_sidebar( 'footer-2' ) ) : ?>
-                    <?php dynamic_sidebar( 'footer-2' ); ?>
+                <?php if (is_active_sidebar('footer-2')) : ?>
+                    <?php dynamic_sidebar('footer-2'); ?>
                 <?php endif; ?>
                 <p style="margin-bottom:0;">IBAN : CH73 0900 0000 1200 5505 3</p>
                 <p>BIC : POFICHBEXXX</p>
@@ -44,7 +44,7 @@
             <div class="col-sm-4 col-xs-12">
                 <?php $locations_url =  get_site_url() . '/centres-denseignement/'; ?>
                 <h4><a href="<?php echo $locations_url; ?>">les centres d’enseignements</a></h4>
-                <?php $centers = get_posts(array(  'orderby'=> 'post_title' , 'order' =>'ASC' , 'post_type' => 'location' , 'posts_per_page' => -1)); ?>
+                <?php $centers = get_posts(array('orderby' => 'post_title', 'order' => 'ASC', 'post_type' => 'location', 'posts_per_page' => -1)); ?>
                 <select name="locations" class="locations_dropdown" style="margin-bottom: 20px">
                     <?php foreach ($centers as $center) : ?>
                         <option value="<?php echo $center->guid; ?>"><?php echo $center->post_title; ?></option>
@@ -68,36 +68,41 @@
 <!-- Scripts -->
 <?php wp_footer(); ?>
 
+
+<script src="https://unpkg.com/@google/markerclustererplus@4.0.1/dist/markerclustererplus.min.js"></script>
 <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBc9birEXZTWqHOAUTHvX59jm-MxESi048"></script>
 
 
 <script>
-jQuery('.program').on("touchstart", function (e) {
-    'use strict'; //satisfy code inspectors
-    var link = jQuery(this); //preselect the link
-    if (link.hasClass('hover')) {
-        return true;
-    }
-    else {
-        link.addClass('hover');
-        jQuery('.program').not(this).removeClass('hover');
-        e.preventDefault();
-        return false; //extra, and to make sure the function has consistent return points
-    }
-});
+    jQuery('.program').on("touchstart", function(e) {
+        'use strict'; //satisfy code inspectors
+        var link = jQuery(this); //preselect the link
+        if (link.hasClass('hover')) {
+            return true;
+        } else {
+            link.addClass('hover');
+            jQuery('.program').not(this).removeClass('hover');
+            e.preventDefault();
+            return false; //extra, and to make sure the function has consistent return points
+        }
+    });
 </script>
 
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-130508676-2"></script>
 <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+    window.dataLayer = window.dataLayer || [];
 
-  gtag('config', 'UA-130508676-2');
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
+
+    gtag('config', 'UA-130508676-2');
 </script>
 
 
 
 </body>
+
 </html>
