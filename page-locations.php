@@ -19,7 +19,7 @@ get_header(); ?>
 </div>
 
 
-<section class="container-fluid">
+<section id="new_locations_map_outer">
 
 
     <div id="map_text_overlay">
@@ -60,10 +60,9 @@ get_header(); ?>
 
     <div class="col-sm-9">  </div> -->
 
-    <div id="new_locations_map_outer">
 
-        <div id="locations_map_container"></div>
-    </div>
+
+    <div id="locations_map_container"></div>
 
 
 
