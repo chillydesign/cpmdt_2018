@@ -2954,6 +2954,7 @@ input.checkbox_input {
   background-color: #f1f1f1;
   padding: 20px;
   margin: 0 0 30px;
+  display: none;
 }
 
 .single_center_expanded.loading {

@@ -221,7 +221,7 @@
                 n_location_map.fitBounds(n_location_bounds);
 
                 google.maps.event.addListener(n_location_infowindow, 'closeclick', function () {
-                    $map_text_overlay.removeClass('visible');
+                    // $map_text_overlay.removeClass('visible');
                 });
 
 
@@ -288,12 +288,14 @@
                 if (this.id > 0) {
                     if (showpopup) {
 
+                        $('.single_center_expanded').hide();
+
                         // scrooll to place
                         var $center_cont = $('#center_' + this.id);
                         $map_text_overlay.scrollTop($center_cont.offset().top);
                         var $inner = $center_cont.find('.single_center_expanded');
 
-                        $inner.addClass('loading');
+                        $inner.show().addClass('loading');
 
 
                         $.ajax({
