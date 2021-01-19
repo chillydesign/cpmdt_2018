@@ -21,50 +21,46 @@ get_header(); ?>
 
 <section id="new_locations_map_outer">
 
+    <div class="container-fluid">
 
-    <div id="map_text_overlay">
+        <div class="col-sm-4">
+
+            <div id="map_text_overlay">
 
 
-        <?php $c = 0;
-        foreach ($centers as $center) : ?>
+                <?php $c = 0;
+                foreach ($centers as $center) : ?>
 
-            <div class="single_center" id="center_<?php echo $center->ID; ?>">
-                <a data-centerid="<?php echo $center->ID; ?>" href="<?php echo get_permalink($center->ID); ?>"><?php echo $center->post_title; ?></a>
+                    <div class="single_center" id="center_<?php echo $center->ID; ?>">
+                        <a data-centerid="<?php echo $center->ID; ?>" href="<?php echo get_permalink($center->ID); ?>"><?php echo $center->post_title; ?></a>
 
-                <div class="single_center_expanded"></div>
+                        <div class="single_center_expanded"></div>
+                    </div>
+                <?php $c++;
+                endforeach; ?>
+
+                <!-- <h2 id="location_name"><a href="" id="location_link">....</a></h2>
+<p id="location_description">.....</p>
+<p id="location_responsible">.....</p>
+<p id="location_addresse">.....</p>
+
+<h3>Disciplines enseignées:</h3>
+<div id="location_courses_container"></div>
+
+# -->
+
+
             </div>
-        <?php $c++;
-        endforeach; ?>
-
-        <!-- <h2 id="location_name"><a href="" id="location_link">....</a></h2>
-    <p id="location_description">.....</p>
-    <p id="location_responsible">.....</p>
-    <p id="location_addresse">.....</p>
-
-    <h3>Disciplines enseignées:</h3>
-    <div id="location_courses_container"></div>
-
-    # -->
 
 
-    </div>
+        </div>
+        <div class="col-sm-8">
 
-    <!-- <div class="col-sm-3">
-
-        <div class="centers_container">
+            <div id="locations_map_container"></div>
 
 
         </div>
     </div>
-
-
-    <div class="col-sm-9">  </div> -->
-
-
-
-    <div id="locations_map_container"></div>
-
-
 
 
 
