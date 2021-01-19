@@ -200,11 +200,12 @@
 
 
                 var n_location_markers = [];
+                var use_custom_marker = false; // use default google marker
 
                 for (var i = 0; i < n_locations_for_map.length; i++) {
                     var n_location_for_map = n_locations_for_map[i];
                     if (n_location_for_map != null) {
-                        addPointToMap(n_location_map, n_location_for_map, n_location_bounds, n_location_infowindow, n_location_markers, true, true);
+                        addPointToMap(n_location_map, n_location_for_map, n_location_bounds, n_location_infowindow, n_location_markers, use_custom_marker, true);
                     }
 
                 }
