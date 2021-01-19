@@ -310,13 +310,14 @@
             });
 
 
+
             marker.addListener('click', function () {
                 if (this.id > 0) {
 
                     var $id = this.id;
                     if (showpopup) {
 
-                        $('.single_center_expanded').hide();
+                        // $('.single_center_expanded').hide();
                         $('.single_center').removeClass('visible');
 
                         // scrooll to place
@@ -333,9 +334,9 @@
                         // $map_text_overlay.scrollTop( $offsettop  );
                         $map_text_overlay.animate({ scrollTop: $offsettop });
 
-                        var $inner = $center_cont.find('.single_center_expanded');
+                        // var $inner = $center_cont.find('.single_center_expanded');
 
-                        $inner.show().html('<div class="loading"></div>');
+                        // $inner.show().html('<div class="loading"></div>');
 
 
                         $.ajax({
@@ -347,8 +348,8 @@
                             $map_text_overlay.scrollTop($offsettop); // do again in case it didnt work
 
                             $single_center_explainer.html(data.courses_html);
-                            $inner.html(data.courses_html);
-                            $inner.removeClass('loading');
+                            // $inner.html(data.courses_html);
+                            // $inner.removeClass('loading');
                             $single_center_explainer.removeClass('loading');
                         });
 

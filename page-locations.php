@@ -32,13 +32,10 @@ get_header(); ?>
 
                     <div class="single_center" id="center_<?php echo $center->ID; ?>">
                         <a class="center_title" data-centerid="<?php echo $center->ID; ?>" href="<?php echo get_permalink($center->ID); ?>"><?php echo $center->post_title; ?></a>
-
-                        <div class="single_center_expanded"></div>
+                        <!-- <div class="single_center_expanded"></div> -->
                     </div>
                 <?php $c++;
                 endforeach; ?>
-
-
 
             </div>
 
