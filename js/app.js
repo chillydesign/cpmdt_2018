@@ -328,6 +328,8 @@
                         }).done(function (data) {
 
 
+                            var $center_cont = $('#center_' + this.id);
+                            $map_text_overlay.scrollTop($center_cont.offset().top); // do again in case it didnt work
 
                             // $location_link.html(data.post_title);
                             // $location_link.attr('href', data.guid);
