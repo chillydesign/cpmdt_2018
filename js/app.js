@@ -325,6 +325,7 @@
 
                         $center_cont.addClass('visible');
 
+                        $single_center_explainer.html('');
                         $single_center_explainer.addClass('visible');
                         $single_center_explainer.addClass('loading');
 
