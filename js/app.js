@@ -308,36 +308,34 @@
 
             marker.addListener('click', function () {
                 if (this.id > 0) {
+
+                    var $id = this.id;
                     if (showpopup) {
 
                         $('.single_center_expanded').hide();
                         $('.single_center').removeClass('visible');
 
                         // scrooll to place
-                        var $center_cont = $('#center_' + this.id);
+                        var $center_cont = $('#center_' + $id);
+
+                        $center_cont.addClass('visible');
+
                         // $map_text_overlay.scrollTop($center_cont.offset().top);
                         $map_text_overlay.animate({ scrollTop: $center_cont.offset().top });
-                        $center_cont.addClass('visible');
+
                         var $inner = $center_cont.find('.single_center_expanded');
 
                         $inner.show().html('<div class="loading"></div>');
 
 
                         $.ajax({
-                            url: api_url + '?location_id=' + this.id.toString()
+                            url: api_url + '?location_id=' + $id.toString()
                         }).done(function (data) {
 
 
-                            var $center_cont = $('#center_' + this.id);
+                            var $center_cont = $('#center_' + $id);
                             $map_text_overlay.scrollTop($center_cont.offset().top); // do again in case it didnt work
 
-                            // $location_link.html(data.post_title);
-                            // $location_link.attr('href', data.guid);
-                            // $location_description.html(data.description)
-                            // $location_responsible.html(data.responsible)
-                            // $location_addresse.html(data.addresse);
-                            // $location_courses_container.html(data.courses_html);
-                            // $map_text_overlay.addClass('visible');
 
 
                             $inner.html(data.courses_html);
