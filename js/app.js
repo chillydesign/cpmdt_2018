@@ -191,16 +191,14 @@
                 var $this = $(this);
                 var $id = parseInt($this.data('centerid'), 10);
 
-                console.log($id)
-                console.log(n_location_markers.map(n => n.id))
 
                 var marker = n_location_markers.find(m => m.id == $id);
                 if (marker) {
-                    console.log(marker);
-                    // marker.click();
+
+                    google.maps.event.trigger(marker, 'click')
                 }
 
-                console.log(n_location_markers);
+
 
 
             })
