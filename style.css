@@ -2579,15 +2579,16 @@ input.checkbox_input {
   display: block;
 }
 
-.single_center.visible a.center_title {
-  background: #222;
-  color: white;
-}
 
 .single_center a.center_title:hover {
   background: #f1f1f1;
 }
 
+.single_center.visible a.center_title,
+.single_center.visible a.center_title:hover {
+  background: #222;
+  color: white;
+}
 
 
 .single_center a.center_title {
@@ -2997,7 +2998,7 @@ input.checkbox_input {
 }
 
 .single_course_for_location h4 {
-  font-size: 1.2em;
+  font-size: 1.0em;
 }
 
 .single_course_for_location li {
