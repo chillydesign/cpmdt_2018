@@ -2953,10 +2953,14 @@ input.checkbox_input {
   padding: 30px;
   overflow-y: scroll;
   display: none;
+  background-color: white;
+  background-repeat: no-repeat;
+  background-position: center center;
 }
 
 #single_center_explainer.loading {
-  background: url('assets/loading.gif') no-repeat center center;
+  background-image: url('assets/loading.gif');
+
   background-size: 30px;
 
 }
