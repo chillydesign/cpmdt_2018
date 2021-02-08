@@ -377,6 +377,7 @@
 
         $single_center_explainer_close.on('click', function () {
             hideSingleCenterExplainer();
+            resetMapZoom();
         })
 
 
