@@ -248,6 +248,9 @@
                     // $map_text_overlay.removeClass('visible');
 
                     hideSingleCenterExplainer();
+
+                    // reset map zoom
+                    n_location_map.fitBounds(n_location_bounds);
                 });
 
 
