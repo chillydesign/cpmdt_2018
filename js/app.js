@@ -242,15 +242,14 @@
 
 
                 n_location_map.initialZoom = true;
-                n_location_map.fitBounds(n_location_bounds);
+                resetMapZoom();
 
                 google.maps.event.addListener(n_location_infowindow, 'closeclick', function () {
                     // $map_text_overlay.removeClass('visible');
 
                     hideSingleCenterExplainer();
 
-                    // reset map zoom
-                    n_location_map.fitBounds(n_location_bounds);
+                    resetMapZoom();
                 });
 
 
@@ -402,9 +401,14 @@
                 $map_text_overlay.removeClass('visible');
 
                 hideSingleCenterExplainer();
+                resetMapZoom();
 
             }
         })
+        function resetMapZoom() {
+            // reset map zoom
+            n_location_map.fitBounds(n_location_bounds);
+        }
 
         function hideSingleCenterExplainer() {
             $single_center_explainer.removeClass('visible');
