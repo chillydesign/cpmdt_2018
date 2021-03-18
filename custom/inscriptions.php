@@ -12,8 +12,7 @@ add_action('admin_post_inscription_form',  'save_inscription_form');
 add_shortcode('inscription_form',  'inscription_form_shortcode');
 
 
-function post_type_inscription()
-{
+function post_type_inscription() {
     register_post_type(
         'inscription', // Register Custom Post Type
         array(
@@ -55,8 +54,7 @@ function post_type_inscription()
 
 
 //  ADD inscription FORM AS A SHORTCODE
-function inscription_form_shortcode($atts, $content = null)
-{
+function inscription_form_shortcode($atts, $content = null) {
 
 
     $atts = shortcode_atts(array(
@@ -487,7 +485,7 @@ function inscription_form_shortcode($atts, $content = null)
 
     $rq_frm .= '<select  style="width:30%" required id="birth_year" name="birth_year">';
     $rq_frm .= '<option value="">Année</option>';
-    for ($i = 2019; $i >= 1900; $i--) {
+    for ($i = 2020; $i >= 1900; $i--) {
         $rq_frm .= '<option value="' .  $i . '">' . $i . '</option>';
     }
     $rq_frm .= '</select>';
@@ -764,8 +762,7 @@ function inscription_form_shortcode($atts, $content = null)
 // }
 
 
-function all_inscription_fields()
-{
+function all_inscription_fields() {
 
     return array(
 
@@ -820,8 +817,7 @@ function all_inscription_fields()
 
 
 
-function get_all_adult_courses()
-{
+function get_all_adult_courses() {
     $posts_array = get_posts(
         array(
             'post_type'  => 'programme',
@@ -849,8 +845,7 @@ function get_all_adult_courses()
     return $posts_array;
 }
 
-function get_all_courses_in_form($slug)
-{
+function get_all_courses_in_form($slug) {
     $posts_array = get_posts(
         array(
             'post_type'  => 'programme',
@@ -887,8 +882,7 @@ function get_all_courses_in_form($slug)
 
 
 
-function get_all_courses_with_cat($category)
-{
+function get_all_courses_with_cat($category) {
     $posts_array = get_posts(
         array(
             'post_type'  => 'programme',
@@ -924,8 +918,7 @@ function get_all_courses_with_cat($category)
 }
 
 
-function get_all_instrumentchant_courses()
-{
+function get_all_instrumentchant_courses() {
     $posts_array = get_posts(
         array(
             'post_type'  => 'programme',
@@ -954,8 +947,7 @@ function get_all_instrumentchant_courses()
 }
 
 
-function get_all_47_musicale_courses()
-{
+function get_all_47_musicale_courses() {
     $posts_array = get_posts(
         array(
             'post_type'  => 'programme',
@@ -1009,8 +1001,7 @@ function get_all_47_musicale_courses()
 }
 
 
-function get_all_current_courses()
-{
+function get_all_current_courses() {
     $posts_array = get_posts(
         array(
             'post_type'  => 'programme',
@@ -1042,8 +1033,7 @@ function get_all_current_courses()
 
 
 
-function save_inscription_form()
-{
+function save_inscription_form() {
 
     // IF DATA HAS BEEN POSTED
     if (isset($_POST['action'])  && $_POST['action'] == 'inscription_form') :
@@ -1163,8 +1153,7 @@ function save_inscription_form()
 
 
 
-function send_inscription_emails($data)
-{
+function send_inscription_emails($data) {
 
 
     $course_id = $data['course_id'];
@@ -1285,8 +1274,7 @@ function send_inscription_emails($data)
 
 
 
-function inscription_add_file_upload($file, $parent)
-{
+function inscription_add_file_upload($file, $parent) {
     $upload = wp_upload_bits($file['name'], null, file_get_contents($file['tmp_name']));
     $wp_filetype = wp_check_filetype(basename($upload['file']), null);
     $wp_upload_dir = wp_upload_dir();
@@ -1310,8 +1298,7 @@ function inscription_add_file_upload($file, $parent)
 
 
 
-function fws_admin_posts_filter($query)
-{
+function fws_admin_posts_filter($query) {
     global $pagenow;
     if (is_admin() && $pagenow == 'edit.php' && !empty($_GET['page_parent'])) {
         $query->set('post_parent', intval($_GET['page_parent']));
@@ -1326,8 +1313,7 @@ function fws_admin_posts_filter($query)
 }
 add_filter('parse_query', 'fws_admin_posts_filter');
 
-function admin_page_filter_parentpages()
-{
+function admin_page_filter_parentpages() {
     global $wpdb;
     if (isset($_GET['post_type']) && $_GET['post_type'] == 'booking') {
         $sql = "SELECT ID, post_title FROM " . $wpdb->posts . " WHERE post_type = 'agenda' AND post_parent = 0 AND post_status = 'publish' ORDER BY post_title";
@@ -1351,8 +1337,7 @@ add_action('restrict_manage_posts', 'admin_page_filter_parentpages');
 
 
 add_action('manage_posts_extra_tablenav', 'add_download_link_inscription');
-function add_download_link_inscription($which)
-{
+function add_download_link_inscription($which) {
     if (is_post_type_archive('inscription')) {
 
         echo download_insc_button('47musicale', '4 -7 ans');
@@ -1363,8 +1348,7 @@ function add_download_link_inscription($which)
 }
 
 
-function download_insc_button($type, $title)
-{
+function download_insc_button($type, $title) {
     $download_link = get_home_url() . '/api/v1/?inscriptions&type=';
     echo '<div class="alignleft actions"><a style="margin:0" title="Télécharger ' . $title . '" class="action button-primary button" href="' . $download_link . $type . '"> <span style="position:relative;top:4px" class="dashicons dashicons-download"></span> ' . $title . '</a></div>';
 };
