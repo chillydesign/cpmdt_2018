@@ -188,9 +188,9 @@ function inscription_form_shortcode($atts, $content = null) {
 
 
     $rq_frm .= '<div class="inscription_field" id="locations_field">
-        <label for="location_id">Lieu </label>
+        <label for="location_id">Lieu *</label>
         <div class="field_content">
-        <select name="location_id" id="locations_container"></select>
+        <select required name="location_id" id="locations_container"></select>
         <script id="locations_template" type="x-underscore">
             <option value="">Choisir un lieu</option>
             <%  _.each(locations,function(location,key,list){  %>
@@ -373,9 +373,9 @@ function inscription_form_shortcode($atts, $content = null) {
             </div>';
 
         $rq_frm .= '<div class="inscription_field fields_for_non_exempt_fm">
-            <label for="musical_location_id">Lieu </label>
+            <label for="musical_location_id">Lieu *</label>
             <div class="field_content">
-            <select name="musical_location_id" id="musical_locations_container">
+            <select required name="musical_location_id" id="musical_locations_container">
             <option value="">Choisir une option</option>';
 
         foreach ($form_mus_locations as $location) {
