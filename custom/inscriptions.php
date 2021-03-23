@@ -373,9 +373,9 @@ function inscription_form_shortcode($atts, $content = null) {
             </div>';
 
         $rq_frm .= '<div class="inscription_field fields_for_non_exempt_fm">
-            <label for="musical_location_id">Lieu *</label>
+            <label for="musical_location_id">Lieu </label>
             <div class="field_content">
-            <select required name="musical_location_id" id="musical_locations_container">
+            <select  name="musical_location_id" id="musical_locations_container">
             <option value="">Choisir une option</option>';
 
         foreach ($form_mus_locations as $location) {
