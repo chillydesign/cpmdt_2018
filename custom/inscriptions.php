@@ -252,8 +252,8 @@ function inscription_form_shortcode($atts, $content = null) {
             '<div class="inscription_field">
         <label for="inscription_year">Inscription pour l\'année </label>
         <div class="field_content">
-        <select id="inscription_year" name="inscription_year">
-        <option value="2020-2021">2020-2021</option>
+        <select readonly id="inscription_year" name="inscription_year">
+        <option value="2021-2022">2021-2022</option>
         </select>
         </div>
         </div>';
