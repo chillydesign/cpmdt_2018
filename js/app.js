@@ -854,6 +854,7 @@
 
         function updateLocationAndOptionsForCourse($field, $course_id) {
             var $loc_container = $('#' + $field + 's_container');
+            $loc_container.removeAttr('required');
             var $other_places_container = $('#other_places_container');
             var $musical_other_places_container = $('#musical_other_places_container');
             var $loc_template = $('#' + $field + 's_template').html();
@@ -986,7 +987,6 @@
 
                     } else {
                         $loc_container.html('');
-                        $loc_container.removeAtt('required');
                         $other_places_container.html('');
                         $musical_other_places_container.html('');
                     }
