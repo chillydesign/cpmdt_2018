@@ -962,6 +962,8 @@
                         var locations = _.sortBy(data.locations, 'post_title');
                         $loc_container.html(loccompiled({ locations: locations }));
 
+                        $loc_container.attr({ required: 'required' });
+
 
                         var $multiloc = $('#multiloc_template');
 
@@ -984,6 +986,7 @@
 
                     } else {
                         $loc_container.html('');
+                        $loc_container.removeAtt('required');
                         $other_places_container.html('');
                         $musical_other_places_container.html('');
                     }
