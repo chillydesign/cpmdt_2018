@@ -190,8 +190,8 @@ function inscription_form_shortcode($atts, $content = null) {
     $rq_frm .= '<div class="inscription_field" id="locations_field">
         <label for="location_id">Lieu *</label>
         <div class="field_content">
-        <select  name="location_id" id="locations_container"></select>
-        <script required id="locations_template" type="x-underscore">
+        <select required name="location_id" id="locations_container"></select>
+        <script  id="locations_template" type="x-underscore">
             <option value="">Choisir un lieu</option>
             <%  _.each(locations,function(location,key,list){  %>
             <option value="<%= location.wid %>"><%= location.post_title %></option>
