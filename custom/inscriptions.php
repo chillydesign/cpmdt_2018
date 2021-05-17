@@ -126,7 +126,7 @@ function inscription_form_shortcode($atts, $content = null) {
         <label for="course_id">Choix du cours * </label>
         <div class="field_content">
         <select required class="course_picker" id="course_id" name="course_id" data-field="location" >';
-    $rq_frm .= '<option value="0">Choisir un cours</option>';
+    $rq_frm .= '<option value="">Choisir un cours</option>';
     foreach ($courses as $course) :
         $selected =  ''; // ($course->ID == $get_course_id  ) ? 'selected' : '';
         $rq_frm .= '<option ' . $selected . ' value="' .  $course->ID  . '">' .  ($course->post_title)   . '</option>';
@@ -191,7 +191,7 @@ function inscription_form_shortcode($atts, $content = null) {
         <label for="location_id">Lieu *</label>
         <div class="field_content">
         <select  name="location_id" id="locations_container"></select>
-        <script id="locations_template" type="x-underscore">
+        <script required id="locations_template" type="x-underscore">
             <option value="">Choisir un lieu</option>
             <%  _.each(locations,function(location,key,list){  %>
             <option value="<%= location.wid %>"><%= location.post_title %></option>
