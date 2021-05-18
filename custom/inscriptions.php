@@ -1211,7 +1211,7 @@ function send_inscription_emails($data) {
 
 
     $fields = all_inscription_fields();
-    $cssstyle = ' style="text-align:left;color:#555555;padding:7px 9px;vertical-align:top;border-top:1px solid #000"';
+    $cssstyle = ' style="text-align:left;color:#555555;padding:0px 9px;vertical-align:top;font-size:11px;border-top:1px solid #000"';
 
     foreach ($fields as $field => $translation) :
         if (
@@ -1233,6 +1233,8 @@ function send_inscription_emails($data) {
                     }
                 endif;
             endif;
+        } else if ($field == 'terms') {
+            // dont show terms
         } else {
             if (isset($data[$field])) :
                 $value = $data[$field];
